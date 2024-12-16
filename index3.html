@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Personal Website - Takeoff Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+  margin: 0; padding: 0;
+  height: 100%; width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: #FAFAFA;
+  overflow: hidden;
+}
+
+/* Video background container */
+.video-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+video.background {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+.video-container img {
+  display: none;
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100vw; height: 100vh;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* Main content center */
+.main-content {
+  position: relative;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+  height: 100vh; 
+  text-align: center;
+  padding: 20px;
+}
+
+/* Name styling */
+.name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  color: #FFD700;
+  animation: subtlePulse 6s infinite;
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+/* Quotes (typewriter, multiline) */
+.quote {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  display: inline-block;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  white-space: pre-wrap;
+  overflow: hidden;
+  border-right: .15em solid #FAFAFA;
+}
+.cursor {
+  display: inline-block;
+  width: 1px;
+  background: #FAFAFA;
+  margin-left: 2px;
+  animation: blinkCursor 1s infinite step-end;
+}
+
+@keyframes blinkCursor {
+  0%, 100% {opacity: 1;}
+  50% {opacity: 0;}
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+.nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #FAFAFA;
+  background: rgba(0,0,0,0.3);
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+.nav-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Footer */
+.footer {
+  position: absolute; 
+  bottom: 20px; 
+  width: 100%; 
+  text-align: center;
+  font-size: 1rem;
+  color: #FAFAFA;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+.footer span {
+  animation: fadeText 4s infinite;
+}
+
+@keyframes fadeText {
+  0%, 20% {opacity: 1;}
+  80%, 100% {opacity: 0;}
+}
+
+/* Launch button (rocket animation refined) */
+.launch-button, .refresh-button {
+  position: absolute;
+  background: rgba(0,0,0,0.3);
+  color: #FAFAFA;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.launch-button:hover, .refresh-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.launch-button {
+  bottom: 80px;
+  left: 20px; 
+}
+
+.refresh-button {
+  bottom: 80px;
+  right: 20px;
+}
+
+.rocket {
+  position: fixed;
+  bottom: 0;
+  font-size: 3rem;
+  animation: rocketLaunch 8s linear infinite;
+}
+
+@keyframes rocketLaunch {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-60vh) scale(1.1); }
+  100% { transform: translateY(-120vh) scale(1.2); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .name { font-size: 2.5rem; }
+  .quote { font-size: 1.2rem; }
+  .nav-link { font-size: 0.8rem; padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+<div class="video-container">
+  <video class="background" autoplay muted loop>
+    <source src="background1.mp4" type="video/mp4">
+    <img src="fallback.jpg" alt="Sunrise Sky Background"> 
+  </video>
+</div>
+
+<div class="main-content">
+  <h1 class="name">Sambrit Adhikari</h1>
+  <div class="quote"></div>
+  <div class="nav-links">
+    <a href="mailto:sambritadhikari@gmail.com" class="nav-link">Email</a>
+    <a href="https://github.com/sambrit" class="nav-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/sambritadhikari/" class="nav-link">LinkedIn</a>
+  </div>
+</div>
+
+<div class="footer">
+  Built in <script>document.write(new Date().getFullYear())</script> with 
+  <span>✈️ curiosity</span>
+</div>
+
+<div class="launch-button">Launch 🚀</div>
+<div class="refresh-button">Refresh 🔄</div>
+
+<script>
+// Array of background videos (5)
+const videoList = [
+  'background1.mp4',
+  'background2.mp4',
+  'background3.mp4',
+  'background4.mp4',
+  'background5.mp4'
+];
+
+// Set initial random background
+function setRandomBackground() {
+  const chosenVideo = videoList[Math.floor(Math.random() * videoList.length)];
+  const video = document.querySelector('.background');
+  video.querySelector('source').src = chosenVideo;
+  video.load();
+}
+setRandomBackground();
+
+// Quotes array
+const quotes = [
+  "The journey of a thousand miles begins with a single step. – Lao Tzu",
+  "Once you have tasted flight, you will forever walk the earth with your eyes turned skyward. – Leonardo da Vinci",
+  "Man cannot discover new oceans unless he has the courage to lose sight of the shore. – André Gide",
+  "Not all those who wander are lost. – J.R.R. Tolkien",
+  "The world is a book, and those who do not travel read only one page. – Saint Augustine"
+];
+
+let quoteIndex = 0;
+const quoteElement = document.querySelector('.quote');
+
+function typeQuote(text, callback) {
+  quoteElement.textContent = '';
+  let i = 0;
+  const speed = 50;
+  
+  function typeChar() {
+    if (i < text.length) {
+      quoteElement.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeChar, speed);
+    } else {
+      setTimeout(callback, 3000);
+    }
+  }
+  typeChar();
+}
+
+function showQuotes() {
+  function nextQuote() {
+    quoteIndex = (quoteIndex + 1) % quotes.length;
+    typeQuote(quotes[quoteIndex], () => {
+      setTimeout(nextQuote, 1000);
+    });
+  }
+  typeQuote(quotes[quoteIndex], () => {
+    setTimeout(nextQuote, 1000);
+  });
+}
+showQuotes();
+
+// Launch button (rocket animation)
+const launchButton = document.querySelector('.launch-button');
+launchButton.addEventListener('click', () => {
+  const rocket = document.createElement('div');
+  rocket.classList.add('rocket');
+  rocket.textContent = '🚀';
+  rocket.style.left = (Math.random() * 80) + '%';
+  document.body.appendChild(rocket);
+  setTimeout(() => {
+    rocket.remove();
+  }, 8000);
+});
+
+// Refresh button
+const refreshButton = document.querySelector('.refresh-button');
+refreshButton.addEventListener('click', () => {
+  setRandomBackground();
+});
+</script>
+</body>
+</html>
