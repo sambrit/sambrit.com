@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sambrit Homepage</title>
+<meta name="description" content="Homepage of Sambrit Adhikari, a program manager and engineer specializing in AI, machine learning, and software development."/>
+<meta name="keywords" content="Sambrit Adhikari, program manager, engineer, software development, AI, machine learning, LinkedIn, Google"/>
+<meta name="author" content="Sambrit Adhikari"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+  margin: 0; padding: 0;
+  height: 100%; width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: #FAFAFA;
+  overflow: hidden;
+}
+
+/* Background image container */
+.background-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+.background-container img {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Main content center */
+.main-content {
+  position: relative;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+  height: 100vh; 
+  text-align: center;
+  padding: 20px;
+}
+
+/* Name styling */
+.name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(4rem + 2vw);
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  color: #FFD700;
+  animation: subtlePulse 6s infinite;
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+/* Quotes (typewriter, multiline) */
+.quote {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  display: inline-block;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  white-space: pre-wrap;
+  overflow: hidden;
+  border-right: .15em solid #FAFAFA;
+}
+.cursor {
+  display: inline-block;
+  width: 1px;
+  background: #FAFAFA;
+  margin-left: 2px;
+  animation: blinkCursor 1s infinite step-end;
+}
+
+@keyframes blinkCursor {
+  0%, 100% {opacity: 1;}
+  50% {opacity: 0;}
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+.nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #FAFAFA;
+  background: rgba(0,0,0,0.3);
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+.nav-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Buttons */
+.launch-button, .refresh-button {
+  position: absolute;
+  background: rgba(0,0,0,0.3);
+  color: #FAFAFA;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.launch-button:hover, .refresh-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.launch-button {
+  bottom: 50px;
+  left: 20px; 
+}
+
+.refresh-button {
+  bottom: 50px;
+  right: 20px;
+}
+
+.rocket {
+  position: fixed;
+  bottom: 0;
+  font-size: 3rem;
+  animation: rocketLaunch 5s linear forwards;
+}
+
+@keyframes rocketLaunch {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(50vw, -60vh); }
+  100% { transform: translate(100vw, -120vh); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .name { font-size: calc(3rem + 2vw); }
+  .quote { font-size: 1.2rem; }
+  .nav-link { font-size: 0.8rem; padding: 8px 10px; }
+  .launch-button, .refresh-button {
+    bottom: 30px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+</style>
+</head>
+<body>
+<div class="background-container">
+  <img src="background1.jpg" alt="Background Image">
+</div>
+
+<div class="main-content">
+  <h1 class="name">Sambrit Adhikari</h1>
+  <div class="quote"></div>
+  <div class="nav-links">
+    <a href="mailto:sambritadhikari@gmail.com" class="nav-link">Email</a>
+    <a href="https://github.com/sambrit" class="nav-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/sambritadhikari/" class="nav-link">LinkedIn</a>
+  </div>
+</div>
+
+<div class="launch-button">Launch 🚀</div>
+<div class="refresh-button">Refresh 🔄</div>
+
+
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-123361058-1');
+	</script>
+	
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/vn3khh5s';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+	
+<script>
+// Background image cycling
+const backgroundContainer = document.querySelector('.background-container img');
+const backgrounds = [
+  'background1.jpg',
+  'background2.jpg',
+  'background3.jpg',
+  'background4.jpg',
+  'background5.jpg',
+  'background6.jpg',
+  'background7.jpg'
+];
+let bgIndex = 0;
+
+function cycleBackground() {
+  bgIndex = (bgIndex + 1) % backgrounds.length;
+  backgroundContainer.src = backgrounds[bgIndex];
+}
+setInterval(cycleBackground, 5000);
+
+// Quotes array
+const quotes = [
+  "The journey of a thousand miles begins with a single step. – Lao Tzu",
+  "Once you have tasted flight, you will forever walk the earth with your eyes turned skyward. – Leonardo da Vinci",
+  "Man cannot discover new oceans unless he has the courage to lose sight of the shore. – André Gide",
+  "Not all those who wander are lost. – J.R.R. Tolkien",
+  "The world is a book, and those who do not travel read only one page. – Saint Augustine"
+];
+
+let quoteIndex = 0;
+const quoteElement = document.querySelector('.quote');
+
+function typeQuote(text, callback) {
+  quoteElement.textContent = '';
+  let i = 0;
+  const speed = 50;
+
+  function typeChar() {
+    if (i < text.length) {
+      quoteElement.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeChar, speed);
+    } else {
+      setTimeout(callback, 3000);
+    }
+  }
+  typeChar();
+}
+
+function showQuotes() {
+  function nextQuote() {
+    quoteIndex = (quoteIndex + 1) % quotes.length;
+    typeQuote(quotes[quoteIndex], () => {
+      setTimeout(nextQuote, 1000);
+    });
+  }
+  typeQuote(quotes[quoteIndex], () => {
+    setTimeout(nextQuote, 1000);
+  });
+}
+showQuotes();
+
+// Rocket animation
+const launchButton = document.querySelector('.launch-button');
+launchButton.addEventListener('click', () => {
+  const rocket = document.createElement('div');
+  rocket.classList.add('rocket');
+  rocket.textContent = '🚀';
+  rocket.style.left = (Math.random() * 80) + 'vw';
+  document.body.appendChild(rocket);
+  setTimeout(() => {
+    rocket.remove();
+  }, 5000);
+});
+
+// Refresh button
+const refreshButton = document.querySelector('.refresh-button');
+refreshButton.addEventListener('click', () => {
+  cycleBackground();
+});
+</script>
+</body>
+</html>
