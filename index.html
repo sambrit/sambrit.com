@@ -172,7 +172,22 @@ html, body {
 }
 </style>
 </head>
+
+<script>
+  // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/vn3khh5s'
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/vn3khh5s';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
 <body>
+  <script>
+  window.Intercom("boot", {
+    api_base: "https://api-iam.intercom.io",
+    app_id: "vn3khh5s",
+  });
+
+  window.Intercom("update");
+  </script>
+
 <div class="background-container">
   <img src="background1.jpg" alt="Background Image">
 </div>
@@ -199,12 +214,6 @@ html, body {
 	  gtag('config', 'UA-123361058-1');
 	</script>
 	
-<script>
-  window.intercomSettings = {
-    app_id: "vn3khh5s"
-  };
-</script>
-<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/vn3khh5s';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
 
     <!-- Structured Data (JSON-LD) for SEO -->
     <script type="application/ld+json">
