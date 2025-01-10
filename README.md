@@ -32,20 +32,6 @@ To run the project locally, follow these steps:
 ### Prerequisites
 - Ensure you have a web browser (Chrome, Firefox, etc.) installed on your machine.
 
-### Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sambrit/portfolio.git
-   ```
-2. Open the project folder:
-   ```bash
-   cd portfolio
-   ```
-3. Open the `index.html` file in a web browser to view the portfolio:
-   ```bash
-   open index.html
-   ```
-
 ## Files and Directories
 - **Inline CSS**: The styles for the site are embedded within the `<style>` tag in the HTML file.
 - **Scripts**: JavaScript code is included within `<script>` tags for handling interactivity (e.g., rocket launch, background cycling, quotes).
