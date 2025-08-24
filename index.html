@@ -5,279 +5,430 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sambrit Adhikari</title>
   <meta name="description" content="Sambrit Adhikari, a program manager and engineer specializing in AI, machine learning, and software development."/>
-  <meta name="keywords" content="Sambrit Adhikari, program manager, engineer, software development, AI, machine learning, LinkedIn, Google, program management, product manager, technical program manager, artificial intelligence, data science"/>
+  <meta name="keywords" content="Sambrit Adhikari, program manager, engineer, software development, AI, machine learning, LinkedIn, program management, product manager, technical program manager, artificial intelligence, data science"/>
   <meta name="author" content="Sambrit Adhikari"/>
   <meta name="robots" content="index, follow"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="canonical" href="https://www.sambrit.com/"/>
 
+  <!-- Optional font (comment out to be ultra-lean) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
+  :root { --text:#FAFAFA; --accent:#FFD700; }
+
   html, body {
-    margin: 0; padding: 0;
-    height: 100%; width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    color: #FAFAFA;
-    overflow: hidden;
+    margin:0; padding:0; height:100%; width:100%;
+    font-family:'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color:var(--text); background:#000;
+    overflow:hidden;
+    position: relative; /* create root stacking context */
   }
 
-  /* Background image container */
-  .background-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    z-index: -1;
-    overflow: hidden;
+  /* Background layers */
+  #bg {
+    position:fixed; inset:0; width:100vw; height:100vh; display:block;
+    z-index:0; pointer-events:none; /* behind content, never blocks clicks */
+    filter:saturate(1.1) contrast(1.02);
+    transition:filter 600ms ease;
+    background:#0b0d12; /* sanity fallback color */
   }
-  .background-container img {
-    position: absolute;
-    top: 50%; left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    /* Start centered with a panning animation */
-    transform: translate(-50%, -50%);
-    animation: panImage 60s linear infinite alternate;
+  /* Soft ambient designer glows */
+  .glow {
+    position:fixed; inset:-10vmax; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(40vmax 40vmax at 20% 30%, rgba(79,70,229,0.25), transparent 60%),
+      radial-gradient(35vmax 35vmax at 80% 70%, rgba(34,211,238,0.22), transparent 65%),
+      radial-gradient(45vmax 45vmax at 50% 50%, rgba(244,63,94,0.18), transparent 60%);
+    animation:glowDrift 22s ease-in-out infinite alternate;
+    filter:blur(8px);
   }
-  @keyframes panImage {
-    from { transform: translate(-50%, -50%); }
-    to   { transform: translate(-70%, -50%); }
+  @keyframes glowDrift {
+    0% { transform:translate3d(0,0,0) scale(1); }
+    100% { transform:translate3d(-2%,1%,0) scale(1.03); }
   }
 
-  /* Main content center */
+  /* Foreground content */
   .main-content {
-    position: relative;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
-    height: 100vh; 
-    text-align: center;
-    padding: 20px;
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    height:100vh; text-align:center; padding:20px;
   }
 
-  /* Name styling */
   .name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: calc(4rem + 2vw);
-    font-weight: 700;
-    margin: 0;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    color: #FFD700;
-    animation: subtlePulse 6s infinite;
+    font-family:'Montserrat', system-ui, sans-serif;
+    font-size:clamp(3rem, 8vw, 6rem); font-weight:700; margin:0;
+    color:var(--accent); letter-spacing:.6px;
+    text-shadow:0 2px 10px rgba(0,0,0,.8);
+    animation:subtlePulse 6s infinite;
   }
-  @keyframes subtlePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-  }
+  @keyframes subtlePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
 
-  /* Quote styling with fade-in effect */
   .quote {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    line-height: 1.8;
-    display: inline-block;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    white-space: pre-wrap;
-    opacity: 0;
+    margin-top:20px; font-size:clamp(1.1rem,2.2vw,1.6rem); line-height:1.8;
+    display:inline-block; white-space:pre-wrap; opacity:0;
+    text-shadow:0 2px 6px rgba(0,0,0,.6);
   }
-  .fade-in {
-    animation: fadeIn 1s ease forwards;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
+  .fade-in { animation:fadeIn 600ms ease forwards; }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-  /* Navigation links */
-  .nav-links {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
-  }
+  .nav-links { display:flex; gap:12px; margin-top:30px; flex-wrap:wrap; }
   .nav-link {
-    text-decoration: none;
-    font-weight: 600;
-    color: #FAFAFA;
-    background: rgba(0,0,0,0.3);
-    padding: 10px 15px;
-    border-radius: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    text-decoration:none; font-weight:600; color:var(--text);
+    background:rgba(0,0,0,.35); padding:10px 14px; border-radius:999px;
+    display:inline-flex; align-items:center; backdrop-filter:blur(6px);
+    text-shadow:0 2px 6px rgba(0,0,0,.6);
+    border:1px solid rgba(255,255,255,.08);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
   }
-  .nav-link:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  }
+  .nav-link:hover { transform:translateY(-1px); box-shadow:0 0 14px rgba(0,0,0,.35); background:rgba(255,255,255,.08); }
 
   /* Buttons */
   .launch-button, .refresh-button {
-    position: absolute;
-    background: rgba(0,0,0,0.3);
-    color: #FAFAFA;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position:fixed; z-index:2;
+    background:rgba(0,0,0,.35); color:var(--text);
+    text-shadow:0 2px 6px rgba(0,0,0,.6);
+    padding:10px 14px; border-radius:999px; font-weight:700; cursor:pointer;
+    font-size:.95rem; letter-spacing:.2px; user-select:none;
+    backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.08);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
   }
-  .launch-button:hover, .refresh-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  }
+  .launch-button:hover, .refresh-button:hover { transform:translateY(-1px) scale(1.02); box-shadow:0 0 14px rgba(0,0,0,.35); background:rgba(255,255,255,.08); }
 
-  .launch-button {
-    bottom: 50px;
-    left: 20px; 
-  }
-
-  .refresh-button {
-    bottom: 50px;
-    right: 20px;
-  }
+  .launch-button { bottom:24px; left:20px; }
+  .refresh-button { bottom:24px; left:50%; transform:translateX(-50%); }
 
   .rocket {
-    position: fixed;
-    bottom: 0;
-    font-size: 3rem;
-    animation: rocketLaunch 5s linear forwards;
+    position:fixed; bottom:0; font-size:3rem; z-index:3;
+    animation:rocketLaunch 5s linear forwards; will-change:transform;
   }
   @keyframes rocketLaunch {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(50vw, -60vh); }
-    100% { transform: translate(100vw, -120vh); }
+    0% { transform:translate(0,0) }
+    50%{ transform:translate(50vw,-60vh) rotate(10deg) }
+    100%{transform:translate(100vw,-120vh) rotate(20deg)}
   }
 
-  /* Responsive adjustments */
-  @media (max-width: 600px) {
-    .name { font-size: calc(3rem + 2vw); }
-    .quote { font-size: 1.2rem; }
-    .nav-link { font-size: 0.8rem; padding: 8px 10px; }
-    .launch-button, .refresh-button {
-      bottom: 30px;
-      padding: 6px 10px;
-      font-size: 0.8rem;
-    }
+  /* Flash on scene swap */
+  .flash { filter:brightness(1.35) saturate(1.2); }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .name { animation:none !important; }
+    .glow { animation:none !important; }
+    .rocket { animation:none !important; }
+  }
+
+  @media (max-width:600px){
+    .nav-link { font-size:.9rem; padding:9px 12px; }
   }
   </style>
 </head>
 <body>
-  <div class="background-container">
-    <img src="background1.jpg" alt="Background Image">
-  </div>
+  <!-- Background -->
+  <canvas id="bg"></canvas>
+  <div class="glow" aria-hidden="true"></div>
 
+  <!-- Content -->
   <div class="main-content">
     <h1 class="name">Sambrit Adhikari</h1>
     <div class="quote"></div>
     <div class="nav-links">
       <a href="mailto:sambritadhikari@gmail.com" class="nav-link">Email</a>
-      <a href="https://www.instagram.com/catchingthelittlemoments/" class="nav-link">Photography  📷</a>
+      <a href="https://www.instagram.com/catchingthelittlemoments/" class="nav-link">Photography 📷</a>
       <a href="https://www.linkedin.com/in/sambritadhikari/" class="nav-link">LinkedIn</a>
     </div>
   </div>
 
+  <!-- Controls -->
   <div class="launch-button">Launch 🚀</div>
-  <div class="refresh-button">Refresh 🔄</div>
+  <div class="refresh-button" title="Shuffle background + quote">Refresh 🔄</div>
 
   <script>
-// Background image cycling (every 6.6 seconds)
-const backgrounds = [
-  'background1.jpg',
-  'background2.jpg',
-  'background3.jpg',
-  'background4.jpg',
-  'background5.jpg',
-  'background6.jpg',
-  'background7.jpg'
+/* =========================
+   QUOTES
+========================= */
+const quotes = [
+  "The journey of a thousand miles begins with a single step. – Lao Tzu",
+  "Once you have tasted flight, you will forever walk the earth with your eyes turned skyward. – Leonardo da Vinci",
+  "Man cannot discover new oceans unless he has the courage to lose sight of the shore. – André Gide",
+  "Not all those who wander are lost. – J.R.R. Tolkien",
+  "The world is a book, and those who do not travel read only one page. – Saint Augustine",
+  "Life begins at the end of your comfort zone. – Neale Donald Walsch",
+  "Adventure is worthwhile. – Aesop",
+  "Travel far, travel wide, but always travel within. – Unknown",
+  "The gladdest moment in human life is a departure into unknown lands. – Sir Richard Burton",
+  "Wherever you go, go with all your heart. – Confucius",
+  "A ship in harbor is safe, but that is not what ships are built for. – John A. Shedd",
+  "To travel is to take a journey into yourself. – Danny Kaye",
+  "We travel not to escape life, but for life not to escape us. – Unknown",
+  "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes. – Marcel Proust",
+  "Dare to live the life you have dreamed for yourself. Go forward and make your dreams come true. – Emerson",
+  "Because in the end, you won’t remember the time you spent working in the office or mowing your lawn. Climb that damn mountain. – Kerouac",
+  "It is not down in any map; true places never are. – Herman Melville",
+  "To awaken alone in a strange town is one of the pleasantest sensations in the world. – Freya Stark",
+  "Travel brings power and love back into your life. – Rumi",
+  "I haven’t been everywhere, but it’s on my list. – Susan Sontag"
 ];
-const backgroundContainer = document.querySelector('.background-container img');
+const quoteEl = document.querySelector('.quote');
+function setQuote(text){
+  quoteEl.classList.remove('fade-in'); void quoteEl.offsetWidth;
+  quoteEl.textContent = text;
+  quoteEl.classList.add('fade-in');
+}
+setQuote(quotes[(Math.random()*quotes.length)|0]);
 
-function cycleBackground() {
-  const randomIndex = Math.floor(Math.random() * backgrounds.length);
-  backgroundContainer.src = backgrounds[randomIndex];
+/* =========================
+   BUTTONS
+========================= */
+document.querySelector('.launch-button').addEventListener('click', () => {
+  const rocket = document.createElement('div');
+  rocket.className = 'rocket'; rocket.textContent = '🚀';
+  rocket.style.left = (Math.random()*80) + 'vw';
+  document.body.appendChild(rocket);
+  setTimeout(()=>rocket.remove(), 5000);
+});
+const refreshButton = document.querySelector('.refresh-button');
+
+/* =========================
+   CANVAS2D BACKGROUND (no WebGL)
+   Modes: 0 Aurora Flow, 1 Warp Speed, 2 Neon Blobs
+========================= */
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d', { alpha:false, desynchronized:true });
+
+let dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+let mode = 0;
+let seed = Math.random()*1000;
+
+const palettes = [
+  // [bg, c1, c2, c3, accent]
+  ["#08090B","#6EE7F9","#A78BFA","#F472B6","#FDE047"], // cyber pastel
+  ["#060608","#22D3EE","#38BDF8","#F472B6","#FACC15"], // neon space
+  ["#050507","#10B981","#60A5FA","#F43F5E","#F59E0B"], // emerald/cobalt
+  ["#07070A","#34D399","#8B5CF6","#EC4899","#FDE047"]  // mint/violet
+];
+let pal = palettes[(Math.random()*palettes.length)|0];
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SPEED_SCALE = reduceMotion ? 0.4 : 1.0;
+
+function resize(){
+  dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+  const w = Math.max(1, Math.floor(innerWidth * dpr));
+  const h = Math.max(1, Math.floor(innerHeight * dpr));
+  canvas.width = w; canvas.height = h;
+  canvas.style.width = '100vw'; canvas.style.height = '100vh';
+  // re-init scene on resize to adapt counts/sizes
+  scene.init();
+  scene.step(16); // immediate first paint
+}
+addEventListener('resize', resize);
+
+/* Utils */
+function rand(min,max){ return Math.random()*(max-min)+min; }
+function hexToRgba(hex, a=1){
+  const h = hex.replace('#','');
+  const bigint = parseInt(h.length===3 ? h.split('').map(x=>x+x).join('') : h, 16);
+  const r = (bigint>>16)&255, g=(bigint>>8)&255, b=bigint&255;
+  return `rgba(${r},${g},${b},${a})`;
+}
+function hexToRgb(hex){
+  const h = hex.replace('#','');
+  const s = h.length===3 ? h.split('').map(ch=>ch+ch).join('') : h;
+  const n = parseInt(s,16);
+  return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
+}
+function lerpColor(h1, h2, t){
+  const c1 = hexToRgb(h1), c2 = hexToRgb(h2);
+  const r = Math.round(c1.r + (c2.r-c1.r)*t);
+  const g = Math.round(c1.g + (c2.g-c1.g)*t);
+  const b = Math.round(c1.b + (c2.b-c1.b)*t);
+  return `rgb(${r},${g},${b})`;
 }
 
-// Randomize the initial background on page load
-cycleBackground();
+/* ---------- MODE 0: Aurora Flow ---------- */
+const aurora = {
+  blobs: [],
+  init() {
+    const count = 6;
+    this.blobs = [];
+    for(let i=0;i<count;i++){
+      this.blobs.push({
+        x: rand(0, canvas.width), y: rand(0, canvas.height),
+        r: rand(canvas.width*0.15, canvas.width*0.35),
+        vx: rand(-0.08,0.08)*SPEED_SCALE, vy: rand(-0.06,0.06)*SPEED_SCALE,
+        hue: i%2===0 ? pal[1] : pal[2], alpha: rand(0.06,0.12)
+      });
+    }
+  },
+  step(dt){
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = pal[0];
+    ctx.fillRect(0,0,canvas.width,canvas.height);
 
-//  cycle every 6.6 seconds
-setInterval(cycleBackground, 6600);
+    ctx.globalCompositeOperation = 'lighter';
+    for(const b of this.blobs){
+      b.x += b.vx*dt; b.y += b.vy*dt;
+      if(b.x < -b.r) b.x = canvas.width + b.r;
+      if(b.x > canvas.width + b.r) b.x = -b.r;
+      if(b.y < -b.r) b.y = canvas.height + b.r;
+      if(b.y > canvas.height + b.r) b.y = -b.r;
 
+      const grad = ctx.createRadialGradient(b.x, b.y, 1, b.x, b.y, b.r);
+      grad.addColorStop(0, hexToRgba(b.hue, b.alpha));
+      grad.addColorStop(0.6, hexToRgba(pal[3], b.alpha*0.6));
+      grad.addColorStop(1, hexToRgba(pal[3], 0));
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI*2); ctx.fill();
+    }
+  }
+};
 
-    // Quotes array and display function with fade-in
-    const quotes = [
-      "The journey of a thousand miles begins with a single step. – Lao Tzu",
-      "Once you have tasted flight, you will forever walk the earth with your eyes turned skyward. – Leonardo da Vinci",
-      "Man cannot discover new oceans unless he has the courage to lose sight of the shore. – André Gide",
-      "Not all those who wander are lost. – J.R.R. Tolkien",
-      "The world is a book, and those who do not travel read only one page. – Saint Augustine",
-      "Life begins at the end of your comfort zone. – Neale Donald Walsch",
-      "Adventure is worthwhile. – Aesop",
-      "Travel far, travel wide, but always travel within. – Unknown",
-      "The gladdest moment in human life is a departure into unknown lands. – Sir Richard Burton",
-      "Wherever you go, go with all your heart. – Confucius",
-      "A ship in harbor is safe, but that is not what ships are built for. – John A. Shedd",
-      "To travel is to take a journey into yourself. – Danny Kaye",
-      "We travel not to escape life, but for life not to escape us. – Unknown",
-      "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes. – Marcel Proust",
-      "Dare to live the life you have dreamed for yourself. Go forward and make your dreams come true. – Emerson",
-      "Because in the end, you won’t remember the time you spent working in the office or mowing your lawn. Climb that damn mountain. – Kerouac",
-      "It is not down in any map; true places never are. – Herman Melville",
-      "To awaken alone in a strange town is one of the pleasantest sensations in the world. – Freya Stark",
-      "Travel brings power and love back into your life. – Rumi",
-      "I haven’t been everywhere, but it’s on my list. – Susan Sontag"
-    ];
-    const quoteElement = document.querySelector('.quote');
+/* ---------- MODE 1: Warp Speed ---------- */
+const warp = {
+  stars: [],
+  init(){
+    const density = Math.floor((canvas.width*canvas.height)/3800);
+    this.stars = [];
+    for(let i=0;i<density;i++){
+      const angle = rand(0, Math.PI*2);
+      const radius = rand(0, Math.min(canvas.width, canvas.height)*0.5);
+      this.stars.push({
+        a: angle,
+        r: radius,
+        s: rand(0.6, 1.8)*SPEED_SCALE,
+        l: rand(3, 10)*dpr
+      });
+    }
+  },
+  step(dt){
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = pal[0];
+    ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    function displayQuote() {
-      // Remove the fade-in class to restart the animation
-      quoteElement.classList.remove('fade-in');
-      // Force a reflow to reset the CSS animation
-      void quoteElement.offsetWidth;
-      // Select a random quote and update text content
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      quoteElement.textContent = quotes[randomIndex];
-      // Add the fade-in effect
-      quoteElement.classList.add('fade-in');
+    const cx = canvas.width/2, cy = canvas.height/2;
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.lineWidth = Math.max(1, 1.0*dpr);
+
+    for(const st of this.stars){
+      st.r += st.s*dt*0.2;
+      if(st.r > Math.hypot(cx,cy)){
+        st.r = rand(0, Math.min(cx, cy)*0.1);
+        st.a = rand(0, Math.PI*2);
+        st.s = rand(0.6, 1.8)*SPEED_SCALE;
+      }
+      const x = cx + Math.cos(st.a)*st.r;
+      const y = cy + Math.sin(st.a)*st.r;
+      const x2 = cx + Math.cos(st.a)*(st.r + st.l);
+      const y2 = cy + Math.sin(st.a)*(st.r + st.l);
+      ctx.strokeStyle = lerpColor(pal[1], pal[3], st.r / (Math.hypot(cx,cy)+1));
+      ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x2,y2); ctx.stroke();
     }
 
-    // Display a quote on page load
-    displayQuote();
-    setInterval(displayQuote, 8000);
+    // center glow
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(cx,cy)*0.8);
+    g.addColorStop(0, hexToRgba(pal[4], 0.08));
+    g.addColorStop(1, hexToRgba(pal[4], 0));
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+  }
+};
 
+/* ---------- MODE 2: Neon Blobs ---------- */
+const blobs = {
+  nodes: [],
+  init(){
+    const count = 7;
+    this.nodes = [];
+    for(let i=0;i<count;i++){
+      this.nodes.push({
+        x: rand(0, canvas.width), y: rand(0, canvas.height),
+        r: rand(40*dpr, 120*dpr),
+        vx: rand(-0.25,0.25)*SPEED_SCALE, vy: rand(-0.25,0.25)*SPEED_SCALE,
+        c: i%3===0 ? pal[1] : (i%3===1 ? pal[2] : pal[3])
+      });
+    }
+  },
+  step(dt){
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = pal[0];
+    ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    // Refresh button to refresh the quotes (with cooldown)
-    const refreshButton = document.querySelector('.refresh-button');
-    let canRefresh = true;
-    refreshButton.addEventListener('click', () => {
-      if (canRefresh) {
-        displayQuote();
-        canRefresh = false;
-        setTimeout(() => { canRefresh = true; }, 3000);
-      }
-    });
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.filter = 'blur(12px)'; // modern Chrome-friendly
+    for(const n of this.nodes){
+      n.x += n.vx*dt; n.y += n.vy*dt;
+      if(n.x < -n.r) n.x = canvas.width + n.r;
+      if(n.x > canvas.width + n.r) n.x = -n.r;
+      if(n.y < -n.r) n.y = canvas.height + n.r;
+      if(n.y > canvas.height + n.r) n.y = -n.r;
 
-    // Rocket animation on launch button click
-    const launchButton = document.querySelector('.launch-button');
-    launchButton.addEventListener('click', () => {
-      const rocket = document.createElement('div');
-      rocket.classList.add('rocket');
-      rocket.textContent = '🚀';
-      rocket.style.left = (Math.random() * 80) + 'vw';
-      document.body.appendChild(rocket);
-      setTimeout(() => {
-        rocket.remove();
-      }, 5000);
-    });
+      const grad = ctx.createRadialGradient(n.x, n.y, n.r*0.1, n.x, n.y, n.r);
+      grad.addColorStop(0, hexToRgba(n.c, 0.45));
+      grad.addColorStop(1, hexToRgba(n.c, 0.0));
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.filter = 'none';
+  }
+};
 
-    // Google Analytics (assuming correct setup)
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-123361058-1');
+/* Runtime state */
+let scene = aurora;
+
+/* Init + render loop */
+function init(){
+  resize();              // sets canvas size and scene.init()
+  scene.step(16);        // immediate first paint
+}
+let last = performance.now();
+function frame(now){
+  const dt = Math.min(33, now - last); // clamp to avoid giant steps
+  last = now;
+  scene.step(dt);
+  requestAnimationFrame(frame);
+}
+
+/* Scene swap + palette swap + flash + quote */
+function shuffleBackground(){
+  mode = (mode + 1) % 3;
+  pal = palettes[(Math.random()*palettes.length)|0];
+  seed = Math.random()*1000;
+
+  // choose scene
+  if(mode===0) scene = aurora;
+  else if(mode===1) scene = warp;
+  else scene = blobs;
+
+  scene.init();
+  scene.step(16); // paint immediately after swap
+
+  // tasteful flash
+  canvas.classList.remove('flash'); void canvas.offsetWidth;
+  canvas.classList.add('flash');
+  setTimeout(()=>canvas.classList.remove('flash'), 320);
+}
+
+/* Refresh button ties it all together */
+let canRefresh = true;
+refreshButton.addEventListener('click', () => {
+  if(!canRefresh) return; canRefresh = false;
+  shuffleBackground();
+  setQuote(quotes[(Math.random()*quotes.length)|0]);
+  setTimeout(()=>{ canRefresh = true; }, 600);
+});
+
+/* Boot */
+scene.init();
+init();
+requestAnimationFrame(frame);
+
+/* =========================
+   Google Analytics (optional)
+========================= */
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'UA-123361058-1');
   </script>
 
   <!-- Structured Data (JSON-LD) for SEO -->
