@@ -196,7 +196,7 @@ const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d', { alpha:false, desynchronized:true });
 
 let dpr = Math.min(window.devicePixelRatio || 1, 1.75);
-let mode = 0;
+let mode = 1;
 let seed = Math.random()*1000;
 
 const palettes = [
@@ -373,7 +373,7 @@ const blobs = {
 };
 
 /* Runtime state */
-let scene = aurora;
+let scene = wrap;
 
 /* Init + render loop */
 function init(){
