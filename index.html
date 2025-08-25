@@ -21,24 +21,24 @@
     font-family:'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     color:var(--text); background:#000;
     overflow:hidden;
-    position: relative; /* create root stacking context */
+    position: relative; /* root stacking context */
   }
 
-  /* Background layers */
+  /* Background canvas */
   #bg {
     position:fixed; inset:0; width:100vw; height:100vh; display:block;
-    z-index:0; pointer-events:none; /* behind content, never blocks clicks */
+    z-index:0; pointer-events:none;
     filter:saturate(1.1) contrast(1.02);
-    transition:filter 600ms ease;
-    background:#0b0d12; /* sanity fallback color */
+    background:#0b0d12; /* safety fallback */
   }
+
   /* Soft ambient designer glows */
   .glow {
     position:fixed; inset:-10vmax; z-index:1; pointer-events:none;
     background:
-      radial-gradient(40vmax 40vmax at 20% 30%, rgba(79,70,229,0.25), transparent 60%),
-      radial-gradient(35vmax 35vmax at 80% 70%, rgba(34,211,238,0.22), transparent 65%),
-      radial-gradient(45vmax 45vmax at 50% 50%, rgba(244,63,94,0.18), transparent 60%);
+      radial-gradient(40vmax 40vmax at 20% 30%, rgba(79,70,229,0.22), transparent 60%),
+      radial-gradient(35vmax 35vmax at 80% 70%, rgba(34,211,238,0.18), transparent 65%),
+      radial-gradient(45vmax 45vmax at 50% 50%, rgba(244,63,94,0.14), transparent 60%);
     animation:glowDrift 22s ease-in-out infinite alternate;
     filter:blur(8px);
   }
@@ -47,7 +47,7 @@
     100% { transform:translate3d(-2%,1%,0) scale(1.03); }
   }
 
-  /* Foreground content */
+  /* Content */
   .main-content {
     position:relative; z-index:2;
     display:flex; flex-direction:column; justify-content:center; align-items:center;
@@ -63,18 +63,44 @@
   }
   @keyframes subtlePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
 
+  /* Quote + indicator */
+  .quote-wrap {
+    margin-top:20px; max-width:min(90vw, 900px);
+  }
   .quote {
-    margin-top:20px; font-size:clamp(1.1rem,2.2vw,1.6rem); line-height:1.8;
+    font-size:clamp(1.1rem, 2.2vw, 1.6rem);
+    line-height:1.8;
     display:inline-block; white-space:pre-wrap; opacity:0;
     text-shadow:0 2px 6px rgba(0,0,0,.6);
+    cursor:pointer;
   }
+  .quote:focus { outline:2px dashed rgba(255,255,255,.35); outline-offset:6px; border-radius:6px; }
   .fade-in { animation:fadeIn 600ms ease forwards; }
   @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  /* Progress indicator under the quote */
+  .quote-indicator {
+    position: relative; height:4px; border-radius:999px;
+    background: rgba(255,255,255,0.12);
+    overflow:hidden; margin:10px auto 0; width: clamp(200px, 50vw, 520px);
+  }
+  .quote-indicator .bar {
+    height:100%; width:100%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: linear-gradient(90deg, #22d3ee, #a78bfa, #f472b6);
+    will-change: transform;
+  }
+  .quote-hint {
+    margin-top:8px; font-size:.85rem; opacity:.75;
+    user-select:none;
+  }
 
   .nav-links { display:flex; gap:12px; margin-top:30px; flex-wrap:wrap; }
   .nav-link {
     text-decoration:none; font-weight:600; color:var(--text);
-    background:rgba(0,0,0,.35); padding:10px 14px; border-radius:999px;
+    background:rgba(0,0,0,.35);
+    padding:10px 14px; border-radius:999px;
     display:inline-flex; align-items:center; backdrop-filter:blur(6px);
     text-shadow:0 2px 6px rgba(0,0,0,.6);
     border:1px solid rgba(255,255,255,.08);
@@ -82,23 +108,31 @@
   }
   .nav-link:hover { transform:translateY(-1px); box-shadow:0 0 14px rgba(0,0,0,.35); background:rgba(255,255,255,.08); }
 
-  /* Buttons */
-  .launch-button, .refresh-button {
-    position:fixed; z-index:2;
-    background:rgba(0,0,0,.35); color:var(--text);
-    text-shadow:0 2px 6px rgba(0,0,0,.6);
-    padding:10px 14px; border-radius:999px; font-weight:700; cursor:pointer;
-    font-size:.95rem; letter-spacing:.2px; user-select:none;
-    backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.08);
-    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  /* Big enticing Launch button (bottom-centered) */
+  .launch-button {
+    position:fixed; z-index:3;
+    left:50%; transform:translateX(-50%);
+    bottom:calc(22px + env(safe-area-inset-bottom));
+    padding:16px 26px;
+    border-radius:999px; font-weight:800; letter-spacing:.4px;
+    font-size:clamp(1rem, 2.6vw, 1.15rem);
+    color:#0a0a0a;
+    background:
+      radial-gradient(120% 120% at 10% 10%, #fde047, transparent 60%),
+      linear-gradient(90deg, #facc15, #22d3ee 40%, #a78bfa 70%, #f43f5e);
+    border:none; cursor:pointer; user-select:none;
+    box-shadow:
+      0 10px 32px rgba(34,211,238,.25),
+      0 2px 0 rgba(255,255,255,.35) inset,
+      0 -2px 8px rgba(0,0,0,.35) inset;
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
   }
-  .launch-button:hover, .refresh-button:hover { transform:translateY(-1px) scale(1.02); box-shadow:0 0 14px rgba(0,0,0,.35); background:rgba(255,255,255,.08); }
-
-  .launch-button { bottom:24px; left:20px; }
-  .refresh-button { bottom:24px; left:50%; transform:translateX(-50%); }
+  .launch-button:hover { transform:translateX(-50%) translateY(-2px) scale(1.02); filter:brightness(1.05); }
+  .launch-button:active { transform:translateX(-50%) translateY(0) scale(0.99); }
+  .launch-button:focus { outline:2px solid rgba(255,255,255,.45); outline-offset:6px; }
 
   .rocket {
-    position:fixed; bottom:0; font-size:3rem; z-index:3;
+    position:fixed; bottom:0; font-size:3rem; z-index:4;
     animation:rocketLaunch 5s linear forwards; will-change:transform;
   }
   @keyframes rocketLaunch {
@@ -106,9 +140,6 @@
     50%{ transform:translate(50vw,-60vh) rotate(10deg) }
     100%{transform:translate(100vw,-120vh) rotate(20deg)}
   }
-
-  /* Flash on scene swap */
-  .flash { filter:brightness(1.35) saturate(1.2); }
 
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
@@ -118,7 +149,7 @@
   }
 
   @media (max-width:600px){
-    .nav-link { font-size:.9rem; padding:9px 12px; }
+    .nav-link { font-size:.95rem; padding:10px 14px; }
   }
   </style>
 </head>
@@ -130,7 +161,15 @@
   <!-- Content -->
   <div class="main-content">
     <h1 class="name">Sambrit Adhikari</h1>
-    <div class="quote"></div>
+
+    <div class="quote-wrap">
+      <div class="quote" role="button" tabindex="0" aria-label="Quote. Click to show a new one."></div>
+      <div class="quote-indicator" aria-hidden="true">
+        <div class="bar"></div>
+      </div>
+      <div class="quote-hint">new quote in a moment — tap the quote to refresh</div>
+    </div>
+
     <div class="nav-links">
       <a href="mailto:sambritadhikari@gmail.com" class="nav-link">Email</a>
       <a href="https://www.instagram.com/catchavibephotos/" class="nav-link">Photography 📷</a>
@@ -138,13 +177,12 @@
     </div>
   </div>
 
-  <!-- Controls -->
-  <div class="launch-button">Launch 🚀</div>
-  <div class="refresh-button" title="Shuffle background + quote">Refresh 🔄</div>
+  <!-- Launch (primary CTA) -->
+  <button class="launch-button" aria-label="Launch">Launch 🚀</button>
 
   <script>
 /* =========================
-   QUOTES
+   QUOTES + INDICATOR
 ========================= */
 const quotes = [
   "The journey of a thousand miles begins with a single step. – Lao Tzu",
@@ -168,48 +206,84 @@ const quotes = [
   "Travel brings power and love back into your life. – Rumi",
   "I haven’t been everywhere, but it’s on my list. – Susan Sontag"
 ];
+
 const quoteEl = document.querySelector('.quote');
-function setQuote(text){
+const barEl = document.querySelector('.quote-indicator .bar');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const QUOTE_INTERVAL = reduceMotion ? 12000 : 8000;
+
+let lastQuoteIndex = -1;
+let quoteTimer = null;
+
+function pickRandomQuote() {
+  let i;
+  do { i = (Math.random() * quotes.length) | 0; } while (i === lastQuoteIndex);
+  lastQuoteIndex = i;
+  return quotes[i];
+}
+
+function setQuote(text) {
   quoteEl.classList.remove('fade-in'); void quoteEl.offsetWidth;
   quoteEl.textContent = text;
   quoteEl.classList.add('fade-in');
 }
-setQuote(quotes[(Math.random()*quotes.length)|0]);
+
+function restartQuoteProgress() {
+  // reset progress bar
+  barEl.style.transition = 'none';
+  barEl.style.transform = 'scaleX(0)';
+  // force reflow to apply
+  void barEl.offsetWidth;
+  // animate to full
+  barEl.style.transition = `transform ${QUOTE_INTERVAL}ms linear`;
+  barEl.style.transform = 'scaleX(1)';
+}
+
+function startQuoteCycle() {
+  if (quoteTimer) clearTimeout(quoteTimer);
+  restartQuoteProgress();
+  quoteTimer = setTimeout(() => {
+    setQuote(pickRandomQuote());
+    startQuoteCycle();
+  }, QUOTE_INTERVAL);
+}
+
+function manualRefreshQuote() {
+  setQuote(pickRandomQuote());
+  startQuoteCycle();
+}
+
+quoteEl.addEventListener('click', manualRefreshQuote);
+quoteEl.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); manualRefreshQuote(); }
+});
 
 /* =========================
-   BUTTONS
+   LAUNCH BUTTON (rocket + warp boost)
 ========================= */
-document.querySelector('.launch-button').addEventListener('click', () => {
+const launchBtn = document.querySelector('.launch-button');
+launchBtn.addEventListener('click', () => {
+  // Rocket emoji animation
   const rocket = document.createElement('div');
   rocket.className = 'rocket'; rocket.textContent = '🚀';
   rocket.style.left = (Math.random()*80) + 'vw';
   document.body.appendChild(rocket);
   setTimeout(()=>rocket.remove(), 5000);
+
+  // Temporary warp boost
+  boost = 2.6; // will decay back to 1.0
 });
-const refreshButton = document.querySelector('.refresh-button');
 
 /* =========================
-   CANVAS2D BACKGROUND (no WebGL)
-   Modes: 0 Aurora Flow, 1 Warp Speed, 2 Neon Blobs
+   WARP SPEED BACKGROUND (Canvas2D)
 ========================= */
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d', { alpha:false, desynchronized:true });
 
-let dpr = Math.min(window.devicePixelRatio || 1, 1.75);
-let mode = 1;
-let seed = Math.random()*1000;
-
-const palettes = [
-  // [bg, c1, c2, c3, accent]
-  ["#08090B","#6EE7F9","#A78BFA","#F472B6","#FDE047"], // cyber pastel
-  ["#060608","#22D3EE","#38BDF8","#F472B6","#FACC15"], // neon space
-  ["#050507","#10B981","#60A5FA","#F43F5E","#F59E0B"], // emerald/cobalt
-  ["#07070A","#34D399","#8B5CF6","#EC4899","#FDE047"]  // mint/violet
-];
-let pal = palettes[(Math.random()*palettes.length)|0];
-
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const SPEED_SCALE = reduceMotion ? 0.4 : 1.0;
+let dpr = 1;
+let stars = [];
+let boost = 1.0; // launch pulse
+let palette = ["#060608","#22D3EE","#38BDF8","#F472B6","#FACC15"]; // [bg, c1, c2, c3, accent]
 
 function resize(){
   dpr = Math.min(window.devicePixelRatio || 1, 1.75);
@@ -217,210 +291,88 @@ function resize(){
   const h = Math.max(1, Math.floor(innerHeight * dpr));
   canvas.width = w; canvas.height = h;
   canvas.style.width = '100vw'; canvas.style.height = '100vh';
-  // re-init scene on resize to adapt counts/sizes
-  scene.init();
-  scene.step(16); // immediate first paint
+  initWarp();
+  stepWarp(16); // instant first paint
 }
 addEventListener('resize', resize);
+addEventListener('orientationchange', resize, { passive:true });
 
-/* Utils */
 function rand(min,max){ return Math.random()*(max-min)+min; }
-function hexToRgba(hex, a=1){
-  const h = hex.replace('#','');
-  const bigint = parseInt(h.length===3 ? h.split('').map(x=>x+x).join('') : h, 16);
-  const r = (bigint>>16)&255, g=(bigint>>8)&255, b=bigint&255;
-  return `rgba(${r},${g},${b},${a})`;
-}
-function hexToRgb(hex){
-  const h = hex.replace('#','');
-  const s = h.length===3 ? h.split('').map(ch=>ch+ch).join('') : h;
-  const n = parseInt(s,16);
-  return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
-}
-function lerpColor(h1, h2, t){
-  const c1 = hexToRgb(h1), c2 = hexToRgb(h2);
-  const r = Math.round(c1.r + (c2.r-c1.r)*t);
-  const g = Math.round(c1.g + (c2.g-c1.g)*t);
-  const b = Math.round(c1.b + (c2.b-c1.b)*t);
-  return `rgb(${r},${g},${b})`;
-}
+function hexToRgb(hex){ const h=hex.replace('#',''); const s=h.length===3?h.split('').map(c=>c+c).join(''):h; const n=parseInt(s,16); return {r:(n>>16)&255,g:(n>>8)&255,b:n&255};}
+function lerpColor(h1,h2,t){ const c1=hexToRgb(h1), c2=hexToRgb(h2); const r=(c1.r+(c2.r-c1.r)*t)|0, g=(c1.g+(c2.g-c1.g)*t)|0, b=(c1.b+(c2.b-c1.b)*t)|0; return `rgb(${r},${g},${b})`; }
 
-/* ---------- MODE 0: Aurora Flow ---------- */
-const aurora = {
-  blobs: [],
-  init() {
-    const count = 6;
-    this.blobs = [];
-    for(let i=0;i<count;i++){
-      this.blobs.push({
-        x: rand(0, canvas.width), y: rand(0, canvas.height),
-        r: rand(canvas.width*0.15, canvas.width*0.35),
-        vx: rand(-0.08,0.08)*SPEED_SCALE, vy: rand(-0.06,0.06)*SPEED_SCALE,
-        hue: i%2===0 ? pal[1] : pal[2], alpha: rand(0.06,0.12)
-      });
-    }
-  },
-  step(dt){
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = pal[0];
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    ctx.globalCompositeOperation = 'lighter';
-    for(const b of this.blobs){
-      b.x += b.vx*dt; b.y += b.vy*dt;
-      if(b.x < -b.r) b.x = canvas.width + b.r;
-      if(b.x > canvas.width + b.r) b.x = -b.r;
-      if(b.y < -b.r) b.y = canvas.height + b.r;
-      if(b.y > canvas.height + b.r) b.y = -b.r;
-
-      const grad = ctx.createRadialGradient(b.x, b.y, 1, b.x, b.y, b.r);
-      grad.addColorStop(0, hexToRgba(b.hue, b.alpha));
-      grad.addColorStop(0.6, hexToRgba(pal[3], b.alpha*0.6));
-      grad.addColorStop(1, hexToRgba(pal[3], 0));
-      ctx.fillStyle = grad;
-      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI*2); ctx.fill();
-    }
+function initWarp(){
+  const count = Math.floor((canvas.width*canvas.height)/3800);
+  stars = [];
+  for(let i=0;i<count;i++){
+    const angle = rand(0, Math.PI*2);
+    const radius = rand(0, Math.min(canvas.width, canvas.height)*0.5);
+    stars.push({
+      a: angle,
+      r: radius,
+      s: rand(0.6, 1.8),
+      l: rand(3, 10)*dpr
+    });
   }
-};
-
-/* ---------- MODE 1: Warp Speed ---------- */
-const warp = {
-  stars: [],
-  init(){
-    const density = Math.floor((canvas.width*canvas.height)/3800);
-    this.stars = [];
-    for(let i=0;i<density;i++){
-      const angle = rand(0, Math.PI*2);
-      const radius = rand(0, Math.min(canvas.width, canvas.height)*0.5);
-      this.stars.push({
-        a: angle,
-        r: radius,
-        s: rand(0.6, 1.8)*SPEED_SCALE,
-        l: rand(3, 10)*dpr
-      });
-    }
-  },
-  step(dt){
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = pal[0];
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    const cx = canvas.width/2, cy = canvas.height/2;
-    ctx.globalCompositeOperation = 'lighter';
-    ctx.lineWidth = Math.max(1, 1.0*dpr);
-
-    for(const st of this.stars){
-      st.r += st.s*dt*0.2;
-      if(st.r > Math.hypot(cx,cy)){
-        st.r = rand(0, Math.min(cx, cy)*0.1);
-        st.a = rand(0, Math.PI*2);
-        st.s = rand(0.6, 1.8)*SPEED_SCALE;
-      }
-      const x = cx + Math.cos(st.a)*st.r;
-      const y = cy + Math.sin(st.a)*st.r;
-      const x2 = cx + Math.cos(st.a)*(st.r + st.l);
-      const y2 = cy + Math.sin(st.a)*(st.r + st.l);
-      ctx.strokeStyle = lerpColor(pal[1], pal[3], st.r / (Math.hypot(cx,cy)+1));
-      ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x2,y2); ctx.stroke();
-    }
-
-    // center glow
-    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(cx,cy)*0.8);
-    g.addColorStop(0, hexToRgba(pal[4], 0.08));
-    g.addColorStop(1, hexToRgba(pal[4], 0));
-    ctx.fillStyle = g;
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-  }
-};
-
-/* ---------- MODE 2: Neon Blobs ---------- */
-const blobs = {
-  nodes: [],
-  init(){
-    const count = 7;
-    this.nodes = [];
-    for(let i=0;i<count;i++){
-      this.nodes.push({
-        x: rand(0, canvas.width), y: rand(0, canvas.height),
-        r: rand(40*dpr, 120*dpr),
-        vx: rand(-0.25,0.25)*SPEED_SCALE, vy: rand(-0.25,0.25)*SPEED_SCALE,
-        c: i%3===0 ? pal[1] : (i%3===1 ? pal[2] : pal[3])
-      });
-    }
-  },
-  step(dt){
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = pal[0];
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    ctx.globalCompositeOperation = 'lighter';
-    ctx.filter = 'blur(12px)'; // modern Chrome-friendly
-    for(const n of this.nodes){
-      n.x += n.vx*dt; n.y += n.vy*dt;
-      if(n.x < -n.r) n.x = canvas.width + n.r;
-      if(n.x > canvas.width + n.r) n.x = -n.r;
-      if(n.y < -n.r) n.y = canvas.height + n.r;
-      if(n.y > canvas.height + n.r) n.y = -n.r;
-
-      const grad = ctx.createRadialGradient(n.x, n.y, n.r*0.1, n.x, n.y, n.r);
-      grad.addColorStop(0, hexToRgba(n.c, 0.45));
-      grad.addColorStop(1, hexToRgba(n.c, 0.0));
-      ctx.fillStyle = grad;
-      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI*2); ctx.fill();
-    }
-    ctx.filter = 'none';
-  }
-};
-
-/* Runtime state */
-let scene = wrap;
-
-/* Init + render loop */
-function init(){
-  resize();              // sets canvas size and scene.init()
-  scene.step(16);        // immediate first paint
 }
+
+function stepWarp(dt){
+  const w = canvas.width, h = canvas.height;
+  const cx = w/2, cy = h/2;
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.fillStyle = palette[0];
+  ctx.fillRect(0,0,w,h);
+
+  // decay boost smoothly
+  boost += (1.0 - boost) * 0.06;
+
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.lineWidth = Math.max(1, 1.0*dpr);
+
+  const hyp = Math.hypot(cx,cy);
+  for(const st of stars){
+    st.r += st.s * dt * 0.2 * boost;
+    if(st.r > hyp){
+      st.r = rand(0, Math.min(cx, cy)*0.1);
+      st.a = rand(0, Math.PI*2);
+      st.s = rand(0.6, 1.8);
+    }
+    const x = cx + Math.cos(st.a)*st.r;
+    const y = cy + Math.sin(st.a)*st.r;
+    const x2 = cx + Math.cos(st.a)*(st.r + st.l);
+    const y2 = cy + Math.sin(st.a)*(st.r + st.l);
+    ctx.strokeStyle = lerpColor(palette[1], palette[3], st.r / (hyp+1));
+    ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x2,y2); ctx.stroke();
+  }
+
+  // center glow
+  const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(cx,cy)*0.8);
+  g.addColorStop(0, `rgba(250, 204, 21, 0.08)`); // accent
+  g.addColorStop(1, `rgba(250, 204, 21, 0)`);
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,w,h);
+}
+
 let last = performance.now();
-function frame(now){
-  const dt = Math.min(33, now - last); // clamp to avoid giant steps
-  last = now;
-  scene.step(dt);
-  requestAnimationFrame(frame);
+function loop(now){
+  const dt = Math.min(33, now - last); last = now;
+  stepWarp(dt);
+  requestAnimationFrame(loop);
 }
 
-/* Scene swap + palette swap + flash + quote */
-function shuffleBackground(){
-  mode = (mode + 1) % 3;
-  pal = palettes[(Math.random()*palettes.length)|0];
-  seed = Math.random()*1000;
+/* =========================
+   Boot
+========================= */
+function boot(){
+  // Initial quote and cycle
+  setQuote(pickRandomQuote());
+  startQuoteCycle();
 
-  // choose scene
-  if(mode===0) scene = aurora;
-  else if(mode===1) scene = warp;
-  else scene = blobs;
-
-  scene.init();
-  scene.step(16); // paint immediately after swap
-
-  // tasteful flash
-  canvas.classList.remove('flash'); void canvas.offsetWidth;
-  canvas.classList.add('flash');
-  setTimeout(()=>canvas.classList.remove('flash'), 320);
+  // Canvas
+  resize();
+  requestAnimationFrame(loop);
 }
-
-/* Refresh button ties it all together */
-let canRefresh = true;
-refreshButton.addEventListener('click', () => {
-  if(!canRefresh) return; canRefresh = false;
-  shuffleBackground();
-  setQuote(quotes[(Math.random()*quotes.length)|0]);
-  setTimeout(()=>{ canRefresh = true; }, 600);
-});
-
-/* Boot */
-scene.init();
-init();
-requestAnimationFrame(frame);
+boot();
 
 /* =========================
    Google Analytics (optional)
