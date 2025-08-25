@@ -14,25 +14,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-  :root { --text:#FAFAFA; --accent:#FFD700; }
+  :root { --text:#FAFAFA; --accent:#FFD700; --btn-scale:1; }
 
   html, body {
     margin:0; padding:0; height:100%; width:100%;
     font-family:'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     color:var(--text); background:#000;
-    overflow:hidden;
-    position: relative; /* root stacking context */
+    overflow:hidden; position:relative;
   }
 
-  /* Background canvas */
+  /* Background */
   #bg {
     position:fixed; inset:0; width:100vw; height:100vh; display:block;
     z-index:0; pointer-events:none;
     filter:saturate(1.1) contrast(1.02);
-    background:#0b0d12; /* safety fallback */
+    background:#0b0d12;
   }
-
-  /* Soft ambient designer glows */
   .glow {
     position:fixed; inset:-10vmax; z-index:1; pointer-events:none;
     background:
@@ -42,10 +39,7 @@
     animation:glowDrift 22s ease-in-out infinite alternate;
     filter:blur(8px);
   }
-  @keyframes glowDrift {
-    0% { transform:translate3d(0,0,0) scale(1); }
-    100% { transform:translate3d(-2%,1%,0) scale(1.03); }
-  }
+  @keyframes glowDrift { 0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(-2%,1%,0) scale(1.03)} }
 
   /* Content */
   .main-content {
@@ -53,7 +47,6 @@
     display:flex; flex-direction:column; justify-content:center; align-items:center;
     height:100vh; text-align:center; padding:20px;
   }
-
   .name {
     font-family:'Montserrat', system-ui, sans-serif;
     font-size:clamp(3rem, 8vw, 6rem); font-weight:700; margin:0;
@@ -63,40 +56,30 @@
   }
   @keyframes subtlePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
 
-  /* Quote + indicator */
-  .quote-wrap {
-    margin-top:20px; max-width:min(90vw, 900px);
-  }
+  /* Quote + progress */
+  .quote-wrap { margin-top:20px; max-width:min(92vw, 900px); }
   .quote {
     font-size:clamp(1.1rem, 2.2vw, 1.6rem);
-    line-height:1.8;
-    display:inline-block; white-space:pre-wrap; opacity:0;
-    text-shadow:0 2px 6px rgba(0,0,0,.6);
-    cursor:pointer;
+    line-height:1.8; display:inline-block; white-space:pre-wrap; opacity:0;
+    text-shadow:0 2px 6px rgba(0,0,0,.6); cursor:pointer;
   }
   .quote:focus { outline:2px dashed rgba(255,255,255,.35); outline-offset:6px; border-radius:6px; }
   .fade-in { animation:fadeIn 600ms ease forwards; }
   @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-  /* Progress indicator under the quote */
   .quote-indicator {
-    position: relative; height:4px; border-radius:999px;
-    background: rgba(255,255,255,0.12);
-    overflow:hidden; margin:10px auto 0; width: clamp(200px, 50vw, 520px);
+    position:relative; height:4px; border-radius:999px;
+    background:rgba(255,255,255,0.12);
+    overflow:hidden; margin:10px auto 0; width:clamp(200px, 56vw, 560px);
   }
   .quote-indicator .bar {
     height:100%; width:100%;
-    transform: scaleX(0);
-    transform-origin: left center;
-    background: linear-gradient(90deg, #22d3ee, #a78bfa, #f472b6);
-    will-change: transform;
-  }
-  .quote-hint {
-    margin-top:8px; font-size:.85rem; opacity:.75;
-    user-select:none;
+    transform:scaleX(0); transform-origin:left center;
+    background:linear-gradient(90deg,#22d3ee,#a78bfa,#f472b6);
+    will-change:transform;
   }
 
-  .nav-links { display:flex; gap:12px; margin-top:30px; flex-wrap:wrap; }
+  .nav-links { display:flex; gap:12px; margin-top:30px; flex-wrap:wrap; justify-content:center; }
   .nav-link {
     text-decoration:none; font-weight:600; color:var(--text);
     background:rgba(0,0,0,.35);
@@ -108,13 +91,37 @@
   }
   .nav-link:hover { transform:translateY(-1px); box-shadow:0 0 14px rgba(0,0,0,.35); background:rgba(255,255,255,.08); }
 
-  /* Big enticing Launch button (bottom-centered) */
+  /* Contact modal (email not in source until click) */
+  .modal {
+    position:fixed; inset:0; z-index:4; display:grid; place-items:center;
+    background:rgba(0,0,0,0.5); backdrop-filter:blur(6px);
+  }
+  .modal[hidden] { display:none; }
+  .modal-card {
+    background:rgba(15,15,20,0.9); border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px; padding:18px; width:min(92vw, 380px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .modal-title { font-weight:800; margin:0 0 10px; letter-spacing:0.3px; }
+  .modal-actions { display:flex; gap:10px; flex-wrap:wrap; }
+  .btn {
+    flex:1; padding:10px 12px; border-radius:10px; cursor:pointer; user-select:none;
+    background:rgba(255,255,255,0.08); color:var(--text);
+    border:1px solid rgba(255,255,255,0.15);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover { transform:translateY(-1px); background:rgba(255,255,255,0.12); }
+  .btn.primary {
+    background:linear-gradient(90deg,#facc15,#22d3ee 40%,#a78bfa 70%,#f43f5e);
+    color:#0a0a0a; font-weight:800; border:none;
+  }
+
+  /* Big, enticing Launch button */
   .launch-button {
     position:fixed; z-index:3;
-    left:50%; transform:translateX(-50%);
+    left:50%; transform:translateX(-50%) scale(var(--btn-scale));
     bottom:calc(22px + env(safe-area-inset-bottom));
-    padding:16px 26px;
-    border-radius:999px; font-weight:800; letter-spacing:.4px;
+    padding:16px 26px; border-radius:999px; font-weight:800; letter-spacing:.4px;
     font-size:clamp(1rem, 2.6vw, 1.15rem);
     color:#0a0a0a;
     background:
@@ -126,20 +133,39 @@
       0 2px 0 rgba(255,255,255,.35) inset,
       0 -2px 8px rgba(0,0,0,.35) inset;
     transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    touch-action:manipulation;
   }
-  .launch-button:hover { transform:translateX(-50%) translateY(-2px) scale(1.02); filter:brightness(1.05); }
-  .launch-button:active { transform:translateX(-50%) translateY(0) scale(0.99); }
+  .launch-button:hover { transform:translateX(-50%) scale(calc(var(--btn-scale) * 1.02)); filter:brightness(1.05); }
+  .launch-button:active { transform:translateX(-50%) scale(calc(var(--btn-scale) * 0.99)); }
   .launch-button:focus { outline:2px solid rgba(255,255,255,.45); outline-offset:6px; }
 
+  /* Rocket animations */
   .rocket {
     position:fixed; bottom:0; font-size:3rem; z-index:4;
-    animation:rocketLaunch 5s linear forwards; will-change:transform;
+    animation:rocketRight 5s linear forwards; will-change:transform;
   }
-  @keyframes rocketLaunch {
-    0% { transform:translate(0,0) }
+  @keyframes rocketRight {
+    0% { transform:translate(0,0) rotate(0deg) }
     50%{ transform:translate(50vw,-60vh) rotate(10deg) }
     100%{transform:translate(100vw,-120vh) rotate(20deg)}
   }
+  .rocket.left {
+    animation:rocketLeft 5s linear forwards;
+    transform:scaleX(-1); /* flip emoji so direction matches trajectory */
+  }
+  @keyframes rocketLeft {
+    0% { transform:scaleX(-1) translate(0,0) rotate(0deg) }
+    50%{ transform:scaleX(-1) translate(-50vw,-60vh) rotate(-10deg) }
+    100%{transform:scaleX(-1) translate(-100vw,-120vh) rotate(-20deg)}
+  }
+
+  /* Shockwave overlay for the surprise */
+  .shockwave {
+    position:fixed; inset:0; z-index:3; pointer-events:none;
+    background:radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(255,255,255,0) 60%);
+    animation:shock 900ms ease-out forwards;
+  }
+  @keyframes shock { from{opacity:.9; transform:scale(0.6)} to{opacity:0; transform:scale(2.2)} }
 
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
@@ -167,13 +193,25 @@
       <div class="quote-indicator" aria-hidden="true">
         <div class="bar"></div>
       </div>
-      <div class="quote-hint">new quote in a moment — tap the quote to refresh</div>
     </div>
 
     <div class="nav-links">
-      <a href="mailto:sambritadhikari@gmail.com" class="nav-link">Email</a>
+      <button class="nav-link contact-btn" type="button">Contact</button>
       <a href="https://www.instagram.com/catchavibephotos/" class="nav-link">Photography 📷</a>
       <a href="https://www.linkedin.com/in/sambritadhikari/" class="nav-link">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="modal" id="contactModal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+      <h3 class="modal-title" id="contactTitle">Get in touch</h3>
+      <p style="opacity:.8;margin:0 0 14px;">Choose how you’d like to reach me.</p>
+      <div class="modal-actions">
+        <button class="btn primary" id="mailOpenBtn" type="button">Open mail app</button>
+        <button class="btn" id="copyBtn" type="button">Copy email</button>
+        <button class="btn" id="closeModalBtn" type="button">Close</button>
+      </div>
     </div>
   </div>
 
@@ -216,63 +254,105 @@ let lastQuoteIndex = -1;
 let quoteTimer = null;
 
 function pickRandomQuote() {
-  let i;
-  do { i = (Math.random() * quotes.length) | 0; } while (i === lastQuoteIndex);
-  lastQuoteIndex = i;
-  return quotes[i];
+  let i; do { i = (Math.random() * quotes.length) | 0; } while (i === lastQuoteIndex);
+  lastQuoteIndex = i; return quotes[i];
 }
-
 function setQuote(text) {
   quoteEl.classList.remove('fade-in'); void quoteEl.offsetWidth;
   quoteEl.textContent = text;
   quoteEl.classList.add('fade-in');
 }
-
 function restartQuoteProgress() {
-  // reset progress bar
   barEl.style.transition = 'none';
   barEl.style.transform = 'scaleX(0)';
-  // force reflow to apply
   void barEl.offsetWidth;
-  // animate to full
   barEl.style.transition = `transform ${QUOTE_INTERVAL}ms linear`;
   barEl.style.transform = 'scaleX(1)';
 }
-
 function startQuoteCycle() {
   if (quoteTimer) clearTimeout(quoteTimer);
   restartQuoteProgress();
-  quoteTimer = setTimeout(() => {
-    setQuote(pickRandomQuote());
-    startQuoteCycle();
-  }, QUOTE_INTERVAL);
+  quoteTimer = setTimeout(() => { setQuote(pickRandomQuote()); startQuoteCycle(); }, QUOTE_INTERVAL);
 }
-
-function manualRefreshQuote() {
-  setQuote(pickRandomQuote());
-  startQuoteCycle();
-}
+function manualRefreshQuote() { setQuote(pickRandomQuote()); startQuoteCycle(); }
 
 quoteEl.addEventListener('click', manualRefreshQuote);
-quoteEl.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); manualRefreshQuote(); }
+quoteEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); manualRefreshQuote(); }});
+
+/* =========================
+   CONTACT (email not in source until click)
+========================= */
+const contactBtn = document.querySelector('.contact-btn');
+const modal = document.getElementById('contactModal');
+const mailOpenBtn = document.getElementById('mailOpenBtn');
+const copyBtn = document.getElementById('copyBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+function buildEmail(){
+  // "sambritadhikari@gmail.com" but assembled at runtime
+  return ['sambrit','adhikari'].join('') + String.fromCharCode(64) + ['gmail','com'].join('.');
+}
+contactBtn.addEventListener('click', () => { modal.hidden = false; });
+closeModalBtn.addEventListener('click', () => { modal.hidden = true; });
+modal.addEventListener('click', (e) => { if (e.target === modal) modal.hidden = true; });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.hidden = true; });
+
+mailOpenBtn.addEventListener('click', () => { const em = buildEmail(); window.location.href = 'mailto:' + em; modal.hidden = true; });
+copyBtn.addEventListener('click', async () => {
+  const em = buildEmail();
+  try { await navigator.clipboard.writeText(em); copyBtn.textContent = 'Copied!'; setTimeout(()=>copyBtn.textContent='Copy email', 1200); }
+  catch { copyBtn.textContent = em; }
 });
 
 /* =========================
-   LAUNCH BUTTON (rocket + warp boost)
+   LAUNCH BUTTON (grows + surprises)
 ========================= */
 const launchBtn = document.querySelector('.launch-button');
+let launches = 0;
+let currentScale = 1;
+
 launchBtn.addEventListener('click', () => {
-  // Rocket emoji animation
+  launches++;
+  currentScale = Math.min(1.28, currentScale + 0.08);
+  document.documentElement.style.setProperty('--btn-scale', currentScale.toString());
+
+  spawnRocket(Math.random() < 0.2 ? 'left' : 'right'); // occasional leftie for fun
+  boost = Math.max(boost, 2.0); // pulse speed up
+
+  if (launches % 3 === 0) triggerSupernova();
+});
+
+/* Spawn a single rocket emoji with direction-aware path */
+function spawnRocket(dir='right'){
   const rocket = document.createElement('div');
-  rocket.className = 'rocket'; rocket.textContent = '🚀';
+  rocket.className = 'rocket' + (dir === 'left' ? ' left' : '');
+  rocket.textContent = '🚀';
   rocket.style.left = (Math.random()*80) + 'vw';
   document.body.appendChild(rocket);
-  setTimeout(()=>rocket.remove(), 5000);
+  setTimeout(()=>rocket.remove(), 5200);
+}
 
-  // Temporary warp boost
-  boost = 2.6; // will decay back to 1.0
-});
+/* Surprise: rocket fleet + shockwave + mega boost */
+function triggerSupernova(){
+  // shockwave overlay
+  const wave = document.createElement('div');
+  wave.className = 'shockwave';
+  document.body.appendChild(wave);
+  setTimeout(()=>wave.remove(), 900);
+
+  // fleet burst
+  const count = 10;
+  for(let i=0;i<count;i++){
+    setTimeout(() => {
+      spawnRocket(i % 3 === 0 ? 'left' : 'right');
+    }, i * 120);
+  }
+
+  // huge warp boost
+  boost = 4.2;
+  // temporary star density bump
+  addExtraStars();
+}
 
 /* =========================
    WARP SPEED BACKGROUND (Canvas2D)
@@ -282,8 +362,9 @@ const ctx = canvas.getContext('2d', { alpha:false, desynchronized:true });
 
 let dpr = 1;
 let stars = [];
+let extraStars = [];
 let boost = 1.0; // launch pulse
-let palette = ["#060608","#22D3EE","#38BDF8","#F472B6","#FACC15"]; // [bg, c1, c2, c3, accent]
+const palette = ["#060608","#22D3EE","#38BDF8","#F472B6","#FACC15"]; // [bg, c1, c2, c3, accent]
 
 function resize(){
   dpr = Math.min(window.devicePixelRatio || 1, 1.75);
@@ -294,7 +375,7 @@ function resize(){
   initWarp();
   stepWarp(16); // instant first paint
 }
-addEventListener('resize', resize);
+addEventListener('resize', resize, { passive:true });
 addEventListener('orientationchange', resize, { passive:true });
 
 function rand(min,max){ return Math.random()*(max-min)+min; }
@@ -308,11 +389,17 @@ function initWarp(){
     const angle = rand(0, Math.PI*2);
     const radius = rand(0, Math.min(canvas.width, canvas.height)*0.5);
     stars.push({
-      a: angle,
-      r: radius,
-      s: rand(0.6, 1.8),
-      l: rand(3, 10)*dpr
+      a: angle, r: radius, s: rand(0.6, 1.8), l: rand(3, 10)*dpr
     });
+  }
+  extraStars = [];
+}
+function addExtraStars(){
+  const add = Math.floor(stars.length * 0.5);
+  for(let i=0;i<add;i++){
+    const angle = rand(0, Math.PI*2);
+    const radius = rand(0, Math.min(canvas.width, canvas.height)*0.2);
+    extraStars.push({ a:angle, r:radius, s:rand(1.4, 2.8), l:rand(6,14)*dpr, life: 1200 + Math.random()*800 });
   }
 }
 
@@ -330,7 +417,7 @@ function stepWarp(dt){
   ctx.lineWidth = Math.max(1, 1.0*dpr);
 
   const hyp = Math.hypot(cx,cy);
-  for(const st of stars){
+  function drawStar(st){
     st.r += st.s * dt * 0.2 * boost;
     if(st.r > hyp){
       st.r = rand(0, Math.min(cx, cy)*0.1);
@@ -345,9 +432,19 @@ function stepWarp(dt){
     ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x2,y2); ctx.stroke();
   }
 
+  for(const st of stars) drawStar(st);
+
+  // draw & age extra stars (temporary burst)
+  for(let i=extraStars.length-1;i>=0;i--){
+    const e = extraStars[i];
+    drawStar(e);
+    e.life -= dt;
+    if(e.life <= 0) extraStars.splice(i,1);
+  }
+
   // center glow
   const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(cx,cy)*0.8);
-  g.addColorStop(0, `rgba(250, 204, 21, 0.08)`); // accent
+  g.addColorStop(0, `rgba(250, 204, 21, 0.10)`);
   g.addColorStop(1, `rgba(250, 204, 21, 0)`);
   ctx.fillStyle = g;
   ctx.fillRect(0,0,w,h);
