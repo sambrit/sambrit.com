@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sentinel — Ultra-Light WAF for Web & IoT</title>
+  <meta name="description" content="Sentinel is a blazing-fast, ultra-light Web Application Firewall that runs anywhere—even on $0.50 embedded chips. 10k req/s on a single thread with ~1MB RAM. Open core (AGPL) with optional enterprise features." />
+  <meta property="og:title" content="Sentinel — Ultra-Light WAF for Web & IoT">
+  <meta property="og:description" content="10k req/s on one thread. ~1MB RAM. Runs on $0.50 chips. Open core (AGPL).">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://example.com/og-image.png">
+  <meta name="theme-color" content="#0b0f19" />
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#111726;
+      --muted:#a6adbb;
+      --text:#e6e9ef;
+      --brand:#6ee7ff;
+      --brand2:#a78bfa;
+      --accent:#22d3ee;
+      --ok:#34d399;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --ring:hsla(190,100%,65%,.35);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth;background:radial-gradient(1200px 800px at 80% -10%,rgba(102,126,234,.12),transparent),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .nav{position:sticky;top:0;z-index:40;background:rgba(11,15,25,.7);backdrop-filter:saturate(120%) blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;gap:12px;align-items:center;font-weight:700;letter-spacing:.2px}
+    .logo svg{width:26px;height:26px}
+    .nav a{color:var(--text);opacity:.9}
+    .nav-links{display:flex;gap:22px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));padding:10px 14px;border-radius:12px;color:var(--text);font-weight:600;box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px);transition:.2s ease;border-color:rgba(255,255,255,.25)}
+    .btn.primary{border:none;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b0f19}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(110,231,255,.12);color:var(--brand);border:1px solid rgba(110,231,255,.35);font-size:12px;font-weight:700}
+    .hero{padding:84px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+    .title{font-size:48px;line-height:1.12;letter-spacing:.2px;margin:14px 0 10px}
+    .subtitle{color:var(--muted);font-size:18px;margin-bottom:26px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card{padding:18px;border-radius:var(--radius)}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+    .metric{padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+    .metric .n{font-weight:800;font-size:22px}
+    .panel{padding:22px;border-radius:var(--radius);background:var(--panel);border:1px solid rgba(255,255,255,.06)}
+    .code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;color:#cfeafe;background:#0a1120;border-radius:10px;padding:14px;border:1px solid rgba(110,231,255,.2);overflow:auto}
+    .section{padding:64px 0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{padding:20px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+    .feature h3{margin:10px 0 8px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .price-card{padding:24px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:space-between}
+    .price{font-size:34px;font-weight:900;margin:10px 0}
+    .note{color:var(--muted);font-size:13px}
+    .list{padding-left:18px}
+    .list li{margin:6px 0}
+    .faq-item{border-bottom:1px dashed rgba(255,255,255,.1);padding:14px 0}
+    .faq-q{display:flex;justify-content:space-between;cursor:pointer}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
+    .footer{padding:40px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.06);margin-top:40px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.35);color:#dbcdfd;font-size:12px;font-weight:700}
+    .tagrow{display:flex;gap:10px;flex-wrap:wrap}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    @media (max-width:900px){.hero-grid,.grid-3,.split,.pricing{grid-template-columns:1fr}.title{font-size:38px}}
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10C7.5 20.5 4 17 4 12V6l8-4Z" stroke="url(#g1)" stroke-width="1.6"/>
+          <path d="M12 6.5l4 2v3.2c0 3.1-1.9 5.2-4 6.1-2.1-.9-4-3-4-6.1V8.5l4-2Z" stroke="url(#g2)" stroke-width="1.6"/>
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="24" y2="24">
+              <stop stop-color="#6ee7ff"/><stop offset="1" stop-color="#a78bfa"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="24" y2="24">
+              <stop stop-color="#a78bfa"/><stop offset="1" stop-color="#6ee7ff"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Sentinel</span>
+        <span class="badge">AGPL Open-Core</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#benchmarks">Benchmarks</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#contact">Get Early Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <div class="chip">Ultra-Light WAF • Edge-Ready</div>
+        <h1 class="title">10k req/s on one thread. ~1 MB RAM. <span style="background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent">Runs anywhere.</span></h1>
+        <p class="subtitle">Meet <strong>Sentinel</strong> — a modern, embeddable Web Application Firewall that protects apps and devices from SQLi, XSS, RCE &amp; more. Perfect for servers, gateways, and even $0.50 microcontrollers.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Request Access</a>
+          <a class="btn" href="#oss">View Open-Source Core</a>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="n">10,000+</div><div>Requests / sec (single thread)</div></div>
+          <div class="metric"><div class="n">~1 MB</div><div>Fixed memory usage</div></div>
+          <div class="metric"><div class="n">0 deps</div><div>No runtime bloat</div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="tagrow" style="margin-bottom:14px">
+          <span class="badge">Edge / Gateway</span>
+          <span class="badge" style="background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.35);color:#86efac">IoT-Ready</span>
+          <span class="badge" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.35);color:#fdba74">Low-Power</span>
+        </div>
+        <pre class="code"><span class="mono"># Drop-in sidecar or library mode
+SENTINEL_MODE=sidecar SENTINEL_PORT=8080 sentinel
+
+# Or embed
+#include "sentinel.h"
+sentinel_config cfg = sentinel_default();
+sentinel_init(&cfg);
+sentinel_filter(request);</span></pre>
+        <p class="note" style="margin-top:10px">Built from MIT-licensed components. Open core under AGPL; enterprise features optional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section container">
+    <h2 style="margin-top:0">Why Sentinel</h2>
+    <div class="grid-3">
+      <div class="feature">
+        <h3>Blazing-Fast Engine</h3>
+        <p>Single-threaded 10k RPS on commodity hardware today—before compression or SIMD tuning. Deterministic memory profile.</p>
+      </div>
+      <div class="feature">
+        <h3>Tiny Footprint</h3>
+        <p>~1 MB RAM. Fits where others can’t: bare-metal, containers, Alpine, even microcontrollers and cheap SoCs.</p>
+      </div>
+      <div class="feature">
+        <h3>Modern Protection</h3>
+        <p>Built-in rules for SQLi, XSS, path traversal, SSRF, command injection, and request smuggling heuristics.</p>
+      </div>
+      <div class="feature">
+        <h3>Flexible Deployment</h3>
+        <p>Sidecar proxy, reverse-proxy plugin, or embeddable library. Ship the same core from cloud to edge.</p>
+      </div>
+      <div class="feature">
+        <h3>Safe Defaults</h3>
+        <p>Opinionated defaults with low false-positive modes, staging/dry-run, and shadow-block analytics.</p>
+      </div>
+      <div class="feature">
+        <h3>Open-Core &amp; Extensible</h3>
+        <p>AGPL core, MIT internals; extend with custom rules, hooks, and language bindings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmarks / How it works -->
+  <section id="benchmarks" class="section container">
+    <div class="split">
+      <div>
+        <h2>Benchmarks</h2>
+        <div class="card glass">
+          <ul class="list">
+            <li><strong>Throughput:</strong> 10,000+ req/s (single thread)</li>
+            <li><strong>Memory:</strong> ~1 MB fixed on desktop environment</li>
+            <li><strong>Compression:</strong> Not enabled yet (headroom available)</li>
+          </ul>
+          <p class="note">Numbers from local PC measurements; your mileage may vary by CPU, NIC, and rule set.</p>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <div class="tagrow">
+            <span class="chip">Zero-Copy Parsing</span>
+            <span class="chip">Branch-Predictable Hot Paths</span>
+            <span class="chip">Cache-Friendly Data Layouts</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>How it Works</h2>
+        <div class="panel">
+          <ol class="list">
+            <li><strong>Fast parse:</strong> Normalizes request path, headers, and body with zero-copy slices.</li>
+            <li><strong>Rule pipeline:</strong> Deterministic checks (regex-lite &amp; token scanners) + heuristic scoring.</li>
+            <li><strong>Decision:</strong> Allow, block, or challenge with explainable reasons and audit trail.</li>
+          </ol>
+          <p class="note">Pluggable hooks let you add custom rules, telemetry exporters, and device-specific controls.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section container">
+    <h2>Pricing</h2>
+    <p class="subtitle">Open-core forever. Pay for convenience, compliance, and scale. Toggle between per-domain and usage.</p>
+    <div class="cta" style="margin-bottom:16px">
+      <button class="btn" id="toggleBilling">Per-Domain</button>
+      <span class="note" id="billingHint">Current: Per-Domain</span>
+    </div>
+    <div class="pricing" id="pricingGrid">
+      <!-- Free / OSS -->
+      <div class="price-card">
+        <div>
+          <div class="chip">Open-Source</div>
+          <h3 style="margin:8px 0 0">Community</h3>
+          <div class="price">$0</div>
+          <ul class="list">
+            <li>AGPL core</li>
+            <li>Essential rules</li>
+            <li>Library / sidecar modes</li>
+            <li>Community support</li>
+          </ul>
+        </div>
+        <a class="btn" href="#oss">Get the Source</a>
+      </div>
+      <!-- Pro -->
+      <div class="price-card" style="outline:2px solid rgba(110,231,255,.35)">
+        <div>
+          <div class="chip">Popular</div>
+          <h3 style="margin:8px 0 0">Pro</h3>
+          <div class="price" data-domain="$29 / domain / mo" data-usage="$3 / M requests">$29 / domain / mo</div>
+          <ul class="list">
+            <li>Advanced rules &amp; CVE feed</li>
+            <li>Dashboard &amp; alerting</li>
+            <li>Shadow-block analytics</li>
+            <li>Email support</li>
+          </ul>
+        </div>
+        <a class="btn primary" href="#contact">Start Trial</a>
+      </div>
+      <!-- Enterprise -->
+      <div class="price-card">
+        <div>
+          <div class="chip">For Scale</div>
+          <h3 style="margin:8px 0 0">Enterprise</h3>
+          <div class="price">Custom</div>
+          <ul class="list">
+            <li>SLA &amp; on-call</li>
+            <li>Compliance: SOC2 reports</li>
+            <li>SAML/SSO, RBAC, audit</li>
+            <li>On-prem or private cloud</li>
+          </ul>
+        </div>
+        <a class="btn" href="#contact">Talk to Sales</a>
+      </div>
+    </div>
+    <p class="note" style="margin-top:10px">IoT/embedded OEM licensing available (per-device or royalty). Ask us.</p>
+  </section>
+
+  <!-- Open Source -->
+  <section id="oss" class="section container">
+    <h2>Open-Core Model</h2>
+    <div class="split">
+      <div class="panel">
+        <h3>AGPL Core</h3>
+        <p>The core engine is open under AGPL to ensure improvements return to the community and stay sustainable.</p>
+        <h3>Commercial Add-Ons</h3>
+        <ul class="list">
+          <li>Managed threat feed &amp; auto-updates</li>
+          <li>Commercial rulesets (industry-specific)</li>
+          <li>Compliance &amp; policy packs</li>
+          <li>Visual console, SSO, audit exports</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Roadmap Highlights</h3>
+        <ul class="list">
+          <li>Compression &amp; SIMD path (extra headroom)</li>
+          <li>WASM sandbox for custom rules</li>
+          <li>Bindings: C/C++, Rust, Go, Python</li>
+          <li>mTLS device attestation (edge)</li>
+        </ul>
+        <p class="note">Contributions welcome. We maintain a clear security disclosure policy and CVE program.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section container">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q"><strong>What is it?</strong><span>+</span></div>
+      <div class="faq-a"><p>Sentinel is a high-performance, embeddable WAF that filters malicious HTTP(S) requests before they reach your app or device.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><strong>How is it different?</strong><span>+</span></div>
+      <div class="faq-a"><p>It’s tiny (~1 MB RAM), incredibly fast (10k req/s single-thread), and designed for both servers and constrained hardware.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><strong>License?</strong><span>+</span></div>
+      <div class="faq-a"><p>Open-core: AGPL for the engine; optional paid features under commercial terms.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><strong>Can I use it on microcontrollers?</strong><span>+</span></div>
+      <div class="faq-a"><p>Yes—fits within tight footprints and can run on extremely low-cost chips. OEM licensing available.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><strong>Is there a dashboard?</strong><span>+</span></div>
+      <div class="faq-a"><p>Yes in Pro/Enterprise: real-time events, shadow-block view, alerts, and audit exports.</p></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section container">
+    <h2>Get Early Access</h2>
+    <div class="split">
+      <form class="panel" action="https://formspree.io/f/your-form-id" method="POST">
+        <label>Work Email<br><input required name="email" type="email" placeholder="you@company.com" style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0b1222;color:var(--text)"></label><br><br>
+        <label>Company / Project<br><input name="company" type="text" placeholder="Acme Devices" style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0b1222;color:var(--text)"></label><br><br>
+        <label>What are you protecting?<br>
+          <textarea name="usecase" rows="4" placeholder="API, web app, router firmware, gateway, etc." style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0b1222;color:var(--text)"></textarea>
+        </label><br><br>
+        <button class="btn primary" type="submit">Request Access</button>
+        <p class="note">By submitting, you agree to be contacted about Sentinel. We’ll never sell your data.</p>
+      </form>
+      <div class="panel">
+        <h3>What you’ll get</h3>
+        <ul class="list">
+          <li>Download link to the AGPL core</li>
+          <li>Early access to Pro dashboard</li>
+          <li>Sample configs for Nginx/Envoy &amp; embedded targets</li>
+          <li>Priority onboarding for OEMs</li>
+        </ul>
+        <div style="margin-top:14px">
+          <div class="chip">Email support</div>
+          <div class="chip" style="margin-left:8px">Integration guidance</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer container">
+    <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Sentinel Security</div>
+      <div class="tagrow">
+        <a href="#oss">AGPL Core</a>
+        <span>•</span>
+        <a href="#pricing">Pricing</a>
+        <span>•</span>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // simple FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      const q=item.querySelector('.faq-q');
+      const a=item.querySelector('.faq-a');
+      q.addEventListener('click', ()=>{
+        const open=a.style.maxHeight && a.style.maxHeight!=='0px';
+        a.style.maxHeight = open? '0' : a.scrollHeight+'px';
+        q.querySelector('span').textContent = open? '+' : '–';
+      });
+    });
+    // pricing toggle
+    const toggle=document.getElementById('toggleBilling');
+    const hint=document.getElementById('billingHint');
+    const price=document.querySelector('.price-card:nth-child(2) .price');
+    let perDomain=true;
+    toggle.addEventListener('click',()=>{
+      perDomain=!perDomain;
+      price.textContent = perDomain ? price.dataset.domain : price.dataset.usage;
+      hint.textContent = 'Current: ' + (perDomain? 'Per-Domain' : 'Usage-Based');
+      toggle.textContent = perDomain? 'Per-Domain' : 'Usage-Based';
+    });
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
