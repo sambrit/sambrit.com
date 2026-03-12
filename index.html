@@ -10,182 +10,399 @@
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://www.sambrit.com/"/>
 
-  <!-- Optional font (comment out to be ultra-lean) -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
 
   <style>
-  :root { --text:#FAFAFA; --accent:#FFD700; --btn-scale:1; }
+  :root {
+    --text:#FAFAFA;
+    --accent:#FFD700;
+    --btn-scale:1;
+  }
 
   html, body {
-    margin:0; padding:0; height:100%; width:100%;
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
     font-family:'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    color:var(--text); background:#000;
-    overflow:hidden; position:relative;
+    color:var(--text);
+    background:#000;
+    overflow:hidden;
+    position:relative;
   }
 
-  /* Background */
   #bg {
-    position:fixed; inset:0; width:100vw; height:100vh; display:block;
-    z-index:0; pointer-events:none;
-    filter:saturate(1.1) contrast(1.02);
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    display:block;
+    z-index:0;
+    pointer-events:none;
     background:#0b0d12;
   }
-  .glow {
-    position:fixed; inset:-10vmax; z-index:1; pointer-events:none;
-    background:
-      radial-gradient(40vmax 40vmax at 20% 30%, rgba(79,70,229,0.22), transparent 60%),
-      radial-gradient(35vmax 35vmax at 80% 70%, rgba(34,211,238,0.18), transparent 65%),
-      radial-gradient(45vmax 45vmax at 50% 50%, rgba(244,63,94,0.14), transparent 60%);
-    animation:glowDrift 22s ease-in-out infinite alternate;
-    filter:blur(8px);
-  }
-  @keyframes glowDrift { 0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(-2%,1%,0) scale(1.03)} }
 
-  /* Content */
-  .main-content {
-    position:relative; z-index:2;
-    display:flex; flex-direction:column; justify-content:center; align-items:center;
-    height:100vh; text-align:center; padding:20px;
+  .glow {
+    position:fixed;
+    inset:-10vmax;
+    z-index:1;
+    pointer-events:none;
+    background:
+      radial-gradient(38vmax 38vmax at 20% 22%, rgba(71, 222, 232, 0.20), transparent 62%),
+      radial-gradient(35vmax 35vmax at 80% 73%, rgba(250, 204, 21, 0.16), transparent 66%),
+      radial-gradient(40vmax 40vmax at 50% 58%, rgba(244, 114, 182, 0.12), transparent 68%);
+    animation:glowDrift 26s ease-in-out infinite alternate;
+    filter:blur(9px);
   }
+
+  @keyframes glowDrift {
+    0% { transform:translate3d(0,0,0) scale(1); }
+    100% { transform:translate3d(-2%,1%,0) scale(1.05); }
+  }
+
+  .main-content {
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    padding:20px;
+    padding-bottom:148px;
+  }
+
+  .kicker {
+    margin:0;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:0.72rem;
+    font-weight:700;
+    color:#BFFBFF;
+    text-shadow:0 2px 8px rgba(0,0,0,0.62);
+  }
+
   .name {
     font-family:'Montserrat', system-ui, sans-serif;
-    font-size:clamp(3rem, 8vw, 6rem); font-weight:700; margin:0;
-    color:var(--accent); letter-spacing:.6px;
+    font-size:clamp(3rem, 8vw, 6rem);
+    font-weight:700;
+    margin:10px 0 0;
+    color:var(--accent);
+    letter-spacing:.6px;
     text-shadow:0 2px 10px rgba(0,0,0,.8);
     animation:subtlePulse 6s infinite;
   }
-  @keyframes subtlePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
 
-  /* Quote + progress */
-  .quote-wrap { margin-top:20px; max-width:min(92vw, 900px); }
+  @keyframes subtlePulse {
+    0%,100% { transform:scale(1); }
+    50% { transform:scale(1.03); }
+  }
+
+  .quote-wrap {
+    margin-top:20px;
+    max-width:min(92vw, 900px);
+  }
+
   .quote {
     font-size:clamp(1.1rem, 2.2vw, 1.6rem);
-    line-height:1.8; display:inline-block; white-space:pre-wrap; opacity:0;
-    text-shadow:0 2px 6px rgba(0,0,0,.6); cursor:pointer;
+    line-height:1.8;
+    display:inline-block;
+    white-space:pre-wrap;
+    opacity:0;
+    text-shadow:0 2px 6px rgba(0,0,0,.6);
+    cursor:pointer;
   }
-  .quote:focus { outline:2px dashed rgba(255,255,255,.35); outline-offset:6px; border-radius:6px; }
-  .fade-in { animation:fadeIn 600ms ease forwards; }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  .quote:focus {
+    outline:2px dashed rgba(255,255,255,.35);
+    outline-offset:6px;
+    border-radius:6px;
+  }
+
+  .fade-in {
+    animation:fadeIn 600ms ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
 
   .quote-indicator {
-    position:relative; height:4px; border-radius:999px;
+    position:relative;
+    height:4px;
+    border-radius:999px;
     background:rgba(255,255,255,0.12);
-    overflow:hidden; margin:10px auto 0; width:clamp(200px, 56vw, 560px);
+    overflow:hidden;
+    margin:10px auto 0;
+    width:clamp(200px, 56vw, 560px);
   }
+
   .quote-indicator .bar {
-    height:100%; width:100%;
-    transform:scaleX(0); transform-origin:left center;
+    height:100%;
+    width:100%;
+    transform:scaleX(0);
+    transform-origin:left center;
     background:linear-gradient(90deg,#22d3ee,#a78bfa,#f472b6);
     will-change:transform;
   }
 
-  .nav-links { display:flex; gap:12px; margin-top:30px; flex-wrap:wrap; justify-content:center; }
+  .nav-links {
+    display:flex;
+    gap:12px;
+    margin-top:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
   .nav-link {
-    text-decoration:none; font-weight:600; color:var(--text);
+    text-decoration:none;
+    font-weight:600;
+    color:var(--text);
     background:rgba(0,0,0,.35);
-    padding:10px 14px; border-radius:999px;
-    display:inline-flex; align-items:center; backdrop-filter:blur(6px);
+    padding:10px 14px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    backdrop-filter:blur(6px);
     text-shadow:0 2px 6px rgba(0,0,0,.6);
     border:1px solid rgba(255,255,255,.08);
     transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
   }
-  .nav-link:hover { transform:translateY(-1px); box-shadow:0 0 14px rgba(0,0,0,.35); background:rgba(255,255,255,.08); }
 
-  /* Contact modal (email not in source until click) */
-  .modal {
-    position:fixed; inset:0; z-index:4; display:grid; place-items:center;
-    background:rgba(0,0,0,0.5); backdrop-filter:blur(6px);
+  .nav-link:hover {
+    transform:translateY(-1px);
+    box-shadow:0 0 14px rgba(0,0,0,.35);
+    background:rgba(255,255,255,.08);
   }
-  .modal[hidden] { display:none; }
+
+  .modal {
+    position:fixed;
+    inset:0;
+    z-index:4;
+    display:grid;
+    place-items:center;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(6px);
+  }
+
+  .modal[hidden] {
+    display:none;
+  }
+
   .modal-card {
-    background:rgba(15,15,20,0.9); border:1px solid rgba(255,255,255,0.08);
-    border-radius:16px; padding:18px; width:min(92vw, 380px);
+    background:rgba(15,15,20,0.9);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    padding:18px;
+    width:min(92vw, 380px);
     box-shadow:0 20px 60px rgba(0,0,0,0.5);
   }
-  .modal-title { font-weight:800; margin:0 0 10px; letter-spacing:0.3px; }
-  .modal-actions { display:flex; gap:10px; flex-wrap:wrap; }
+
+  .modal-title {
+    font-weight:800;
+    margin:0 0 10px;
+    letter-spacing:0.3px;
+  }
+
+  .modal-actions {
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
   .btn {
-    flex:1; padding:10px 12px; border-radius:10px; cursor:pointer; user-select:none;
-    background:rgba(255,255,255,0.08); color:var(--text);
+    flex:1;
+    padding:10px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    user-select:none;
+    background:rgba(255,255,255,0.08);
+    color:var(--text);
     border:1px solid rgba(255,255,255,0.15);
     transition:transform .15s ease, background .15s ease;
   }
-  .btn:hover { transform:translateY(-1px); background:rgba(255,255,255,0.12); }
+
+  .btn:hover {
+    transform:translateY(-1px);
+    background:rgba(255,255,255,0.12);
+  }
+
   .btn.primary {
     background:linear-gradient(90deg,#facc15,#22d3ee 40%,#a78bfa 70%,#f43f5e);
-    color:#0a0a0a; font-weight:800; border:none;
+    color:#0a0a0a;
+    font-weight:800;
+    border:none;
   }
 
-  /* Big, enticing Launch button */
   .launch-button {
-    position:fixed; z-index:3;
-    left:50%; transform:translateX(-50%) scale(var(--btn-scale));
+    position:fixed;
+    z-index:3;
+    left:50%;
+    transform:translateX(-50%) scale(var(--btn-scale));
     bottom:calc(22px + env(safe-area-inset-bottom));
-    padding:16px 26px; border-radius:999px; font-weight:800; letter-spacing:.4px;
+    padding:16px 28px;
+    border-radius:999px;
+    font-weight:800;
+    letter-spacing:.4px;
     font-size:clamp(1rem, 2.6vw, 1.15rem);
-    color:#0a0a0a;
+    color:#082333;
     background:
-      radial-gradient(120% 120% at 10% 10%, #fde047, transparent 60%),
-      linear-gradient(90deg, #facc15, #22d3ee 40%, #a78bfa 70%, #f43f5e);
-    border:none; cursor:pointer; user-select:none;
+      radial-gradient(120% 120% at 10% 10%, #fff7db, transparent 60%),
+      linear-gradient(95deg, #bcf8c0, #22d3ee 42%, #facc15 76%, #f472b6);
+    border:none;
+    cursor:pointer;
+    user-select:none;
     box-shadow:
-      0 10px 32px rgba(34,211,238,.25),
+      0 12px 34px rgba(34,211,238,.28),
       0 2px 0 rgba(255,255,255,.35) inset,
       0 -2px 8px rgba(0,0,0,.35) inset;
-    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
     touch-action:manipulation;
   }
-  .launch-button:hover { transform:translateX(-50%) scale(calc(var(--btn-scale) * 1.02)); filter:brightness(1.05); }
-  .launch-button:active { transform:translateX(-50%) scale(calc(var(--btn-scale) * 0.99)); }
-  .launch-button:focus { outline:2px solid rgba(255,255,255,.45); outline-offset:6px; }
 
-  /* Rocket animations */
+  .launch-button::before {
+    content:"";
+    position:absolute;
+    inset:-8px;
+    border-radius:inherit;
+    border:1px solid rgba(255,255,255,.62);
+    animation:haloPulse 2.3s ease-out infinite;
+    pointer-events:none;
+    opacity:.68;
+  }
+
+  @keyframes haloPulse {
+    0% { transform:scale(.94); opacity:.65; }
+    70% { transform:scale(1.16); opacity:0; }
+    100% { opacity:0; }
+  }
+
+  .launch-button:hover {
+    transform:translateX(-50%) scale(calc(var(--btn-scale) * 1.02));
+    filter:brightness(1.05);
+  }
+
+  .launch-button:active {
+    transform:translateX(-50%) scale(calc(var(--btn-scale) * 0.99));
+  }
+
+  .launch-button:focus {
+    outline:2px solid rgba(255,255,255,.45);
+    outline-offset:6px;
+  }
+
   .rocket {
-    position:fixed; bottom:0; font-size:3rem; z-index:4;
-    animation:rocketRight 5s linear forwards; will-change:transform;
+    position:fixed;
+    bottom:-8vh;
+    font-size:3rem;
+    z-index:4;
+    pointer-events:none;
+    animation:rocketRight 4.4s forwards;
+    animation-timing-function:cubic-bezier(.22,.82,.26,1);
+    will-change:transform, opacity;
+    filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));
   }
+
   @keyframes rocketRight {
-    0% { transform:translate(0,0) rotate(0deg) }
-    50%{ transform:translate(50vw,-60vh) rotate(10deg) }
-    100%{transform:translate(100vw,-120vh) rotate(20deg)}
+    0% { transform:translate(0,0) rotate(-4deg); opacity:.96; }
+    44% { transform:translate(44vw,-56vh) rotate(8deg); opacity:1; }
+    58% { transform:translate(52vw,-62vh) rotate(9deg); opacity:1; }
+    100% { transform:translate(102vw,-128vh) rotate(18deg); opacity:0; }
   }
+
   .rocket.left {
-    animation:rocketLeft 5s linear forwards;
-    transform:scaleX(-1); /* flip emoji so direction matches trajectory */
+    animation:rocketLeft 4.4s forwards;
+    animation-timing-function:cubic-bezier(.22,.82,.26,1);
+    transform:scaleX(-1);
   }
+
   @keyframes rocketLeft {
-    0% { transform:scaleX(-1) translate(0,0) rotate(0deg) }
-    50%{ transform:scaleX(-1) translate(-50vw,-60vh) rotate(-10deg) }
-    100%{transform:scaleX(-1) translate(-100vw,-120vh) rotate(-20deg)}
+    0% { transform:scaleX(-1) translate(0,0) rotate(-4deg); opacity:.96; }
+    44% { transform:scaleX(-1) translate(-44vw,-56vh) rotate(8deg); opacity:1; }
+    58% { transform:scaleX(-1) translate(-52vw,-62vh) rotate(9deg); opacity:1; }
+    100% { transform:scaleX(-1) translate(-102vw,-128vh) rotate(18deg); opacity:0; }
   }
 
-  /* Shockwave overlay for the surprise */
   .shockwave {
-    position:fixed; inset:0; z-index:3; pointer-events:none;
-    background:radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(255,255,255,0) 60%);
-    animation:shock 900ms ease-out forwards;
+    position:fixed;
+    inset:0;
+    z-index:3;
+    pointer-events:none;
+    background:radial-gradient(circle at center, rgba(255,255,255,0.20), rgba(255,255,255,0) 60%);
+    animation:shock 960ms ease-out forwards;
   }
-  @keyframes shock { from{opacity:.9; transform:scale(0.6)} to{opacity:0; transform:scale(2.2)} }
 
-  /* Reduced motion */
+  @keyframes shock {
+    from { opacity:.92; transform:scale(0.6); }
+    to { opacity:0; transform:scale(2.35); }
+  }
+
+  .hyper-banner {
+    position:fixed;
+    top:16px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:5;
+    background:linear-gradient(95deg, #bcf8c0, #22d3ee 42%, #facc15 76%, #f472b6);
+    color:#072235;
+    font-weight:800;
+    letter-spacing:.06em;
+    border-radius:999px;
+    padding:10px 16px;
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+    animation:bannerDrop 940ms ease forwards;
+  }
+
+  @keyframes bannerDrop {
+    0% { opacity:0; transform:translateX(-50%) translateY(-16px); }
+    20% { opacity:1; }
+    82% { opacity:1; }
+    100% { opacity:0; transform:translateX(-50%) translateY(10px); }
+  }
+
+  .spark {
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    z-index:4;
+    pointer-events:none;
+    animation:particleFly 920ms cubic-bezier(.2,.8,.25,1) forwards;
+  }
+
+  @keyframes particleFly {
+    0% { transform:translate3d(0,0,0) scale(1); opacity:1; }
+    100% { transform:translate3d(var(--dx), var(--dy), 0) scale(.2); opacity:0; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .name { animation:none !important; }
-    .glow { animation:none !important; }
-    .rocket { animation:none !important; }
+    .name,
+    .glow,
+    .rocket,
+    .launch-button::before,
+    .hyper-banner,
+    .spark {
+      animation:none !important;
+    }
+    .launch-button {
+      transition:none !important;
+    }
   }
 
-  @media (max-width:600px){
-    .nav-link { font-size:.95rem; padding:10px 14px; }
+  @media (max-width:700px){
+    .kicker { font-size:.64rem; }
+    .nav-link { font-size:.92rem; padding:10px 13px; }
   }
   </style>
 </head>
 <body>
-  <!-- Background -->
   <canvas id="bg"></canvas>
   <div class="glow" aria-hidden="true"></div>
 
-  <!-- Content -->
   <div class="main-content">
+    <p class="kicker">Program Manager + Engineer + Photographer</p>
     <h1 class="name">Sambrit Adhikari</h1>
 
     <div class="quote-wrap">
@@ -197,16 +414,16 @@
 
     <div class="nav-links">
       <button class="nav-link contact-btn" type="button">Contact</button>
+      <a href="https://github.com/sambrit" class="nav-link">GitHub</a>
       <a href="https://www.instagram.com/catchavibephotos/" class="nav-link">Photography 📷</a>
       <a href="https://www.linkedin.com/in/sambritadhikari/" class="nav-link">LinkedIn</a>
     </div>
   </div>
 
-  <!-- Contact Modal -->
   <div class="modal" id="contactModal" hidden>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
       <h3 class="modal-title" id="contactTitle">Get in touch</h3>
-      <p style="opacity:.8;margin:0 0 14px;">Choose how you’d like to reach me.</p>
+      <p style="opacity:.8;margin:0 0 14px;">Choose how you'd like to reach me.</p>
       <div class="modal-actions">
         <button class="btn primary" id="mailOpenBtn" type="button">Open mail app</button>
         <button class="btn" id="copyBtn" type="button">Copy email</button>
@@ -215,7 +432,6 @@
     </div>
   </div>
 
-  <!-- Launch (primary CTA) -->
   <button class="launch-button" aria-label="Launch">Launch 🚀</button>
 
   <script>
@@ -223,26 +439,26 @@
    QUOTES + INDICATOR
 ========================= */
 const quotes = [
-  "The journey of a thousand miles begins with a single step. – Lao Tzu",
-  "Once you have tasted flight, you will forever walk the earth with your eyes turned skyward. – Leonardo da Vinci",
-  "Man cannot discover new oceans unless he has the courage to lose sight of the shore. – André Gide",
-  "Not all those who wander are lost. – J.R.R. Tolkien",
-  "The world is a book, and those who do not travel read only one page. – Saint Augustine",
-  "Life begins at the end of your comfort zone. – Neale Donald Walsch",
-  "Adventure is worthwhile. – Aesop",
-  "Travel far, travel wide, but always travel within. – Unknown",
-  "The gladdest moment in human life is a departure into unknown lands. – Sir Richard Burton",
-  "Wherever you go, go with all your heart. – Confucius",
-  "A ship in harbor is safe, but that is not what ships are built for. – John A. Shedd",
-  "To travel is to take a journey into yourself. – Danny Kaye",
-  "We travel not to escape life, but for life not to escape us. – Unknown",
-  "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes. – Marcel Proust",
-  "Dare to live the life you have dreamed for yourself. Go forward and make your dreams come true. – Emerson",
-  "Because in the end, you won’t remember the time you spent working in the office or mowing your lawn. Climb that damn mountain. – Kerouac",
-  "It is not down in any map; true places never are. – Herman Melville",
-  "To awaken alone in a strange town is one of the pleasantest sensations in the world. – Freya Stark",
-  "Travel brings power and love back into your life. – Rumi",
-  "I haven’t been everywhere, but it’s on my list. – Susan Sontag"
+  "The journey of a thousand miles begins with a single step. - Lao Tzu",
+  "Once you have tasted flight, you will forever walk the earth with your eyes turned skyward. - Leonardo da Vinci",
+  "Man cannot discover new oceans unless he has the courage to lose sight of the shore. - Andre Gide",
+  "Not all those who wander are lost. - J.R.R. Tolkien",
+  "The world is a book, and those who do not travel read only one page. - Saint Augustine",
+  "Life begins at the end of your comfort zone. - Neale Donald Walsch",
+  "Adventure is worthwhile. - Aesop",
+  "Travel far, travel wide, but always travel within. - Unknown",
+  "The gladdest moment in human life is a departure into unknown lands. - Sir Richard Burton",
+  "Wherever you go, go with all your heart. - Confucius",
+  "A ship in harbor is safe, but that is not what ships are built for. - John A. Shedd",
+  "To travel is to take a journey into yourself. - Danny Kaye",
+  "We travel not to escape life, but for life not to escape us. - Unknown",
+  "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes. - Marcel Proust",
+  "Dare to live the life you have dreamed for yourself. Go forward and make your dreams come true. - Emerson",
+  "Because in the end, you won't remember the time you spent working in the office or mowing your lawn. Climb that damn mountain. - Kerouac",
+  "It is not down in any map; true places never are. - Herman Melville",
+  "To awaken alone in a strange town is one of the pleasantest sensations in the world. - Freya Stark",
+  "Travel brings power and love back into your life. - Rumi",
+  "I haven't been everywhere, but it's on my list. - Susan Sontag"
 ];
 
 const quoteEl = document.querySelector('.quote');
@@ -254,14 +470,21 @@ let lastQuoteIndex = -1;
 let quoteTimer = null;
 
 function pickRandomQuote() {
-  let i; do { i = (Math.random() * quotes.length) | 0; } while (i === lastQuoteIndex);
-  lastQuoteIndex = i; return quotes[i];
+  let i;
+  do {
+    i = (Math.random() * quotes.length) | 0;
+  } while (i === lastQuoteIndex);
+  lastQuoteIndex = i;
+  return quotes[i];
 }
+
 function setQuote(text) {
-  quoteEl.classList.remove('fade-in'); void quoteEl.offsetWidth;
+  quoteEl.classList.remove('fade-in');
+  void quoteEl.offsetWidth;
   quoteEl.textContent = text;
   quoteEl.classList.add('fade-in');
 }
+
 function restartQuoteProgress() {
   barEl.style.transition = 'none';
   barEl.style.transform = 'scaleX(0)';
@@ -269,15 +492,28 @@ function restartQuoteProgress() {
   barEl.style.transition = `transform ${QUOTE_INTERVAL}ms linear`;
   barEl.style.transform = 'scaleX(1)';
 }
+
 function startQuoteCycle() {
   if (quoteTimer) clearTimeout(quoteTimer);
   restartQuoteProgress();
-  quoteTimer = setTimeout(() => { setQuote(pickRandomQuote()); startQuoteCycle(); }, QUOTE_INTERVAL);
+  quoteTimer = setTimeout(() => {
+    setQuote(pickRandomQuote());
+    startQuoteCycle();
+  }, QUOTE_INTERVAL);
 }
-function manualRefreshQuote() { setQuote(pickRandomQuote()); startQuoteCycle(); }
+
+function manualRefreshQuote() {
+  setQuote(pickRandomQuote());
+  startQuoteCycle();
+}
 
 quoteEl.addEventListener('click', manualRefreshQuote);
-quoteEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); manualRefreshQuote(); }});
+quoteEl.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    manualRefreshQuote();
+  }
+});
 
 /* =========================
    CONTACT (email not in source until click)
@@ -289,23 +525,45 @@ const copyBtn = document.getElementById('copyBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
 
 function buildEmail(){
-  // "sambritadhikari@gmail.com" but assembled at runtime
   return ['sambrit','adhikari'].join('') + String.fromCharCode(64) + ['gmail','com'].join('.');
 }
-contactBtn.addEventListener('click', () => { modal.hidden = false; });
-closeModalBtn.addEventListener('click', () => { modal.hidden = true; });
-modal.addEventListener('click', (e) => { if (e.target === modal) modal.hidden = true; });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.hidden = true; });
 
-mailOpenBtn.addEventListener('click', () => { const em = buildEmail(); window.location.href = 'mailto:' + em; modal.hidden = true; });
+function closeModal(){
+  modal.hidden = true;
+}
+
+contactBtn.addEventListener('click', () => {
+  modal.hidden = false;
+});
+closeModalBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', (event) => {
+  if (event.target === modal) closeModal();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeModal();
+});
+
+mailOpenBtn.addEventListener('click', () => {
+  const email = buildEmail();
+  window.location.href = 'mailto:' + email;
+  closeModal();
+});
+
 copyBtn.addEventListener('click', async () => {
-  const em = buildEmail();
-  try { await navigator.clipboard.writeText(em); copyBtn.textContent = 'Copied!'; setTimeout(()=>copyBtn.textContent='Copy email', 1200); }
-  catch { copyBtn.textContent = em; }
+  const email = buildEmail();
+  try {
+    await navigator.clipboard.writeText(email);
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => {
+      copyBtn.textContent = 'Copy email';
+    }, 1200);
+  } catch {
+    copyBtn.textContent = email;
+  }
 });
 
 /* =========================
-   LAUNCH BUTTON (grows + surprises)
+   LAUNCH BUTTON
 ========================= */
 const launchBtn = document.querySelector('.launch-button');
 let launches = 0;
@@ -313,49 +571,82 @@ let currentScale = 1;
 
 launchBtn.addEventListener('click', () => {
   launches++;
-  currentScale = Math.min(1.28, currentScale + 0.08);
+  currentScale = Math.min(1.28, currentScale + 0.07);
   document.documentElement.style.setProperty('--btn-scale', currentScale.toString());
 
-  spawnRocket(Math.random() < 0.2 ? 'left' : 'right'); // occasional leftie for fun
-  boost = Math.max(boost, 2.0); // pulse speed up
+  spawnRocket(Math.random() < 0.2 ? 'left' : 'right');
+  boost = Math.max(boost, 2.0);
+  colorRush = Math.min(1.2, colorRush + 0.25);
 
-  if (launches % 3 === 0) triggerSupernova();
+  const rect = launchBtn.getBoundingClientRect();
+  spawnSparks(rect.left + rect.width / 2, rect.top + rect.height / 2, 10, 120);
+
+  if (launches > 3 && launches % 3 === 0) triggerHyperLaunch();
 });
 
-/* Spawn a single rocket emoji with direction-aware path */
-function spawnRocket(dir='right'){
+function spawnRocket(dir='right') {
   const rocket = document.createElement('div');
   rocket.className = 'rocket' + (dir === 'left' ? ' left' : '');
   rocket.textContent = '🚀';
-  rocket.style.left = (Math.random()*80) + 'vw';
+  rocket.style.left = (Math.random() * 80) + 'vw';
   document.body.appendChild(rocket);
-  setTimeout(()=>rocket.remove(), 5200);
+  setTimeout(() => rocket.remove(), 4600);
 }
 
-/* Surprise: rocket fleet + shockwave + mega boost */
-function triggerSupernova(){
-  // shockwave overlay
+function spawnShockwave() {
   const wave = document.createElement('div');
   wave.className = 'shockwave';
   document.body.appendChild(wave);
-  setTimeout(()=>wave.remove(), 900);
+  setTimeout(() => wave.remove(), 960);
+}
 
-  // fleet burst
-  const count = 10;
-  for(let i=0;i<count;i++){
+function spawnHyperBanner() {
+  const banner = document.createElement('div');
+  banner.className = 'hyper-banner';
+  banner.textContent = 'HYPER LAUNCH UNLOCKED';
+  document.body.appendChild(banner);
+  setTimeout(() => banner.remove(), 980);
+}
+
+function spawnSparks(x, y, count, spread) {
+  for (let i = 0; i < count; i++) {
+    const spark = document.createElement('div');
+    spark.className = 'spark';
+    spark.style.left = `${x}px`;
+    spark.style.top = `${y}px`;
+    spark.style.background = ['#bcf8c0', '#22d3ee', '#facc15', '#f472b6', '#ffffff'][i % 5];
+
+    const angle = Math.random() * Math.PI * 2;
+    const dist = spread * (0.5 + Math.random() * 0.8);
+    spark.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+    spark.style.setProperty('--dy', `${Math.sin(angle) * dist}px`);
+
+    document.body.appendChild(spark);
+    setTimeout(() => spark.remove(), 920);
+  }
+}
+
+function triggerHyperLaunch() {
+  spawnHyperBanner();
+  spawnShockwave();
+
+  for (let i = 0; i < 12; i++) {
     setTimeout(() => {
       spawnRocket(i % 3 === 0 ? 'left' : 'right');
-    }, i * 120);
+    }, i * 100);
   }
 
-  // huge warp boost
-  boost = 4.2;
-  // temporary star density bump
-  addExtraStars();
+  const rect = launchBtn.getBoundingClientRect();
+  spawnSparks(rect.left + rect.width / 2, rect.top + rect.height / 2, 34, 240);
+
+  boost = 6.5;
+  colorRush = 1.8;
+  hyperspaceUntil = performance.now() + 2300;
+  addExtraStars(0.95);
 }
 
 /* =========================
-   WARP SPEED BACKGROUND (Canvas2D)
+   BACKGROUND (Canvas2D)
 ========================= */
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d', { alpha:false, desynchronized:true });
@@ -363,124 +654,267 @@ const ctx = canvas.getContext('2d', { alpha:false, desynchronized:true });
 let dpr = 1;
 let stars = [];
 let extraStars = [];
-let boost = 1.0; // launch pulse
-const palette = ["#060608","#22D3EE","#38BDF8","#F472B6","#FACC15"]; // [bg, c1, c2, c3, accent]
+let shootingStar = null;
+let boost = 1.0;
+let colorRush = 0;
+let hyperspaceUntil = 0;
+let nextShootingStarAt = 0;
 
-function resize(){
+const pointer = {
+  x: 0,
+  y: 0,
+  active: false,
+  movedAt: 0
+};
+
+function resize() {
   dpr = Math.min(window.devicePixelRatio || 1, 1.75);
   const w = Math.max(1, Math.floor(innerWidth * dpr));
   const h = Math.max(1, Math.floor(innerHeight * dpr));
-  canvas.width = w; canvas.height = h;
-  canvas.style.width = '100vw'; canvas.style.height = '100vh';
+  canvas.width = w;
+  canvas.height = h;
+  canvas.style.width = '100vw';
+  canvas.style.height = '100vh';
   initWarp();
-  stepWarp(16); // instant first paint
+  stepWarp(16, performance.now());
 }
+
 addEventListener('resize', resize, { passive:true });
 addEventListener('orientationchange', resize, { passive:true });
 
-function rand(min,max){ return Math.random()*(max-min)+min; }
-function hexToRgb(hex){ const h=hex.replace('#',''); const s=h.length===3?h.split('').map(c=>c+c).join(''):h; const n=parseInt(s,16); return {r:(n>>16)&255,g:(n>>8)&255,b:n&255};}
-function lerpColor(h1,h2,t){ const c1=hexToRgb(h1), c2=hexToRgb(h2); const r=(c1.r+(c2.r-c1.r)*t)|0, g=(c1.g+(c2.g-c1.g)*t)|0, b=(c1.b+(c2.b-c1.b)*t)|0; return `rgb(${r},${g},${b})`; }
+addEventListener('mousemove', (event) => {
+  pointer.x = event.clientX;
+  pointer.y = event.clientY;
+  pointer.active = true;
+  pointer.movedAt = performance.now();
+}, { passive:true });
 
-function initWarp(){
-  const count = Math.floor((canvas.width*canvas.height)/3800);
+addEventListener('touchmove', (event) => {
+  if (!event.touches.length) return;
+  pointer.x = event.touches[0].clientX;
+  pointer.y = event.touches[0].clientY;
+  pointer.active = true;
+  pointer.movedAt = performance.now();
+}, { passive:true });
+
+addEventListener('mouseleave', () => {
+  pointer.active = false;
+}, { passive:true });
+
+addEventListener('touchend', () => {
+  pointer.active = false;
+}, { passive:true });
+
+function rand(min,max){
+  return Math.random() * (max - min) + min;
+}
+
+function initWarp() {
+  const count = Math.floor((canvas.width * canvas.height) / 3200);
   stars = [];
-  for(let i=0;i<count;i++){
-    const angle = rand(0, Math.PI*2);
-    const radius = rand(0, Math.min(canvas.width, canvas.height)*0.5);
+  for (let i = 0; i < count; i++) {
+    const angle = rand(0, Math.PI * 2);
+    const radius = rand(0, Math.min(canvas.width, canvas.height) * 0.6);
     stars.push({
-      a: angle, r: radius, s: rand(0.6, 1.8), l: rand(3, 10)*dpr
+      a: angle,
+      r: radius,
+      s: rand(0.6, 1.95),
+      l: rand(4, 13) * dpr,
+      o: rand(0.35, 1)
     });
   }
   extraStars = [];
+  shootingStar = null;
+  nextShootingStarAt = performance.now() + rand(1200, 3200);
 }
-function addExtraStars(){
-  const add = Math.floor(stars.length * 0.5);
-  for(let i=0;i<add;i++){
-    const angle = rand(0, Math.PI*2);
-    const radius = rand(0, Math.min(canvas.width, canvas.height)*0.2);
-    extraStars.push({ a:angle, r:radius, s:rand(1.4, 2.8), l:rand(6,14)*dpr, life: 1200 + Math.random()*800 });
+
+function addExtraStars(multiplier = 0.5) {
+  const add = Math.floor(stars.length * multiplier);
+  for (let i = 0; i < add; i++) {
+    const angle = rand(0, Math.PI * 2);
+    const radius = rand(0, Math.min(canvas.width, canvas.height) * 0.24);
+    extraStars.push({
+      a: angle,
+      r: radius,
+      s: rand(1.4, 3.2),
+      l: rand(7, 18) * dpr,
+      o: rand(0.5, 1),
+      life: 800 + Math.random() * 1200
+    });
   }
 }
 
-function stepWarp(dt){
-  const w = canvas.width, h = canvas.height;
-  const cx = w/2, cy = h/2;
+function createShootingStar(strong = false) {
+  const fromLeft = Math.random() < 0.5;
+  return {
+    x: fromLeft ? -0.12 * canvas.width : 1.12 * canvas.width,
+    y: rand(0.08 * canvas.height, 0.64 * canvas.height),
+    vx: (fromLeft ? 1 : -1) * rand(0.62, 1.08) * dpr * (strong ? 1.45 : 1),
+    vy: rand(-0.1, 0.18) * dpr,
+    length: rand(110, 220) * dpr,
+    width: rand(1.4, 2.7) * dpr,
+    life: strong ? rand(1000, 1700) : rand(850, 1450)
+  };
+}
+
+function maybeSpawnShootingStar(now, inHyperspace) {
+  if (reduceMotion || shootingStar) return;
+  if (now < nextShootingStarAt) return;
+
+  shootingStar = createShootingStar(inHyperspace);
+}
+
+function drawShootingStar(dt, now) {
+  if (!shootingStar) return;
+
+  const c = shootingStar;
+  c.x += c.vx * dt * 0.17 * boost;
+  c.y += c.vy * dt * 0.17 * boost;
+  c.life -= dt;
+
+  const tx = c.x - c.vx * c.length;
+  const ty = c.y - c.vy * c.length;
+  const grad = ctx.createLinearGradient(c.x, c.y, tx, ty);
+  grad.addColorStop(0, 'rgba(255,255,255,0.96)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = c.width;
+  ctx.beginPath();
+  ctx.moveTo(c.x, c.y);
+  ctx.lineTo(tx, ty);
+  ctx.stroke();
+
+  if (
+    c.life <= 0 ||
+    c.x < -0.2 * canvas.width ||
+    c.x > 1.2 * canvas.width ||
+    c.y < -0.2 * canvas.height ||
+    c.y > 1.2 * canvas.height
+  ) {
+    shootingStar = null;
+    const minDelay = now < hyperspaceUntil ? 450 : 1300;
+    const maxDelay = now < hyperspaceUntil ? 1300 : 4200;
+    nextShootingStarAt = now + rand(minDelay, maxDelay);
+  }
+}
+
+function drawPointerGlow(now) {
+  if (!pointer.active || now - pointer.movedAt > 1200) return;
+
+  const px = pointer.x * dpr;
+  const py = pointer.y * dpr;
+  const radius = 150 * dpr;
+
+  const glow = ctx.createRadialGradient(px, py, 0, px, py, radius);
+  glow.addColorStop(0, 'rgba(191, 251, 255, 0.14)');
+  glow.addColorStop(0.55, 'rgba(250, 204, 21, 0.08)');
+  glow.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = glow;
+  ctx.fillRect(px - radius, py - radius, radius * 2, radius * 2);
+}
+
+function stepWarp(dt, now) {
+  const w = canvas.width;
+  const h = canvas.height;
+  const cx = w / 2;
+  const cy = h / 2;
+
+  const inHyperspace = now < hyperspaceUntil;
+  const targetBoost = inHyperspace ? 3.4 : 1.0;
+  boost += (targetBoost - boost) * 0.07;
+  colorRush += (0 - colorRush) * 0.04;
+
+  const hueShift = Math.sin(now * 0.00011 + colorRush * 2.4) * 9;
+  const grad = ctx.createLinearGradient(0, 0, 0, h);
+  grad.addColorStop(0, `hsl(${202 + hueShift} 70% 10%)`);
+  grad.addColorStop(0.5, `hsl(${192 + hueShift * 0.6} 66% 20%)`);
+  grad.addColorStop(1, `hsl(${26 + hueShift * 0.4} 80% 56%)`);
+
   ctx.globalCompositeOperation = 'source-over';
-  ctx.fillStyle = palette[0];
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, w, h);
+
+  const mouseOffsetX = pointer.active ? ((pointer.x * dpr - cx) * 0.08) : 0;
+  const mouseOffsetY = pointer.active ? ((pointer.y * dpr - cy) * 0.05) : 0;
+  const aurora = ctx.createRadialGradient(
+    cx + Math.sin(now * 0.0002) * w * 0.18 + mouseOffsetX,
+    cy * 0.64 + mouseOffsetY,
+    0,
+    cx,
+    cy,
+    Math.min(cx, cy) * 1.08
+  );
+  aurora.addColorStop(0, 'rgba(90, 230, 237, 0.17)');
+  aurora.addColorStop(0.55, 'rgba(250, 204, 21, 0.10)');
+  aurora.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = aurora;
   ctx.fillRect(0,0,w,h);
 
-  // decay boost smoothly
-  boost += (1.0 - boost) * 0.06;
+  boost += (1.0 - boost) * 0.01;
 
   ctx.globalCompositeOperation = 'lighter';
-  ctx.lineWidth = Math.max(1, 1.0*dpr);
+  ctx.lineWidth = Math.max(1, 1.0 * dpr);
 
-  const hyp = Math.hypot(cx,cy);
-  function drawStar(st){
+  const hyp = Math.hypot(cx, cy);
+
+  function drawStar(st) {
     st.r += st.s * dt * 0.2 * boost;
-    if(st.r > hyp){
-      st.r = rand(0, Math.min(cx, cy)*0.1);
-      st.a = rand(0, Math.PI*2);
-      st.s = rand(0.6, 1.8);
+    if (st.r > hyp) {
+      st.r = rand(0, Math.min(cx, cy) * 0.1);
+      st.a = rand(0, Math.PI * 2);
+      st.s = rand(0.6, 1.9);
+      st.o = rand(0.35, 1);
     }
-    const x = cx + Math.cos(st.a)*st.r;
-    const y = cy + Math.sin(st.a)*st.r;
-    const x2 = cx + Math.cos(st.a)*(st.r + st.l);
-    const y2 = cy + Math.sin(st.a)*(st.r + st.l);
-    ctx.strokeStyle = lerpColor(palette[1], palette[3], st.r / (hyp+1));
-    ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x2,y2); ctx.stroke();
+
+    const x = cx + Math.cos(st.a) * st.r;
+    const y = cy + Math.sin(st.a) * st.r;
+    const x2 = cx + Math.cos(st.a) * (st.r + st.l);
+    const y2 = cy + Math.sin(st.a) * (st.r + st.l);
+
+    const hue = 186 + (st.r / (hyp + 1)) * 38 + colorRush * 20;
+    ctx.strokeStyle = `hsla(${hue.toFixed(0)}, 96%, 76%, ${st.o})`;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
   }
 
-  for(const st of stars) drawStar(st);
+  for (const st of stars) drawStar(st);
 
-  // draw & age extra stars (temporary burst)
-  for(let i=extraStars.length-1;i>=0;i--){
+  for (let i = extraStars.length - 1; i >= 0; i--) {
     const e = extraStars[i];
     drawStar(e);
     e.life -= dt;
-    if(e.life <= 0) extraStars.splice(i,1);
+    if (e.life <= 0) extraStars.splice(i, 1);
   }
 
-  // center glow
-  const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(cx,cy)*0.8);
-  g.addColorStop(0, `rgba(250, 204, 21, 0.10)`);
-  g.addColorStop(1, `rgba(250, 204, 21, 0)`);
-  ctx.fillStyle = g;
-  ctx.fillRect(0,0,w,h);
+  maybeSpawnShootingStar(now, inHyperspace);
+  drawShootingStar(dt, now);
+  drawPointerGlow(now);
 }
 
 let last = performance.now();
-function loop(now){
-  const dt = Math.min(33, now - last); last = now;
-  stepWarp(dt);
+function loop(now) {
+  const dt = Math.min(33, now - last);
+  last = now;
+  stepWarp(dt, now);
   requestAnimationFrame(loop);
 }
 
 /* =========================
    Boot
 ========================= */
-function boot(){
-  // Initial quote and cycle
+function boot() {
   setQuote(pickRandomQuote());
   startQuoteCycle();
-
-  // Canvas
   resize();
   requestAnimationFrame(loop);
 }
-boot();
 
-/* =========================
-   Google Analytics (optional)
-========================= */
-window.dataLayer = window.dataLayer || [];
-function gtag(){ dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'UA-123361058-1');
+boot();
   </script>
 
-  <!-- Structured Data (JSON-LD) for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -489,10 +923,10 @@ gtag('config', 'UA-123361058-1');
     "url": "https://www.sambrit.com/",
     "sameAs": [
       "https://www.linkedin.com/in/sambritadhikari",
-      "https://github.com/sambritadhikari"
+      "https://github.com/sambrit"
     ],
     "jobTitle": "Program Manager",
-    "description": "Sambrit Adhikari is a program manager and engineer specializing in AI, machine learning, and software development. Passionate about driving innovation."
+    "description": "Sambrit Adhikari is a program manager and engineer specializing in AI, machine learning, and software development."
   }
   </script>
 </body>
