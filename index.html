@@ -2,931 +2,655 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sambrit Adhikari</title>
-  <meta name="description" content="Sambrit Adhikari, a program manager and engineer specializing in AI, machine learning, and software development."/>
-  <meta name="keywords" content="Sambrit Adhikari, program manager, engineer, software development, AI, machine learning, LinkedIn, program management, product manager, technical program manager, artificial intelligence, data science"/>
-  <meta name="author" content="Sambrit Adhikari"/>
-  <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://www.sambrit.com/"/>
+  <meta name="description" content="Sambrit Adhikari. Executive-level AI operator with calm execution, product taste, and systems thinking." />
+  <meta name="keywords" content="Sambrit Adhikari, AI leadership, technical program management, product execution, machine learning" />
+  <meta name="author" content="Sambrit Adhikari" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#0b1222" />
+  <link rel="canonical" href="https://www.sambrit.com/" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sambrit Adhikari" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Sambrit Adhikari" />
+  <meta property="og:description" content="Executive-level AI operator with calm execution and product taste." />
+  <meta property="og:url" content="https://www.sambrit.com/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sambrit Adhikari" />
+  <meta name="twitter:description" content="Executive-level AI operator with calm execution and product taste." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
-  :root {
-    --text:#FAFAFA;
-    --accent:#FFD700;
-    --btn-scale:1;
-  }
-
-  html, body {
-    margin:0;
-    padding:0;
-    height:100%;
-    width:100%;
-    font-family:'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    color:var(--text);
-    background:#000;
-    overflow:hidden;
-    position:relative;
-  }
-
-  #bg {
-    position:fixed;
-    inset:0;
-    width:100vw;
-    height:100vh;
-    display:block;
-    z-index:0;
-    pointer-events:none;
-    background:#0b0d12;
-  }
-
-  .glow {
-    position:fixed;
-    inset:-10vmax;
-    z-index:1;
-    pointer-events:none;
-    background:
-      radial-gradient(38vmax 38vmax at 20% 22%, rgba(71, 222, 232, 0.20), transparent 62%),
-      radial-gradient(35vmax 35vmax at 80% 73%, rgba(250, 204, 21, 0.16), transparent 66%),
-      radial-gradient(40vmax 40vmax at 50% 58%, rgba(244, 114, 182, 0.12), transparent 68%);
-    animation:glowDrift 26s ease-in-out infinite alternate;
-    filter:blur(9px);
-  }
-
-  @keyframes glowDrift {
-    0% { transform:translate3d(0,0,0) scale(1); }
-    100% { transform:translate3d(-2%,1%,0) scale(1.05); }
-  }
-
-  .main-content {
-    position:relative;
-    z-index:2;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    text-align:center;
-    padding:20px;
-    padding-bottom:148px;
-  }
-
-  .kicker {
-    margin:0;
-    text-transform:uppercase;
-    letter-spacing:0.12em;
-    font-size:0.72rem;
-    font-weight:700;
-    color:#BFFBFF;
-    text-shadow:0 2px 8px rgba(0,0,0,0.62);
-  }
-
-  .name {
-    font-family:'Montserrat', system-ui, sans-serif;
-    font-size:clamp(3rem, 8vw, 6rem);
-    font-weight:700;
-    margin:10px 0 0;
-    color:var(--accent);
-    letter-spacing:.6px;
-    text-shadow:0 2px 10px rgba(0,0,0,.8);
-    animation:subtlePulse 6s infinite;
-  }
-
-  @keyframes subtlePulse {
-    0%,100% { transform:scale(1); }
-    50% { transform:scale(1.03); }
-  }
-
-  .quote-wrap {
-    margin-top:20px;
-    max-width:min(92vw, 900px);
-  }
-
-  .quote {
-    font-size:clamp(1.1rem, 2.2vw, 1.6rem);
-    line-height:1.8;
-    display:inline-block;
-    white-space:pre-wrap;
-    opacity:0;
-    text-shadow:0 2px 6px rgba(0,0,0,.6);
-    cursor:pointer;
-  }
-
-  .quote:focus {
-    outline:2px dashed rgba(255,255,255,.35);
-    outline-offset:6px;
-    border-radius:6px;
-  }
-
-  .fade-in {
-    animation:fadeIn 600ms ease forwards;
-  }
-
-  @keyframes fadeIn {
-    from { opacity:0; }
-    to { opacity:1; }
-  }
-
-  .quote-indicator {
-    position:relative;
-    height:4px;
-    border-radius:999px;
-    background:rgba(255,255,255,0.12);
-    overflow:hidden;
-    margin:10px auto 0;
-    width:clamp(200px, 56vw, 560px);
-  }
-
-  .quote-indicator .bar {
-    height:100%;
-    width:100%;
-    transform:scaleX(0);
-    transform-origin:left center;
-    background:linear-gradient(90deg,#22d3ee,#a78bfa,#f472b6);
-    will-change:transform;
-  }
-
-  .nav-links {
-    display:flex;
-    gap:12px;
-    margin-top:30px;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  .nav-link {
-    text-decoration:none;
-    font-weight:600;
-    color:var(--text);
-    background:rgba(0,0,0,.35);
-    padding:10px 14px;
-    border-radius:999px;
-    display:inline-flex;
-    align-items:center;
-    backdrop-filter:blur(6px);
-    text-shadow:0 2px 6px rgba(0,0,0,.6);
-    border:1px solid rgba(255,255,255,.08);
-    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-  }
-
-  .nav-link:hover {
-    transform:translateY(-1px);
-    box-shadow:0 0 14px rgba(0,0,0,.35);
-    background:rgba(255,255,255,.08);
-  }
-
-  .modal {
-    position:fixed;
-    inset:0;
-    z-index:4;
-    display:grid;
-    place-items:center;
-    background:rgba(0,0,0,0.5);
-    backdrop-filter:blur(6px);
-  }
-
-  .modal[hidden] {
-    display:none;
-  }
-
-  .modal-card {
-    background:rgba(15,15,20,0.9);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:16px;
-    padding:18px;
-    width:min(92vw, 380px);
-    box-shadow:0 20px 60px rgba(0,0,0,0.5);
-  }
-
-  .modal-title {
-    font-weight:800;
-    margin:0 0 10px;
-    letter-spacing:0.3px;
-  }
-
-  .modal-actions {
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-
-  .btn {
-    flex:1;
-    padding:10px 12px;
-    border-radius:10px;
-    cursor:pointer;
-    user-select:none;
-    background:rgba(255,255,255,0.08);
-    color:var(--text);
-    border:1px solid rgba(255,255,255,0.15);
-    transition:transform .15s ease, background .15s ease;
-  }
-
-  .btn:hover {
-    transform:translateY(-1px);
-    background:rgba(255,255,255,0.12);
-  }
-
-  .btn.primary {
-    background:linear-gradient(90deg,#facc15,#22d3ee 40%,#a78bfa 70%,#f43f5e);
-    color:#0a0a0a;
-    font-weight:800;
-    border:none;
-  }
-
-  .launch-button {
-    position:fixed;
-    z-index:3;
-    left:50%;
-    transform:translateX(-50%) scale(var(--btn-scale));
-    bottom:calc(22px + env(safe-area-inset-bottom));
-    padding:16px 28px;
-    border-radius:999px;
-    font-weight:800;
-    letter-spacing:.4px;
-    font-size:clamp(1rem, 2.6vw, 1.15rem);
-    color:#082333;
-    background:
-      radial-gradient(120% 120% at 10% 10%, #fff7db, transparent 60%),
-      linear-gradient(95deg, #bcf8c0, #22d3ee 42%, #facc15 76%, #f472b6);
-    border:none;
-    cursor:pointer;
-    user-select:none;
-    box-shadow:
-      0 12px 34px rgba(34,211,238,.28),
-      0 2px 0 rgba(255,255,255,.35) inset,
-      0 -2px 8px rgba(0,0,0,.35) inset;
-    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
-    touch-action:manipulation;
-  }
-
-  .launch-button::before {
-    content:"";
-    position:absolute;
-    inset:-8px;
-    border-radius:inherit;
-    border:1px solid rgba(255,255,255,.62);
-    animation:haloPulse 2.3s ease-out infinite;
-    pointer-events:none;
-    opacity:.68;
-  }
-
-  @keyframes haloPulse {
-    0% { transform:scale(.94); opacity:.65; }
-    70% { transform:scale(1.16); opacity:0; }
-    100% { opacity:0; }
-  }
-
-  .launch-button:hover {
-    transform:translateX(-50%) scale(calc(var(--btn-scale) * 1.02));
-    filter:brightness(1.05);
-  }
-
-  .launch-button:active {
-    transform:translateX(-50%) scale(calc(var(--btn-scale) * 0.99));
-  }
-
-  .launch-button:focus {
-    outline:2px solid rgba(255,255,255,.45);
-    outline-offset:6px;
-  }
-
-  .rocket {
-    position:fixed;
-    bottom:-8vh;
-    font-size:3rem;
-    z-index:4;
-    pointer-events:none;
-    animation:rocketRight 4.4s forwards;
-    animation-timing-function:cubic-bezier(.22,.82,.26,1);
-    will-change:transform, opacity;
-    filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));
-  }
-
-  @keyframes rocketRight {
-    0% { transform:translate(0,0) rotate(-4deg); opacity:.96; }
-    44% { transform:translate(44vw,-56vh) rotate(8deg); opacity:1; }
-    58% { transform:translate(52vw,-62vh) rotate(9deg); opacity:1; }
-    100% { transform:translate(102vw,-128vh) rotate(18deg); opacity:0; }
-  }
-
-  .rocket.left {
-    animation:rocketLeft 4.4s forwards;
-    animation-timing-function:cubic-bezier(.22,.82,.26,1);
-    transform:scaleX(-1);
-  }
-
-  @keyframes rocketLeft {
-    0% { transform:scaleX(-1) translate(0,0) rotate(-4deg); opacity:.96; }
-    44% { transform:scaleX(-1) translate(-44vw,-56vh) rotate(8deg); opacity:1; }
-    58% { transform:scaleX(-1) translate(-52vw,-62vh) rotate(9deg); opacity:1; }
-    100% { transform:scaleX(-1) translate(-102vw,-128vh) rotate(18deg); opacity:0; }
-  }
-
-  .shockwave {
-    position:fixed;
-    inset:0;
-    z-index:3;
-    pointer-events:none;
-    background:radial-gradient(circle at center, rgba(255,255,255,0.20), rgba(255,255,255,0) 60%);
-    animation:shock 960ms ease-out forwards;
-  }
-
-  @keyframes shock {
-    from { opacity:.92; transform:scale(0.6); }
-    to { opacity:0; transform:scale(2.35); }
-  }
-
-  .hyper-banner {
-    position:fixed;
-    top:16px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:5;
-    background:linear-gradient(95deg, #bcf8c0, #22d3ee 42%, #facc15 76%, #f472b6);
-    color:#072235;
-    font-weight:800;
-    letter-spacing:.06em;
-    border-radius:999px;
-    padding:10px 16px;
-    box-shadow:0 12px 30px rgba(0,0,0,.35);
-    animation:bannerDrop 940ms ease forwards;
-  }
-
-  @keyframes bannerDrop {
-    0% { opacity:0; transform:translateX(-50%) translateY(-16px); }
-    20% { opacity:1; }
-    82% { opacity:1; }
-    100% { opacity:0; transform:translateX(-50%) translateY(10px); }
-  }
-
-  .spark {
-    position:fixed;
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    z-index:4;
-    pointer-events:none;
-    animation:particleFly 920ms cubic-bezier(.2,.8,.25,1) forwards;
-  }
-
-  @keyframes particleFly {
-    0% { transform:translate3d(0,0,0) scale(1); opacity:1; }
-    100% { transform:translate3d(var(--dx), var(--dy), 0) scale(.2); opacity:0; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .name,
-    .glow,
-    .rocket,
-    .launch-button::before,
-    .hyper-banner,
-    .spark {
-      animation:none !important;
+    :root {
+      --bg0: #060b17;
+      --bg1: #0d1830;
+      --bg2: #13274b;
+      --text: #eef4ff;
+      --muted: #b7c5e3;
+      --line: rgba(172, 193, 236, 0.3);
+      --panel: rgba(8, 18, 38, 0.75);
+      --a1: #79d6ff;
+      --a2: #8ba3ff;
+      --a3: #8cf0cb;
     }
-    .launch-button {
-      transition:none !important;
-    }
-  }
 
-  @media (max-width:700px){
-    .kicker { font-size:.64rem; }
-    .nav-link { font-size:.92rem; padding:10px 13px; }
-  }
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      color: var(--text);
+      font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg0);
+    }
+
+    #bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .ambient {
+      position: fixed;
+      inset: -10vmax;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(40vmax 32vmax at 12% 16%, rgba(121, 214, 255, 0.18), transparent 66%),
+        radial-gradient(36vmax 30vmax at 86% 72%, rgba(139, 163, 255, 0.18), transparent 68%),
+        radial-gradient(32vmax 28vmax at 54% 44%, rgba(140, 240, 203, 0.12), transparent 70%);
+      filter: blur(10px);
+      animation: drift 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(-2.2%, 1.4%, 0) scale(1.06); }
+    }
+
+    .layout {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .panel {
+      width: min(1020px, 96vw);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(13, 27, 52, 0.85), var(--panel));
+      backdrop-filter: blur(8px);
+      box-shadow:
+        0 22px 60px rgba(0, 0, 0, 0.42),
+        0 1px 0 rgba(255, 255, 255, 0.08) inset;
+      padding: 28px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      color: #bfd1ff;
+      font-family: "Sora", sans-serif;
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2.3rem, 6.3vw, 4.6rem);
+      line-height: 1.04;
+      letter-spacing: 0.01em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.1vw, 1.22rem);
+      line-height: 1.58;
+    }
+
+    .chips {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(13, 24, 45, 0.8);
+      color: #d8e6ff;
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 8px 12px;
+    }
+
+    .grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .card {
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(9, 19, 37, 0.76);
+      padding: 16px;
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #d3e1ff;
+      font-family: "Sora", sans-serif;
+    }
+
+    .card p,
+    .card ul {
+      margin: 0;
+      color: #c2d0ec;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .card ul {
+      padding-left: 18px;
+    }
+
+    .links {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .link,
+    .signal {
+      min-height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(121, 214, 255, 0.2), rgba(139, 163, 255, 0.1));
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 15px;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .link:hover,
+    .signal:hover {
+      transform: translateY(-2px);
+      border-color: rgba(172, 193, 236, 0.55);
+      background: linear-gradient(180deg, rgba(121, 214, 255, 0.28), rgba(139, 163, 255, 0.16));
+    }
+
+    .link:focus-visible,
+    .signal:focus-visible {
+      outline: 2px solid rgba(214, 227, 255, 0.76);
+      outline-offset: 3px;
+    }
+
+    .signal {
+      background: linear-gradient(95deg, rgba(121, 214, 255, 0.3), rgba(140, 240, 203, 0.22));
+    }
+
+    .foot {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: #94a7cb;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 6;
+      display: grid;
+      place-items: center;
+      background: rgba(4, 10, 22, 0.66);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal[hidden] { display: none; }
+
+    .modal-card {
+      width: min(92vw, 390px);
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(8, 16, 34, 0.94);
+      box-shadow: 0 20px 54px rgba(0, 0, 0, 0.44);
+      padding: 18px;
+    }
+
+    .modal-title {
+      margin: 0 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: "Sora", sans-serif;
+      font-size: 0.96rem;
+    }
+
+    .modal-copy {
+      margin: 0 0 12px;
+      color: #c2d2ef;
+      font-size: 0.94rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      flex: 1;
+      min-width: 108px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(121, 214, 255, 0.12);
+      color: var(--text);
+      font-family: inherit;
+      font-weight: 700;
+      padding: 10px 12px;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      border: none;
+      color: #041224;
+      background: linear-gradient(95deg, var(--a1), var(--a2), var(--a3));
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .panel {
+        padding: 18px;
+      }
+
+      .eyebrow {
+        font-size: 0.66rem;
+      }
+
+      .link,
+      .signal {
+        font-size: 0.87rem;
+        padding: 10px 12px;
+      }
+
+      .links .contact-btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ambient {
+        animation: none !important;
+      }
+
+      .link,
+      .signal {
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 <body>
   <canvas id="bg"></canvas>
-  <div class="glow" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
 
-  <div class="main-content">
-    <p class="kicker">Program Manager + Engineer + Photographer</p>
-    <h1 class="name">Sambrit Adhikari</h1>
+  <main class="layout">
+    <section class="panel" aria-label="Profile">
+      <p class="eyebrow">AI Leadership | Product Execution | Systems Thinking</p>
+      <h1>Sambrit Adhikari</h1>
+      <p class="lead">I design operating systems for ambitious AI work: clear decisions, aligned teams, and execution that compounds over time.</p>
 
-    <div class="quote-wrap">
-      <div class="quote" role="button" tabindex="0" aria-label="Quote. Click to show a new one."></div>
-      <div class="quote-indicator" aria-hidden="true">
-        <div class="bar"></div>
+      <div class="chips" aria-label="Style">
+        <span class="chip">Executive Presence</span>
+        <span class="chip">Calm Under Pressure</span>
+        <span class="chip">Subtle Creative Edge</span>
       </div>
-    </div>
 
-    <div class="nav-links">
-      <button class="nav-link contact-btn" type="button">Contact</button>
-      <a href="https://github.com/sambrit" class="nav-link">GitHub</a>
-      <a href="https://www.instagram.com/catchavibephotos/" class="nav-link">Photography 📷</a>
-      <a href="https://www.linkedin.com/in/sambritadhikari/" class="nav-link">LinkedIn</a>
-    </div>
-  </div>
+      <div class="grid">
+        <article class="card">
+          <h2>How I Lead</h2>
+          <p>I convert high-stakes ambiguity into practical roadmaps, reliable cadence, and measurable outcomes across product, engineering, and leadership.</p>
+        </article>
+        <article class="card">
+          <h2>Outside Work</h2>
+          <ul>
+            <li>Photography and visual storytelling</li>
+            <li>Travel that sharpens perspective</li>
+            <li>A soft spot for thoughtful details and quiet design</li>
+          </ul>
+        </article>
+      </div>
+
+      <nav class="links" aria-label="External links">
+        <a class="link" href="https://github.com/sambrit">GitHub</a>
+        <a class="link" href="https://www.instagram.com/catchavibephotos/">Photography</a>
+        <a class="link" href="https://www.linkedin.com/in/sambritadhikari/">LinkedIn</a>
+        <button class="signal" id="signalBtn" type="button">Send Signal</button>
+        <button class="link contact-btn" type="button">Contact</button>
+      </nav>
+
+      <p class="foot">Built with taste. No noise. If you click "Send Signal," you might see a small sky event.</p>
+    </section>
+  </main>
 
   <div class="modal" id="contactModal" hidden>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
-      <h3 class="modal-title" id="contactTitle">Get in touch</h3>
-      <p style="opacity:.8;margin:0 0 14px;">Choose how you'd like to reach me.</p>
+      <h3 class="modal-title" id="contactTitle">Get In Touch</h3>
+      <p class="modal-copy">Choose how you want to connect.</p>
       <div class="modal-actions">
-        <button class="btn primary" id="mailOpenBtn" type="button">Open mail app</button>
-        <button class="btn" id="copyBtn" type="button">Copy email</button>
+        <button class="btn primary" id="mailOpenBtn" type="button">Open Mail App</button>
+        <button class="btn" id="copyBtn" type="button">Copy Email</button>
         <button class="btn" id="closeModalBtn" type="button">Close</button>
       </div>
     </div>
   </div>
 
-  <button class="launch-button" aria-label="Launch">Launch 🚀</button>
-
   <script>
-/* =========================
-   QUOTES + INDICATOR
-========================= */
-const quotes = [
-  "The journey of a thousand miles begins with a single step. - Lao Tzu",
-  "Once you have tasted flight, you will forever walk the earth with your eyes turned skyward. - Leonardo da Vinci",
-  "Man cannot discover new oceans unless he has the courage to lose sight of the shore. - Andre Gide",
-  "Not all those who wander are lost. - J.R.R. Tolkien",
-  "The world is a book, and those who do not travel read only one page. - Saint Augustine",
-  "Life begins at the end of your comfort zone. - Neale Donald Walsch",
-  "Adventure is worthwhile. - Aesop",
-  "Travel far, travel wide, but always travel within. - Unknown",
-  "The gladdest moment in human life is a departure into unknown lands. - Sir Richard Burton",
-  "Wherever you go, go with all your heart. - Confucius",
-  "A ship in harbor is safe, but that is not what ships are built for. - John A. Shedd",
-  "To travel is to take a journey into yourself. - Danny Kaye",
-  "We travel not to escape life, but for life not to escape us. - Unknown",
-  "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes. - Marcel Proust",
-  "Dare to live the life you have dreamed for yourself. Go forward and make your dreams come true. - Emerson",
-  "Because in the end, you won't remember the time you spent working in the office or mowing your lawn. Climb that damn mountain. - Kerouac",
-  "It is not down in any map; true places never are. - Herman Melville",
-  "To awaken alone in a strange town is one of the pleasantest sensations in the world. - Freya Stark",
-  "Travel brings power and love back into your life. - Rumi",
-  "I haven't been everywhere, but it's on my list. - Susan Sontag"
-];
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const quoteEl = document.querySelector('.quote');
-const barEl = document.querySelector('.quote-indicator .bar');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const QUOTE_INTERVAL = reduceMotion ? 12000 : 8000;
+    const contactBtn = document.querySelector(".contact-btn");
+    const signalBtn = document.getElementById("signalBtn");
+    const modal = document.getElementById("contactModal");
+    const mailOpenBtn = document.getElementById("mailOpenBtn");
+    const copyBtn = document.getElementById("copyBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
 
-let lastQuoteIndex = -1;
-let quoteTimer = null;
-
-function pickRandomQuote() {
-  let i;
-  do {
-    i = (Math.random() * quotes.length) | 0;
-  } while (i === lastQuoteIndex);
-  lastQuoteIndex = i;
-  return quotes[i];
-}
-
-function setQuote(text) {
-  quoteEl.classList.remove('fade-in');
-  void quoteEl.offsetWidth;
-  quoteEl.textContent = text;
-  quoteEl.classList.add('fade-in');
-}
-
-function restartQuoteProgress() {
-  barEl.style.transition = 'none';
-  barEl.style.transform = 'scaleX(0)';
-  void barEl.offsetWidth;
-  barEl.style.transition = `transform ${QUOTE_INTERVAL}ms linear`;
-  barEl.style.transform = 'scaleX(1)';
-}
-
-function startQuoteCycle() {
-  if (quoteTimer) clearTimeout(quoteTimer);
-  restartQuoteProgress();
-  quoteTimer = setTimeout(() => {
-    setQuote(pickRandomQuote());
-    startQuoteCycle();
-  }, QUOTE_INTERVAL);
-}
-
-function manualRefreshQuote() {
-  setQuote(pickRandomQuote());
-  startQuoteCycle();
-}
-
-quoteEl.addEventListener('click', manualRefreshQuote);
-quoteEl.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    manualRefreshQuote();
-  }
-});
-
-/* =========================
-   CONTACT (email not in source until click)
-========================= */
-const contactBtn = document.querySelector('.contact-btn');
-const modal = document.getElementById('contactModal');
-const mailOpenBtn = document.getElementById('mailOpenBtn');
-const copyBtn = document.getElementById('copyBtn');
-const closeModalBtn = document.getElementById('closeModalBtn');
-
-function buildEmail(){
-  return ['sambrit','adhikari'].join('') + String.fromCharCode(64) + ['gmail','com'].join('.');
-}
-
-function closeModal(){
-  modal.hidden = true;
-}
-
-contactBtn.addEventListener('click', () => {
-  modal.hidden = false;
-});
-closeModalBtn.addEventListener('click', closeModal);
-modal.addEventListener('click', (event) => {
-  if (event.target === modal) closeModal();
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closeModal();
-});
-
-mailOpenBtn.addEventListener('click', () => {
-  const email = buildEmail();
-  window.location.href = 'mailto:' + email;
-  closeModal();
-});
-
-copyBtn.addEventListener('click', async () => {
-  const email = buildEmail();
-  try {
-    await navigator.clipboard.writeText(email);
-    copyBtn.textContent = 'Copied!';
-    setTimeout(() => {
-      copyBtn.textContent = 'Copy email';
-    }, 1200);
-  } catch {
-    copyBtn.textContent = email;
-  }
-});
-
-/* =========================
-   LAUNCH BUTTON
-========================= */
-const launchBtn = document.querySelector('.launch-button');
-let launches = 0;
-let currentScale = 1;
-
-launchBtn.addEventListener('click', () => {
-  launches++;
-  currentScale = Math.min(1.28, currentScale + 0.07);
-  document.documentElement.style.setProperty('--btn-scale', currentScale.toString());
-
-  spawnRocket(Math.random() < 0.2 ? 'left' : 'right');
-  boost = Math.max(boost, 2.0);
-  colorRush = Math.min(1.2, colorRush + 0.25);
-
-  const rect = launchBtn.getBoundingClientRect();
-  spawnSparks(rect.left + rect.width / 2, rect.top + rect.height / 2, 10, 120);
-
-  if (launches > 3 && launches % 3 === 0) triggerHyperLaunch();
-});
-
-function spawnRocket(dir='right') {
-  const rocket = document.createElement('div');
-  rocket.className = 'rocket' + (dir === 'left' ? ' left' : '');
-  rocket.textContent = '🚀';
-  rocket.style.left = (Math.random() * 80) + 'vw';
-  document.body.appendChild(rocket);
-  setTimeout(() => rocket.remove(), 4600);
-}
-
-function spawnShockwave() {
-  const wave = document.createElement('div');
-  wave.className = 'shockwave';
-  document.body.appendChild(wave);
-  setTimeout(() => wave.remove(), 960);
-}
-
-function spawnHyperBanner() {
-  const banner = document.createElement('div');
-  banner.className = 'hyper-banner';
-  banner.textContent = 'HYPER LAUNCH UNLOCKED';
-  document.body.appendChild(banner);
-  setTimeout(() => banner.remove(), 980);
-}
-
-function spawnSparks(x, y, count, spread) {
-  for (let i = 0; i < count; i++) {
-    const spark = document.createElement('div');
-    spark.className = 'spark';
-    spark.style.left = `${x}px`;
-    spark.style.top = `${y}px`;
-    spark.style.background = ['#bcf8c0', '#22d3ee', '#facc15', '#f472b6', '#ffffff'][i % 5];
-
-    const angle = Math.random() * Math.PI * 2;
-    const dist = spread * (0.5 + Math.random() * 0.8);
-    spark.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
-    spark.style.setProperty('--dy', `${Math.sin(angle) * dist}px`);
-
-    document.body.appendChild(spark);
-    setTimeout(() => spark.remove(), 920);
-  }
-}
-
-function triggerHyperLaunch() {
-  spawnHyperBanner();
-  spawnShockwave();
-
-  for (let i = 0; i < 12; i++) {
-    setTimeout(() => {
-      spawnRocket(i % 3 === 0 ? 'left' : 'right');
-    }, i * 100);
-  }
-
-  const rect = launchBtn.getBoundingClientRect();
-  spawnSparks(rect.left + rect.width / 2, rect.top + rect.height / 2, 34, 240);
-
-  boost = 6.5;
-  colorRush = 1.8;
-  hyperspaceUntil = performance.now() + 2300;
-  addExtraStars(0.95);
-}
-
-/* =========================
-   BACKGROUND (Canvas2D)
-========================= */
-const canvas = document.getElementById('bg');
-const ctx = canvas.getContext('2d', { alpha:false, desynchronized:true });
-
-let dpr = 1;
-let stars = [];
-let extraStars = [];
-let shootingStar = null;
-let boost = 1.0;
-let colorRush = 0;
-let hyperspaceUntil = 0;
-let nextShootingStarAt = 0;
-
-const pointer = {
-  x: 0,
-  y: 0,
-  active: false,
-  movedAt: 0
-};
-
-function resize() {
-  dpr = Math.min(window.devicePixelRatio || 1, 1.75);
-  const w = Math.max(1, Math.floor(innerWidth * dpr));
-  const h = Math.max(1, Math.floor(innerHeight * dpr));
-  canvas.width = w;
-  canvas.height = h;
-  canvas.style.width = '100vw';
-  canvas.style.height = '100vh';
-  initWarp();
-  stepWarp(16, performance.now());
-}
-
-addEventListener('resize', resize, { passive:true });
-addEventListener('orientationchange', resize, { passive:true });
-
-addEventListener('mousemove', (event) => {
-  pointer.x = event.clientX;
-  pointer.y = event.clientY;
-  pointer.active = true;
-  pointer.movedAt = performance.now();
-}, { passive:true });
-
-addEventListener('touchmove', (event) => {
-  if (!event.touches.length) return;
-  pointer.x = event.touches[0].clientX;
-  pointer.y = event.touches[0].clientY;
-  pointer.active = true;
-  pointer.movedAt = performance.now();
-}, { passive:true });
-
-addEventListener('mouseleave', () => {
-  pointer.active = false;
-}, { passive:true });
-
-addEventListener('touchend', () => {
-  pointer.active = false;
-}, { passive:true });
-
-function rand(min,max){
-  return Math.random() * (max - min) + min;
-}
-
-function initWarp() {
-  const count = Math.floor((canvas.width * canvas.height) / 3200);
-  stars = [];
-  for (let i = 0; i < count; i++) {
-    const angle = rand(0, Math.PI * 2);
-    const radius = rand(0, Math.min(canvas.width, canvas.height) * 0.6);
-    stars.push({
-      a: angle,
-      r: radius,
-      s: rand(0.6, 1.95),
-      l: rand(4, 13) * dpr,
-      o: rand(0.35, 1)
-    });
-  }
-  extraStars = [];
-  shootingStar = null;
-  nextShootingStarAt = performance.now() + rand(1200, 3200);
-}
-
-function addExtraStars(multiplier = 0.5) {
-  const add = Math.floor(stars.length * multiplier);
-  for (let i = 0; i < add; i++) {
-    const angle = rand(0, Math.PI * 2);
-    const radius = rand(0, Math.min(canvas.width, canvas.height) * 0.24);
-    extraStars.push({
-      a: angle,
-      r: radius,
-      s: rand(1.4, 3.2),
-      l: rand(7, 18) * dpr,
-      o: rand(0.5, 1),
-      life: 800 + Math.random() * 1200
-    });
-  }
-}
-
-function createShootingStar(strong = false) {
-  const fromLeft = Math.random() < 0.5;
-  return {
-    x: fromLeft ? -0.12 * canvas.width : 1.12 * canvas.width,
-    y: rand(0.08 * canvas.height, 0.64 * canvas.height),
-    vx: (fromLeft ? 1 : -1) * rand(0.62, 1.08) * dpr * (strong ? 1.45 : 1),
-    vy: rand(-0.1, 0.18) * dpr,
-    length: rand(110, 220) * dpr,
-    width: rand(1.4, 2.7) * dpr,
-    life: strong ? rand(1000, 1700) : rand(850, 1450)
-  };
-}
-
-function maybeSpawnShootingStar(now, inHyperspace) {
-  if (reduceMotion || shootingStar) return;
-  if (now < nextShootingStarAt) return;
-
-  shootingStar = createShootingStar(inHyperspace);
-}
-
-function drawShootingStar(dt, now) {
-  if (!shootingStar) return;
-
-  const c = shootingStar;
-  c.x += c.vx * dt * 0.17 * boost;
-  c.y += c.vy * dt * 0.17 * boost;
-  c.life -= dt;
-
-  const tx = c.x - c.vx * c.length;
-  const ty = c.y - c.vy * c.length;
-  const grad = ctx.createLinearGradient(c.x, c.y, tx, ty);
-  grad.addColorStop(0, 'rgba(255,255,255,0.96)');
-  grad.addColorStop(1, 'rgba(255,255,255,0)');
-
-  ctx.strokeStyle = grad;
-  ctx.lineWidth = c.width;
-  ctx.beginPath();
-  ctx.moveTo(c.x, c.y);
-  ctx.lineTo(tx, ty);
-  ctx.stroke();
-
-  if (
-    c.life <= 0 ||
-    c.x < -0.2 * canvas.width ||
-    c.x > 1.2 * canvas.width ||
-    c.y < -0.2 * canvas.height ||
-    c.y > 1.2 * canvas.height
-  ) {
-    shootingStar = null;
-    const minDelay = now < hyperspaceUntil ? 450 : 1300;
-    const maxDelay = now < hyperspaceUntil ? 1300 : 4200;
-    nextShootingStarAt = now + rand(minDelay, maxDelay);
-  }
-}
-
-function drawPointerGlow(now) {
-  if (!pointer.active || now - pointer.movedAt > 1200) return;
-
-  const px = pointer.x * dpr;
-  const py = pointer.y * dpr;
-  const radius = 150 * dpr;
-
-  const glow = ctx.createRadialGradient(px, py, 0, px, py, radius);
-  glow.addColorStop(0, 'rgba(191, 251, 255, 0.14)');
-  glow.addColorStop(0.55, 'rgba(250, 204, 21, 0.08)');
-  glow.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = glow;
-  ctx.fillRect(px - radius, py - radius, radius * 2, radius * 2);
-}
-
-function stepWarp(dt, now) {
-  const w = canvas.width;
-  const h = canvas.height;
-  const cx = w / 2;
-  const cy = h / 2;
-
-  const inHyperspace = now < hyperspaceUntil;
-  const targetBoost = inHyperspace ? 3.4 : 1.0;
-  boost += (targetBoost - boost) * 0.07;
-  colorRush += (0 - colorRush) * 0.04;
-
-  const hueShift = Math.sin(now * 0.00011 + colorRush * 2.4) * 9;
-  const grad = ctx.createLinearGradient(0, 0, 0, h);
-  grad.addColorStop(0, `hsl(${202 + hueShift} 70% 10%)`);
-  grad.addColorStop(0.5, `hsl(${192 + hueShift * 0.6} 66% 20%)`);
-  grad.addColorStop(1, `hsl(${26 + hueShift * 0.4} 80% 56%)`);
-
-  ctx.globalCompositeOperation = 'source-over';
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, w, h);
-
-  const mouseOffsetX = pointer.active ? ((pointer.x * dpr - cx) * 0.08) : 0;
-  const mouseOffsetY = pointer.active ? ((pointer.y * dpr - cy) * 0.05) : 0;
-  const aurora = ctx.createRadialGradient(
-    cx + Math.sin(now * 0.0002) * w * 0.18 + mouseOffsetX,
-    cy * 0.64 + mouseOffsetY,
-    0,
-    cx,
-    cy,
-    Math.min(cx, cy) * 1.08
-  );
-  aurora.addColorStop(0, 'rgba(90, 230, 237, 0.17)');
-  aurora.addColorStop(0.55, 'rgba(250, 204, 21, 0.10)');
-  aurora.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = aurora;
-  ctx.fillRect(0,0,w,h);
-
-  boost += (1.0 - boost) * 0.01;
-
-  ctx.globalCompositeOperation = 'lighter';
-  ctx.lineWidth = Math.max(1, 1.0 * dpr);
-
-  const hyp = Math.hypot(cx, cy);
-
-  function drawStar(st) {
-    st.r += st.s * dt * 0.2 * boost;
-    if (st.r > hyp) {
-      st.r = rand(0, Math.min(cx, cy) * 0.1);
-      st.a = rand(0, Math.PI * 2);
-      st.s = rand(0.6, 1.9);
-      st.o = rand(0.35, 1);
+    function buildEmail() {
+      return ["sambrit", "adhikari"].join("") + String.fromCharCode(64) + ["gmail", "com"].join(".");
     }
 
-    const x = cx + Math.cos(st.a) * st.r;
-    const y = cy + Math.sin(st.a) * st.r;
-    const x2 = cx + Math.cos(st.a) * (st.r + st.l);
-    const y2 = cy + Math.sin(st.a) * (st.r + st.l);
+    function closeModal() {
+      modal.hidden = true;
+      contactBtn.focus();
+    }
 
-    const hue = 186 + (st.r / (hyp + 1)) * 38 + colorRush * 20;
-    ctx.strokeStyle = `hsla(${hue.toFixed(0)}, 96%, 76%, ${st.o})`;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-  }
+    contactBtn.addEventListener("click", () => {
+      modal.hidden = false;
+      mailOpenBtn.focus();
+    });
 
-  for (const st of stars) drawStar(st);
+    closeModalBtn.addEventListener("click", closeModal);
 
-  for (let i = extraStars.length - 1; i >= 0; i--) {
-    const e = extraStars[i];
-    drawStar(e);
-    e.life -= dt;
-    if (e.life <= 0) extraStars.splice(i, 1);
-  }
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
 
-  maybeSpawnShootingStar(now, inHyperspace);
-  drawShootingStar(dt, now);
-  drawPointerGlow(now);
-}
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !modal.hidden) {
+        closeModal();
+      }
+    });
 
-let last = performance.now();
-function loop(now) {
-  const dt = Math.min(33, now - last);
-  last = now;
-  stepWarp(dt, now);
-  requestAnimationFrame(loop);
-}
+    mailOpenBtn.addEventListener("click", () => {
+      window.location.href = "mailto:" + buildEmail();
+      closeModal();
+    });
 
-/* =========================
-   Boot
-========================= */
-function boot() {
-  setQuote(pickRandomQuote());
-  startQuoteCycle();
-  resize();
-  requestAnimationFrame(loop);
-}
+    copyBtn.addEventListener("click", async () => {
+      const email = buildEmail();
+      try {
+        await navigator.clipboard.writeText(email);
+        copyBtn.textContent = "Copied";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy Email";
+        }, 1100);
+      } catch {
+        copyBtn.textContent = email;
+      }
+    });
 
-boot();
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d", { alpha: false, desynchronized: true });
+
+    let dpr = 1;
+    let width = 1;
+    let height = 1;
+    let stars = [];
+    let pointerX = 0;
+    let pointerY = 0;
+    let pointerLive = false;
+    let lift = 0;
+    let shootingStars = [];
+    let nextAmbientStarAt = 0;
+
+    function rand(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 1.8);
+      width = Math.max(1, Math.floor(window.innerWidth * dpr));
+      height = Math.max(1, Math.floor(window.innerHeight * dpr));
+      canvas.width = width;
+      canvas.height = height;
+      canvas.style.width = "100vw";
+      canvas.style.height = "100vh";
+
+      const count = Math.floor((width * height) / 5000);
+      stars = Array.from({ length: count }, () => ({
+        x: rand(0, width),
+        y: rand(0, height),
+        z: rand(0.3, 1),
+        s: rand(0.24, 0.95)
+      }));
+    }
+
+    function createShootingStar(strength) {
+      const fromLeft = Math.random() < 0.5;
+      const strong = strength === "signal";
+      return {
+        x: fromLeft ? -0.14 * width : 1.14 * width,
+        y: rand(0.08 * height, strong ? 0.48 * height : 0.42 * height),
+        vx: (fromLeft ? 1 : -1) * rand(strong ? 1.8 : 1.2, strong ? 2.8 : 1.9) * dpr,
+        vy: rand(0.04, 0.16) * dpr,
+        life: strong ? 1500 : 1280,
+        trail: rand(strong ? 120 : 100, strong ? 180 : 145) * dpr,
+        width: rand(strong ? 2.6 : 1.9, strong ? 3.8 : 2.8) * dpr
+      };
+    }
+
+    function spawnShootingStar(strength) {
+      shootingStars.push(createShootingStar(strength));
+      if (shootingStars.length > 5) {
+        shootingStars.shift();
+      }
+    }
+
+    function queueAmbientStar(now) {
+      nextAmbientStarAt = now + rand(1400, 3400);
+    }
+
+    function triggerSignal() {
+      if (reduceMotion) return;
+      lift = Math.min(1.35, lift + 0.7);
+
+      spawnShootingStar("signal");
+      window.setTimeout(() => spawnShootingStar("signal"), 180);
+      window.setTimeout(() => spawnShootingStar("signal"), 360);
+    }
+
+    signalBtn.addEventListener("click", triggerSignal);
+
+    window.addEventListener("resize", resize, { passive: true });
+    window.addEventListener("orientationchange", resize, { passive: true });
+
+    window.addEventListener("mousemove", (event) => {
+      pointerX = event.clientX * dpr;
+      pointerY = event.clientY * dpr;
+      pointerLive = true;
+    }, { passive: true });
+
+    window.addEventListener("mouseleave", () => {
+      pointerLive = false;
+    }, { passive: true });
+
+    function drawShootingStars(dt) {
+      for (let i = shootingStars.length - 1; i >= 0; i -= 1) {
+        const star = shootingStars[i];
+        star.x += star.vx * dt * 0.18;
+        star.y += star.vy * dt * 0.18;
+        star.life -= dt;
+
+        const tx = star.x - star.vx * star.trail;
+        const ty = star.y - star.vy * star.trail;
+        const grad = ctx.createLinearGradient(star.x, star.y, tx, ty);
+        grad.addColorStop(0, "rgba(247, 251, 255, 0.98)");
+        grad.addColorStop(0.28, "rgba(140, 240, 203, 0.82)");
+        grad.addColorStop(0.68, "rgba(121, 214, 255, 0.22)");
+        grad.addColorStop(1, "rgba(240, 248, 255, 0)");
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = star.width;
+        ctx.beginPath();
+        ctx.moveTo(star.x, star.y);
+        ctx.lineTo(tx, ty);
+        ctx.stroke();
+
+        if (
+          star.life <= 0 ||
+          star.x < -0.24 * width ||
+          star.x > 1.24 * width ||
+          star.y > 1.24 * height
+        ) {
+          shootingStars.splice(i, 1);
+        }
+      }
+    }
+
+    let last = performance.now();
+    function loop(now) {
+      const dt = Math.min(33, now - last);
+      last = now;
+
+      lift += (0 - lift) * 0.035;
+
+      const grad = ctx.createLinearGradient(0, 0, 0, height);
+      grad.addColorStop(0, `hsl(${224 + lift * 8} 58% 6%)`);
+      grad.addColorStop(0.5, `hsl(${220 + lift * 8} 56% 11%)`);
+      grad.addColorStop(1, `hsl(${214 + lift * 9} 58% 17%)`);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.globalCompositeOperation = "lighter";
+      for (let i = 0; i < stars.length; i += 1) {
+        const star = stars[i];
+        star.y += star.s * dt * 0.012;
+        if (star.y > height + 2) {
+          star.y = -2;
+          star.x = rand(0, width);
+        }
+
+        const r = Math.max(0.8, 1.6 * star.z) * dpr;
+        ctx.fillStyle = `rgba(184, 212, 255, ${0.5 + star.z * 0.35})`;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (pointerLive && !reduceMotion) {
+        const glow = ctx.createRadialGradient(pointerX, pointerY, 0, pointerX, pointerY, 140 * dpr);
+        glow.addColorStop(0, "rgba(121, 214, 255, 0.13)");
+        glow.addColorStop(0.45, "rgba(139, 163, 255, 0.08)");
+        glow.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = glow;
+        ctx.fillRect(pointerX - 140 * dpr, pointerY - 140 * dpr, 280 * dpr, 280 * dpr);
+      }
+
+      if (!reduceMotion && now >= nextAmbientStarAt && shootingStars.length < 2) {
+        spawnShootingStar("ambient");
+        queueAmbientStar(now);
+      }
+
+      drawShootingStars(dt);
+      requestAnimationFrame(loop);
+    }
+
+    resize();
+    queueAmbientStar(performance.now());
+    requestAnimationFrame(loop);
   </script>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Sambrit Adhikari",
-    "url": "https://www.sambrit.com/",
-    "sameAs": [
-      "https://www.linkedin.com/in/sambritadhikari",
-      "https://github.com/sambrit"
-    ],
-    "jobTitle": "Program Manager",
-    "description": "Sambrit Adhikari is a program manager and engineer specializing in AI, machine learning, and software development."
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://www.sambrit.com/#person",
+        "name": "Sambrit Adhikari",
+        "url": "https://www.sambrit.com/",
+        "jobTitle": "Technical Program Leader",
+        "sameAs": [
+          "https://www.linkedin.com/in/sambritadhikari/",
+          "https://github.com/sambrit",
+          "https://www.instagram.com/catchavibephotos/"
+        ],
+        "description": "Sambrit Adhikari builds and scales AI products with executive-level operating rigor, calm execution, and a playful creative edge."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.sambrit.com/#website",
+        "url": "https://www.sambrit.com/",
+        "name": "Sambrit Adhikari",
+        "inLanguage": "en-US",
+        "publisher": {
+          "@id": "https://www.sambrit.com/#person"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.sambrit.com/#webpage",
+        "url": "https://www.sambrit.com/",
+        "name": "Sambrit Adhikari",
+        "description": "Sambrit Adhikari. Executive-level AI operator with calm execution, product taste, and systems thinking.",
+        "inLanguage": "en-US",
+        "isPartOf": {
+          "@id": "https://www.sambrit.com/#website"
+        },
+        "about": {
+          "@id": "https://www.sambrit.com/#person"
+        }
+      }
+    ]
   }
   </script>
 </body>
