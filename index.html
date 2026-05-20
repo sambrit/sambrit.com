@@ -172,9 +172,52 @@
     border: none;
   }
 
+  .launch-button {
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    padding: 12px 26px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #0a0a0a;
+    background: var(--accent);
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: transform .2s ease, filter .2s ease;
+    touch-action: manipulation;
+  }
+
+  .launch-button:hover {
+    transform: translateX(-50%) translateY(-2px);
+    filter: brightness(1.08);
+  }
+
+  .launch-button:active {
+    transform: translateX(-50%) scale(0.97);
+  }
+
+  .rocket {
+    position: fixed;
+    font-size: 2rem;
+    z-index: 4;
+    pointer-events: none;
+    animation: rocketFly 3.2s forwards cubic-bezier(.2,.6,.3,1);
+  }
+
+  @keyframes rocketFly {
+    0%   { transform: translate(0, 0); opacity: 1; }
+    75%  { opacity: 1; }
+    100% { transform: translate(var(--dx, 50vw), -100vh); opacity: 0; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .nav-link { transition: none !important; }
     .btn { transition: none !important; }
+    .launch-button { transition: none !important; }
   }
 
   @media (max-width: 700px) {
@@ -198,6 +241,8 @@
       <a href="https://www.linkedin.com/in/sambritadhikari/" class="nav-link">LinkedIn</a>
     </div>
   </div>
+
+  <button class="launch-button" aria-label="Launch">Launch 🚀</button>
 
   <div class="modal" id="contactModal" hidden>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
@@ -244,6 +289,21 @@ copyBtn.addEventListener('click', async () => {
   } catch {
     copyBtn.textContent = email;
   }
+});
+
+/* ========================= LAUNCH BUTTON ========================= */
+const launchBtn = document.querySelector('.launch-button');
+launchBtn.addEventListener('click', () => {
+  const rocket = document.createElement('div');
+  rocket.className = 'rocket';
+  rocket.textContent = '🚀';
+  const rect = launchBtn.getBoundingClientRect();
+  rocket.style.left = (rect.left + rect.width / 2 - 16) + 'px';
+  rocket.style.top = (rect.top - 10) + 'px';
+  const dir = Math.random() < 0.25 ? -1 : 1;
+  rocket.style.setProperty('--dx', (dir * (40 + Math.random() * 25)) + 'vw');
+  document.body.appendChild(rocket);
+  setTimeout(() => rocket.remove(), 3300);
 });
 
 /* ========================= STARFIELD ========================= */
