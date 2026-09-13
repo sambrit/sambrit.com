@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deep Kimchi | Korean Plate Lunch &amp; Takeout, Honolulu</title>
+  <meta name="description" content="Deep Kimchi is Korean takeout in Honolulu, Hawaiʻi. Kalbi, meat jun, BBQ chicken, and fish jun plates with your choice of four sides, mini or regular. House-fermented kimchi by the jar. Fundraiser plates and party trays." />
+  <meta name="keywords" content="Deep Kimchi, Korean takeout Honolulu, Korean plate lunch Oahu, kalbi plate, meat jun, BBQ chicken plate, kim chee Hawaii, kimchi jars Honolulu, Korean catering Oahu, fundraiser plate lunch" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#14100f" />
+  <link rel="canonical" href="https://www.sambrit.com/kimchi/" />
+
+  <meta property="og:type" content="restaurant.restaurant" />
+  <meta property="og:title" content="Deep Kimchi | Korean Plate Lunch, Honolulu" />
+  <meta property="og:description" content="Kalbi, meat jun, BBQ chicken. Mini or regular, pick your four sides. House kimchi by the jar. Order ahead for pickup." />
+  <meta property="og:url" content="https://www.sambrit.com/kimchi/" />
+  <meta property="og:site_name" content="Deep Kimchi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Deep Kimchi | Korean Plate Lunch, Honolulu" />
+  <meta name="twitter:description" content="Kalbi, meat jun, BBQ chicken. Mini or regular, pick your four sides. Order ahead for pickup." />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23d7263d'/%3E%3Cpath d='M14 38c6-8 12-8 18 0s12 8 18 0' stroke='%23fff3e4' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M14 26c6-8 12-8 18 0s12 8 18 0' stroke='%23fff3e4' stroke-width='5' fill='none' stroke-linecap='round' opacity='.6'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+  :root {
+    --ink: #14100f;
+    --char: #1f1715;
+    --char-2: #2a1f1c;
+    --line: rgba(255, 243, 228, 0.12);
+    --cream: #fff3e4;
+    --cream-dim: rgba(255, 243, 228, 0.72);
+    --cream-faint: rgba(255, 243, 228, 0.5);
+    --red: #d7263d;
+    --red-hot: #ff3b52;
+    --red-deep: #8e1b2a;
+    --orange: #f4743b;
+    --gold: #f2c14e;
+    --sea: #2bb3c0;
+    --leaf: #7fb069;
+    --radius: 18px;
+    --radius-sm: 12px;
+    --shadow: 0 20px 60px rgba(0,0,0,.45);
+    --font-display: 'Anton', Impact, 'Arial Narrow Bold', sans-serif;
+    --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --nav-h: 68px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); overflow-x: hidden; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    color: var(--cream);
+    background: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+  h1, h2, h3, h4 { margin: 0; line-height: 1.05; }
+  p { margin: 0 0 1em; }
+  ::selection { background: var(--red); color: var(--cream); }
+
+  .skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--red); color: var(--cream); padding: 10px 14px; border-radius: 10px; text-decoration: none; font-weight: 700; }
+  .skip:focus { top: 12px; }
+
+  .wrap { width: min(1180px, 100% - 40px); margin-inline: auto; }
+  @media (max-width: 640px) { .wrap { width: min(1180px, 100% - 32px); } }
+
+  .display { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .01em; font-weight: 400; }
+  .kicker { display: inline-block; text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; font-weight: 700; color: var(--orange); line-height: 1.5; }
+  .kicker::before { content: ""; display: inline-block; vertical-align: middle; width: 26px; height: 2px; margin-right: 10px; background: currentColor; border-radius: 2px; }
+
+  .section { padding-block: clamp(64px, 9vw, 120px); position: relative; }
+  .section.tight { padding-top: 0; }
+  .section-head { max-width: 760px; margin-bottom: clamp(28px, 4vw, 48px); }
+  .section-head h2 { font-size: clamp(2.4rem, 6vw, 4.4rem); margin-top: 10px; }
+  .section-head p { color: var(--cream-dim); font-size: 1.08rem; max-width: 62ch; }
+
+  /* ---------- NAV ---------- */
+  .nav { position: sticky; top: 0; z-index: 50; height: var(--nav-h); background: rgba(20, 16, 15, 0.84); backdrop-filter: blur(14px) saturate(1.3); -webkit-backdrop-filter: blur(14px) saturate(1.3); border-bottom: 1px solid var(--line); }
+  .nav .wrap { height: 100%; display: flex; align-items: center; gap: 18px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; font-family: var(--font-display); font-size: 1.35rem; letter-spacing: .04em; text-transform: uppercase; }
+  .brand svg { width: 34px; height: 34px; flex: none; }
+  .brand small { font-family: var(--font-body); font-size: .7rem; color: var(--cream-faint); letter-spacing: .08em; text-transform: none; margin-left: 2px; }
+  .nav-links { display: flex; gap: 4px; margin-left: 8px; }
+  .nav-links a { text-decoration: none; padding: 8px 12px; border-radius: 999px; font-weight: 500; font-size: .95rem; color: var(--cream-dim); transition: background .2s ease, color .2s ease; }
+  .nav-links a:hover { background: rgba(255,243,228,.08); color: var(--cream); }
+  .nav-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+  .status-pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; font-size: .82rem; font-weight: 600; border: 1px solid var(--line); background: rgba(255,243,228,.04); white-space: nowrap; }
+  .status-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: #8a8a8a; }
+  .status-pill.open .dot { background: var(--leaf); animation: pulse 2s infinite; }
+  .status-pill.closed .dot { background: var(--red-hot); }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(127,176,105,.55);} 70% { box-shadow: 0 0 0 8px rgba(127,176,105,0);} 100% { box-shadow: 0 0 0 0 rgba(127,176,105,0);} }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 999px; border: 1px solid transparent; font-weight: 700; text-decoration: none; cursor: pointer; white-space: nowrap; transition: transform .18s ease, filter .18s ease, background .18s ease, border-color .18s ease; user-select: none; touch-action: manipulation; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0) scale(.98); }
+  .btn.primary { background: var(--red); color: var(--cream); box-shadow: 0 10px 30px rgba(215,38,61,.35); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.ghost { background: transparent; border-color: rgba(255,243,228,.25); color: var(--cream); }
+  .btn.ghost:hover { background: rgba(255,243,228,.08); border-color: rgba(255,243,228,.4); }
+  .btn.cream { background: var(--cream); color: var(--ink); }
+  .btn.sm { padding: 9px 14px; font-size: .9rem; }
+  .btn .badge { background: var(--cream); color: var(--red-deep); border-radius: 999px; min-width: 22px; height: 22px; display: inline-grid; place-items: center; font-size: .78rem; padding-inline: 6px; }
+
+  .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 10px; width: 42px; height: 42px; cursor: pointer; }
+  .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--cream); margin: 3px auto; border-radius: 2px; }
+
+  @media (max-width: 1100px) {
+    .nav-links { display: none; position: absolute; left: 0; right: 0; top: var(--nav-h); flex-direction: column; background: rgba(20,16,15,.97); border-bottom: 1px solid var(--line); padding: 12px 20px 18px; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 10px; font-size: 1.05rem; }
+    .nav-toggle { display: block; }
+    .status-pill .label-long { display: none; }
+    .status-pill .label-short { display: inline !important; }
+    .nav-right .call-link { display: none; }
+    .brand small { display: none; }
+  }
+  @media (max-width: 1240px) { .nav-right .call-link { display: none; } }
+  @media (max-width: 400px) { .status-pill { display: none; } }
+  @media (max-width: 520px) {
+    .nav .wrap { gap: 8px; }
+    .nav-right { gap: 8px; }
+    .brand { font-size: 1.1rem; gap: 8px; }
+    .brand svg { width: 28px; height: 28px; }
+    .status-pill { padding: 6px 9px; font-size: .76rem; gap: 6px; }
+    #navOrder { padding: 8px 11px; font-size: .84rem; }
+    .nav-toggle { width: 38px; height: 38px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; min-height: calc(100vh - var(--nav-h)); min-height: calc(100svh - var(--nav-h)); display: grid; align-items: center; overflow: hidden; background: radial-gradient(90vmax 60vmax at 50% 120%, rgba(142,27,42,.55), transparent 60%), radial-gradient(50vmax 40vmax at 90% -10%, rgba(244,116,59,.18), transparent 60%), var(--ink); }
+  #bubbles { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+  .hero-grain { position: absolute; inset: 0; pointer-events: none; opacity: .35; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E"); }
+  .hero .wrap { position: relative; z-index: 2; padding-block: clamp(56px, 8vw, 110px); }
+  .hero h1 { font-size: clamp(4.4rem, 15vw, 12.5rem); line-height: .88; letter-spacing: -.005em; color: var(--cream); margin-top: 18px; }
+  .hero h1 .hot { color: var(--red-hot); text-shadow: 0 0 40px rgba(255,59,82,.35); display: inline-block; }
+  .hero .hangul { display: block; font-family: var(--font-body); font-weight: 700; font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: .3em; color: var(--cream-faint); margin-top: 14px; }
+  .hero-sub { font-size: clamp(1.1rem, 2.2vw, 1.45rem); color: var(--cream-dim); max-width: 46ch; margin-top: 18px; }
+  .hero-sub strong { color: var(--cream); }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: clamp(40px, 6vw, 72px); max-width: 780px; }
+  .stat { padding: 16px 18px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: rgba(255,243,228,.04); backdrop-filter: blur(6px); }
+  .stat b { display: block; font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .02em; color: var(--gold); }
+  .stat span { font-size: .85rem; color: var(--cream-dim); }
+  @media (max-width: 640px) { .hero-stats { grid-template-columns: 1fr 1fr; } .hero-stats .stat:last-child { grid-column: span 2; } }
+
+  .hero-jar { position: absolute; right: -6vw; bottom: -8vw; width: clamp(280px, 38vw, 560px); z-index: 1; opacity: .9; pointer-events: none; filter: drop-shadow(0 30px 60px rgba(0,0,0,.6)); animation: float 7s ease-in-out infinite; }
+  @keyframes float { 0%, 100% { transform: translateY(0) rotate(-3deg);} 50% { transform: translateY(-14px) rotate(-2deg);} }
+  @media (max-width: 900px) { .hero-jar { opacity: .3; width: 70vw; right: -25vw; bottom: -20vw; } }
+
+  /* ---------- TICKER / PAU HANA ---------- */
+  .ticker { background: var(--red); color: var(--cream); overflow: hidden; border-block: 1px solid rgba(0,0,0,.2); font-family: var(--font-display); text-transform: uppercase; letter-spacing: .06em; font-size: 1.1rem; }
+  .ticker-track { display: flex; width: max-content; animation: ticker 40s linear infinite; }
+  .ticker-track span { padding: 12px 22px; white-space: nowrap; }
+  .ticker-track span::after { content: "•"; margin-left: 22px; color: rgba(255,243,228,.6); }
+  @keyframes ticker { to { transform: translateX(-50%); } }
+
+  .pau { margin-top: -1px; background: linear-gradient(90deg, var(--char-2), var(--char)); border-bottom: 1px solid var(--line); }
+  .pau .wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 14px; font-size: .95rem; }
+  .pau .tag { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .06em; color: var(--gold); font-size: 1.05rem; }
+  .pau .sep { flex: 1; min-width: 20px; }
+  .pau a { color: var(--sea); font-weight: 600; text-decoration: none; }
+
+  /* ---------- MENU ---------- */
+  #menu { background: linear-gradient(180deg, var(--ink), var(--char) 30%, var(--char) 70%, var(--ink)); }
+  .plate-rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .rule { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 16px 18px; background: rgba(255,243,228,.035); }
+  .rule b { display: block; font-family: var(--font-display); text-transform: uppercase; letter-spacing: .04em; font-size: 1.2rem; color: var(--gold); margin-bottom: 4px; }
+  .rule span { font-size: .9rem; color: var(--cream-dim); }
+  .sides-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .sides-list i { font-style: normal; font-size: .78rem; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--cream-dim); }
+
+  .menu-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 26px; position: sticky; top: calc(var(--nav-h) + 8px); z-index: 5; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px; border-radius: 999px; background: rgba(20,16,15,.92); border: 1px solid var(--line); backdrop-filter: blur(10px); }
+  .tab { border: none; background: transparent; padding: 8px 14px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .92rem; color: var(--cream-dim); transition: background .2s ease, color .2s ease; }
+  .tab:hover { color: var(--cream); }
+  .tab[aria-selected="true"] { background: var(--red); color: var(--cream); }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: rgba(20,16,15,.92); padding: 8px 12px; border-radius: 999px; cursor: pointer; font-size: .85rem; font-weight: 600; color: var(--cream-dim); transition: all .2s ease; }
+  .chip[aria-pressed="true"] { border-color: var(--leaf); color: var(--leaf); background: rgba(127,176,105,.12); }
+  .search { margin-left: auto; display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; background: rgba(20,16,15,.92); padding: 6px 12px; }
+  .search input { background: none; border: none; color: var(--cream); font: inherit; width: 150px; outline: none; }
+  .search input::placeholder { color: var(--cream-faint); }
+  @media (max-width: 960px) { .menu-tools { position: static; } .search { margin-left: 0; width: 100%; } .search input { width: 100%; } }
+
+  .menu-group { margin-bottom: 42px; }
+  .menu-group-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 10px; flex-wrap: wrap; }
+  .menu-group-head h3 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .04em; font-size: 1.8rem; }
+  .menu-group-head span { color: var(--cream-faint); font-size: .9rem; }
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .item { display: grid; grid-template-columns: 70px 1fr; gap: 14px; padding: 14px; border-radius: var(--radius); background: rgba(255,243,228,.035); border: 1px solid var(--line); position: relative; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+  .item:hover { transform: translateY(-2px); border-color: rgba(255,243,228,.22); background: rgba(255,243,228,.055); }
+  .item .tile { width: 70px; height: 70px; border-radius: 14px; display: grid; place-items: center; font-size: 1.9rem; background: linear-gradient(145deg, var(--t1, #3a2320), var(--t2, #1f1715)); border: 1px solid rgba(255,243,228,.08); }
+  .item .top { display: flex; align-items: flex-start; gap: 8px; }
+  .item h4 { font-size: 1.05rem; font-weight: 700; line-height: 1.2; }
+  .item .price { margin-left: auto; font-family: var(--font-display); font-size: 1.15rem; color: var(--gold); letter-spacing: .02em; white-space: nowrap; }
+  .item .desc { font-size: .9rem; color: var(--cream-dim); margin: 4px 0 8px; }
+  .item .meta { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .heat { font-size: .78rem; letter-spacing: .04em; color: var(--orange); }
+  .heat.h0 { color: var(--cream-faint); }
+  .tag { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 7px; border-radius: 6px; border: 1px solid var(--line); color: var(--cream-dim); }
+  .tag.v { color: var(--leaf); border-color: rgba(127,176,105,.4); }
+  .tag.gf { color: var(--sea); border-color: rgba(43,179,192,.4); }
+  .tag.pop { color: var(--gold); border-color: rgba(242,193,78,.4); }
+  .size { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
+  .size button { border: none; background: transparent; padding: 4px 10px; border-radius: 999px; font-size: .78rem; font-weight: 700; cursor: pointer; color: var(--cream-dim); }
+  .size button[aria-pressed="true"] { background: var(--cream); color: var(--ink); }
+  .add { margin-left: auto; border: 1px solid rgba(255,243,228,.2); background: transparent; color: var(--cream); border-radius: 999px; padding: 6px 12px; cursor: pointer; font-weight: 700; font-size: .85rem; transition: all .18s ease; }
+  .add:hover { background: var(--red); border-color: var(--red); }
+  .add.added { background: var(--leaf); border-color: var(--leaf); color: var(--ink); }
+  .empty { padding: 40px; text-align: center; color: var(--cream-faint); border: 1px dashed var(--line); border-radius: var(--radius); }
+  .menu-note { color: var(--cream-faint); font-size: .85rem; margin-top: 12px; }
+
+  /* ---------- LOCAL TIPS ---------- */
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+  .tip { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: rgba(255,243,228,.03); }
+  .tip .ico { font-size: 1.6rem; margin-bottom: 8px; }
+  .tip b { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+  .tip p { margin: 0; color: var(--cream-dim); font-size: .93rem; }
+
+  /* ---------- JARS ---------- */
+  .jars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 900px) { .jars { grid-template-columns: 1fr; } }
+  .jar { border-radius: var(--radius); padding: 26px; border: 1px solid var(--line); position: relative; overflow: hidden; background: var(--char); display: flex; flex-direction: column; gap: 10px; min-height: 330px; }
+  .jar::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--fill, 30%); background: linear-gradient(180deg, rgba(215,38,61,.12), rgba(215,38,61,.35)); pointer-events: none; }
+  .jar > * { position: relative; z-index: 1; }
+  .jar .age { font-family: var(--font-display); font-size: 3rem; color: var(--red-hot); line-height: 1; }
+  .jar .age small { display: block; font-family: var(--font-body); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-faint); margin-top: 4px; }
+  .jar h3 { font-size: 1.3rem; }
+  .jar p { color: var(--cream-dim); font-size: .95rem; flex: 1; }
+  .jar .row { display: flex; align-items: center; gap: 10px; }
+  .jar .row .price { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); }
+  .jar.featured { border-color: rgba(215,38,61,.6); box-shadow: 0 0 0 1px rgba(215,38,61,.3), var(--shadow); }
+  .jar .ribbon { position: absolute; top: 14px; right: -34px; transform: rotate(35deg); background: var(--red); color: var(--cream); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 40px; }
+  .club { margin-top: 18px; border-radius: var(--radius); border: 1px solid var(--line); padding: 26px; background: linear-gradient(120deg, rgba(43,179,192,.14), rgba(215,38,61,.1)); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+  .club h3 { font-family: var(--font-display); text-transform: uppercase; font-size: 1.7rem; letter-spacing: .03em; }
+  .club p { margin: 6px 0 0; color: var(--cream-dim); max-width: 62ch; }
+  @media (max-width: 760px) { .club { grid-template-columns: 1fr; } }
+
+  /* ---------- FUNDRAISER + CATERING ---------- */
+  .catering { background: var(--char); }
+  .fund { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: stretch; margin-bottom: 40px; }
+  @media (max-width: 900px) { .fund { grid-template-columns: 1fr; } }
+  .card { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; background: rgba(255,243,228,.03); }
+  .card h3 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .04em; font-size: 1.5rem; margin-bottom: 14px; }
+  .card.hot { background: radial-gradient(80% 100% at 100% 0%, rgba(215,38,61,.28), transparent 70%), rgba(255,243,228,.03); }
+  .fund-math { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0 18px; }
+  .fund-math div { text-align: center; padding: 12px 8px; border-radius: var(--radius-sm); background: rgba(20,16,15,.6); border: 1px solid var(--line); }
+  .fund-math b { display: block; font-family: var(--font-display); font-size: 1.6rem; color: var(--gold); }
+  .fund-math span { font-size: .78rem; color: var(--cream-faint); }
+  .card ul { margin: 0 0 14px; padding-left: 18px; color: var(--cream-dim); font-size: .95rem; }
+  .card li { margin-bottom: 4px; }
+  .trays { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
+  .tray { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px; background: rgba(255,243,228,.03); }
+  .tray b { display: block; font-size: 1.05rem; }
+  .tray .serves { color: var(--sea); font-size: .82rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .tray p { color: var(--cream-dim); font-size: .9rem; margin: 8px 0 10px; }
+  .tray .price { font-family: var(--font-display); color: var(--gold); font-size: 1.25rem; }
+  .catering-cta { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .catering-cta small { color: var(--cream-faint); }
+
+  /* ---------- STORY ---------- */
+  .story-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+  @media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; } }
+  .story-copy p { font-size: 1.08rem; color: var(--cream-dim); }
+  .story-copy p strong { color: var(--cream); }
+  .pull { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.3rem); text-transform: uppercase; line-height: 1.05; border-left: 4px solid var(--red); padding-left: 18px; margin: 28px 0; color: var(--cream); }
+  .pull em { font-style: normal; color: var(--orange); }
+  .ferment { border: 1px solid var(--line); border-radius: var(--radius); background: var(--char); padding: 24px; position: relative; overflow: hidden; }
+  .ferment::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 50% at 100% 0%, rgba(215,38,61,.18), transparent 70%); pointer-events: none; }
+  .ferment h3 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .04em; font-size: 1.4rem; margin-bottom: 4px; }
+  .ferment .note { color: var(--cream-faint); font-size: .9rem; margin-bottom: 18px; }
+  .stages { display: grid; gap: 12px; position: relative; }
+  .stage { display: grid; grid-template-columns: 58px 1fr; gap: 14px; align-items: start; padding: 12px; border-radius: var(--radius-sm); background: rgba(255,243,228,.03); border: 1px solid transparent; transition: border-color .2s ease; }
+  .stage:hover { border-color: var(--line); }
+  .stage .day { font-family: var(--font-display); font-size: 1.45rem; color: var(--gold); line-height: 1; }
+  .stage .day small { display: block; font-family: var(--font-body); font-size: .68rem; letter-spacing: .12em; color: var(--cream-faint); text-transform: uppercase; margin-top: 2px; }
+  .stage b { display: block; margin-bottom: 2px; }
+  .stage p { margin: 0; font-size: .92rem; color: var(--cream-dim); }
+  .stage .bar { height: 6px; border-radius: 999px; background: rgba(255,243,228,.08); margin-top: 8px; overflow: hidden; }
+  .stage .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--orange), var(--red)); border-radius: 999px; }
+
+  /* ---------- VISIT ---------- */
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 860px) { .visit-grid { grid-template-columns: 1fr; } }
+  .addr { font-size: 1.15rem; line-height: 1.4; }
+  .addr small { display: block; color: var(--cream-faint); font-size: .85rem; margin-top: 6px; }
+  .visit-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours td { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: .98rem; }
+  .hours td:last-child { text-align: right; color: var(--cream-dim); }
+  .hours tr.today td { color: var(--gold); font-weight: 700; }
+  .hours tr.closed td:last-child { color: var(--red-hot); }
+  .hours-note { color: var(--cream-faint); font-size: .85rem; margin-top: 12px; }
+  .perks { display: grid; gap: 8px; margin-top: 18px; }
+  .perk { display: flex; gap: 10px; align-items: flex-start; font-size: .93rem; color: var(--cream-dim); }
+  .perk b { color: var(--cream); }
+  .map { margin-top: 24px; border-radius: var(--radius); border: 1px solid var(--line); overflow: hidden; height: 240px; position: relative; background: linear-gradient(rgba(255,243,228,.05) 1px, transparent 1px) 0 0/40px 40px, linear-gradient(90deg, rgba(255,243,228,.05) 1px, transparent 1px) 0 0/40px 40px, radial-gradient(60% 80% at 70% 60%, rgba(43,179,192,.25), transparent 70%), var(--char); }
+  .map .road { position: absolute; height: 10px; background: rgba(255,243,228,.12); border-radius: 999px; }
+  .map .pin { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -100%); text-align: center; }
+  .map .pin i { display: block; width: 18px; height: 18px; border-radius: 50% 50% 50% 0; background: var(--red); transform: rotate(-45deg); margin: 0 auto; box-shadow: 0 6px 16px rgba(215,38,61,.5); }
+  .map .pin b { display: block; margin-top: 8px; font-size: .8rem; background: var(--ink); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); white-space: nowrap; }
+  .map a { position: absolute; right: 12px; bottom: 12px; }
+
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 820px; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { list-style: none; cursor: pointer; padding: 18px 0; font-weight: 700; font-size: 1.05rem; display: flex; gap: 14px; align-items: center; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; margin-left: auto; font-family: var(--font-display); font-size: 1.5rem; color: var(--red-hot); transition: transform .2s ease; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { color: var(--cream-dim); padding-bottom: 18px; margin: 0; }
+
+  /* ---------- SIGNUP ---------- */
+  .signup { border-radius: var(--radius); padding: clamp(28px, 5vw, 56px); text-align: center; background: radial-gradient(80% 120% at 50% 0%, rgba(215,38,61,.35), transparent 70%), var(--char); border: 1px solid var(--line); }
+  .signup h2 { font-size: clamp(2.2rem, 6vw, 4rem); }
+  .signup p { color: var(--cream-dim); max-width: 54ch; margin: 12px auto 22px; }
+  .signup form { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; }
+  .signup input { flex: 1; min-width: 0; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,243,228,.06); color: var(--cream); padding: 12px 18px; font: inherit; outline: none; }
+  .signup input:focus { border-color: var(--red); }
+  .signup .ok { color: var(--leaf); font-weight: 700; margin-top: 14px; }
+  @media (max-width: 520px) { .signup form { flex-direction: column; } }
+
+  /* ---------- FOOTER ---------- */
+  footer { border-top: 1px solid var(--line); padding: 40px 0 60px; color: var(--cream-faint); font-size: .9rem; }
+  footer .wrap { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 24px; }
+  @media (max-width: 760px) { footer .wrap { grid-template-columns: 1fr; } }
+  footer h4 { color: var(--cream); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+  footer a { text-decoration: none; display: block; padding: 3px 0; }
+  footer a:hover { color: var(--cream); }
+  footer .brand { font-size: 1.6rem; color: var(--cream); margin-bottom: 8px; }
+  footer .fine { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: .8rem; }
+
+  /* ---------- CART DRAWER ---------- */
+  .cart-fab { position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 60; display: none; }
+  .cart-fab.show { display: inline-flex; }
+  .scrim { position: fixed; inset: 0; background: rgba(0,0,0,.55); backdrop-filter: blur(3px); z-index: 70; opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+  .scrim.show { opacity: 1; pointer-events: auto; }
+  .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(460px, 100%); background: var(--char); z-index: 80; border-left: 1px solid var(--line); box-shadow: var(--shadow); transform: translateX(105%); transition: transform .3s cubic-bezier(.2,.7,.2,1); display: flex; flex-direction: column; }
+  .drawer.show { transform: translateX(0); }
+  .drawer header { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-bottom: 1px solid var(--line); }
+  .drawer header h3 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .04em; font-size: 1.4rem; }
+  .drawer .close { margin-left: auto; background: none; border: 1px solid var(--line); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 1.1rem; }
+  .drawer .lines { flex: 1; overflow: auto; padding: 12px 20px; }
+  .line { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .line .row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+  .line b { display: block; font-size: .98rem; }
+  .line small { color: var(--cream-faint); }
+  .qty { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
+  .qty button { width: 28px; height: 28px; border-radius: 50%; border: none; background: transparent; cursor: pointer; font-weight: 700; }
+  .qty button:hover { background: rgba(255,243,228,.1); }
+  .qty span { min-width: 22px; text-align: center; font-weight: 700; }
+  .line .lp { font-family: var(--font-display); color: var(--gold); text-align: right; }
+  .line .sides { margin-top: 8px; }
+  .line .sides .lbl { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cream-faint); margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .line .sides .lbl em { font-style: normal; color: var(--gold); }
+  .side-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .side-chip { border: 1px solid var(--line); background: transparent; color: var(--cream-dim); font-size: .78rem; padding: 4px 9px; border-radius: 999px; cursor: pointer; }
+  .side-chip[aria-pressed="true"] { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+  .side-chip:disabled { opacity: .35; cursor: not-allowed; }
+  .line .opts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .drawer .empty-cart { text-align: center; color: var(--cream-faint); padding: 40px 10px; }
+  .drawer footer { border-top: 1px solid var(--line); padding: 14px 20px calc(18px + env(safe-area-inset-bottom)); display: grid; gap: 8px; }
+  .totals { display: grid; gap: 4px; font-size: .95rem; color: var(--cream-dim); }
+  .totals div { display: flex; justify-content: space-between; }
+  .totals .grand { color: var(--cream); font-weight: 700; font-size: 1.15rem; border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
+  .drawer .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+  .drawer .actions .primary { grid-column: span 2; }
+  .drawer .fine { font-size: .75rem; color: var(--cream-faint); margin: 4px 0 0; }
+  .pickup { display: flex; gap: 8px; align-items: center; font-size: .9rem; flex-wrap: wrap; }
+  .pickup select, .pickup input { background: var(--ink); color: var(--cream); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font: inherit; }
+  .pickup input { flex: 1; min-width: 120px; }
+
+  /* ---------- DEPTH GAUGE / TOAST ---------- */
+  .gauge { position: fixed; left: 16px; top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none; }
+  .gauge .track { width: 4px; height: 160px; border-radius: 999px; background: rgba(255,243,228,.12); position: relative; overflow: hidden; }
+  .gauge .track i { position: absolute; left: 0; right: 0; top: 0; height: 0%; background: linear-gradient(180deg, var(--orange), var(--red)); }
+  .gauge b { font-family: var(--font-display); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-faint); writing-mode: vertical-rl; transform: rotate(180deg); }
+  @media (max-width: 1260px) { .gauge { display: none; } }
+
+  .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); transform: translate(-50%, 20px); z-index: 90; background: var(--cream); color: var(--ink); padding: 10px 16px; border-radius: 999px; font-weight: 700; font-size: .9rem; opacity: 0; transition: opacity .2s ease, transform .2s ease; pointer-events: none; box-shadow: var(--shadow); max-width: calc(100vw - 32px); text-align: center; }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker-track { animation: none; }
+    .hero-jar { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn, .item, .drawer, .scrim, .toast { transition: none !important; }
+    .status-pill.open .dot { animation: none; }
+  }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#menu">Skip to menu</a>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Deep Kimchi home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#d7263d"/><path d="M14 38c6-8 12-8 18 0s12 8 18 0" stroke="#fff3e4" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M14 26c6-8 12-8 18 0s12 8 18 0" stroke="#fff3e4" stroke-width="5" fill="none" stroke-linecap="round" opacity=".6"/></svg>
+        Deep Kimchi <small>딥김치</small>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#jars">Jars</a>
+        <a href="#fundraisers">Fundraisers</a>
+        <a href="#catering">Catering</a>
+        <a href="#story">Story</a>
+        <a href="#visit">Hours</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-right">
+        <span class="status-pill" id="statusPill" aria-live="polite"><span class="dot"></span><span class="label">Checking hours…</span></span>
+        <a class="btn ghost sm call-link" id="navCall" href="#visit">Call</a>
+        <button class="btn primary sm" id="navOrder" type="button">Order <span class="badge" id="navCount">0</span></button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <canvas id="bubbles" aria-hidden="true"></canvas>
+      <div class="hero-grain" aria-hidden="true"></div>
+      <svg class="hero-jar" viewBox="0 0 320 420" aria-hidden="true">
+        <defs>
+          <linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#fff3e4" stop-opacity=".18"/><stop offset=".5" stop-color="#fff3e4" stop-opacity=".04"/><stop offset="1" stop-color="#fff3e4" stop-opacity=".16"/></linearGradient>
+          <linearGradient id="brine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5a3c"/><stop offset="1" stop-color="#8e1b2a"/></linearGradient>
+        </defs>
+        <rect x="70" y="18" width="180" height="46" rx="10" fill="#2a1f1c" stroke="#fff3e4" stroke-opacity=".25" stroke-width="3"/>
+        <rect x="58" y="60" width="204" height="330" rx="34" fill="url(#brine)"/>
+        <g fill="#fff3e4" opacity=".55">
+          <ellipse cx="110" cy="140" rx="26" ry="10" transform="rotate(-20 110 140)"/>
+          <ellipse cx="190" cy="180" rx="30" ry="11" transform="rotate(15 190 180)"/>
+          <ellipse cx="130" cy="240" rx="28" ry="10" transform="rotate(-10 130 240)"/>
+          <ellipse cx="205" cy="290" rx="26" ry="10" transform="rotate(25 205 290)"/>
+          <ellipse cx="120" cy="330" rx="30" ry="11" transform="rotate(-25 120 330)"/>
+        </g>
+        <g fill="#f2c14e" opacity=".8"><circle cx="150" cy="200" r="4"/><circle cx="230" cy="240" r="3"/><circle cx="95" cy="290" r="3"/><circle cx="175" cy="350" r="4"/></g>
+        <rect x="58" y="60" width="204" height="330" rx="34" fill="url(#glass)" stroke="#fff3e4" stroke-opacity=".35" stroke-width="3"/>
+        <rect x="90" y="150" width="140" height="110" rx="10" fill="#fff3e4"/>
+        <text x="160" y="196" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="34" fill="#d7263d">DEEP</text>
+        <text x="160" y="236" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="34" fill="#14100f">KIMCHI</text>
+      </svg>
+
+      <div class="wrap">
+        <span class="kicker">Korean plate lunch · Takeout · <span id="heroHood">Honolulu, Hawaiʻi</span></span>
+        <h1 class="display" id="heroTitle">Deep<br><span class="hot">Kimchi</span></h1>
+        <span class="hangul">딥 김 치</span>
+        <p class="hero-sub"><strong>Kalbi, meat jun, BBQ chicken, fish jun.</strong> Mini or regular, pick your four sides, two scoops rice. House kimchi fermented in-house and sold by the jar. Order ahead, grab it at the window.</p>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#menu">See the menu</a>
+          <a class="btn ghost" id="heroCall" href="#visit">Call to order</a>
+        </div>
+        <div class="hero-stats" role="list">
+          <div class="stat" role="listitem"><b>Mini or Regular</b><span>Same plate, two sizes, honest portions</span></div>
+          <div class="stat" role="listitem"><b>Pick 4 sides</b><span>Kimchi, bean sprouts, watercress, mac salad, and more</span></div>
+          <div class="stat" role="listitem"><b>10% off</b><span>Kamaʻāina and military with ID, every day</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+    <div class="pau">
+      <div class="wrap">
+        <span class="tag">Pau Hana</span>
+        <span>Tue–Fri, 2–5pm: <strong>$2 off any regular plate</strong>, Spam kimchi musubi $3. Call ahead, grab it on the way home.</span>
+        <span class="sep"></span>
+        <a href="#menu">Browse plates →</a>
+      </div>
+    </div>
+
+    <!-- ================= MENU ================= -->
+    <section class="section" id="menu" aria-labelledby="menuTitle">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Takeout menu</span>
+          <h2 class="display" id="menuTitle">Plates, bowls,<br>and the jar</h2>
+          <p>Local-style Korean plate lunch. Pick your size, pick your sides, add it to your order, then text or call it in. Prices below are before tax.</p>
+        </div>
+
+        <div class="plate-rules reveal">
+          <div class="rule"><b>Regular plate</b><span>Full portion of meat, 2 scoops rice, <strong>4 sides</strong>. Lunch and dinner.</span></div>
+          <div class="rule"><b>Mini plate</b><span>Smaller portion, 1 scoop rice, <strong>2 sides</strong>. About $3 to $4 less. Honestly, still plenty.</span></div>
+          <div class="rule"><b>Pick your sides</b><span>Choose from the case:</span>
+            <div class="sides-list" id="sidesList"></div>
+          </div>
+          <div class="rule"><b>Swaps, no charge</b><span>Brown rice. Extra kimchi instead of mac. Tossed greens instead of rice. Just ask.</span></div>
+        </div>
+
+        <div class="menu-tools">
+          <div class="tabs" role="tablist" aria-label="Menu categories" id="tabs"></div>
+          <div class="chips" id="chips">
+            <button class="chip" type="button" data-filter="v" aria-pressed="false">🌱 Vegan</button>
+            <button class="chip" type="button" data-filter="gf" aria-pressed="false">GF</button>
+            <button class="chip" type="button" data-filter="mild" aria-pressed="false">Mild only</button>
+          </div>
+          <label class="search"><span aria-hidden="true">🔍</span><input type="search" id="search" placeholder="Search the menu" aria-label="Search the menu" /></label>
+        </div>
+
+        <div id="menuList" aria-live="polite"></div>
+        <p class="menu-note">🌶 = heat level (0–3). Anything can be made mild with white kimchi and no gochujang. Oʻahu GET added at checkout. Menu changes with the fish and the farms. Sold-out items get pulled from the case around 7pm.</p>
+      </div>
+    </section>
+
+    <!-- ================= ORDER LIKE A LOCAL ================= -->
+    <section class="section tight" id="local" aria-labelledby="localTitle">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Good to know</span>
+          <h2 class="display" id="localTitle">Order like<br>a local</h2>
+        </div>
+        <div class="tips">
+          <div class="tip reveal"><div class="ico">🍱</div><b>Mini is plenty</b><p>Our mini is what most places call a regular. Get the mini for lunch and the regular when you're feeding two.</p></div>
+          <div class="tip reveal"><div class="ico">🥬</div><b>Extra kimchi is free</b><p>Ask for extra house kimchi on any plate. Also free: extra jun sauce, extra scoop of sprouts, and a side of gochujang.</p></div>
+          <div class="tip reveal"><div class="ico">📱</div><b>Text it in</b><p>Build your order here, tap "Text this order," and we'll reply with a pickup time. Faster than the phone during the lunch rush.</p></div>
+          <div class="tip reveal"><div class="ico">🪖</div><b>Kamaʻāina &amp; military</b><p>10% off with a Hawaiʻi ID or military ID, every day, no minimum. Kūpuna 65+ get it too. Just mention it at the window.</p></div>
+          <div class="tip reveal"><div class="ico">🏖️</div><b>Beach-ready</b><p>Plates come in sturdy lidded containers that survive a cooler and a trunk. Ask for utensils and extra napkins for the whole crew.</p></div>
+          <div class="tip reveal"><div class="ico">💳</div><b>Cash, card, tap</b><p>We take cash, all major cards, Apple Pay, and Google Pay. No minimum on cards. Tips go straight to the kitchen crew.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= JARS ================= -->
+    <section class="section" id="jars" aria-labelledby="jarsTitle">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Kimchi by the jar</span>
+          <h2 class="display" id="jarsTitle">Take the<br>funk home</h2>
+          <p>Our house napa kimchi in 32 oz glass jars, dated so you know exactly how deep you're going. Bring the jar back clean and get $2 off the next one. Also at our farmers market table on weekends.</p>
+        </div>
+        <div class="jars">
+          <article class="jar reveal" style="--fill:22%">
+            <div class="age">0<small>days · fresh (geotjeori)</small></div>
+            <h3>Fresh Jar</h3>
+            <p>Made this morning. Crisp, garlicky, lightly sour. The jar for people who "don't like kimchi" but haven't had ours yet. Great with grilled meat.</p>
+            <div class="row"><span class="price">$16</span><button class="btn ghost sm add-jar" type="button" data-id="jar-fresh">Add to order</button></div>
+          </article>
+          <article class="jar featured reveal" style="--fill:55%">
+            <span class="ribbon">Best seller</span>
+            <div class="age">7<small>days · house</small></div>
+            <h3>Weekly Jar</h3>
+            <p>The one on every plate. Balanced, bubbly, ready to eat. This is what we mean when we say kimchi.</p>
+            <div class="row"><span class="price">$18</span><button class="btn primary sm add-jar" type="button" data-id="jar-weekly">Add to order</button></div>
+          </article>
+          <article class="jar reveal" style="--fill:88%">
+            <div class="age">30<small>days · deep</small></div>
+            <h3>Deep Jar</h3>
+            <p>Sour, soft, seriously savory. For jjigae, fried rice, and people who know exactly what they want.</p>
+            <div class="row"><span class="price">$20</span><button class="btn ghost sm add-jar" type="button" data-id="jar-deep">Add to order</button></div>
+          </article>
+        </div>
+        <div class="club reveal">
+          <div>
+            <h3>Kimchi Club</h3>
+            <p>A Weekly Jar plus one rotating small-batch kimchi (pineapple, green mango, cucumber, radish) every two weeks. Pickup, or delivery anywhere on Oʻahu. Cancel any time, keep the jars.</p>
+          </div>
+          <a class="btn cream" href="#signup">Join the club · $34/mo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FUNDRAISERS + CATERING ================= -->
+    <section class="section catering" id="fundraisers" aria-labelledby="fundTitle">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Fundraiser plates &amp; party trays</span>
+          <h2 class="display" id="fundTitle">Feed the team.<br>Fund the season.</h2>
+          <p>Schools, hālau, canoe clubs, church groups, Little League, band trips. Plate lunch fundraisers are how things get paid for around here, and we make them easy.</p>
+        </div>
+        <div class="fund">
+          <div class="card hot reveal">
+            <h3>How the fundraiser works</h3>
+            <div class="fund-math">
+              <div><b>$14</b><span>ticket price</span></div>
+              <div><b>$5</b><span>your group keeps</span></div>
+              <div><b>50+</b><span>plate minimum</span></div>
+            </div>
+            <ul>
+              <li>Pick a pickup date at least two weeks out. We print the tickets for you.</li>
+              <li>Your group presells tickets and keeps $5 from every plate. You never handle food money.</li>
+              <li>Choose the plate: BBQ chicken, meat jun, spicy pork, or a mix. Comes with rice, mac salad, and kimchi.</li>
+              <li>Plates are packed, labeled, and ready at the window, or we drive them to your school or gym for groups over 100.</li>
+            </ul>
+            <a class="btn primary" id="fundMail" href="#">Start a fundraiser</a>
+          </div>
+          <div class="card reveal" id="catering">
+            <h3>Party trays</h3>
+            <p style="color:var(--cream-dim);font-size:.95rem">Baby lūʻau, grad party, office pau hana, beach day. Half trays feed 10 to 12, full trays 20 to 25. Order 48 hours ahead. Rice and mac salad by the pan.</p>
+            <div class="trays">
+              <div class="tray"><span class="serves">Half / Full</span><b>Kalbi</b><p>Kiawe-grilled short ribs, sesame, green onion. Always the first tray to go.</p><span class="price">$145 / $270</span></div>
+              <div class="tray"><span class="serves">Half / Full</span><b>Meat Jun</b><p>Egg-battered marinated beef, sliced for the table. Jun sauce included.</p><span class="price">$120 / $225</span></div>
+              <div class="tray"><span class="serves">Half / Full</span><b>BBQ Chicken</b><p>Shoyu-garlic grilled thighs. The safe bet that everybody finishes.</p><span class="price">$95 / $180</span></div>
+              <div class="tray"><span class="serves">Half / Full</span><b>Spicy Pork</b><p>Gochujang pork shoulder, onions, cabbage. Ask for mild.</p><span class="price">$110 / $205</span></div>
+              <div class="tray"><span class="serves">Half / Full</span><b>Japchae</b><p>Glass noodles, shiitake, spinach, carrot. Vegan and gluten-free.</p><span class="price">$85 / $160</span></div>
+              <div class="tray"><span class="serves">Serves 20</span><b>Banchan Spread</b><p>Six banchan, two kimchi ages, pickled daikon, ssamjang and lettuce.</p><span class="price">$95</span></div>
+            </div>
+            <div class="catering-cta">
+              <a class="btn ghost sm" id="cateringMail" href="#">Request a quote</a>
+              <a class="btn ghost sm" id="cateringCall" href="#visit">Call the kitchen</a>
+              <small>Oʻahu delivery from $25. Chafing dishes available.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STORY ================= -->
+    <section class="section" id="story" aria-labelledby="storyTitle">
+      <div class="wrap story-grid">
+        <div class="story-copy reveal">
+          <span class="kicker">The story</span>
+          <h2 class="display" id="storyTitle" style="font-size:clamp(2.4rem,6vw,4.4rem);margin:10px 0 20px;">In deep,<br>on purpose</h2>
+          <p>Deep Kimchi started as a folding table at the Saturday farmers market: one cooler, forty jars, and a hand-painted sign. The jars sold out by nine. People kept asking what to <em>eat</em> it with. So we started cooking.</p>
+          <p><strong>We're a Korean kitchen with a plate-lunch heart.</strong> Halmoni's kalbi marinade, grilled over kiawe. Meat jun the way it's only made in Hawaiʻi. BBQ chicken because every plate lunch counter needs it. Kimchi fried rice with Spam because, honestly, it's better that way. Two scoops rice and your four sides on every plate, the way you grew up with.</p>
+          <blockquote class="pull">Everything on the menu is built around <em>one jar of kimchi</em> we've been perfecting for eleven years.</blockquote>
+          <p>We ferment in small batches in a walk-in held at 38°F. Napa from Waimānalo when we can get it, local won bok when we can't. Gochugaru we import ourselves. No vinegar, no sugar to fake the funk. Just salt and time.</p>
+          <p>Takeout only. A pickup window, a case of sides, a shelf of jars, and a bench outside. That's the whole restaurant.</p>
+        </div>
+        <aside class="ferment reveal" aria-labelledby="fermentTitle">
+          <h3 id="fermentTitle">How deep do you want it?</h3>
+          <div class="note">Every jar is dated. Pick your stage, or ask for a flight of all four.</div>
+          <div class="stages">
+            <div class="stage"><div class="day">0<small>day</small></div><div><b>Fresh (geotjeori)</b><p>Crunchy, salad-like, barely sour. Great next to grilled meat.</p><div class="bar"><i style="width:12%"></i></div></div></div>
+            <div class="stage"><div class="day">7<small>days</small></div><div><b>Weekly</b><p>Our house default. Bright, fizzy, balanced. What goes on the plates.</p><div class="bar"><i style="width:40%"></i></div></div></div>
+            <div class="stage"><div class="day">30<small>days</small></div><div><b>Deep</b><p>Sour, deeply savory, soft. The one for jjigae and fried rice.</p><div class="bar"><i style="width:75%"></i></div></div></div>
+            <div class="stage"><div class="day">90<small>days</small></div><div><b>Aged (mugeunji)</b><p>Funky and complex. Limited batches, weekends only. Ask at the window.</p><div class="bar"><i style="width:100%"></i></div></div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ================= VISIT ================= -->
+    <section class="section tight" id="visit" aria-labelledby="visitTitle">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Hours &amp; location</span>
+          <h2 class="display" id="visitTitle">Find the<br>pickup window</h2>
+        </div>
+        <div class="visit-grid">
+          <div class="card reveal">
+            <h3>Location</h3>
+            <div class="addr" id="addrBlock"></div>
+            <div class="visit-actions">
+              <a class="btn primary sm" id="visitCall" href="#">Call</a>
+              <a class="btn ghost sm" id="visitText" href="#">Text an order</a>
+              <a class="btn ghost sm" id="visitMaps" href="#" target="_blank" rel="noopener">Directions</a>
+            </div>
+            <div class="map" aria-hidden="true">
+              <span class="road" style="left:-5%;right:-5%;top:52%;transform:rotate(-6deg)"></span>
+              <span class="road" style="left:20%;top:-10%;bottom:-10%;width:10px;height:auto;transform:rotate(12deg)"></span>
+              <span class="road" style="left:66%;top:-10%;bottom:-10%;width:10px;height:auto;transform:rotate(-8deg)"></span>
+              <div class="pin"><i></i><b id="mapPin">Deep Kimchi</b></div>
+              <a class="btn cream sm" id="mapLink" href="#" target="_blank" rel="noopener">Open in Maps</a>
+            </div>
+          </div>
+          <div class="card reveal">
+            <h3>Hours <span style="font-family:var(--font-body);font-size:.8rem;color:var(--cream-faint);letter-spacing:.06em;">(Hawaiʻi time)</span></h3>
+            <table class="hours" id="hoursTable"></table>
+            <p class="hours-note" id="hoursNote"></p>
+            <div class="perks">
+              <div class="perk"><span>🪪</span><span><b>Kamaʻāina, military, kūpuna:</b> 10% off with ID, every day.</span></div>
+              <div class="perk"><span>🅿️</span><span><b>Parking:</b> <span id="parkingNote"></span></span></div>
+              <div class="perk"><span>⏱️</span><span><b>Wait times:</b> about 15 minutes if you order ahead, 20 to 30 at the window during lunch rush (11:30–1).</span></div>
+              <div class="perk"><span>📞</span><span><b>Big orders:</b> more than 8 plates, call at least an hour ahead so we can have it ready.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section" id="faq" aria-labelledby="faqTitle">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Questions</span>
+          <h2 class="display" id="faqTitle">Ask us<br>anything</h2>
+        </div>
+        <div class="faq reveal">
+          <details><summary>What's the difference between mini and regular?</summary><p>Regular is the full portion of meat, two scoops rice, and four sides. Mini is a smaller portion of meat, one scoop rice, and two sides. Mini is a solid lunch for one person. Regular is dinner, or lunch plus leftovers.</p></details>
+          <details><summary>What sides can I pick?</summary><p>House kimchi, cucumber kimchi, radish kimchi, bean sprouts, watercress, spinach namul, choy sum, mac salad, potato-mac salad, fish cake, pickled daikon, japchae, and kimchi slaw. The case changes a little day to day. If you don't pick, we'll give you kimchi, sprouts, watercress, and mac.</p></details>
+          <details><summary>Can I order ahead?</summary><p>Please do. Build your order on this page, then text or call it in. We'll reply with a pickup time. During lunch rush, texting is faster than calling. Orders over 8 plates need an hour of lead time. Fundraiser plates and party trays need more.</p></details>
+          <details><summary>Do you have a kamaʻāina discount?</summary><p>Yes. 10% off with a Hawaiʻi ID, military ID, or for kūpuna 65 and up. Every day, no minimum, no coupon. Just tell us at the window.</p></details>
+          <details><summary>Is there anywhere to sit?</summary><p>Not really. We're takeout only, with a bench out front and a couple of stools by the window. The park is close if you want to eat outside.</p></details>
+          <details><summary>How spicy is "spicy"?</summary><p>Our scale runs 0 to 3. Most plates land at 1 or 2. Anything can be made mild by swapping in white kimchi and skipping the gochujang. Level 3 items are marked, and yes, we'll go past 3 if you ask.</p></details>
+          <details><summary>Vegan or gluten-free?</summary><p>Yes. Our house kimchi is made without fish sauce or shrimp, so it's fully vegan. Look for the 🌱 and GF tags. Kalbi, bulgogi, and BBQ chicken marinades use shoyu, so they aren't gluten-free. Meat jun, fish jun, katsu, and mandoo contain wheat.</p></details>
+          <details><summary>Do you deliver?</summary><p>Not for individual orders yet. Kimchi Club subscriptions, fundraiser orders over 100 plates, and party trays can be delivered anywhere on Oʻahu.</p></details>
+          <details><summary>Can I bring my jar back?</summary><p>Yes please. Rinse it, bring it, get $2 off the next one. We sanitize and reuse every jar that comes back.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SIGNUP ================= -->
+    <section class="section tight" id="signup" aria-labelledby="signupTitle">
+      <div class="wrap">
+        <div class="signup reveal">
+          <span class="kicker">Kimchi Club &amp; specials</span>
+          <h2 class="display" id="signupTitle">Get in deep</h2>
+          <p>Aged-kimchi drops, new banchan, pau hana deals, fundraiser dates, and first dibs on Kimchi Club spots. One text a week, tops. No spam. Well, only in the fried rice.</p>
+          <form id="signupForm" novalidate>
+            <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required />
+            <button class="btn primary" type="submit">Sign me up</button>
+          </form>
+          <div class="ok" id="signupOk" hidden>Mahalo! You're on the list. 🥬</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <div class="brand display">Deep Kimchi</div>
+        <div id="footAddr"></div>
+        <div style="margin-top:10px"><span id="footPhone"></span></div>
+        <div class="fine">Korean takeout, made in Hawaiʻi. Locally owned. Mahalo for supporting a small kitchen.</div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#menu">Menu</a><a href="#jars">Kimchi jars</a><a href="#fundraisers">Fundraiser plates</a><a href="#catering">Party trays</a><a href="#visit">Hours &amp; location</a><a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a id="footIg" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a id="footTt" href="#" target="_blank" rel="noopener">TikTok</a>
+        <a id="footMail" href="#">Email the kitchen</a>
+        <a href="#signup">Kimchi Club</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= CART ================= -->
+  <button class="btn primary cart-fab" id="cartFab" type="button" aria-label="Open your order">🛍 Your order <span class="badge" id="fabCount">0</span> · <span id="fabTotal">$0.00</span></button>
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer" aria-label="Your order" aria-hidden="true">
+    <header>
+      <h3>Your order</h3>
+      <button class="close" id="drawerClose" type="button" aria-label="Close order">✕</button>
+    </header>
+    <div class="lines" id="lines"></div>
+    <footer>
+      <div class="pickup"><label for="pickupTime">Pickup</label><select id="pickupTime"></select><input type="text" id="orderName" placeholder="Name for the order" aria-label="Name for the order" maxlength="40" /></div>
+      <div class="totals" id="totals"></div>
+      <div class="actions">
+        <a class="btn primary" id="textOrder" href="#">📱 Text this order</a>
+        <a class="btn ghost" id="callOrder" href="#">📞 Call it in</a>
+        <button class="btn ghost" id="copyOrder" type="button">Copy</button>
+      </div>
+      <p class="fine">Texting opens your messages app with the order filled in. We'll reply with a pickup time. Pay at the window: cash, card, or tap. Kamaʻāina and military discounts applied at pickup. <button type="button" id="clearOrder" style="background:none;border:none;padding:0;color:var(--cream-dim);text-decoration:underline;cursor:pointer">Clear order</button></p>
+    </footer>
+  </aside>
+
+  <div class="gauge" aria-hidden="true"><div class="track"><i id="gaugeFill"></i></div><b id="gaugeLabel">Surface</b></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  /* =====================================================================
+     CONFIG: everything you'll want to edit before launch lives here.
+     ===================================================================== */
+  const CONFIG = {
+    name: 'Deep Kimchi',
+    phoneDisplay: '(808) 555-0142',          // TODO: real number
+    phoneRaw: '+18085550142',                // TODO: real number, E.164
+    email: 'hello@deepkimchi.example',       // TODO: real email
+    instagram: 'https://www.instagram.com/deepkimchihi',
+    tiktok: 'https://www.tiktok.com/@deepkimchihi',
+    address: { street: '1234 Waiʻalae Ave', neighborhood: 'Kaimukī', city: 'Honolulu', state: 'HI', zip: '96816' }, // TODO
+    landmark: 'Pickup window is street-side. Look for the red awning.',
+    parking: 'loading zone out front (15 min), free lot behind the building after 5pm and all day Sunday.',
+    mapsQuery: 'Deep Kimchi Honolulu HI',
+    timeZone: 'Pacific/Honolulu',
+    taxRate: 0.04712,                        // Oʻahu GET pass-through
+    // 0 = Sunday … 6 = Saturday. [open, close] in 24h decimal. null = closed.
+    hours: { 0: [11, 19], 1: null, 2: [10.5, 20], 3: [10.5, 20], 4: [10.5, 20], 5: [10.5, 21], 6: [10.5, 21] }
+  };
+
+  const SIDES = ['House kimchi', 'Cucumber kimchi', 'Radish kimchi', 'Bean sprouts', 'Watercress', 'Spinach namul', 'Choy sum', 'Mac salad', 'Potato-mac salad', 'Fish cake', 'Pickled daikon', 'Japchae', 'Kimchi slaw'];
+  const DEFAULT_SIDES = ['House kimchi', 'Bean sprouts', 'Watercress', 'Mac salad'];
+  const SIZES = { mini: { label: 'Mini', sides: 2 }, regular: { label: 'Regular', sides: 4 } };
+
+  const CATEGORIES = [
+    { id: 'plates',  name: 'Plates',            blurb: 'Rice + your choice of sides · mini or regular' },
+    { id: 'bowls',   name: 'Bowls & Soups',     blurb: 'Rice bowls, noodles, and soups in a to-go pot' },
+    { id: 'kimchi',  name: 'Kimchi & Banchan',  blurb: 'By the cup or by the jar' },
+    { id: 'sides',   name: 'Sides & Musubi',    blurb: 'For the drive home' },
+    { id: 'drinks',  name: 'Drinks & Sweets',   blurb: 'Cold things, sweet things' },
+    { id: 'keiki',   name: 'Keiki',             blurb: 'Smaller plates, zero spice' }
+  ];
+
+  // price: number (single) or {mini, regular}. heat 0–3. tags: v vegan, vg vegetarian, gf gluten-free, pop popular
+  const MENU = [
+    { id: 'kalbi',     cat: 'plates', name: 'Kalbi Plate', price: { mini: 18, regular: 22 }, heat: 0, tags: ['pop'], emoji: '🍖', t: ['#5a1d1d','#2a1210'], desc: 'Island-raised short ribs in a shoyu-pear marinade, grilled over kiawe. The plate that pays the rent.' },
+    { id: 'meatjun',   cat: 'plates', name: 'Meat Jun Plate', price: { mini: 14, regular: 17 }, heat: 0, tags: ['pop'], emoji: '🥚', t: ['#7a5a1a','#2a1f0c'], desc: 'Thin marinated beef, dipped in egg and pan-fried. Only in Hawaiʻi. Comes with our jun dipping sauce.' },
+    { id: 'bbqchx',    cat: 'plates', name: 'BBQ Chicken Plate', price: { mini: 13, regular: 16 }, heat: 0, tags: ['pop'], emoji: '🍗', t: ['#7a4a1a','#2a1a0c'], desc: 'Boneless thighs in shoyu-garlic-ginger marinade, grilled over kiawe. The plate lunch classic, done right.' },
+    { id: 'spicypork', cat: 'plates', name: 'Spicy Pork Plate', price: { mini: 14, regular: 17 }, heat: 2, tags: [], emoji: '🔥', t: ['#8a2a1c','#2a100c'], desc: 'Gochujang-marinated pork shoulder with onions, sesame, and scallion. Order it hotter if you dare.' },
+    { id: 'bulgogi',   cat: 'plates', name: 'BBQ Beef (Bulgogi) Plate', price: { mini: 15, regular: 18 }, heat: 0, tags: [], emoji: '🥩', t: ['#5a2a2a','#221010'], desc: 'Sweet-shoyu ribeye with onions and mushrooms. For the uncle who "doesn’t do spicy."' },
+    { id: 'fishjun',   cat: 'plates', name: 'Fish Jun Plate', price: { mini: 14, regular: 17 }, heat: 0, tags: [], emoji: '🐟', t: ['#1a4a5a','#0c1a20'], desc: 'Local catch (usually mahi or ono), egg-battered and pan-fried. Lighter than meat jun, same sauce.' },
+    { id: 'katsu',     cat: 'plates', name: 'Chicken Katsu Plate', price: { mini: 13, regular: 16 }, heat: 0, tags: [], emoji: '🍛', t: ['#7a5a2a','#2a1c0c'], desc: 'Panko-crusted thigh, fried crisp. Comes with katsu sauce, or ask for our kimchi katsu sauce (heat 1).' },
+    { id: 'mochiko',   cat: 'plates', name: 'Mochiko Chicken Plate', price: { mini: 13, regular: 16 }, heat: 0, tags: ['gf'], emoji: '🍯', t: ['#8a5a10','#2a1c0a'], desc: 'Mochiko-crusted chicken, shoyu-ginger marinade. Add our sweet gochujang glaze for Korean fried chicken vibes (heat 1).' },
+    { id: 'mixed',     cat: 'plates', name: 'Mixed Plate (pick 2)', price: { mini: 17, regular: 21 }, heat: 0, tags: ['pop'], emoji: '🍱', t: ['#5a3a2a','#22140c'], desc: 'Any two: kalbi, meat jun, BBQ chicken, spicy pork, bulgogi, fish jun. Tell us which in the order notes.' },
+    { id: 'deepplate', cat: 'plates', name: 'The Deep Plate', price: { regular: 26 }, heat: 1, tags: ['pop'], emoji: '🌋', t: ['#8e1b2a','#2a0c10'], desc: 'Kalbi, meat jun, and BBQ chicken on one plate with all four sides and both kimchi ages. Regular only. Bring a friend, or don’t.' },
+    { id: 'tofu',      cat: 'plates', name: 'Tofu Plate (Dubu Jorim)', price: { mini: 12, regular: 15 }, heat: 1, tags: ['v', 'gf'], emoji: '🧈', t: ['#4a4a1a','#1c1c0c'], desc: 'Braised tofu in shoyu-gochugaru sauce with sautéed greens. Vegan, and nobody misses the meat.' },
+
+    { id: 'kfr',       cat: 'bowls', name: 'Kimchi Fried Rice + Spam', price: 14, heat: 2, tags: ['pop'], emoji: '🍳', t: ['#8a2a1c','#2a100c'], desc: 'Deep-jar kimchi, crispy Spam, scallion, sesame, and a runny fried egg. Sub tofu for vegan.' },
+    { id: 'locomoco',  cat: 'bowls', name: 'Kalbi Loco Moco', price: 18, heat: 1, tags: ['pop'], emoji: '🍔', t: ['#5a1d1d','#2a1210'], desc: 'Kalbi-spiced beef patty over rice, gochujang brown gravy, two fried eggs. Very Hawaiʻi, very Korean.' },
+    { id: 'bibimbap',  cat: 'bowls', name: 'Bi Bim Bap', price: 15, heat: 1, tags: ['vg', 'gf'], emoji: '🥗', t: ['#3a5a2a','#101c0c'], desc: 'Seasoned namul, kimchi, fried egg, gochujang on the side. Add bulgogi +$5, kalbi +$7. Vegan without the egg.' },
+    { id: 'yukgaejang', cat: 'bowls', name: 'Yukgaejang', price: 15, heat: 2, tags: ['gf'], emoji: '🍲', t: ['#8a2a1c','#2a100c'], desc: 'Spicy shredded beef soup with fern, sprouts, and glass noodles. Comes with rice. The cold-and-rainy-day order.' },
+    { id: 'sundubu',   cat: 'bowls', name: 'Sundubu Jjigae', price: 14, heat: 2, tags: ['gf'], emoji: '🥘', t: ['#8e1b2a','#2a0c10'], desc: 'Soft tofu stew with clams and a cracked egg, bubbling in a to-go pot. Rice on the side. Vegan version available.' },
+    { id: 'kjjigae',   cat: 'bowls', name: 'Kimchi Jjigae', price: 14, heat: 2, tags: [], emoji: '🍜', t: ['#8e1b2a','#2a0c10'], desc: 'Thirty-day kimchi, pork belly, tofu, scallion. The reason we keep a deep jar going at all times.' },
+    { id: 'mandoosoup', cat: 'bowls', name: 'Mandoo Soup', price: 13, heat: 0, tags: [], emoji: '🥟', t: ['#5a4a3a','#1c140c'], desc: 'Six pork-and-kimchi dumplings in clear beef broth with egg ribbons and scallion. Keiki-approved.' },
+    { id: 'japchae',   cat: 'bowls', name: 'Japchae', price: 12, heat: 0, tags: ['v', 'gf'], emoji: '🍝', t: ['#4a3a1a','#1c140c'], desc: 'Sweet potato glass noodles, shiitake, spinach, carrot, sesame. Add bulgogi +$5.' },
+
+    { id: 'kimchi8',   cat: 'kimchi', name: 'House Kimchi (8 oz cup)', price: 5, heat: 2, tags: ['v', 'gf', 'pop'], emoji: '🥬', t: ['#8e1b2a','#2a0c10'], desc: 'Weekly age. The one on every plate. Ask for fresh or deep instead.' },
+    { id: 'flight',    cat: 'kimchi', name: 'Kimchi Flight', price: 9, heat: 2, tags: ['v', 'gf', 'pop'], emoji: '🎚', t: ['#5a1d1d','#2a1210'], desc: 'Fresh, weekly, deep, and whatever aged batch we have. Four cups, one spoon, a little education.' },
+    { id: 'oi',        cat: 'kimchi', name: 'Cucumber Kimchi (8 oz)', price: 5, heat: 1, tags: ['v', 'gf'], emoji: '🥒', t: ['#2a5a2a','#0c1c0c'], desc: 'Crunchy stuffed cucumber, made every morning. Never more than two days old.' },
+    { id: 'kkakdugi',  cat: 'kimchi', name: 'Radish Kimchi (8 oz)', price: 5, heat: 2, tags: ['v', 'gf'], emoji: '🟥', t: ['#6a1a1a','#220c0c'], desc: 'Cubed daikon, big crunch, big funk. Best friend of any soup on this menu.' },
+    { id: 'pineapple', cat: 'kimchi', name: 'Pineapple Kimchi (8 oz)', price: 6, heat: 1, tags: ['v', 'gf'], emoji: '🍍', t: ['#8a6a10','#2a200a'], desc: 'Local pineapple, gochugaru, ginger, lime. Island-only. Insane with kalbi.' },
+    { id: 'baek',      cat: 'kimchi', name: 'White Kimchi (8 oz)', price: 5, heat: 0, tags: ['v', 'gf'], emoji: '🤍', t: ['#4a4a4a','#1a1a1a'], desc: 'No chili. Clean, refreshing, slightly sweet with pear. For keiki and the heat-averse.' },
+    { id: 'banchan',   cat: 'kimchi', name: 'Banchan Box (5 kinds)', price: 11, heat: 1, tags: ['vg'], emoji: '🍱', t: ['#3a3a5a','#0c0c1c'], desc: 'Chef’s pick from the case: usually spinach, sprouts, fish cake, pickled daikon, and potato-mac.' },
+    { id: 'jar-fresh', cat: 'kimchi', name: 'Fresh Jar (32 oz)', price: 16, heat: 2, tags: ['v', 'gf'], emoji: '🫙', t: ['#8a3a1c','#2a100c'], desc: 'Day-zero, crisp and garlicky. Bring the jar back for $2 off.' },
+    { id: 'jar-weekly', cat: 'kimchi', name: 'Weekly Jar (32 oz)', price: 18, heat: 2, tags: ['v', 'gf', 'pop'], emoji: '🫙', t: ['#8e1b2a','#2a0c10'], desc: 'Seven-day house kimchi. The best seller. Bring the jar back for $2 off.' },
+    { id: 'jar-deep',  cat: 'kimchi', name: 'Deep Jar (32 oz)', price: 20, heat: 2, tags: ['v', 'gf'], emoji: '🫙', t: ['#5a1d1d','#2a1210'], desc: 'Thirty-day. Sour, soft, serious. Bring the jar back for $2 off.' },
+
+    { id: 'mac',       cat: 'sides', name: 'Mac Salad (pint)', price: 4, heat: 0, tags: ['vg'], emoji: '🥣', t: ['#5a4a2a','#1c140c'], desc: 'Classic. Or get the kimchi mac: same pint, chopped kimchi folded in, +$1.' },
+    { id: 'jeon',      cat: 'sides', name: 'Kimchi Pancake', price: 9, heat: 2, tags: ['v'], emoji: '🥞', t: ['#8a3a1c','#2a100c'], desc: 'Crispy edges, chewy middle, deep-jar kimchi throughout. Shoyu-vinegar dip. Feeds two, technically.' },
+    { id: 'mandoo',    cat: 'sides', name: 'Mandoo (6)', price: 8, heat: 0, tags: [], emoji: '🥟', t: ['#5a4a3a','#1c140c'], desc: 'Pork-and-kimchi dumplings, pan-fried. Vegetable mandoo available, same price.' },
+    { id: 'corncheese', cat: 'sides', name: 'Kahuku Corn Cheese', price: 8, heat: 0, tags: ['vg', 'gf'], emoji: '🌽', t: ['#8a6a10','#2a200a'], desc: 'Sweet local corn, mozzarella, a little mayo, broiled until bubbling. Not authentic to anywhere. Perfect.' },
+    { id: 'fries',     cat: 'sides', name: 'Kimchi Garlic Fries', price: 8, heat: 2, tags: ['vg'], emoji: '🍟', t: ['#7a5a1a','#2a1f0c'], desc: 'Crinkle fries, garlic butter, chopped kimchi, gochujang aioli, scallion. Eat in the car, no shame.' },
+    { id: 'kalbimusubi', cat: 'sides', name: 'Kalbi Musubi', price: 4.5, heat: 0, tags: ['pop'], emoji: '🍙', t: ['#5a1d1d','#2a1210'], desc: 'Chopped kalbi, rice, nori, a little kimchi tucked inside. Two is a snack, three is lunch.' },
+    { id: 'spammusubi', cat: 'sides', name: 'Spam Kimchi Musubi', price: 3.5, heat: 1, tags: [], emoji: '🍙', t: ['#6a3a3a','#220c0c'], desc: 'Teriyaki Spam, kimchi, rice, nori. The Hawaiʻi classic with a Korean handshake. $3 during pau hana.' },
+    { id: 'rice',      cat: 'sides', name: 'Extra Scoop Rice', price: 1.5, heat: 0, tags: ['v', 'gf'], emoji: '🍚', t: ['#4a4a4a','#1a1a1a'], desc: 'Calrose, steamed right. Brown rice available.' },
+    { id: 'extraside', cat: 'sides', name: 'Extra Side (any)', price: 2.5, heat: 0, tags: [], emoji: '🥢', t: ['#3a4a3a','#0c1c0c'], desc: 'One more scoop of anything from the case. Name it in the order notes.' },
+
+    { id: 'lihing',    cat: 'drinks', name: 'Li Hing Lemonade', price: 4, heat: 0, tags: ['v', 'gf'], emoji: '🍋', t: ['#8a6a10','#2a200a'], desc: 'Fresh lemonade with li hing mui. Sweet, sour, salty. Extremely Hawaiʻi.' },
+    { id: 'pog',       cat: 'drinks', name: 'POG', price: 3, heat: 0, tags: ['v', 'gf'], emoji: '🧃', t: ['#8a3a1c','#2a100c'], desc: 'Passion-orange-guava, 16 oz. You know what it is.' },
+    { id: 'boricha',   cat: 'drinks', name: 'Iced Barley Tea', price: 3, heat: 0, tags: ['v', 'gf'], emoji: '🍵', t: ['#5a4a2a','#1c140c'], desc: 'Roasted barley tea (bori-cha), unsweetened. What you drink with kimchi jjigae at home.' },
+    { id: 'hsun',      cat: 'drinks', name: 'Hawaiian Sun (can)', price: 2.5, heat: 0, tags: ['v', 'gf'], emoji: '🥤', t: ['#4a6a2a','#141c0c'], desc: 'Pass-O-Guava, Lilikoi Passion, or Pineapple Orange. Ask what’s cold.' },
+    { id: 'bingsu',    cat: 'drinks', name: 'Haupia Bingsu', price: 9, heat: 0, tags: ['vg', 'gf', 'pop'], emoji: '🍧', t: ['#3a4a6a','#0c1020'], desc: 'Milk shave ice, haupia, toasted coconut, injeolmi rice cake, roasted soybean powder. Feeds two.' },
+    { id: 'buttermochi', cat: 'drinks', name: 'Kinako Butter Mochi', price: 4, heat: 0, tags: ['vg', 'gf'], emoji: '🟨', t: ['#8a6a10','#2a200a'], desc: 'Local-style butter mochi with roasted soybean powder on top. Baked every morning, gone by 3.' },
+    { id: 'hotteok',   cat: 'drinks', name: 'Hotteok', price: 5, heat: 0, tags: ['vg'], emoji: '🥮', t: ['#7a5a1a','#2a1f0c'], desc: 'Griddled sweet pancake filled with brown sugar, cinnamon, and mac nuts. Made to order, eat it hot.' },
+
+    { id: 'kkatsu',    cat: 'keiki', name: 'Keiki Katsu', price: 8, heat: 0, tags: [], emoji: '🧒', t: ['#7a4a1a','#2a1a0c'], desc: 'Small chicken katsu, one scoop rice, mac salad, white kimchi on the side. Comes with a Hawaiian Sun.' },
+    { id: 'kbbq',      cat: 'keiki', name: 'Keiki BBQ Chicken', price: 8, heat: 0, tags: ['gf'], emoji: '🍗', t: ['#5a2a2a','#221010'], desc: 'BBQ chicken, rice, sprouts, no spice. Comes with a Hawaiian Sun.' },
+    { id: 'kmandoo',   cat: 'keiki', name: 'Keiki Mandoo (4) + Rice', price: 7, heat: 0, tags: [], emoji: '🥟', t: ['#5a4a3a','#1c140c'], desc: 'Four dumplings, one scoop rice, cucumber slices. Comes with a Hawaiian Sun.' }
+  ];
+
+  const TICKER = ['Kalbi plate', 'Meat jun', 'BBQ chicken', 'Fish jun', 'Mini or regular', 'Pick your 4 sides', 'Kimchi fried rice + Spam', 'Kalbi loco moco', 'Haupia bingsu', 'Kamaʻāina 10% off', 'Fundraiser plates', 'Pau hana 2–5pm', 'Bring your jar back'];
+
+  /* ===================================================================== */
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const money = n => '$' + n.toFixed(2);
+  const short = n => money(n).replace(/\.00$/, '');
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const byId = id => MENU.find(m => m.id === id);
+  const hasSizes = it => typeof it.price === 'object';
+  const priceOf = (it, size) => hasSizes(it) ? it.price[size] : it.price;
+
+  /* ---------- Contact wiring ---------- */
+  (function wireContact() {
+    const tel = 'tel:' + CONFIG.phoneRaw;
+    const maps = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(CONFIG.mapsQuery);
+    ['navCall', 'heroCall', 'visitCall', 'cateringCall', 'callOrder'].forEach(id => { const el = $('#' + id); if (el) el.href = tel; });
+    ['visitMaps', 'mapLink'].forEach(id => { $('#' + id).href = maps; });
+    $('#visitText').href = 'sms:' + CONFIG.phoneRaw + '?&body=' + encodeURIComponent('Aloha Deep Kimchi! I’d like to order: ');
+    $('#cateringMail').href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Party tray quote') + '&body=' + encodeURIComponent('Date:\nHeadcount:\nPickup or delivery (address):\nTrays you’re thinking about:\n');
+    $('#fundMail').href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Fundraiser plates') + '&body=' + encodeURIComponent('Group / school:\nContact name & phone:\nPickup date (2+ weeks out):\nEstimated plates:\nPlate choice (BBQ chicken / meat jun / spicy pork / mix):\nPickup at the window or delivery to:\n');
+    $('#footMail').href = 'mailto:' + CONFIG.email;
+    $('#footIg').href = CONFIG.instagram;
+    $('#footTt').href = CONFIG.tiktok;
+    const a = CONFIG.address;
+    $('#heroHood').textContent = (a.neighborhood || a.city) + ', Hawaiʻi';
+    $('#addrBlock').innerHTML = `${esc(a.street)}<br>${esc(a.neighborhood)} · ${esc(a.city)}, ${esc(a.state)} ${esc(a.zip)}<small>${esc(CONFIG.landmark)}</small>`;
+    $('#mapPin').textContent = `Deep Kimchi · ${a.neighborhood}`;
+    $('#parkingNote').textContent = CONFIG.parking;
+    $('#footAddr').textContent = `${a.street}, ${a.city}, ${a.state} ${a.zip}`;
+    $('#footPhone').innerHTML = `<a href="${tel}" style="display:inline">${esc(CONFIG.phoneDisplay)}</a>`;
+    $('#sidesList').innerHTML = SIDES.map(s => `<i>${esc(s)}</i>`).join('');
+  })();
+
+  (function buildTicker() {
+    const html = TICKER.map(t => `<span>${esc(t)}</span>`).join('');
+    $('#tickerTrack').innerHTML = html + html;
+  })();
+
+  /* ---------- Hours & open status (Hawaiʻi time) ---------- */
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  function hawaiiNow() {
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone: CONFIG.timeZone, weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+    const get = t => (parts.find(p => p.type === t) || {}).value;
+    const dow = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+    const hour = parseInt(get('hour'), 10) % 24;
+    const minute = parseInt(get('minute'), 10);
+    return { dow, hour, minute, t: hour + minute / 60 };
+  }
+  function fmtTime(h) {
+    const hh = Math.floor(h), mm = Math.round((h - hh) * 60);
+    const ampm = hh >= 12 ? 'pm' : 'am';
+    const h12 = hh % 12 === 0 ? 12 : hh % 12;
+    return h12 + (mm ? ':' + String(mm).padStart(2, '0') : '') + ampm;
+  }
+  function renderHours() {
+    const now = hawaiiNow();
+    $('#hoursTable').innerHTML = DAYS.map((d, i) => {
+      const h = CONFIG.hours[i];
+      const cls = [i === now.dow ? 'today' : '', h ? '' : 'closed'].join(' ').trim();
+      return `<tr class="${cls}"><td>${d}</td><td>${h ? fmtTime(h[0]) + ' – ' + fmtTime(h[1]) : 'Closed'}</td></tr>`;
+    }).join('');
+
+    const today = CONFIG.hours[now.dow];
+    const pill = $('#statusPill');
+    let open = false, msg = '';
+    if (today && now.t >= today[0] && now.t < today[1]) {
+      open = true;
+      const minsLeft = Math.round((today[1] - now.t) * 60);
+      msg = minsLeft <= 45 ? `Open · closes in ${minsLeft} min` : `Open now · until ${fmtTime(today[1])}`;
+    } else if (today && now.t < today[0]) {
+      msg = `Closed · opens ${fmtTime(today[0])} today`;
+    } else {
+      let d = (now.dow + 1) % 7, n = 1;
+      while (!CONFIG.hours[d] && n < 8) { d = (d + 1) % 7; n++; }
+      msg = `Closed · opens ${fmtTime(CONFIG.hours[d][0])} ${n === 1 ? 'tomorrow' : DAYS[d]}`;
+    }
+    pill.classList.toggle('open', open);
+    pill.classList.toggle('closed', !open);
+    $('.label', pill).innerHTML = `<span class="label-long">${esc(msg)}</span><span class="label-short" style="display:none">${open ? 'Open' : 'Closed'}</span>`;
+    $('#hoursNote').textContent = `Right now in Honolulu it’s ${DAYS[now.dow]}, ${fmtTime(now.t)}. ${open ? 'The window is open.' : 'The window is closed.'} Last call is 15 minutes before close.`;
+    return { now, open, today };
+  }
+  let hoursState = renderHours();
+  setInterval(() => { hoursState = renderHours(); buildPickupTimes(); }, 60000);
+
+  /* ---------- Menu render ---------- */
+  const state = { cat: 'all', filters: new Set(), q: '', size: {} };
+  const HEAT = ['No heat', '🌶', '🌶🌶', '🌶🌶🌶'];
+
+  function buildTabs() {
+    const tabs = $('#tabs');
+    const all = [{ id: 'all', name: 'Everything' }, ...CATEGORIES];
+    tabs.innerHTML = all.map(c => `<button class="tab" role="tab" type="button" data-cat="${c.id}" aria-selected="${c.id === state.cat}">${esc(c.name)}</button>`).join('');
+    tabs.addEventListener('click', e => {
+      const b = e.target.closest('.tab'); if (!b) return;
+      state.cat = b.dataset.cat;
+      $$('.tab', tabs).forEach(t => t.setAttribute('aria-selected', t === b));
+      renderMenu();
+    });
+  }
+
+  function itemMatches(it) {
+    if (state.cat !== 'all' && it.cat !== state.cat) return false;
+    if (state.filters.has('v') && !it.tags.includes('v')) return false;
+    if (state.filters.has('gf') && !it.tags.includes('gf')) return false;
+    if (state.filters.has('mild') && it.heat > 1) return false;
+    if (state.q) {
+      const hay = (it.name + ' ' + it.desc + ' ' + it.tags.join(' ')).toLowerCase();
+      if (!hay.includes(state.q)) return false;
+    }
+    return true;
+  }
+
+  function selectedSize(it) {
+    if (!hasSizes(it)) return null;
+    const s = state.size[it.id];
+    if (s && it.price[s] != null) return s;
+    return it.price.regular != null ? 'regular' : Object.keys(it.price)[0];
+  }
+
+  function countInCart(id, size) {
+    let n = 0;
+    for (const line of cart.values()) if (line.id === id && (size == null || line.size === size)) n += line.qty;
+    return n;
+  }
+
+  function itemCard(it) {
+    const tags = it.tags.map(t => t === 'v' ? '<span class="tag v">Vegan</span>' : t === 'vg' ? '<span class="tag v">Veg</span>' : t === 'gf' ? '<span class="tag gf">GF</span>' : t === 'pop' ? '<span class="tag pop">Popular</span>' : '').join('');
+    const size = selectedSize(it);
+    const price = priceOf(it, size);
+    const sizeUi = hasSizes(it) ? `<span class="size" role="group" aria-label="Plate size">${Object.keys(SIZES).filter(k => it.price[k] != null).map(k => `<button type="button" data-size="${k}" data-for="${it.id}" aria-pressed="${k === size}">${SIZES[k].label}</button>`).join('')}</span>` : '';
+    const n = countInCart(it.id, size);
+    return `<article class="item" data-id="${it.id}" style="--t1:${it.t[0]};--t2:${it.t[1]}">
+      <div class="tile" aria-hidden="true">${it.emoji}</div>
+      <div>
+        <div class="top"><h4>${esc(it.name)}</h4><span class="price" data-price-for="${it.id}">${short(price)}</span></div>
+        <p class="desc">${esc(it.desc)}</p>
+        <div class="meta"><span class="heat h${it.heat}" title="Heat level ${it.heat} of 3">${HEAT[it.heat]}</span>${tags}${sizeUi}
+          <button class="add ${n ? 'added' : ''}" type="button" data-add="${it.id}" aria-label="Add ${esc(it.name)} to order">${n ? '✓ ' + n + ' in order' : '+ Add'}</button>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  function renderMenu() {
+    const list = $('#menuList');
+    const cats = state.cat === 'all' ? CATEGORIES : CATEGORIES.filter(c => c.id === state.cat);
+    let html = '', any = false;
+    for (const c of cats) {
+      const items = MENU.filter(it => it.cat === c.id && itemMatches(it));
+      if (!items.length) continue;
+      any = true;
+      html += `<div class="menu-group"><div class="menu-group-head"><h3>${esc(c.name)}</h3><span>${esc(c.blurb)}</span></div><div class="menu-grid">${items.map(itemCard).join('')}</div></div>`;
+    }
+    list.innerHTML = any ? html : `<div class="empty">Nothing matches that. Try fewer filters, or ask at the window. We’re flexible.</div>`;
+  }
+
+  function refreshCard(id) {
+    const it = byId(id); if (!it) return;
+    const size = selectedSize(it);
+    $$(`[data-price-for="${id}"]`).forEach(el => el.textContent = short(priceOf(it, size)));
+    $$(`[data-size][data-for="${id}"]`).forEach(b => b.setAttribute('aria-pressed', b.dataset.size === size));
+    const n = countInCart(id, size);
+    $$(`[data-add="${id}"]`).forEach(b => { b.classList.toggle('added', n > 0); b.textContent = n ? '✓ ' + n + ' in order' : '+ Add'; });
+    $$(`.add-jar[data-id="${id}"]`).forEach(b => { b.textContent = n ? `✓ ${n} in order` : 'Add to order'; });
+  }
+
+  $('#chips').addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    const f = b.dataset.filter;
+    const on = !state.filters.has(f);
+    if (on) state.filters.add(f); else state.filters.delete(f);
+    b.setAttribute('aria-pressed', on);
+    renderMenu();
+  });
+  $('#search').addEventListener('input', e => { state.q = e.target.value.trim().toLowerCase(); renderMenu(); });
+
+  /* ---------- Cart ---------- */
+  // key -> { id, size, qty, sides: [] }
+  const cart = new Map();
+  const STORE_KEY = 'deepkimchi.order.v2';
+  function loadCart() {
+    try {
+      const raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return;
+      const arr = JSON.parse(raw);
+      if (!Array.isArray(arr)) return;
+      for (const l of arr) {
+        const it = byId(l.id); if (!it || !(l.qty > 0)) continue;
+        const size = hasSizes(it) ? (it.price[l.size] != null ? l.size : selectedSize(it)) : null;
+        const key = l.id + '|' + (size || '');
+        cart.set(key, { id: l.id, size, qty: l.qty, sides: Array.isArray(l.sides) ? l.sides.filter(s => SIDES.includes(s)) : [] });
+      }
+      try { $('#orderName').value = localStorage.getItem(STORE_KEY + '.name') || ''; } catch {}
+    } catch { /* storage unavailable */ }
+  }
+  function saveCart() {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(Array.from(cart.values())));
+      localStorage.setItem(STORE_KEY + '.name', $('#orderName').value || '');
+    } catch { /* ignore */ }
+  }
+
+  function cartTotals() {
+    let count = 0, sub = 0;
+    for (const l of cart.values()) { const it = byId(l.id); if (!it) continue; count += l.qty; sub += priceOf(it, l.size) * l.qty; }
+    const tax = sub * CONFIG.taxRate;
+    return { count, sub, tax, total: sub + tax };
+  }
+
+  function addToCart(id, delta = 1, sizeOverride) {
+    const it = byId(id); if (!it) return;
+    const size = hasSizes(it) ? (sizeOverride || selectedSize(it)) : null;
+    const key = id + '|' + (size || '');
+    const line = cart.get(key) || { id, size, qty: 0, sides: [] };
+    line.qty += delta;
+    if (line.qty <= 0) cart.delete(key); else cart.set(key, line);
+    saveCart();
+    renderCart();
+    refreshCard(id);
+  }
+
+  function lineLabel(l) {
+    const it = byId(l.id);
+    return it.name + (l.size ? ` (${SIZES[l.size].label})` : '');
+  }
+
+  function orderText() {
+    const lines = [];
+    for (const l of cart.values()) {
+      const it = byId(l.id);
+      let s = `${l.qty}x ${lineLabel(l)}`;
+      if (hasSizes(it)) s += ` - sides: ${l.sides.length ? l.sides.join(', ') : 'chef’s choice'}`;
+      lines.push(s);
+    }
+    const t = cartTotals();
+    const pickup = $('#pickupTime').value;
+    const name = ($('#orderName').value || '').trim();
+    return `Aloha Deep Kimchi! Pickup order${pickup ? ' for ' + pickup : ''}:\n${lines.join('\n')}\nTotal ≈ ${money(t.total)} incl. GET\nName: ${name || ''}`;
+  }
+
+  function renderCart() {
+    const t = cartTotals();
+    $('#navCount').textContent = t.count;
+    $('#fabCount').textContent = t.count;
+    $('#fabTotal').textContent = money(t.total);
+    $('#cartFab').classList.toggle('show', t.count > 0);
+
+    const lines = $('#lines');
+    if (!cart.size) {
+      lines.innerHTML = `<div class="empty-cart">Your order is empty.<br><br><a class="btn ghost sm" href="#menu" data-close>Browse the menu</a></div>`;
+    } else {
+      lines.innerHTML = Array.from(cart.entries()).map(([key, l]) => {
+        const it = byId(l.id);
+        const max = l.size ? SIZES[l.size].sides : 0;
+        const sidesUi = hasSizes(it) ? `<div class="sides"><div class="lbl"><span>Pick ${max} sides</span><em>${l.sides.length}/${max}${l.sides.length ? '' : ' · chef’s choice'}</em></div>
+          <div class="side-chips">${SIDES.map(s => { const on = l.sides.includes(s); const dis = !on && l.sides.length >= max; return `<button type="button" class="side-chip" data-side="${esc(s)}" data-key="${esc(key)}" aria-pressed="${on}" ${dis ? 'disabled' : ''}>${esc(s)}</button>`; }).join('')}</div></div>` : '';
+        return `<div class="line"><div class="row"><div><b>${esc(lineLabel(l))}</b><small>${money(priceOf(it, l.size))} each · ${it.heat ? HEAT[it.heat] : 'no heat'}</small></div>
+          <div style="display:flex;align-items:center;gap:12px"><span class="qty"><button type="button" data-dec="${esc(key)}" aria-label="Remove one">−</button><span>${l.qty}</span><button type="button" data-inc="${esc(key)}" aria-label="Add one">+</button></span><span class="lp">${money(priceOf(it, l.size) * l.qty)}</span></div></div>${sidesUi}</div>`;
+      }).join('');
+    }
+    $('#totals').innerHTML = `<div><span>Subtotal</span><span>${money(t.sub)}</span></div><div><span>Oʻahu GET (4.712%)</span><span>${money(t.tax)}</span></div><div class="grand"><span>Total</span><span>${money(t.total)}</span></div>`;
+    $('#textOrder').href = 'sms:' + CONFIG.phoneRaw + '?&body=' + encodeURIComponent(orderText());
+  }
+
+  function buildPickupTimes() {
+    const sel = $('#pickupTime');
+    const prev = sel.value;
+    const { now, open, today } = hoursState;
+    const opts = ['ASAP (~15–20 min)'];
+    if (open && today) {
+      let m = Math.ceil((now.t * 60 + 20) / 15) * 15;
+      const end = today[1] * 60 - 15;
+      for (let i = 0; i < 12 && m <= end; i++, m += 15) {
+        const h = Math.floor(m / 60), mm = m % 60;
+        opts.push(`${h % 12 === 0 ? 12 : h % 12}:${String(mm).padStart(2, '0')} ${h >= 12 ? 'pm' : 'am'}`);
+      }
+    } else {
+      opts.push('Next opening (we’ll confirm by text)');
+    }
+    sel.innerHTML = opts.map(o => `<option${o === prev ? ' selected' : ''}>${esc(o)}</option>`).join('');
+  }
+
+  function openDrawer() { $('#drawer').classList.add('show'); $('#scrim').classList.add('show'); $('#drawer').setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+  function closeDrawer() { $('#drawer').classList.remove('show'); $('#scrim').classList.remove('show'); $('#drawer').setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+
+  document.addEventListener('click', e => {
+    const sz = e.target.closest('[data-size][data-for]');
+    if (sz) { state.size[sz.dataset.for] = sz.dataset.size; refreshCard(sz.dataset.for); return; }
+    const add = e.target.closest('[data-add]');
+    if (add) { const it = byId(add.dataset.add); addToCart(it.id, 1); toast(hasSizes(it) ? `${SIZES[selectedSize(it)].label} plate added. Pick your sides in the order tray.` : 'Added to your order'); return; }
+    const jar = e.target.closest('.add-jar');
+    if (jar) { addToCart(jar.dataset.id, 1); toast('Jar added 🫙'); return; }
+    const inc = e.target.closest('[data-inc]'); if (inc) { const l = cart.get(inc.dataset.inc); if (l) addToCart(l.id, 1, l.size); return; }
+    const dec = e.target.closest('[data-dec]'); if (dec) { const l = cart.get(dec.dataset.dec); if (l) addToCart(l.id, -1, l.size); return; }
+    const chip = e.target.closest('.side-chip');
+    if (chip) {
+      const l = cart.get(chip.dataset.key); if (!l) return;
+      const s = chip.dataset.side, max = SIZES[l.size].sides;
+      const i = l.sides.indexOf(s);
+      if (i >= 0) l.sides.splice(i, 1); else if (l.sides.length < max) l.sides.push(s);
+      saveCart(); renderCart(); return;
+    }
+    if (e.target.closest('[data-close]')) closeDrawer();
+  });
+  $('#navOrder').addEventListener('click', openDrawer);
+  $('#cartFab').addEventListener('click', openDrawer);
+  $('#drawerClose').addEventListener('click', closeDrawer);
+  $('#scrim').addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+  $('#pickupTime').addEventListener('change', renderCart);
+  $('#orderName').addEventListener('input', () => { saveCart(); renderCart(); });
+  $('#clearOrder').addEventListener('click', () => { cart.clear(); saveCart(); renderMenu(); renderCart(); $$('.add-jar').forEach(b => b.textContent = 'Add to order'); toast('Order cleared'); });
+  $('#copyOrder').addEventListener('click', async () => {
+    if (!cart.size) return toast('Nothing to copy yet');
+    try { await navigator.clipboard.writeText(orderText()); toast('Order copied. Paste it in a text or read it over the phone.'); }
+    catch { toast('Copy failed. Use the text button instead.'); }
+  });
+  $('#textOrder').addEventListener('click', e => { if (!cart.size) { e.preventDefault(); toast('Add something first 🥬'); } });
+
+  /* ---------- Nav toggle ---------- */
+  const navToggle = $('#navToggle'), navLinks = $('#navLinks');
+  navToggle.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); navToggle.setAttribute('aria-expanded', open); });
+  navLinks.addEventListener('click', e => { if (e.target.tagName === 'A') { navLinks.classList.remove('open'); navToggle.setAttribute('aria-expanded', 'false'); } });
+
+  /* ---------- Signup (front-end only until a mailing list is wired in) ---------- */
+  $('#signupForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const input = e.target.email;
+    if (!input.value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.value)) { input.focus(); toast('That email looks off'); return; }
+    e.target.hidden = true;
+    $('#signupOk').hidden = false;
+  });
+
+  /* ---------- Toast ---------- */
+  let toastTimer;
+  function toast(msg) {
+    const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  /* ---------- Reveal on scroll + depth gauge ---------- */
+  const io = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { threshold: 0.1 });
+  $$('.reveal').forEach(el => io.observe(el));
+
+  const gaugeFill = $('#gaugeFill'), gaugeLabel = $('#gaugeLabel');
+  const DEPTHS = [[0, 'Surface'], [0.12, 'Shallow'], [0.35, 'Getting deep'], [0.6, 'Deep'], [0.85, 'Deep kimchi']];
+  function onScroll() {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = max > 0 ? Math.min(1, scrollY / max) : 0;
+    gaugeFill.style.height = (p * 100) + '%';
+    let label = DEPTHS[0][1];
+    for (const [th, l] of DEPTHS) if (p >= th) label = l;
+    gaugeLabel.textContent = label;
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- Fermentation bubbles (hero canvas) ---------- */
+  (function bubbles() {
+    const canvas = $('#bubbles');
+    const ctx = canvas.getContext('2d');
+    let w, h, dpr, list = [];
+    function resize() {
+      dpr = Math.min(devicePixelRatio || 1, 1.75);
+      const r = canvas.parentElement.getBoundingClientRect();
+      w = canvas.width = Math.floor(r.width * dpr); h = canvas.height = Math.floor(r.height * dpr);
+      list = Array.from({ length: Math.floor((r.width * r.height) / 16000) }, () => spawn(true));
+    }
+    function spawn(anywhere) {
+      const r = (2 + Math.random() * 7) * dpr;
+      return { x: Math.random() * w, y: anywhere ? Math.random() * h : h + r * 2, r, vy: (0.12 + Math.random() * 0.35) * dpr, wob: Math.random() * Math.PI * 2, ws: 0.4 + Math.random() * 0.8, a: 0.15 + Math.random() * 0.35 };
+    }
+    let last = performance.now();
+    function frame(now) {
+      const dt = Math.min(40, now - last); last = now;
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < list.length; i++) {
+        const b = list[i];
+        if (!reduceMotion) { b.y -= b.vy * dt * 0.06; b.wob += 0.002 * dt * b.ws; }
+        const x = b.x + Math.sin(b.wob) * 6 * dpr;
+        ctx.beginPath(); ctx.arc(x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 120, 90, ${b.a * 0.35})`; ctx.fill();
+        ctx.lineWidth = dpr; ctx.strokeStyle = `rgba(255, 200, 170, ${b.a})`; ctx.stroke();
+        ctx.beginPath(); ctx.arc(x - b.r * 0.35, b.y - b.r * 0.35, b.r * 0.22, 0, Math.PI * 2); ctx.fillStyle = `rgba(255,243,228,${b.a})`; ctx.fill();
+        if (b.y < -b.r * 2) list[i] = spawn(false);
+      }
+      if (!reduceMotion) requestAnimationFrame(frame);
+    }
+    resize();
+    addEventListener('resize', resize, { passive: true });
+    requestAnimationFrame(frame);
+  })();
+
+  /* ---------- Boot ---------- */
+  loadCart();
+  buildTabs();
+  renderMenu();
+  buildPickupTimes();
+  renderCart();
+  onScroll();
+  ['jar-fresh', 'jar-weekly', 'jar-deep'].forEach(refreshCard);
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Deep Kimchi",
+    "url": "https://www.sambrit.com/kimchi/",
+    "description": "Korean plate lunch and takeout in Honolulu, Hawaiʻi. Kalbi, meat jun, BBQ chicken, and fish jun plates with your choice of four sides, mini or regular. House-fermented kimchi by the jar. Fundraiser plates and party trays.",
+    "servesCuisine": ["Korean", "Hawaiian", "Plate lunch"],
+    "priceRange": "$$",
+    "telephone": "+1-808-555-0142",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1234 Waialae Ave",
+      "addressLocality": "Honolulu",
+      "addressRegion": "HI",
+      "postalCode": "96816",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"], "opens": "10:30", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "10:30", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "19:00" }
+    ],
+    "hasMenu": "https://www.sambrit.com/kimchi/#menu",
+    "acceptsReservations": "False",
+    "paymentAccepted": "Cash, Credit Card, Apple Pay, Google Pay"
+  }
+  </script>
+</body>
+</html>
