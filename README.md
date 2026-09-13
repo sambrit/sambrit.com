@@ -81,3 +81,7 @@ Deployed via GitHub Pages with custom domain `sambrit.com`.
 - Website: [https://www.sambrit.com](https://www.sambrit.com)
 - GitHub: [https://github.com/sambrit](https://github.com/sambrit)
 - LinkedIn: [https://www.linkedin.com/in/sambritadhikari/](https://www.linkedin.com/in/sambritadhikari/)
+
+## /kimchi
+
+`kimchi/index.html` is a standalone site for **Deep Kimchi**, a Korean takeout restaurant in Honolulu, served at `sambrit.com/kimchi`. It is unrelated to the personal landing page and only lives here for hosting. Business details (phone, address, hours, email, socials) are in the `CONFIG` object at the top of the page script.
