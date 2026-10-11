@@ -424,6 +424,9 @@ h3.sub {
   .route-arrow { transform: rotate(90deg); padding: 4px 0; }
   .opt-meta { display: none; }
   .info-grid { grid-template-columns: 1fr 1fr; }
+  .card, .opt-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .dist { min-width: 520px; }
+  .sched li { grid-template-columns: 64px 1fr; }
 }
 
 /* ── Animations & transitions ───────────────────── */
@@ -523,7 +526,7 @@ h3.sub {
 <header class="site-header">
   <p class="eyebrow">Sam · Siri · Mom &nbsp;·&nbsp; Oct 22 – Nov 4, 2026</p>
   <h1>Rome · Tuscany · Venice</h1>
-  <p class="sub">Full itinerary · three options for everything · day-by-day</p>
+  <p class="sub">Day-by-day plans · food guide · verified bookings · packing — all in one place</p>
 </header>
 
 <nav class="nav-wrap">
@@ -625,84 +628,84 @@ h3.sub {
       <div class="chrono-dot"></div>
       <div class="chrono-date">Fri Oct 23</div>
       <div class="chrono-title">Arrive Rome · Day 1</div>
-      <div class="chrono-body">Land, rest, gentle first evening. Trastevere neighborhood walk. Dinner: <strong>Da Enzo al 29</strong>.</div>
+      <div class="chrono-body">Land, €55 flat-rate taxi in, rest. Trastevere evening walk. Dinner: <strong>Da Enzo al 29</strong> (no reservations — line up 5:45 PM).</div>
     </div>
 
     <div class="chrono-item c-rome">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Sat Oct 24</div>
       <div class="chrono-title">Vatican · Borghese Gallery (2 PM–4 PM) · Day 2</div>
-      <div class="chrono-body"><strong>✓ Borghese: Tickets purchased — seats 244/245/246, Oct 24 2 PM–4 PM, €54 total.</strong> Morning: Vatican Museums + Sistine Chapel (skip-the-line tour). Afternoon: Borghese Gallery. Evening: Glass Hostaria dinner.</div>
+      <div class="chrono-body"><strong>✓ Borghese: Tickets purchased — seats 244/245/246, Oct 24 2 PM–4 PM, €54 total.</strong> Morning: Vatican Museums + Sistine Chapel (timed entry). Bonci Pizzarium lunch. Afternoon: Borghese. Dinner: <strong>Zia</strong> (1★, Trastevere).</div>
     </div>
 
     <div class="chrono-item c-rome">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Sun Oct 25</div>
-      <div class="chrono-title">Colosseum + Roman Forum · Day 3</div>
-      <div class="chrono-body">Colosseum + Palatine Hill combo (pre-book underground access). Campo de' Fiori area for dinner — <strong>Roscioli</strong> or Emma Pizzeria.</div>
+      <div class="chrono-title">Colosseum Underground + Forum · Day 3</div>
+      <div class="chrono-body">Full Experience Underground ticket (€24, ticketing.colosseo.it — book NOW). It's Sunday: dinner at <strong>Tonnarello</strong> or Emma (the famous spots close Sundays). Trevi at 10:30 PM. Clocks fall back tonight.</div>
     </div>
 
     <div class="chrono-item c-rome">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Mon Oct 26</div>
-      <div class="chrono-title">Testaccio + Neighborhoods · Day 4</div>
-      <div class="chrono-body">Testaccio Market morning. Pantheon, Piazza Navona, Trevi Fountain (go early or late night). Afternoon: spa day. Dinner: <strong>Osteria dell'Angelo</strong> (Prati, legendary fixed-price Roman feast).</div>
+      <div class="chrono-title">Testaccio + Pantheon + Centro · Day 4</div>
+      <div class="chrono-body">Testaccio Market morning. Pantheon timed entry, Sant'Eustachio coffee, Piazza Navona, Via dei Coronari. Dinner: <strong>Roscioli</strong> (book now) or Osteria dell'Angelo.</div>
     </div>
 
     <div class="chrono-item c-rome">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Tue Oct 27</div>
-      <div class="chrono-title">Slow day · Trastevere + QC Terme · Day 5</div>
-      <div class="chrono-body">Free morning. QC Terme spa afternoon (pools, saunas, Roman baths, massage — book ahead). Easy dinner in Trastevere.</div>
+      <div class="chrono-title">Slow day · Spa + Michelin finale · Day 5</div>
+      <div class="chrono-body">Doria Pamphilj morning. Spa afternoon: <strong>AcquaMadre Hammam</strong> (center) or QC Spa (Fiumicino, 45 min out). Big dinner: <strong>Il Pagliaccio</strong> (2★) or Pipero.</div>
     </div>
 
     <div class="chrono-item c-rome">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Wed Oct 28</div>
       <div class="chrono-title">Pasta Class 1 PM → Drive to Tuscany · Day 6</div>
-      <div class="chrono-body"><strong>1 PM–3 PM:</strong> Pasta-making class near Piazza Navona (see Rome tab). <strong>3:30 PM:</strong> Pick up rental car (auto transmission) near Termini. Drive north A1 → SS222 Chiantigiana through vineyards. Arrive agriturismo ~6–7 PM.</div>
+      <div class="chrono-body"><strong>1–3 PM:</strong> pasta class near Piazza Navona. <strong>3:30 PM:</strong> car pickup, Termini Rental Car Center (Via Giolitti 34, automatic guaranteed). Exit east (ZTL!) → A24 → GRA → A1 north. Arrive farm ~7 PM.</div>
     </div>
 
     <div class="chrono-item c-tus">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Thu Oct 29</div>
-      <div class="chrono-title">Siena day trip · Day 7</div>
-      <div class="chrono-body">Drive 30–45 min to Siena. Park outside walls (free). Piazza del Campo, Duomo di Siena, Libreria Piccolomini. Back to agriturismo for farm dinner.</div>
+      <div class="chrono-title">Siena + San Gimignano · Day 7</div>
+      <div class="chrono-body">Siena AM (park Santa Caterina — escalators up; Duomo's marble floor is <strong>uncovered until Nov 2026</strong>). San Gimignano PM: towers + Dondoli gelato. Farm dinner.</div>
     </div>
 
     <div class="chrono-item c-tus">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Fri Oct 30</div>
-      <div class="chrono-title">Chianti Vineyard Crawl · Day 8</div>
-      <div class="chrono-body">Castello di Brolio + Antinori winery tours (book in advance). Via Chiantigiana scenic drive. Farm dinner.</div>
+      <div class="chrono-title">Chianti wine day · Day 8</div>
+      <div class="chrono-body">Castello di Brolio Classic Tour (10:30, €30) + Fèlsina tasting — or the Antinori architecture pilgrimage. Chiantigiana at golden hour. Farm dinner.</div>
     </div>
 
     <div class="chrono-item c-tus">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Sat Oct 31 · Halloween!</div>
       <div class="chrono-title">Saturnia Hot Springs (hidden gem) · Day 9</div>
-      <div class="chrono-body"><strong>Secret:</strong> Saturnia thermal springs — free, 37°C volcanic pools, steaming waterfalls in the countryside (~2 hrs from Chianti). Best at dawn. San Gimignano on the way back (towers, world-champion gelato). Last farm dinner.</div>
+      <div class="chrono-body"><strong>Secret:</strong> free 37.5°C volcanic pools + steaming waterfalls, near-empty in late Oct. Its own day: ~2.5 hrs each way, early start, Montemerano lunch. Last farm dinner. (Mellow fallback: Volpaia walk + olive harvest at the farm.)</div>
     </div>
 
     <div class="chrono-item c-ven">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Sun Nov 1</div>
       <div class="chrono-title">Drive to Florence → Train to Venice · Day 10</div>
-      <div class="chrono-body">Return car at Florence airport. Frecciarossa or Italo high-speed Florence SMN → Venezia Santa Lucia (~2 hrs). Arrive Venice afternoon. Rialto walk, Grand Canal. Dinner: <strong>Alle Testiere</strong> (22-seat gem — book now).</div>
+      <div class="chrono-body">Car back at FLR, tram T2 to Firenze SMN (€1.70, 20 min), Frecciarossa to Venezia S. Lucia (~2h05 — holiday Sunday, book seats). Grand Canal on vaporetto Line 1. Dinner: Sunday <strong>bacari crawl</strong> (the osterias close Sun–Mon).</div>
     </div>
 
     <div class="chrono-item c-ven">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Mon Nov 2</div>
-      <div class="chrono-title">St. Mark's + Doge's Palace · Day 11</div>
-      <div class="chrono-body">Basilica di San Marco (timed entry, €3). Doge's Palace Secret Itineraries tour (hidden rooms + Casanova's prison cell). Afternoon: get lost in Dorsoduro/Cannaregio. Cicchetti bar-hop at aperitivo hour.</div>
+      <div class="chrono-title">Doge's Palace secrets + St. Mark's · Day 11</div>
+      <div class="chrono-body">Doge's Palace <strong>Secret Itineraries</strong> 10 AM (€32 — Casanova's cell). St. Mark's timed entry 2:30 PM. Dorsoduro sunset walk. Dinner: <strong>Glam</strong> (2★) or Wisteria.</div>
     </div>
 
     <div class="chrono-item c-ven">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Tue Nov 3</div>
-      <div class="chrono-title">Murano + Burano outer islands · Day 12</div>
-      <div class="chrono-body">Vaporetto to Murano (glass-blowing furnace demo) then Burano (painted houses, November mist — magical). Last Venice dinner: Antiche Carampane or Venissa (Michelin, vineyard island).</div>
+      <div class="chrono-title">Murano + Burano + Mazzorbo · Day 12</div>
+      <div class="chrono-body">Wave Murano Glass furnace, Burano's painted houses in the mist, Venissa Osteria lunch on the vineyard island. Finale dinner: <strong>Alle Testiere</strong> (its only open night of your stay — book first).</div>
     </div>
 
     <div class="chrono-item c-dep">
@@ -801,70 +804,141 @@ Sam</div>
 
   <h3 class="sub">Day-by-day Rome</h3>
 
-  <div class="day-label">Day 1 — Friday Oct 23 · Arrive</div>
+  <div class="tip"><strong>Arriving at Fiumicino (FCO):</strong> with 3 people + bags, take the official white taxi — <strong>flat €55 per car</strong> to anywhere inside the old city walls, luggage included (cheaper than 3× Leonardo Express tickets at €14 each). Follow the official taxi-rank signs; ignore anyone approaching you inside the terminal.</div>
+
+  <div class="warn"><strong>Two date quirks this week:</strong> (1) <strong>Oct 25 is a Sunday</strong> — Vatican Museums are closed, and several top restaurants (Roscioli, Da Enzo, Armando) don't open Sundays. The plan below routes around it. (2) <strong>Clocks fall back the night of Oct 24→25</strong> — free extra hour of sleep, but sunset drops to ~5:10 PM after that, so do outdoor sights before 5.</div>
+
+  <div class="day-label">Day 1 — Friday Oct 23 · Arrive + Trastevere</div>
   <div class="card">
-    <p><strong>This is a recovery day.</strong> Land, collect bags, get to the Airbnb, nap. Do not fight the jet lag — you've been up all night on a transatlantic flight.</p>
-    <p><strong>Late afternoon:</strong> Force yourself awake by 4 PM. Walk to the nearest espresso bar. If near Trastevere, wander to Piazza di Santa Maria in Trastevere — one of Rome's most beautiful squares. The fountain, the basilica façade, the aperitivo crowd.</p>
-    <p><strong>Dinner:</strong> <strong>Da Enzo al 29</strong> — the quintessential Roman trattoria in Trastevere. Cacio e pepe, coda alla vaccinara (braised oxtail), abbacchio (roast lamb). Reserve on their website 2–3 weeks ahead.</p>
+    <ul class="sched">
+      <li><span class="t">Morning</span><span>Land FCO → <strong>€55 flat-rate taxi</strong> to the Airbnb. Drop bags, shower, nap — but set an alarm.</span></li>
+      <li><span class="t">4:00 PM</span><span>Force yourselves up. Espresso standing at the bar like Romans do. Wander to <strong>Piazza di Santa Maria in Trastevere</strong> — fountain, golden mosaics on the basilica façade, aperitivo crowd arriving.</span></li>
+      <li><span class="t">5:45 PM</span><span>Walk to <strong>Da Enzo al 29</strong> (Via dei Vascellari 29) and join the line — <strong>they take no reservations</strong>; be there 30–45 min before the 6:30 opening and you're in the first seating. Cacio e pepe, carbonara, oxtail. ~€40/person. (Closed Sundays — tonight is the night.)</span></li>
+      <li><span class="t">8:30 PM</span><span>Gelato at <strong>Otaleg</strong> (Via di San Cosimato 14a — one of Rome's best), then early night. Jet lag wins today; that's fine.</span></li>
+    </ul>
     <div class="links">
-      <a class="lp" href="https://daenzoal29.com" target="_blank">
+      <a class="lp" href="https://www.daenzoal29.com/en/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         Da Enzo al 29
       </a>
     </div>
   </div>
 
-  <div class="day-label">Day 2 — Saturday Oct 24 · Vatican + Borghese (2 PM)</div>
+  <div class="day-label">Day 2 — Saturday Oct 24 · Vatican AM + Borghese 2 PM</div>
   <div class="card">
     <div class="card-hd">
       <h4 class="card-title">Vatican Museums + Borghese Gallery</h4>
-      <span class="badge badge-red">Borghese: ✓ Booked</span>
+      <span class="badge badge-olive">Borghese ✓ booked</span>
     </div>
-    <p><strong>Morning 8:30–9 AM:</strong> Vatican Museums + Sistine Chapel. This takes 3–4 hours. Go with a skip-the-line guided small-group tour — walk-in lines regularly exceed 2 hours, and a guide gets you through the galleries faster. Book at getyourguide.com or the official Vatican site (museivaticani.va).</p>
-    <p><strong>Quick lunch</strong> near the Vatican (Prati neighborhood). Then taxi or short walk to Villa Borghese park.</p>
-    <p><strong>2:00 PM sharp:</strong> Borghese Gallery — your confirmed slot. Be at the gate 15 minutes early. This is 2 hours of Bernini sculptures, Caravaggio paintings, and Raphael — arguably the finest art collection in any building in the world.</p>
-    <p><strong>Evening:</strong> Aperitivo at Freni e Frizioni in Trastevere. Dinner: <strong>Glass Hostaria</strong> (Michelin-starred, Trastevere — book now).</p>
+    <ul class="sched">
+      <li><span class="t">8:30 AM</span><span><strong>Vatican Museums + Sistine Chapel</strong> — pre-book the timed entry (€20 + €5 booking, named tickets, bring ID) or a licensed small-group tour. 3 hours: Raphael Rooms → Gallery of Maps → Sistine. Shoulders covered.</span></li>
+      <li><span class="t">12:00 PM</span><span>Lunch 5 min from the museum exit: <strong>Bonci Pizzarium</strong> (Via della Meloria 43) — Rome's most famous pizza al taglio. Order by weight, eat standing, it's perfect.</span></li>
+      <li><span class="t">1:15 PM</span><span>Taxi across town to Villa Borghese (~20 min). Coffee in the park.</span></li>
+      <li><span class="t">2:00 PM</span><span><strong>Borghese Gallery — your confirmed slot</strong> (seats 244–246, €54 paid). Be at the gate 1:45. Two hours of Bernini's Apollo & Daphne, six Caravaggios, Canova's Paolina. The finest small museum on earth.</span></li>
+      <li><span class="t">4:30 PM</span><span>Walk down through the park to the Pincio terrace — sunset view over Piazza del Popolo and St. Peter's dome.</span></li>
+      <li><span class="t">6:30 PM</span><span>Aperitivo at <strong>Freni e Frizioni</strong> (Trastevere). </span></li>
+      <li><span class="t">8:30 PM</span><span><strong>Dinner: Zia</strong> — Trastevere's Michelin star (Via Goffredo Mameli 45, 5-course ~€110). The hardest one-star booking in Rome, so reserve the moment you read this; fallback <strong>Tonnarello</strong> (no reservations, walk in).</span></li>
+    </ul>
     <div class="links">
-      <a class="lp" href="https://www.museivaticani.va" target="_blank">
+      <a class="lp" href="https://www.museivaticani.va/content/museivaticani/en.html" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Vatican Museums (official)
+        Vatican tickets (official)
       </a>
-      <a class="lp" href="https://www.getyourguide.com" target="_blank">
+      <a class="lp" href="https://ziarestaurant.com/en/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        GetYourGuide (skip-the-line tours)
+        Zia (book now)
+      </a>
+      <a class="lp" href="https://bonci.it/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Bonci Pizzarium
       </a>
     </div>
   </div>
 
-  <div class="day-label">Day 3 — Sunday Oct 25 · Colosseum</div>
+  <div class="day-label">Day 3 — Sunday Oct 25 · Colosseum + Forum</div>
   <div class="card">
     <div class="card-hd">
-      <h4 class="card-title">Colosseum + Roman Forum + Palatine Hill</h4>
-      <span class="badge badge-red">Book ahead — coopculture.it</span>
+      <h4 class="card-title">Colosseum Underground + Roman Forum + Palatine</h4>
+      <span class="badge badge-red">Book TODAY — ticketing.colosseo.it</span>
     </div>
-    <p>Buy the <strong>combo ticket</strong> including Forum and Palatine (€16 + €2 booking). Pre-book the <strong>Underground Arena</strong> add-on to walk where gladiators waited before entering the ring — not accessible on general admission. Plan 3–4 hours here.</p>
-    <p>Walk through the Forum afterwards: the Via Sacra, the Arch of Titus, the Temple of Saturn. Then up to Palatine Hill for panoramic views over Rome.</p>
-    <p><strong>Dinner:</strong> <strong>Roscioli</strong> (deli-restaurant hybrid in the old ghetto area — extraordinary pastas, cured meats and wine list. Book 2–3 weeks ahead) or <strong>Emma Pizzeria</strong> (Neapolitan pizza near the Pantheon).</p>
+    <div class="warn"><strong>Ticketing changed:</strong> the official seller is now <strong>ticketing.colosseo.it</strong> (not CoopCulture — older guides are wrong). The <strong>Full Experience Underground + Arena</strong> ticket is €24, valid 2 days, includes Forum + Palatine. Slots opened 30 days out and the underground sells fast — <strong>book immediately</strong>; if it's gone, licensed operators (Walks of Italy, The Tour Guy) hold underground allocations at €90–130/person.</div>
+    <ul class="sched">
+      <li><span class="t">9:00 AM</span><span><strong>Colosseum</strong> with underground access — walk the tunnels where gladiators and animals waited beneath the arena floor. 2–2.5 hrs with the arena-floor viewpoint.</span></li>
+      <li><span class="t">11:30 AM</span><span><strong>Roman Forum</strong>: Via Sacra → Arch of Titus → Temple of Saturn → up <strong>Palatine Hill</strong> for the panorama over the whole Forum.</span></li>
+      <li><span class="t">1:30 PM</span><span>Late lunch in Monti (the cool neighborhood next door) — wander Via del Boschetto's boutiques after.</span></li>
+      <li><span class="t">4:00 PM</span><span>Rest at the Airbnb. It's Sunday — most shops shut, Rome slows down. So should you.</span></li>
+      <li><span class="t">7:30 PM</span><span><strong>Dinner (Sunday-proof): Tonnarello</strong> or <strong>Emma Pizzeria</strong> — both open daily, no reservation needed at Tonnarello (expect a short line).</span></li>
+      <li><span class="t">10:30 PM</span><span><strong>Trevi Fountain at night</strong> — after 10:30 PM the crowds thin to nothing and the marble glows. One of Rome's great free experiences. (Clocks fall back tonight — you get the hour back.)</span></li>
+    </ul>
     <div class="links">
-      <a class="lp" href="https://www.coopculture.it/en/" target="_blank">
+      <a class="lp" href="https://ticketing.colosseo.it/en/eventi/full-experience-sotterranei-e-arena/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Book Colosseum (coopculture.it)
+        Colosseum Underground (official)
+      </a>
+      <a class="lp" href="https://www.walksofitaly.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Walks of Italy (backup)
       </a>
     </div>
   </div>
 
-  <div class="day-label">Day 4 — Monday Oct 26 · Neighborhoods + Spa</div>
+  <div class="day-label">Day 4 — Monday Oct 26 · Testaccio + Pantheon + Centro</div>
   <div class="card">
-    <p><strong>Testaccio Market</strong> (Rome's best food market — suppli, mortadella sandwiches, fresh pasta, closes at 2 PM). Then Pantheon (free, but long line — arrive at 9 AM opening or book the €5 timed entry). Piazza Navona for people-watching.</p>
-    <p><strong>Afternoon:</strong> QC Terme day spa or hotel spa if you've upgraded. Book in advance. A massage, Roman baths, and mineral pools — exactly what you wanted.</p>
-    <p><strong>Dinner:</strong> <strong>Osteria dell'Angelo</strong> — fixed-price Roman feast in Prati (near the Vatican). No menu decisions, just wave after wave of classic Roman plates. Legendary for a reason.</p>
+    <ul class="sched">
+      <li><span class="t">9:30 AM</span><span><strong>Testaccio Market</strong> — Rome's best food market (closes 2 PM). Supplì at the fry stalls, mortadella panini, fresh pasta stands. This is Mom's market morning.</span></li>
+      <li><span class="t">11:30 AM</span><span>Taxi to the centro: <strong>Pantheon</strong> timed entry (~€7 — price went up July 2026; book at pantheonroma.com). The oculus beam of light is best before noon.</span></li>
+      <li><span class="t">12:30 PM</span><span>Coffee ritual: <strong>Sant'Eustachio il Caffè</strong> (pay the register first, then hand the receipt to the barman — their gran caffè is legendary). Then <strong>Piazza Navona</strong> + Bernini's Four Rivers fountain.</span></li>
+      <li><span class="t">1:30 PM</span><span>Lunch: pizza bianca at <strong>Antico Forno Roscioli</strong> (Via dei Chiavari 34) or a proper sit-down at the Salumeria if you snag a slot.</span></li>
+      <li><span class="t">3:00 PM</span><span><strong>Gelateria del Teatro</strong> (Via dei Coronari 65 — rosemary-honey, ricotta & sour cherry), then stroll Via dei Coronari, Rome's prettiest street, toward the river.</span></li>
+      <li><span class="t">8:00 PM</span><span><strong>Dinner: Roscioli Salumeria con Cucina</strong> — the famous deli-restaurant (book 2–4 weeks out, card guarantee; dinner slots 7:00/9:30). The carbonara and burrata-anchovy plate are canonical. Fallback: <strong>Osteria dell'Angelo</strong>, the fixed-price Roman feast in Prati (~€30–35, book by phone +39 06 372 9470).</span></li>
+    </ul>
+    <div class="links">
+      <a class="lp" href="https://www.pantheonroma.com/en/visit-the-pantheon/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Pantheon tickets (official)
+      </a>
+      <a class="lp" href="https://salumeriaroscioli.com/en/pages/prenota" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Roscioli reservations
+      </a>
+      <a class="lp" href="https://caffesanteustachio.com/?lang=en" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Sant'Eustachio
+      </a>
+    </div>
   </div>
 
-  <div class="day-label">Day 5 — Tuesday Oct 27 · Free + Wander</div>
+  <div class="day-label">Day 5 — Tuesday Oct 27 · Spa day + Michelin finale</div>
   <div class="card">
-    <p>Sleep in. No agenda. Walk wherever looks interesting. Trevi Fountain is best before 8 AM or after 11 PM — go at one of those times. Campo de' Fiori has a good produce market in the morning.</p>
-    <p><strong>Worth adding:</strong> Palazzo Doria Pamphilj — a private palace museum that most tourists skip. Contains one of Rome's finest art collections (Velázquez, Titian, Caravaggio) in a working family palace. Usually no wait at all.</p>
-    <p><strong>Dinner:</strong> <strong>Tonnarello</strong> (Trastevere, buzzy atmosphere, classics done well) or cook at the Airbnb with stuff from the morning market.</p>
+    <div class="card-hd">
+      <h4 class="card-title">Slow morning, spa afternoon, big dinner</h4>
+      <span class="badge badge-gold">Pick a spa option</span>
+    </div>
+    <p><strong>Morning:</strong> sleep in. Campo de' Fiori produce market, then <strong>Palazzo Doria Pamphilj</strong> — a private palace most tourists skip: Velázquez's Innocent X, Caravaggio, Titian, usually no line at all.</p>
+    <p><strong>Afternoon — two spa routes (book this week):</strong></p>
+    <ul>
+      <li><strong>In the city: AcquaMadre Hammam</strong> (Via di S. Ambrogio 17, Jewish Ghetto) — a proper Roman-style hammam 10 minutes from everything: steam rooms, exfoliation, massages. The practical pick.</li>
+      <li><strong>The full QC Terme experience:</strong> heads-up — QC's Rome spa is actually out by <strong>Fiumicino, ~45 min from the center</strong> (taxi ~€50–60 each way). 5-hr pass from €64, pools, saunas, gardens. Gorgeous, but it eats the afternoon — only do it if the spa IS the plan for the day.</li>
+    </ul>
+    <p><strong>8:00 PM — the Michelin dinner:</strong> <strong>Il Pagliaccio</strong> (2★, Via dei Banchi Vecchi — surprise tasting menus €150–190, open Tuesdays, calm and elegant: perfect with Mom) or <strong>Pipero Roma</strong> (1★, the famous carbonara). Blowout alternative: <strong>La Pergola</strong>, Rome's only 3★, with the whole city below — needs booking months out, but cancellations happen; worth a call.</p>
+    <div class="links">
+      <a class="lp" href="https://www.ristoranteilpagliaccio.com/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Il Pagliaccio (2★)
+      </a>
+      <a class="lp" href="https://www.piperoroma.it/eng/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Pipero (1★)
+      </a>
+      <a class="lp" href="https://www.qcterme.com/destinations/roma/qc-spa-roma" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        QC Spa Roma
+      </a>
+      <a class="lp" href="https://romecavalieri.com/la-pergola/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        La Pergola (3★)
+      </a>
+    </div>
   </div>
 
   <div class="day-label">Day 6 — Wednesday Oct 28 · Pasta Class → Drive to Tuscany</div>
@@ -873,23 +947,47 @@ Sam</div>
       <h4 class="card-title">Pasta Class 1 PM + Drive to Tuscany</h4>
       <span class="badge badge-gold">Book pasta class</span>
     </div>
-    <div class="warn"><strong>Timing note:</strong> A 1 PM class ends at ~3 PM. Pick up the rental car nearby and be on the road to Tuscany by 3:30–4 PM. You'll arrive the agriturismo around 6:30–7 PM — totally fine, they expect this. Pick a 2-hour class (not 3-hour) to keep the drive comfortable.</div>
-    <p><strong>Pasta class to book:</strong> "Pasta Fettuccine Making Class near Piazza Navona" — 1:00 PM start, 2 hours, you make fettuccine from scratch with a local cook, then eat what you made. Book via Viator (search "pasta class Piazza Navona 1pm"). ~€50–65/person. This is the right one for your timing — gets you out by 3 PM.</p>
-    <p><strong>Car rental:</strong> Book an <strong>automatic transmission</strong> now (manual transmissions are standard in Italy — always request automatic explicitly or you might get a stick shift). Hertz, Europcar, and Sixt all have locations near Roma Termini station. The pasta class is near Piazza Navona — pick up the car after, then you're heading north.</p>
+    <ul class="sched">
+      <li><span class="t">1:00 PM</span><span><strong>Pasta class near Piazza Navona</strong> — 2 hours, you make fettuccine from scratch and eat what you made. Two verified bookable options: the <strong>Viator fettuccine class near Piazza Navona</strong> (~$46–58/person, multiple daily times — pick the early-afternoon slot) or the <strong>GetYourGuide class at Ristorante Panzirone</strong> on the piazza itself (max 6 people, ~$43–54). Book 1 PM explicitly.</span></li>
+      <li><span class="t">3:15 PM</span><span>Taxi to Termini (10 min). <strong>Car pickup: Termini Rental Car Center, Via Giovanni Giolitti 34</strong> — Hertz, Avis, Sixt, Europcar all at the station's south side. Your booking must say <strong>automatic transmission, guaranteed</strong> (manuals are the Italian default). ~€280–450 total for 4 days compact-SUV automatic with Florence-airport drop — confirm the one-way fee is included in the quote.</span></li>
+      <li><span class="t">3:45 PM</span><span><strong>Drive out — the ZTL matters here:</strong> the restricted-camera zone starts a block west of Termini and is active Wed afternoons (€80+ fine per camera, mailed months later). Head <strong>east</strong>, away from the center: Via Prenestina → Tangenziale Est → <strong>A24 → GRA ring → A1 north toward Firenze</strong>. Set the GPS to avoid the city center.</span></li>
+      <li><span class="t">6:45 PM</span><span>Exit <strong>Firenze-Impruneta</strong>, then 20 min down the SS222 to Greve. Tolls ~€18–20 (use the white "CARTE" lanes, never yellow Telepass). It'll be dark — save the scenic Chiantigiana for daylight tomorrow.</span></li>
+      <li><span class="t">7:15 PM</span><span>Arrive the agriturismo. House wine, farm dinner, done. You're in Tuscany.</span></li>
+    </ul>
     <div class="links">
-      <a class="lp" href="https://www.viator.com" target="_blank">
+      <a class="lp" href="https://www.viator.com/tours/Rome/Pasta-Class-in-Rome-Fettuccine-Cooking-Class-near-Piazza-Navona/d511-348924P2" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Viator — search "pasta Piazza Navona 1pm"
+        Pasta class (Viator)
       </a>
-      <a class="lp" href="https://www.hertz.com" target="_blank">
+      <a class="lp" href="https://www.getyourguide.com/roma-l33/ravioli-cooking-class-in-piazza-navona-roma-italia-t457110/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Hertz Rome Termini
+        Pasta class (GetYourGuide)
       </a>
-      <a class="lp" href="https://www.europcar.com" target="_blank">
+      <a class="lp" href="https://www.autoeurope.eu" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Europcar
+        Auto Europe (compare quotes)
+      </a>
+      <a class="lp" href="https://www.avis.com/en/locations/it/rome" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Avis Termini
       </a>
     </div>
+  </div>
+
+  <hr class="divider">
+  <h3 class="sub">Michelin Rome — the full map (2026 guide)</h3>
+  <div class="card">
+    <table class="dist">
+      <tr><th>Restaurant</th><th>Stars</th><th>Where</th><th>~Price</th><th>Notes</th></tr>
+      <tr><td>La Pergola</td><td><span class="stars">★★★</span></td><td>Monte Mario (Rome Cavalieri)</td><td>€300+ tasting</td><td>Rome's only 3★ — book months out, try for cancellations</td></tr>
+      <tr><td>Il Pagliaccio</td><td><span class="stars">★★</span></td><td>Centro Storico</td><td>€150–190</td><td>Surprise tastings · closed Sun–Mon</td></tr>
+      <tr><td>Acquolina</td><td><span class="stars">★★</span></td><td>Campo Marzio</td><td>€€€€</td><td>Creative seafood</td></tr>
+      <tr><td>Enoteca La Torre</td><td><span class="stars">★★</span></td><td>Villa Laetitia, Prati</td><td>€€€€</td><td>Art Nouveau villa — lovely with Mom</td></tr>
+      <tr><td>Pipero Roma</td><td><span class="stars">★</span></td><td>Corso V. Emanuele II</td><td>€150–200</td><td>The famous carbonara</td></tr>
+      <tr><td>Zia</td><td><span class="stars">★</span></td><td>Trastevere</td><td>€110+</td><td>Hardest 1★ table in Rome — book first</td></tr>
+      <tr><td>La Terrazza (Hotel Eden)</td><td><span class="stars">★</span></td><td>Via Ludovisi</td><td>€€€€</td><td>New star 2026 · rooftop views</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--fg-muted);">Tasting-menu prices per person without wine. Rome kitchens commonly close Sun–Mon — check when booking.</p>
   </div>
 
   <hr class="divider">
@@ -936,16 +1034,20 @@ Sam</div>
     <div class="opt" id="o-rh3">
       <div class="opt-hd" onclick="tog('o-rh3')">
         <span class="opt-num">3</span>
-        <span class="opt-name">Keep Airbnb + QC Terme day spa</span>
-        <span class="opt-meta">~€75–90/person day pass</span>
+        <span class="opt-name">Keep Airbnb + day spa (AcquaMadre or QC)</span>
+        <span class="opt-meta">~€50–80/person + massage</span>
         <span class="opt-chev">▼</span>
       </div>
       <div class="opt-body">
-        <p>Stay in your Airbnb (already booked). Get your pool + massage fix at <strong>QC Terme Roma</strong> — a gorgeous spa near the Colosseum. Roman thermal baths, pools, saunas, full treatment menu. Book a day pass + massage for all three. This is genuinely excellent and gets you the spa without changing accommodation.</p>
+        <p>Stay in your Airbnb (already booked) and book a spa afternoon instead. <strong>In the center: AcquaMadre Hammam</strong> (Jewish Ghetto) — steam rooms, scrubs, massages, 10 minutes from everything; book slots ahead. <strong>The destination option: QC Spa Roma</strong> — note it's in <strong>Fiumicino, ~45 min from the center</strong> (not downtown, despite old guides): 5-hr pass from €64, full-day from €78, pools + saunas + gardens + Aperiterme aperitif; massages ~€60–110 booked on their site. Great, but plan it as the whole afternoon.</p>
         <div class="links">
-          <a class="lp" href="https://qcterme.com/en/rome" target="_blank">
+          <a class="lp" href="https://www.qcterme.com/destinations/roma/qc-spa-roma" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            QC Terme Roma
+            QC Spa Roma
+          </a>
+          <a class="lp" href="https://www.acquamadre.it" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            AcquaMadre Hammam
           </a>
         </div>
       </div>
@@ -964,64 +1066,151 @@ Sam</div>
 
   <h3 class="sub">Day-by-day Tuscany</h3>
 
-  <div class="day-label">Day 6 — Oct 28 · Arrive via pasta class (see Rome)</div>
+  <div class="tip"><strong>You're landing in olive-harvest week.</strong> Late October is the <em>raccolta</em> — the presses (frantoi) run day and night and <strong>olio nuovo</strong>, the peppery bright-green new oil, hits the bruschetta everywhere. Wine cellars are mid-fermentation (the best tour timing of the year), porcini and the first truffles are on every menu, and the vineyards turn gold. This is arguably the best eating week of the Tuscan calendar. Ask your agriturismo if you can watch (or join) the olive picking.</div>
+
+  <div class="day-label">Day 6 — Wed Oct 28 · Arrive (dark)</div>
   <div class="card">
-    <p>After your 1 PM pasta class in Rome, pick up the rental car near Termini (~3:30 PM) and drive north on A1, then exit to the SS222 Chiantigiana through the heart of Chianti wine country. Pull over and stop in <strong>Greve in Chianti</strong> for a quick look around the main piazza and maybe a wine shop tasting (Enoteca Falorni — the oldest wine shop in Chianti, in the piazza since 1806).</p>
-    <p>Arrive agriturismo by 6:30–7 PM. You'll be tired from Rome. Drop bags, have a glass of the house wine, eat whatever the farm is serving. That's it. That's the plan.</p>
+    <p>You'll roll in from Rome around 7 PM — it's dark by 5:10 now, so skip sightseeing and go straight to the farm. Drop bags, glass of house wine, eat whatever they're serving. That's it. That's the plan. (Save Greve's piazza and <strong>Enoteca Falorni</strong> — the oldest wine shop in Chianti, pouring since 1806 — for tomorrow or Friday in daylight.)</p>
   </div>
 
-  <div class="day-label">Day 7 — Oct 29 · Siena</div>
+  <div class="day-label">Day 7 — Thu Oct 29 · Siena + San Gimignano (the two hill towns)</div>
   <div class="card">
-    <p>Drive 30–45 min to Siena. Park at <strong>Parcheggio Il Campo</strong> or <strong>Stadio Comunale</strong> outside the walls. Walk up through the medieval gate into the city.</p>
-    <p><strong>Piazza del Campo</strong> — the shell-shaped piazza is one of the greatest public spaces in Europe. Sit at a café and watch it for a while. <strong>Duomo di Siena</strong> — grander than most cathedrals, floor covered in elaborate marble inlaid designs. The Libreria Piccolomini inside has stunning Renaissance frescoes. Book tickets at operaduomo.siena.it.</p>
-    <p>Lunch on the Campo (splurge). Back to the agriturismo by late afternoon. Farm dinner and Chianti.</p>
+    <div class="card-hd">
+      <h4 class="card-title">Siena morning, San Gimignano afternoon</h4>
+      <span class="badge badge-gold">Duomo floor uncovered!</span>
+    </div>
+    <div class="confirmed"><strong>Lucky timing:</strong> Siena cathedral's legendary inlaid-marble floor — normally covered for protection — is in a special <strong>uncovered display until November 2026</strong>. You'll see what most visitors never do. OPA SI Pass during the uncovering: ~€16.</div>
+    <ul class="sched">
+      <li><span class="t">8:45 AM</span><span>Drive to Siena (~35–50 min depending on your farm). <strong>Park at Parcheggio Santa Caterina</strong> (~€2/hr) — it has <strong>escalators straight up to the Duomo quarter</strong>, easiest on Mom. Alternatives: Il Campo (closest to the piazza) or Stadio/Fortezza (cheapest, ~€20/day cap). <strong>Never drive past the ZTL cameras</strong> — follow the "Parcheggio" signs, not the GPS shortcut (fines €80–165, mailed to you months later via the rental company).</span></li>
+      <li><span class="t">9:45 AM</span><span><strong>Duomo di Siena + Libreria Piccolomini</strong> (riotous Pinturicchio frescoes) with the uncovered floor. Book the OPA SI Pass at operaduomo.siena.it.</span></li>
+      <li><span class="t">11:30 AM</span><span><strong>Piazza del Campo</strong> — the shell-shaped square where the Palio runs. Sit at a café on the rim with a coffee and just watch it. Climb Torre del Mangia if legs allow (400 steps, skippable).</span></li>
+      <li><span class="t">12:45 PM</span><span>Lunch on or near the Campo (it's the splurge-view lunch — go in knowing the food's better one street back: Osteria Le Logge is the classic pick).</span></li>
+      <li><span class="t">2:30 PM</span><span>Drive to <strong>San Gimignano</strong> (~40 min). <strong>Park P2 Montemaggio</strong> (€2–3/hr) — closest to Porta San Giovanni, shortest walk in.</span></li>
+      <li><span class="t">3:15 PM</span><span>The medieval towers, Piazza della Cisterna, ramparts view over the Val d'Elsa. Then the mandatory stop: <strong>Gelateria Dondoli</strong> (Piazza della Cisterna 4) — Gelato World Championship pedigree; get the saffron-pine nut and the Vernaccia sorbet.</span></li>
+      <li><span class="t">5:15 PM</span><span>Golden-hour drive home through the hills (~50 min). Farm dinner.</span></li>
+    </ul>
     <div class="links">
-      <a class="lp" href="https://www.operaduomo.siena.it" target="_blank">
+      <a class="lp" href="https://operaduomo.siena.it" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Siena Duomo tickets
+        Siena Duomo / OPA SI Pass
+      </a>
+      <a class="lp" href="https://gelateriadondoli.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Gelateria Dondoli
       </a>
     </div>
   </div>
 
-  <div class="day-label">Day 8 — Oct 30 · Vineyard crawl + Chianti roads</div>
-  <div class="card">
-    <p><strong>This is the wine day.</strong> Book winery visits in advance — not just the gift shop, a proper cellar tour and seated tasting.</p>
-    <ul>
-      <li><strong>Castello di Brolio</strong> (Barone Ricasoli) — the estate that literally invented the modern Chianti blend in 1872. Stunning medieval castle, full cellar tours, panoramic views. Book at ricasoli.com.</li>
-      <li><strong>Antinori nel Chianti Classico</strong> — spectacular modern winery architecture built into a hillside underground. Tours of the circular cave cellar are remarkable. The Osteria on-site has excellent food too.</li>
-      <li>Or: stay small with <strong>Fèlsina</strong> or <strong>Isole e Olena</strong> for a more personal, intimate tasting.</li>
-    </ul>
-    <p>Drive the Chiantigiana between stops. This road is the point. Budget 1.5 hours per winery.</p>
-  </div>
-
-  <div class="day-label">Day 9 — Oct 31 · Saturnia Hot Springs (hidden gem) + San Gimignano</div>
+  <div class="day-label">Day 8 — Fri Oct 30 · The wine day</div>
   <div class="card">
     <div class="card-hd">
-      <h4 class="card-title">Saturnia Thermal Springs — Italy's best-kept secret</h4>
-      <span class="badge badge-teal">Hidden gem</span>
+      <h4 class="card-title">Brolio + Fèlsina, or the Antinori spectacle</h4>
+      <span class="badge badge-red">Book tours now</span>
     </div>
-    <p><strong>This is the most unique thing in Tuscany.</strong> Saturnia is a series of naturally occurring volcanic hot spring pools in the countryside near Grosseto — the water runs at 37°C (99°F) and cascades in terraced waterfalls surrounded by fields. It's completely free, open 24 hours, and most tourists don't know it exists. On Halloween morning with steam rising off the hot water — unforgettable.</p>
-    <p><strong>Logistics:</strong> Drive south from Chianti (~1.5–2 hrs). Arrive early (6–7 AM is magical — sunrise over steaming waterfalls). Bring towels and a change of clothes. Park free in the gravel lot. The famous "Cascate del Mulino" waterfall section is right at the parking lot.</p>
-    <p><strong>On the way back:</strong> Stop at <strong>San Gimignano</strong> (~1 hr from Saturnia) — the medieval towers, the piazza, and <strong>Gelateria Dondoli</strong> (two-time World Gelato Championship winners — the saffron gelato is extraordinary).</p>
-    <p>Home to the agriturismo for the last farm dinner.</p>
+    <p><strong>Route A — castles &amp; classics (recommended):</strong></p>
+    <ul class="sched">
+      <li><span class="t">10:30 AM</span><span><strong>Castello di Brolio</strong> (Barone Ricasoli, Gaiole) — the estate that invented the modern Chianti blend in 1872. <strong>Classic Tour €30/person, starts 10:30 sharp, 2 hrs</strong>, entry by guided tour only — book at ricasoli.com (confirm the late-Oct schedule; hours shorten after October).</span></li>
+      <li><span class="t">1:00 PM</span><span>Lunch at the estate's Osteria del Castello or in Gaiole.</span></li>
+      <li><span class="t">3:00 PM</span><span><strong>Fèlsina</strong> (Castelnuovo Berardenga, 20 min south) — benchmark single-vineyard Sangiovese, intimate tastings <strong>€30</strong>, reserve at felsina.it. Smaller, warmer, the connoisseur stop.</span></li>
+      <li><span class="t">5:30 PM</span><span>Drive the <strong>SS222 Chiantigiana</strong> home through Castellina at golden hour — this road is the whole postcard.</span></li>
+    </ul>
+    <p><strong>Route B — the architecture pilgrimage:</strong> <strong>Antinori nel Chianti Classico</strong> (Bargino) — the astonishing winery built invisibly into a hillside. Tinaia tour ~1.5h/€45–50, Bottaia tour ~2h/€75 with 4 wines. <strong>Prepaid and non-refundable — book 4–6 weeks out</strong> (weekday slots easier). Pair with tiny <strong>Montefioralle Winery</strong> above Greve (tastings €35, family-run, Lorenzo answers the email himself).</p>
+    <div class="links">
+      <a class="lp" href="https://ricasoli.com/en/castle" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Castello di Brolio tours
+      </a>
+      <a class="lp" href="https://www.felsina.it" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Fèlsina
+      </a>
+      <a class="lp" href="https://antinori.it/en/experience/antinori-nel-chianti-classico-the-bottaia-tour" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Antinori tours
+      </a>
+      <a class="lp" href="https://www.montefioralle.wine" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Montefioralle Winery
+      </a>
+    </div>
+  </div>
+
+  <div class="day-label">Day 9 — Sat Oct 31 · Saturnia hot springs (its own day)</div>
+  <div class="card">
+    <div class="card-hd">
+      <h4 class="card-title">Cascate del Mulino — steaming waterfalls on Halloween</h4>
+      <span class="badge badge-teal">Hidden gem · free entry</span>
+    </div>
+    <p><strong>The most unique thing in Tuscany:</strong> naturally volcanic 37.5°C water cascading over terraced travertine pools in open countryside. Free, open 24/7, and in late October the pools are near-empty while the air is crisp — the steam rising off the waterfalls is unforgettable.</p>
+    <div class="warn"><strong>Honest logistics (updated):</strong> it's a real drive — <strong>~2.5–2.75 hrs each way from Chianti</strong> (via Siena → E78 → Scansano), not the "90 minutes" older blogs claim. And parking changed: there's now a <strong>paid regulated lot ~200 m from the falls (~€2.50/hr)</strong> with toilets, showers and €5 lockers — don't park outside the designated areas (fines/towing). Bring towels, robes, water shoes (the travertine is rough) and a dry change of clothes; it's chilly getting out.</div>
+    <ul class="sched">
+      <li><span class="t">6:45 AM</span><span>Leave the farm with coffee + cornetti to go. Sunrise drive south through the Val d'Orcia edges.</span></li>
+      <li><span class="t">9:30 AM</span><span>Pools. Soak 2–3 hours. The waterfall pools at the old mill are the postcard spot; the upper terraces are warmer and quieter.</span></li>
+      <li><span class="t">12:30 PM</span><span>Lunch 10 min away in <strong>Montemerano</strong> (one of Italy's "borghi più belli" — tiny medieval perfection) — or grab porchetta panini in Saturnia village.</span></li>
+      <li><span class="t">2:00 PM</span><span>Drive home (~2.5 hrs). Nap when you arrive.</span></li>
+      <li><span class="t">7:30 PM</span><span>Last farm dinner. Toast with the estate's olio nuovo on everything.</span></li>
+    </ul>
+    <p><strong>Mellow alternative</strong> if a 5-hour round-trip drive sounds wrong after the wine day: skip Saturnia, sleep in, walk to the hamlet of <strong>Volpaia</strong> or <strong>Montefioralle</strong> for lunch, watch the olive pressing at the farm, and have a 20-minute drive kind of day. Both versions are right; decide the night before based on energy.</p>
+  </div>
+
+  <div class="day-label">Day 10 — Sun Nov 1 · Depart for Venice</div>
+  <div class="card">
+    <ul class="sched">
+      <li><span class="t">9:00 AM</span><span>Breakfast, settle up, buy the farm's wine + oil (pack in the empty duffel).</span></li>
+      <li><span class="t">10:00 AM</span><span>Drive to <strong>Florence airport (FLR)</strong> (~45–60 min). <strong>Car return: the rental village on Via Palagio degli Spini</strong> — follow "Rental Car Return" signs off the A11 Firenze-Peretola exit; it's ~500 m from the terminal (shuttle or 7-min walk).</span></li>
+      <li><span class="t">11:15 AM</span><span><strong>Tram T2 from "Peretola Aeroporto"</strong> (right outside the terminal) → <strong>Alamanni-Stazione</strong> at Firenze S.M. Novella: <strong>€1.70, 20–22 min, every 4–9 min</strong>. Tap contactless at the platform machine. Allow 75–90 min total from car drop to train seat.</span></li>
+      <li><span class="t">12:30 PM</span><span>Frecciarossa/Italo to <strong>Venezia Santa Lucia</strong> (~2h05). It's All Saints' Day Sunday — these trains fill; book seats now.</span></li>
+    </ul>
   </div>
 
   <hr class="divider">
-  <h3 class="sub">Where to stay — 3 agriturismo options (€150–300/night)</h3>
-  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">All three are working farms. On-site meals, farm wine, breakfast included. No grocery shopping. Dinner is at the farm. Free parking.</p>
+  <h3 class="sub">Where to stay — 4 agriturismo options (€150–300/night)</h3>
+  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">All four are working estates with on-site dinners, farm wine, breakfast, and free parking. <strong>One ask for all of them:</strong> off-season dinner schedules shrink — email to confirm which nights dinner is served Oct 28–31 before you book. Pools are seasonal and will be closed by late October everywhere.</p>
 
   <div class="opts">
     <div class="opt open" id="o-th1">
       <div class="opt-hd" onclick="tog('o-th1')">
         <span class="opt-num">1</span>
-        <span class="opt-name">Fattoria di Rignana — Greve in Chianti</span>
-        <span class="opt-meta">€102–168/night · Pool + vineyard · verified</span>
+        <span class="opt-name">Podere Terreno — Radda in Chianti</span>
+        <span class="opt-meta">~€150–220/night · Communal farm dinners — best fit</span>
         <span class="opt-chev">▼</span>
       </div>
       <div class="opt-body">
-        <p><strong>Best value + atmosphere for your group.</strong> A 120-hectare working estate with vineyards, olive groves, and an outdoor pool. They grow and make almost everything you eat and drink here — wine, olive oil, vegetables. The farmhouse rooms are simple but beautifully characterful. Breakfast included. Dinner available on-site (the farm restaurant is genuinely good).</p>
-        <p><strong>Location:</strong> Greve in Chianti — right in the heart of the Classico zone. 25 min to Siena, 30 min to Florence. Note: there's an unpaved access road for the last stretch — totally normal for Chianti farmhouses, just take it slow.</p>
-        <p><strong>Price:</strong> €102–168/night double room. For 3 adults you'll need 2 rooms — budget ~€200–336/night total. Well within your range.</p>
+        <p><strong>The best match for "never think about food."</strong> A 16th-century stone farmhouse with 5–7 rooms on the Radda→Volpaia road: its signature is the <strong>communal table-d'hôte dinner</strong> — everyone around one long table with the hosts, their own wine and olive oil, every night on reservation. Vineyards, a small lake, 9.4/10 from guests. If Mom enjoys a social dinner table, this is the one.</p>
+        <table class="dist">
+          <tr><th>To</th><th>Distance</th><th>Drive</th></tr>
+          <tr><td>Siena</td><td>~35 km</td><td>~45 min</td></tr>
+          <tr><td>Greve in Chianti</td><td>~20 km</td><td>~30 min</td></tr>
+          <tr><td>Florence airport (FLR)</td><td>~65 km</td><td>~1h20</td></tr>
+          <tr><td>A1 from Rome (Valdarno exit)</td><td>~30 km</td><td>~50 min, winding</td></tr>
+        </table>
+        <p><strong>Parking:</strong> free on-site. <strong>Booking:</strong> direct by email/phone (+39 0577 057719) — limited presence on booking sites.</p>
+        <div class="links">
+          <a class="lp" href="https://www.podereterreno.it" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Podere Terreno
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt" id="o-th2">
+      <div class="opt-hd" onclick="tog('o-th2')">
+        <span class="opt-num">2</span>
+        <span class="opt-name">Fattoria di Rignana — Greve in Chianti</span>
+        <span class="opt-meta">~€85–165/night · Best value + romance</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p>A 400-year-old working wine-and-olive estate between Badia a Passignano and Panzano, run by Cosimo Gericke. Remote, candlelit, sweeping views; the estate's own rustic trattoria <strong>La Cantinetta di Rignana</strong> is right on the property and pours the house Sangiovese. The last ~3 km are white gravel road — normal for Chianti, take it slow; it's exactly what keeps the crowds away. For 3 adults, 2 doubles ≈ €200–330/night total.</p>
+        <table class="dist">
+          <tr><th>To</th><th>Distance</th><th>Drive</th></tr>
+          <tr><td>Siena</td><td>~40 km</td><td>~50 min</td></tr>
+          <tr><td>Greve in Chianti</td><td>~8 km</td><td>~20 min (gravel stretch)</td></tr>
+          <tr><td>Florence airport (FLR)</td><td>~45 km</td><td>~55 min</td></tr>
+          <tr><td>A1 from Rome (Impruneta exit)</td><td>~28 km</td><td>~40 min</td></tr>
+        </table>
+        <p><strong>Parking:</strong> free on-site. <strong>Booking:</strong> direct email, or Booking.com. <strong>Confirm the trattoria's late-October dinner nights before booking.</strong></p>
         <div class="links">
           <a class="lp" href="https://www.rignana.it" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1031,16 +1220,23 @@ Sam</div>
       </div>
     </div>
 
-    <div class="opt" id="o-th2">
-      <div class="opt-hd" onclick="tog('o-th2')">
-        <span class="opt-num">2</span>
-        <span class="opt-name">Castello di Verrazzano — Greve in Chianti</span>
-        <span class="opt-meta">€145–250/night · Medieval castle, km-zero meals</span>
+    <div class="opt" id="o-th3">
+      <div class="opt-hd" onclick="tog('o-th3')">
+        <span class="opt-num">3</span>
+        <span class="opt-name">Castello di Verrazzano — Greti, nr. Greve</span>
+        <span class="opt-meta">~€150–250/night · Castle winery, best logistics</span>
         <span class="opt-chev">▼</span>
       </div>
       <div class="opt-body">
-        <p>A genuine medieval castle (same Verrazzano as the NYC bridge — the explorer was born here in 1485) with accommodation in the historic foresteria (guest quarters). Vineyard setting, pergola dining terrace, breakfast from their own farm ("km zero" products — olive oil, honey, wine, vegetables). 20 km from Florence, easy day-trip access.</p>
-        <p>No pool, but the terraced gardens and vineyard views are stunning. They do wine tours and tastings of their own Chianti Classico on-site.</p>
+        <p>A 10-room foresteria at the historic castle-winery of the Verrazzano family (yes, the NYC-bridge explorer — born here in 1485). Renaissance gardens, estate wine tours on-site (Classic tour €18; Wine &amp; Food ~€58–65 with lunch, weekdays), 9.0 guest rating. More "winery with rooms" than farmhouse, and the <strong>easiest logistics of the four</strong> — closest to Florence and the A1. Note: no front desk (check-in arranged ahead); breakfast ~€10/person; confirm dinner nights for house guests.</p>
+        <table class="dist">
+          <tr><th>To</th><th>Distance</th><th>Drive</th></tr>
+          <tr><td>Siena</td><td>~45 km</td><td>~50 min</td></tr>
+          <tr><td>Greve in Chianti</td><td>~4 km</td><td>~7 min</td></tr>
+          <tr><td>Florence airport (FLR)</td><td>~35 km</td><td>~45 min</td></tr>
+          <tr><td>A1 from Rome (Impruneta exit)</td><td>~20 km</td><td>~25 min — best A1 access</td></tr>
+        </table>
+        <p><strong>Parking:</strong> free estate lot. <strong>Booking:</strong> direct, or Expedia/Booking.</p>
         <div class="links">
           <a class="lp" href="https://www.verrazzano.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1050,65 +1246,151 @@ Sam</div>
       </div>
     </div>
 
-    <div class="opt" id="o-th3">
-      <div class="opt-hd" onclick="tog('o-th3')">
-        <span class="opt-num">3</span>
-        <span class="opt-name">Rosewood Castiglion del Bosco — Montalcino</span>
-        <span class="opt-meta">~$600–900/night · Ultra-luxury, Brunello country</span>
+    <div class="opt" id="o-th4">
+      <div class="opt-hd" onclick="tog('o-th4')">
+        <span class="opt-num">4</span>
+        <span class="opt-name">Querceto di Castellina — Castellina in Chianti</span>
+        <span class="opt-meta">~€150–280/night · Polished organic winery, best for Siena</span>
         <span class="opt-chev">▼</span>
       </div>
       <div class="opt-body">
-        <p>If budget isn't the constraint, this is one of the finest properties in Italy — a 5,000-acre private estate near Montalcino (home of Brunello di Montalcino, arguably Italy's greatest red wine). Private vineyard, two restaurants, spa, 39 restored stone farmhouses. A 30-minute detour from Chianti but a completely different level of experience. Worth it for a special occasion.</p>
+        <p>A polished, family-run organic winery-agriturismo (9.4/10): suites and apartments, rooftop terrace, on-site restaurant with a 4-course menu paired to the house wines, cooking classes and tastings (~€42 with lunch). The most "designed" of the four and the <strong>closest base to Siena</strong>. Reserve the restaurant a few weeks ahead and confirm which nights it runs in late October.</p>
+        <table class="dist">
+          <tr><th>To</th><th>Distance</th><th>Drive</th></tr>
+          <tr><td>Siena</td><td>~25 km</td><td>~30 min — best Siena access</td></tr>
+          <tr><td>Greve in Chianti</td><td>~22 km</td><td>~30 min</td></tr>
+          <tr><td>Florence airport (FLR)</td><td>~60 km</td><td>~1h10</td></tr>
+          <tr><td>A1 from Rome (Impruneta exit)</td><td>~45 km</td><td>~55 min</td></tr>
+        </table>
+        <p><strong>Parking:</strong> free on-site. <strong>Booking:</strong> direct, or Hotels.com/Expedia.</p>
         <div class="links">
-          <a class="lp" href="https://www.rosewoodhotels.com" target="_blank">
+          <a class="lp" href="https://www.quercetodicastellina.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Rosewood Hotels
+            Querceto di Castellina
           </a>
         </div>
       </div>
     </div>
   </div>
+
+  <p style="color:var(--fg-muted);font-size:12.5px;margin-top:12px;"><strong>How to choose:</strong> communal dinner-table experience → Podere Terreno · romance + value → Rignana · easiest driving → Verrazzano · polish + Siena day trips → Querceto. (Money-no-object wildcard: Rosewood Castiglion del Bosco in Montalcino, ~$600–900/night, a different league and a 45-min reposition.)</p>
 </section>
 
 <!-- ═══════════════════════════════ VENICE ═══════════════════════════════ -->
 <section id="venice" class="section">
   <h2 class="sec">Venice — 3 nights</h2>
-  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 16px;"><strong>Nov 1–4.</strong> Early November in Venice is one of Italy's best-kept secrets: nearly no tourists, mist rising off the lagoon, golden light, none of the summer crush. No cars anywhere — your parking anxiety is completely gone.</p>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 16px;"><strong>Nov 1–4.</strong> Early November in Venice is one of Italy's best-kept secrets: nearly no tourists, mist rising off the lagoon, golden light, none of the summer crush. No cars anywhere — your parking anxiety is completely gone. Sunset is ~5 PM, so front-load the mornings. (The Venice day-tripper access fee does <em>not</em> run in November, and overnight hotel guests are exempt anyway — nothing to do.)</p>
 
-  <div class="tip"><strong>Florence → Venice:</strong> Return the rental car at Florence airport (Aeroporto Peretola, FLR — 25 min from Chianti). Take the Frecciarossa or Italo high-speed train from Firenze SMN → Venezia Santa Lucia. <strong>~2 hours, ~€30–50/person.</strong> Trains every hour. Book a few days ahead for the best prices at trenitalia.com or thetrainline.com.</div>
+  <div class="warn"><strong>Nov 1 is a Sunday AND All Saints' Day.</strong> Two things follow: (1) St. Mark's Basilica admits tourists only after 2 PM on Sundays — plan it for Nov 2 or 3 instead. (2) Several of the best restaurants (Alle Testiere, Antiche Carampane) are closed Sun–Mon, which means <strong>Nov 3 is your only Testiere night — book it first.</strong></div>
 
-  <div class="day-label">Day 10 — Nov 1 · Arrive + Grand Canal</div>
+  <div class="tip"><strong>Florence → Venice (Nov 1):</strong> Return the car at Florence airport (FLR), tram/taxi to Firenze S.M. Novella, then Frecciarossa or Italo direct to Venezia Santa Lucia — <strong>~2h05, €15–30 booked ahead</strong> (€45–65 walk-up). Trains roughly hourly, but holiday-Sunday afternoons fill up: book seats now at trenitalia.com or italotreno.com.</div>
+
   <div class="card">
-    <p>Check in. Walk the <strong>Rialto Bridge</strong> and the Rialto Market area (it'll be late afternoon — just get oriented). Take vaporetto Line 1 down the Grand Canal from Santa Lucia station to San Marco — €9.50, slowest water bus, most spectacular view. The palazzo facades reflected in the canal at dusk.</p>
-    <p><strong>Dinner:</strong> <strong>Osteria alle Testiere</strong> — 22 seats, the best restaurant in Venice. Lagoon cuttlefish in ink, spider crab pasta, Soave. Book 3–4 weeks ahead. The chef Marco shops at the Rialto fish market personally every morning.</p>
+    <div class="card-hd">
+      <h4 class="card-title">Getting around — buy the 72-hour vaporetto pass</h4>
+      <span class="badge badge-teal">€45/person</span>
+    </div>
+    <div class="info-grid">
+      <div class="info-item"><div class="lbl">Single ride</div><div class="val">€9.50 (75 min)</div></div>
+      <div class="info-item"><div class="lbl">24 hours</div><div class="val">€25</div></div>
+      <div class="info-item"><div class="lbl">48 hours</div><div class="val">€35</div></div>
+      <div class="info-item"><div class="lbl">72 hours ← yours</div><div class="val">€45</div></div>
+    </div>
+    <p>Buy at the machines inside Santa Lucia station the minute you arrive. Covers every vaporetto including the Murano/Burano islands — it pays for itself by the end of Day 1. (Airport Alilaguna boats are separate.)</p>
     <div class="links">
-      <a class="lp" href="https://www.osterialletestiere.it" target="_blank">
+      <a class="lp" href="https://www.veneziaunica.it" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Alle Testiere (reserve now)
-      </a>
-      <a class="lp" href="https://www.trenitalia.com" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Trenitalia Florence→Venice
+        Venezia Unica (passes)
       </a>
     </div>
   </div>
 
-  <div class="day-label">Day 11 — Nov 2 · St. Mark's + Doge's Palace + getting lost</div>
+  <h3 class="sub">Day-by-day Venice</h3>
+
+  <div class="day-label">Day 10 — Sunday Nov 1 · Arrive + Grand Canal + bacari night</div>
   <div class="card">
-    <p><strong>Morning:</strong> Basilica di San Marco — free entry but book the timed reservation at veneziaunica.it (€3 to skip the queue). Go early. The Byzantine mosaics covering every inch of the ceiling and the four bronze horses are astonishing.</p>
-    <p><strong>Doge's Palace:</strong> Book the <strong>Secret Itineraries Tour</strong> — this takes you through rooms and passageways not on the general route, including the cell where Casanova was imprisoned and from which he made his famous escape. Available at palazzoducale.visitmuve.it.</p>
-    <p><strong>Afternoon:</strong> Get deliberately lost. Walk away from San Marco toward Dorsoduro or Cannaregio and just wander. At aperitivo hour (6 PM), stop at whichever bar has the most locals and order a Spritz and cicchetti — little crostini with seafood, €1–2 each. This is how Venetians eat before dinner.</p>
-    <p><strong>Dinner:</strong> <strong>Antiche Carampane</strong> (no pizza on the menu — that's a deliberate policy and a good sign; outstanding seafood in a residential neighborhood almost no tourist finds).</p>
+    <ul class="sched">
+      <li><span class="t">~2:30 PM</span><span>Arrive <strong>Venezia Santa Lucia</strong> — the station opens straight onto the Grand Canal. Buy 72h passes at the machines.</span></li>
+      <li><span class="t">3:00 PM</span><span><strong>Vaporetto Line 1</strong> down the full Grand Canal toward San Marco — the slowest boat and the single best €0-extra sight in Italy. Drop bags at the hotel en route.</span></li>
+      <li><span class="t">4:30 PM</span><span>Walk the <strong>Rialto Bridge</strong> + market arcades while the light goes gold. Get deliberately lost in San Polo's lanes.</span></li>
+      <li><span class="t">6:00 PM</span><span>Spritz + first cicchetti at <strong>Cantina Do Spade</strong> (San Polo 859, open daily, since 1488 — Casanova drank here).</span></li>
+      <li><span class="t">8:00 PM</span><span><strong>Dinner:</strong> it's Sunday — the famous osterias are shut, so do a proper <strong>bacari-crawl dinner</strong>: Do Spade → <strong>Vino Vero</strong> (Cannaregio canal-side natural wine bar) → whichever bar has the most Venetians. €1–2 per cicchetto, as many rounds as you like. Honestly the most Venetian dinner possible.</span></li>
+    </ul>
   </div>
 
-  <div class="day-label">Day 12 — Nov 3 · Murano + Burano outer islands</div>
+  <div class="day-label">Day 11 — Monday Nov 2 · Doge's Palace secrets + San Marco + Michelin night</div>
   <div class="card">
-    <p>Take the vaporetto to the outer lagoon islands. <strong>Murano:</strong> the world capital of hand-blown glass since 1291. Watch a master glassblower work at a real furnace (not the tourist shops — find a working fornace with a demo). <strong>Burano:</strong> every building painted a different bright color by law — fishermen's tradition so they could see their house from the water. In November mist, with no crowds, it's extraordinarily beautiful.</p>
-    <p><strong>Last Venice dinner:</strong> <strong>Venissa</strong> on Mazzorbo island (between Murano and Burano) — a Michelin-starred restaurant on a small island with its own vineyard. The lagoon view at dinner is the perfect way to end Italy.</p>
+    <ul class="sched">
+      <li><span class="t">10:00 AM</span><span><strong>Doge's Palace — Secret Itineraries tour</strong> (English slots 10:00 / 11:30 / 13:00, €32, ~75 min): hidden passages, the torture room, Casanova's prison cell and escape route, then free run of the whole palace after. Book 2–4 weeks ahead — groups cap at ~25.</span></li>
+      <li><span class="t">1:00 PM</span><span>Lunch near Campo Santa Maria Formosa, away from the San Marco tourist menus.</span></li>
+      <li><span class="t">2:30 PM</span><span><strong>St. Mark's Basilica</strong> — timed entry (~€12, or ~€36 all-inclusive with Pala d'Oro + museum terrace). The gold mosaic ceilings in low autumn light are the best they ever look. Shoulders covered (scarves!).</span></li>
+      <li><span class="t">4:30 PM</span><span>Walk it off through <strong>Dorsoduro</strong>: Zattere promenade at sunset, the Squero di San Trovaso gondola boatyard.</span></li>
+      <li><span class="t">7:30 PM</span><span><strong>Michelin dinner night:</strong> top pick <strong>Glam</strong> (2★ Enrico Bartolini, inside Palazzo Venart — Venice's only two-star) or <strong>Wisteria</strong> (1★, San Polo, the value pick). Confirm Monday openings when you book.</span></li>
+    </ul>
+  </div>
+
+  <div class="day-label">Day 12 — Tuesday Nov 3 · Murano → Burano → Mazzorbo + Testiere finale</div>
+  <div class="card">
+    <ul class="sched">
+      <li><span class="t">9:00 AM</span><span>Vaporetto 4.1/4.2 from <strong>Fondamente Nove → Murano</strong> (10 min). Watch glass masters at a real working furnace: <strong>Wave Murano Glass</strong> (Fondamenta da Mula 152 — guided furnace tours, book ahead). Skip the free "showroom demos" that end in a sales pitch.</span></li>
+      <li><span class="t">11:30 AM</span><span><strong>Line 12 from Murano Faro → Burano</strong> (~30 min, every 20–30 min). The painted fishermen's houses in November mist are extraordinary. Lace shops, leaning campanile, bussolai cookies.</span></li>
+      <li><span class="t">1:30 PM</span><span>Walk the wooden footbridge to <strong>Mazzorbo</strong> island: lunch at <strong>Venissa Osteria</strong> in the walled vineyard (the Michelin-starred room typically closes for the season around late October — the year-round Osteria is the move; email ahead to confirm and book).</span></li>
+      <li><span class="t">3:30 PM</span><span>Line 12 direct back to Fondamente Nove (~40 min). Nap / pack / last wander.</span></li>
+      <li><span class="t">7:30 PM</span><span><strong>Finale dinner: Osteria alle Testiere</strong> — 22 seats, two evening seatings, the best seafood in Venice. Spider-crab pasta, cuttlefish in ink, caparossoli clams. <strong>Closed Sun–Mon, so tonight is the night — book 3–4 weeks out via their site.</strong> Backup: <strong>Antiche Carampane</strong> (San Polo 1911, also closed Sun–Mon) or <strong>Corte Sconta</strong> (Castello, courtyard seafood institution).</span></li>
+    </ul>
+    <div class="links">
+      <a class="lp" href="https://www.osterialletestiere.it" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Alle Testiere — book Nov 3
+      </a>
+      <a class="lp" href="https://www.venissa.it" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Venissa / Osteria
+      </a>
+      <a class="lp" href="https://www.antichecarampane.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Antiche Carampane
+      </a>
+      <a class="lp" href="https://www.wavemuranoglass.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Wave Murano Glass
+      </a>
+    </div>
+  </div>
+
+  <div class="day-label">Nov 4 · Departure day</div>
+  <div class="card">
+    <p><strong>Mom → Marco Polo (VCE):</strong> with luggage, take a <strong>private water taxi</strong> straight from the hotel's nearest dock to the airport dock — ~€120–160, 30 min, zero bridge-schlepping. Budget option: <strong>Alilaguna</strong> water bus (~€15, 60–90 min, runs every 30 min). Book the water taxi the day before through the hotel desk.</p>
+    <p><strong>Sam + Siri:</strong> same water taxi to VCE for the Amsterdam/Lisbon/Barcelona leg, or the ATVO bus from Piazzale Roma (€10, 20 min) if flying budget airlines.</p>
   </div>
 
   <hr class="divider">
-  <h3 class="sub">Venice hotels — 3 options</h3>
+  <h3 class="sub">Acqua alta — know before you go</h3>
+  <div class="card">
+    <p>November is high-tide season, but the <strong>MOSE barriers</strong> (operational since 2020) now stop the catastrophic floods — they rise whenever forecasts exceed ~110 cm. What MOSE does <em>not</em> stop: moderate tides of 85–100 cm that put a few hours of ankle-deep water in Piazza San Marco (the lowest point in the city) on some mornings.</p>
+    <ul>
+      <li>Download the <strong>Hi!Tide Venice</strong> app for tide forecasts — sirens also sound ~3 hrs ahead.</li>
+      <li>The city lays out raised walkways (<em>passerelle</em>) on main routes automatically.</li>
+      <li>If a tide catches you, kiosks sell knee-high shoe covers for €10–15. Waterproof shoes + warm socks cover 99% of scenarios — no rubber boots needed.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Michelin Venice — the full map</h3>
+  <div class="card">
+    <table class="dist">
+      <tr><th>Restaurant</th><th>Stars</th><th>Where</th><th>~Price</th><th>Book ahead</th></tr>
+      <tr><td>Glam (Enrico Bartolini)</td><td><span class="stars">★★</span></td><td>Palazzo Venart, Santa Croce</td><td>€220–300</td><td>4–8 wks</td></tr>
+      <tr><td>Quadri (Alajmo)</td><td><span class="stars">★</span></td><td>Piazza San Marco, upstairs</td><td>€200–280</td><td>3–6 wks</td></tr>
+      <tr><td>Oro (Belmond Cipriani)</td><td><span class="stars">★</span></td><td>Giudecca island</td><td>€200+</td><td>4+ wks · confirm season</td></tr>
+      <tr><td>Local</td><td><span class="stars">★</span></td><td>Castello</td><td>€150–190</td><td>2–4 wks</td></tr>
+      <tr><td>Wisteria</td><td><span class="stars">★</span></td><td>San Polo</td><td>€120–180</td><td>2–3 wks</td></tr>
+      <tr><td>Venissa</td><td><span class="stars">★</span> + green</td><td>Mazzorbo island</td><td>€160–240</td><td>Seasonal — likely closed Nov; Osteria open</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--fg-muted);">Prices are tasting-menu per person without wine. Double-check each restaurant's weekly closing day when booking — Venice kitchens rest Sun–Tue in low season.</p>
+  </div>
+
+  <hr class="divider">
+  <h3 class="sub">Venice hotels — 4 options</h3>
 
   <div class="opts">
     <div class="opt open" id="o-vh1">
@@ -1119,7 +1401,7 @@ Sam</div>
         <span class="opt-chev">▼</span>
       </div>
       <div class="opt-body">
-        <p>A 16th-century palazzo on the Grand Canal converted into a 18-room luxury hotel. Stunning rooftop terrace with 360° lagoon views, private garden, and the on-site restaurant Glam (Michelin-starred). Intimate enough to feel like a private palazzo, professional enough to have real hotel service. This is the sweet spot between characterful and comfortable.</p>
+        <p>A 16th-century palazzo on the Grand Canal converted into an 18-room luxury hotel. Stunning rooftop terrace with 360° lagoon views, private garden, and the on-site restaurant Glam — Venice's only <strong>two-Michelin-star</strong> table (Enrico Bartolini). Stay here and your Michelin night is an elevator ride away. The sweet spot between characterful and comfortable.</p>
         <div class="links">
           <a class="lp" href="https://www.palazzovenart.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1137,7 +1419,31 @@ Sam</div>
         <span class="opt-chev">▼</span>
       </div>
       <div class="opt-body">
-        <p>A 15th-century palazzo in Dorsoduro — Venice's most livable neighborhood (university area, local restaurants, the Zattere promenade along the Giudecca canal). €200–350/night, canal views, genuine Venetian character without the San Marco tourist bubble. Three of you can be very comfortable here.</p>
+        <p>A 15th-century palazzo in Dorsoduro — Venice's most livable neighborhood (university area, local restaurants, the Zattere promenade along the Giudecca canal). €250–400/night, canal views, genuine Venetian character without the San Marco tourist bubble, right by the San Trovaso gondola boatyard. Three of you can be very comfortable here.</p>
+        <div class="links">
+          <a class="lp" href="https://www.nanimocenigo.com" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Nani Mocenigo Palace
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt" id="o-vh4">
+      <div class="opt-hd" onclick="tog('o-vh4')">
+        <span class="opt-num">4</span>
+        <span class="opt-name">Ca' Pisani Hotel</span>
+        <span class="opt-meta">~€200–300/night · Art-Deco design, Accademia</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p>The mid-range value pick: a 29-room Art-Deco design hotel in Dorsoduro, 2 minutes from the Accademia Bridge and the Zattere. In Michelin's hotel selection, November rates around €200–300. Quiet location, rooftop altana terrace, easy vaporetto access — great base for three people who plan to be out all day.</p>
+        <div class="links">
+          <a class="lp" href="https://www.capisanihotel.it" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ca' Pisani
+          </a>
+        </div>
       </div>
     </div>
 
@@ -1158,6 +1464,77 @@ Sam</div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOD GUIDE ═══════════════════════════════ -->
+<section id="food" class="section">
+  <h2 class="sec">The food guide — use this on the ground</h2>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 16px;">Every recommendation in one place, organized by craving. Pull this up when you're standing somewhere hungry.</p>
+
+  <h3 class="sub">Rome — if you're looking for…</h3>
+  <div class="card">
+    <table class="dist">
+      <tr><th>Craving</th><th>Go to</th><th>Where</th><th>Know this</th></tr>
+      <tr><td>The classic trattoria</td><td>Da Enzo al 29</td><td>Trastevere</td><td>No reservations — line up 30–45 min before 6:30 PM. Closed Sun.</td></tr>
+      <tr><td>Pasta + wine temple</td><td>Roscioli Salumeria</td><td>Campo de' Fiori</td><td>Book 2–4 wks, card guarantee. Closed Sun.</td></tr>
+      <tr><td>Carbonara beside the Pantheon</td><td>Armando al Pantheon</td><td>Centro</td><td>Books out the day slots open (2 months ahead). Try anyway. Closed Sun + Sat dinner.</td></tr>
+      <tr><td>The Roman feast, no decisions</td><td>Osteria dell'Angelo</td><td>Prati</td><td>Fixed menu ~€30–35. Phone only: +39 06 372 9470.</td></tr>
+      <tr><td>Cacio e pepe institution</td><td>Felice a Testaccio</td><td>Testaccio</td><td>Book online well ahead.</td></tr>
+      <tr><td>True Testaccio cooking</td><td>Piatto Romano</td><td>Testaccio</td><td>~€45, 30 seats, book ~1 wk ahead.</td></tr>
+      <tr><td>Walk-in, no stress, open daily</td><td>Tonnarello</td><td>Trastevere</td><td>Expect a short line, moves fast. Your Sunday safety net.</td></tr>
+      <tr><td>Pizza al taglio</td><td>Bonci Pizzarium</td><td>Via della Meloria 43 (Vatican)</td><td>Order by weight. Perfect post-Vatican.</td></tr>
+      <tr><td>Pizza bianca while walking</td><td>Antico Forno Roscioli</td><td>Via dei Chiavari 34</td><td>Since 1972.</td></tr>
+      <tr><td>Modern gelato</td><td>Otaleg</td><td>Trastevere</td><td>Marco Radicioni's shop — Rome's best.</td></tr>
+      <tr><td>Gelato near Navona</td><td>Gelateria del Teatro</td><td>Via dei Coronari 65</td><td>Rosemary-honey, ricotta &amp; sour cherry.</td></tr>
+      <tr><td>Historic gelato</td><td>Giolitti</td><td>Near Pantheon</td><td>The 1900 classic.</td></tr>
+      <tr><td>The coffee</td><td>Sant'Eustachio il Caffè</td><td>Piazza Sant'Eustachio</td><td>Pay register first, then order. Gran caffè.</td></tr>
+      <tr><td>The blowout</td><td>See the Michelin table in the Rome tab</td><td>—</td><td>Zia and Il Pagliaccio are the picks.</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub">Tuscany — eat the season</h3>
+  <div class="card">
+    <table class="dist">
+      <tr><th>Craving</th><th>Go to</th><th>Where</th><th>Know this</th></tr>
+      <tr><td>Dinner, every night</td><td>Your agriturismo's table</td><td>Home base</td><td>That's the whole point — confirm dinner nights when booking.</td></tr>
+      <tr><td>Olio nuovo on bruschetta</td><td>Any frantoio or farm dinner</td><td>Everywhere late Oct</td><td>Peppery, bright green, weeks-old oil. The seasonal grail.</td></tr>
+      <tr><td>Historic wine shop</td><td>Enoteca Falorni</td><td>Greve main piazza</td><td>Pouring since 1806; self-serve tasting cards.</td></tr>
+      <tr><td>Cellar tour + castle</td><td>Castello di Brolio (Ricasoli)</td><td>Gaiole</td><td>€30 Classic Tour, 10:30 AM, book ahead.</td></tr>
+      <tr><td>Architecture + wine</td><td>Antinori nel Chianti Classico</td><td>Bargino</td><td>€45–75 tours, non-refundable, book 4–6 wks out.</td></tr>
+      <tr><td>Intimate tasting</td><td>Fèlsina / Montefioralle</td><td>Castelnuovo B. / Greve</td><td>€30–35, small groups, email to book.</td></tr>
+      <tr><td>Lunch view in Siena</td><td>Osteria Le Logge</td><td>One street off the Campo</td><td>Better food than the piazza-rim cafés.</td></tr>
+      <tr><td>World-championship gelato</td><td>Gelateria Dondoli</td><td>San Gimignano</td><td>Saffron-pine nut; Vernaccia sorbet.</td></tr>
+      <tr><td>Porcini + truffle season</td><td>Any osteria daily specials</td><td>Everywhere</td><td>Late Oct = mushroom and early-truffle menus.</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub">Venice — the water menu</h3>
+  <div class="card">
+    <table class="dist">
+      <tr><th>Craving</th><th>Go to</th><th>Where</th><th>Know this</th></tr>
+      <tr><td>The 22-seat seafood legend</td><td>Osteria alle Testiere</td><td>Castello</td><td>Closed Sun–Mon → your night is Nov 3. Book 3–4 wks out.</td></tr>
+      <tr><td>Seafood locals gatekeep</td><td>Antiche Carampane</td><td>San Polo 1911</td><td>Closed Sun–Mon. ~10 tables, book ~2 wks: +39 041 524 0165.</td></tr>
+      <tr><td>Courtyard seafood classic</td><td>Corte Sconta</td><td>Castello (Arsenale)</td><td>The antipasti parade is the move.</td></tr>
+      <tr><td>Cicchetti at lunch</td><td>All'Arco</td><td>By Rialto Market</td><td>Open ~8 AM–2:30 PM only, Mon–Sat.</td></tr>
+      <tr><td>Oldest bacaro (1462)</td><td>Cantina Do Mori</td><td>San Polo 429</td><td>Mon–Sat to 7:30 PM. Cash only.</td></tr>
+      <tr><td>Cicchetti open late + Sunday</td><td>Cantina Do Spade</td><td>San Polo 859</td><td>Daily, lunch + 6–10 PM. Since 1488.</td></tr>
+      <tr><td>Natural wine, canal-side</td><td>Vino Vero</td><td>Fondamenta Misericordia, Cannaregio</td><td>Venice's first natural wine bar.</td></tr>
+      <tr><td>Vineyard-island lunch</td><td>Venissa Osteria</td><td>Mazzorbo</td><td>Starred room likely closed by Nov; Osteria open year-round — email ahead.</td></tr>
+      <tr><td>The two-star blowout</td><td>Glam (Enrico Bartolini)</td><td>Palazzo Venart, Santa Croce</td><td>Venice's only 2★. €220–300. 4–8 wks out.</td></tr>
+      <tr><td>Value Michelin</td><td>Wisteria</td><td>San Polo</td><td>1★, €120–180, 2–3 wks out.</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub">The reservation cheat sheet</h3>
+  <div class="card">
+    <ul class="cl">
+      <li><strong>No reservations, just show up early:</strong> Da Enzo (Rome), Tonnarello (Rome), all bacari (Venice), Bonci, the gelaterias</li>
+      <li><strong>Book this week (trip is in 11 days):</strong> Zia, Il Pagliaccio/Pipero, Roscioli, Alle Testiere (Nov 3!), Glam or Wisteria, Antiche Carampane</li>
+      <li><strong>Phone-only:</strong> Osteria dell'Angelo +39 06 372 9470 · Antiche Carampane +39 041 524 0165</li>
+      <li><strong>Email-the-owner:</strong> Montefioralle Winery, Venissa Osteria, every agriturismo</li>
+      <li><strong>Sunday rule (Oct 25 + Nov 1):</strong> most famous kitchens close — Tonnarello and the bacari are your safety nets</li>
+    </ul>
   </div>
 </section>
 
@@ -1231,31 +1608,41 @@ Sam</div>
     <strong>✓ Already done:</strong> Borghese Gallery — Oct 24 at 2 PM · 3 tickets · seats 244/245/246 · €54 paid. ✓
   </div>
 
-  <h3 class="sub">🔴 Do today or this week</h3>
+  <h3 class="sub">🔴 Do TODAY — these are time-critical</h3>
   <ul class="cl">
-    <li><strong>Vatican Museums</strong> — museivaticani.va · Pre-book timed entry for Oct 24 morning (you need a slot before 2 PM Borghese). ~€18 + €4 booking fee. Friday night opening (7–11 PM Oct 23) is another option.</li>
-    <li><strong>Pasta class, Oct 28 at 1 PM</strong> — Search Viator for "pasta making Piazza Navona 1pm" — 2-hour class. ~€50–65/person. Must be exactly 1 PM start to give you time to drive to Tuscany.</li>
-    <li><strong>Car rental, auto transmission, Oct 28</strong> — Hertz.com, Europcar.com, or Sixt.com. Pick up near Roma Termini after the pasta class (~3 PM). Return Florence airport (FLR) Nov 1. Book automatic transmission explicitly.</li>
-    <li><strong>Tuscany agriturismo</strong> — Fattoria di Rignana (rignana.it) or Castello di Verrazzano (verrazzano.com) for Oct 28–Nov 1 (4 nights, 3 adults = 2 rooms). Call or email directly — these are family-run properties that prefer it.</li>
-    <li><strong>Colosseum + Forum + Underground</strong> — coopculture.it · Book underground arena add-on now. Oct 25.</li>
-    <li><strong>Alle Testiere, Venice</strong> — osterialletestiere.it · 22 seats. Book by phone or email for Nov 1 or 2 dinner.</li>
+    <li><strong>Colosseum Underground, Oct 25</strong> — <strong>ticketing.colosseo.it</strong> (the new official seller — NOT CoopCulture). Full Experience Underground + Arena €24. The 30-day window already opened Sep 25 and underground slots go fast — <strong>book this minute</strong>; fallback: Walks of Italy / The Tour Guy underground tours (€90–130 pp).</li>
+    <li><strong>International Driving Permit (Sam)</strong> — legally required to drive in Italy. AAA office, $20, 15 minutes, walk-in — but you need it <em>in hand</em> before Oct 22, so go this week.</li>
+    <li><strong>Automatic rental car, Oct 28 → Nov 1</strong> — Termini Rental Car Center pickup (Via Giolitti 34), FLR drop. "Automatic guaranteed" in writing, one-way fee included in quote. ~€280–450. Compare on autoeurope.eu + direct sites.</li>
+    <li><strong>Tuscany agriturismo, Oct 28–Nov 1</strong> — 4 nights, 3 adults (2 rooms). Email today: Podere Terreno, Rignana, Verrazzano, or Querceto — <strong>and ask which nights dinner is served.</strong> Family-run places answer email personally.</li>
+    <li><strong>Alle Testiere, Venice — Nov 3 dinner</strong> — their only open night of your stay (closed Sun–Mon). 22 seats. Book via osterialletestiere.it now.</li>
+    <li><strong>Zia (Rome, Oct 24)</strong> — hardest 1★ table in Rome, Saturday night. Book now; Tonnarello is the walk-in fallback.</li>
+    <li><strong>Vatican Museums, Oct 24 morning</strong> — tickets.museivaticani.va · timed entry €25, named tickets (bring passports). You need to be out by ~12:30 for Borghese at 2.</li>
+    <li><strong>Pasta class Oct 28, 1 PM</strong> — Viator "Fettuccine class near Piazza Navona" (~$50 pp) or GetYourGuide Panzirone class. Confirm the 1 PM start.</li>
+    <li><strong>Florence → Venice train, Nov 1</strong> — All Saints' Day Sunday, trains fill. Trenitalia/Italo, ~€15–30 booked now.</li>
   </ul>
 
-  <h3 class="sub">🟡 Book within the week</h3>
+  <h3 class="sub">🟡 This week</h3>
   <ul class="cl">
-    <li><strong>QC Terme day spa, Rome</strong> — qcterme.com/rome · Day pass + massage for 3 people. Oct 27 (or the afternoon of Oct 26).</li>
-    <li><strong>Florence → Venice train</strong> — trenitalia.com · Frecciarossa or Italo, Nov 1. Book a week ahead for the best price (€30–50/person).</li>
-    <li><strong>Siena Duomo</strong> — operaduomo.siena.it · Combo ticket for Oct 29.</li>
-    <li><strong>Chianti winery visits</strong> — Castello di Brolio (ricasoli.com) for Oct 30 — email to book a proper cellar tour. Antinori (antinori.it) for the same day or the next.</li>
-    <li><strong>Venice hotel</strong> — Palazzo Venart or Nani Mocenigo, Nov 1–4 (3 nights).</li>
+    <li><strong>Venice hotel, Nov 1–4</strong> — Palazzo Venart (sleep above the 2★ restaurant), Nani Mocenigo, or Ca' Pisani (value).</li>
+    <li><strong>Glam or Wisteria, Venice — Nov 2 dinner</strong> — the Michelin night. Confirm Monday opening when booking.</li>
+    <li><strong>Roscioli Rome, Oct 26 dinner</strong> — salumeriaroscioli.com, card guarantee, slots 7:00/9:30 PM.</li>
+    <li><strong>Il Pagliaccio or Pipero, Oct 27 dinner</strong> — the Rome Michelin finale. (Dream big: call La Pergola about cancellations.)</li>
+    <li><strong>Doge's Palace Secret Itineraries, Nov 2</strong> — palazzoducale.visitmuve.it · €32, English at 10:00/11:30/13:00.</li>
+    <li><strong>St. Mark's timed entry, Nov 2 PM</strong> — tickets.basilicasanmarco.it (~€12, or ~€36 all-inclusive).</li>
+    <li><strong>Brolio Classic Tour Oct 30, 10:30 AM</strong> — ricasoli.com €30 · plus Fèlsina (felsina.it, €30) or Antinori (non-refundable, book fast).</li>
+    <li><strong>Siena OPA SI Pass, Oct 29</strong> — operaduomo.siena.it (~€16 — the uncovered-floor special).</li>
+    <li><strong>Spa, Oct 27</strong> — AcquaMadre Hammam (center) or QC Spa Roma day pass + massages (Fiumicino).</li>
+    <li><strong>BGM → JFK private car, Oct 22</strong> — use the draft in Getting There.</li>
   </ul>
 
   <h3 class="sub">🟢 Nice to add</h3>
   <ul class="cl">
-    <li><strong>Roscioli dinner, Rome</strong> — roscioli.com · Oct 25 evening. Reserve ahead.</li>
-    <li><strong>Doge's Palace Secret Itineraries</strong> — palazzoducale.visitmuve.it · Nov 2. Fits in with your regular admission.</li>
-    <li><strong>Osteria alle Testiere, Venice dinner #2</strong> — Book a second night if available (they do two seatings per evening).</li>
-    <li><strong>BGM → JFK private car</strong> — Contact Binghamton limo service now for Oct 22 evening. Use the draft message in the Getting There tab.</li>
+    <li><strong>Armando al Pantheon</strong> — officially books out 2 months ahead, but check armandoalpantheon.it for stray slots/cancellations.</li>
+    <li><strong>Antiche Carampane, Venice Nov 3</strong> — as Testiere backup: +39 041 524 0165.</li>
+    <li><strong>Wave Murano Glass furnace tour, Nov 3</strong> — wavemuranoglass.com, book the morning demo.</li>
+    <li><strong>Venissa Osteria lunch, Nov 3</strong> — email to confirm the Osteria is open and book the vineyard-island table.</li>
+    <li><strong>Mom's water taxi to VCE, Nov 4</strong> — arrange through the hotel desk the day before (~€120–160).</li>
+    <li><strong>eSIMs + offline maps</strong> — set up before the flight; rural Tuscany has real signal gaps.</li>
   </ul>
 
   <hr class="divider">
