@@ -425,6 +425,82 @@ h3.sub {
   .opt-meta { display: none; }
   .info-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── Animations & transitions ───────────────────── */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.section.active { animation: rise .45s cubic-bezier(.22,.8,.3,1) both; }
+.card, .opt, .map-section {
+  transition: transform .25s cubic-bezier(.22,.8,.3,1), box-shadow .25s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.reveal { opacity: 0; transform: translateY(16px);
+  transition: opacity .6s cubic-bezier(.22,.8,.3,1), transform .6s cubic-bezier(.22,.8,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+.chrono-dot { transition: transform .25s, box-shadow .25s; }
+.chrono-item:hover .chrono-dot { transform: scale(1.35); }
+.opt-body { animation: fadeIn .3s ease both; }
+.lp { transition: background .15s, color .15s, border-color .15s, transform .15s; }
+.lp:hover { transform: translateY(-1px); }
+.nav-btn { transition: color .2s, border-color .25s; }
+#pw-gate > div { animation: rise .6s cubic-bezier(.22,.8,.3,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ── Hour-by-hour schedule ── */
+.sched { margin: 10px 0 4px; border-left: 2px solid var(--border); padding-left: 0; list-style: none; }
+.sched li {
+  display: grid; grid-template-columns: 76px 1fr; gap: 10px;
+  padding: 7px 0 7px 14px; position: relative;
+  font-size: 13px; color: var(--fg-mid);
+}
+.sched li::before {
+  content: ''; position: absolute; left: -5px; top: 14px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--bg-card); border: 2px solid var(--gold);
+}
+.sched .t {
+  font-weight: 700; font-size: 11px; letter-spacing: .05em;
+  color: var(--fg-muted); text-transform: uppercase; padding-top: 2px;
+  white-space: nowrap;
+}
+.sched li strong { color: var(--fg); }
+
+/* ── Weather strip ── */
+.wx-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 10px; margin: 12px 0;
+}
+.wx {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 14px; text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.wx .wx-city { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; }
+.wx .wx-icon { font-size: 26px; margin: 6px 0 2px; }
+.wx .wx-temp { font-size: 15px; font-weight: 700; color: var(--fg); }
+.wx .wx-note { font-size: 11px; color: var(--fg-muted); margin-top: 3px; line-height: 1.45; }
+
+/* ── Distance / logistics table ── */
+.dist { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 10px 0; }
+.dist th {
+  text-align: left; font-size: 10px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--fg-muted);
+  padding: 6px 10px; border-bottom: 2px solid var(--border);
+}
+.dist td { padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--fg-mid); }
+.dist tr:last-child td { border-bottom: none; }
+.dist td:first-child { font-weight: 600; color: var(--fg); }
+
+/* ── Star rating ── */
+.stars { color: var(--gold); letter-spacing: 1px; font-size: 12px; }
 </style>
 
 <!-- Password gate -->
@@ -457,6 +533,8 @@ h3.sub {
     <button class="nav-btn" onclick="show('rome')">Rome</button>
     <button class="nav-btn" onclick="show('tuscany')">Tuscany</button>
     <button class="nav-btn" onclick="show('venice')">Venice</button>
+    <button class="nav-btn" onclick="show('food')">Food Guide</button>
+    <button class="nav-btn" onclick="show('packing')">Packing</button>
     <button class="nav-btn" onclick="show('checklist')">Book Now</button>
   </div>
 </nav>
@@ -1083,6 +1161,67 @@ Sam</div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════ PACKING & WEATHER ═══════════════════════════════ -->
+<section id="packing" class="section">
+  <h2 class="sec">Weather &amp; what to pack</h2>
+
+  <h3 class="sub">Late October → early November conditions</h3>
+  <div class="wx-grid">
+    <div class="wx">
+      <div class="wx-city">Rome</div>
+      <div class="wx-icon">🌤</div>
+      <div class="wx-temp">20° / 11°C &nbsp;·&nbsp; 68° / 52°F</div>
+      <div class="wx-note">Mild, sunny spells. ~7 rain days/month — pack a compact umbrella. Evenings need a light jacket.</div>
+    </div>
+    <div class="wx">
+      <div class="wx-city">Tuscany</div>
+      <div class="wx-icon">🍂</div>
+      <div class="wx-temp">17° / 8°C &nbsp;·&nbsp; 63° / 46°F</div>
+      <div class="wx-note">Crisp mornings, golden light, olive-harvest season. Hill towns are breezy — bring layers.</div>
+    </div>
+    <div class="wx">
+      <div class="wx-city">Venice</div>
+      <div class="wx-icon">🌫</div>
+      <div class="wx-temp">13° / 6°C &nbsp;·&nbsp; 55° / 43°F</div>
+      <div class="wx-note">Lagoon mist, cool and atmospheric. Small acqua alta chance — waterproof shoes recommended.</div>
+    </div>
+  </div>
+
+  <div class="tip"><strong>The one rule:</strong> layers. You'll go from 20°C Roman afternoons to 6°C Venetian mornings in the same 13 days. Everything should mix and match.</div>
+
+  <h3 class="sub">Packing list — everyone</h3>
+  <div class="card">
+    <ul class="cl">
+      <li><strong>Passports</strong> — valid 3+ months beyond return. Photo/scan saved to phone + cloud.</li>
+      <li><strong>Layers:</strong> 4–5 tees/base layers, 2 sweaters, 1 light rain jacket, 1 warmer jacket for Venice evenings</li>
+      <li><strong>Walking shoes, broken in</strong> — you'll do 15,000+ steps/day on cobblestones. A second pair in case of rain.</li>
+      <li><strong>Swimsuit + quick-dry towel</strong> — Saturnia hot springs (Oct 31) and the spa day. Water shoes or old sneakers for Saturnia's rocky pools.</li>
+      <li><strong>Compact umbrella</strong> + packable tote for markets</li>
+      <li><strong>Power adapters ×2–3</strong> — Italy uses Type C/F/L plugs, 230V. A universal adapter with USB ports covers everything.</li>
+      <li><strong>Power bank</strong> — all-day navigation drains phones fast</li>
+      <li><strong>eSIM</strong> — set up Airalo/Holafly before departure, or confirm your carrier's international plan</li>
+      <li><strong>Meds in original packaging</strong> + small first-aid kit, blister plasters</li>
+      <li><strong>One dressier outfit</strong> — Michelin dinners (smart casual is fine everywhere in Italy)</li>
+      <li><strong>Credit cards with no foreign fees</strong> — notify banks; carry ~€200 cash for small trattorias and markets</li>
+      <li><strong>Driver's license + International Driving Permit</strong> (Sam) — IDP is legally required in Italy, $20 at AAA, takes 15 min</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Smart extras</h3>
+  <div class="card">
+    <ul class="cl">
+      <li><strong>Packing cubes</strong> — 3 cities = 3 repacks. Cubes make it painless.</li>
+      <li><strong>Empty duffel in the suitcase</strong> — for wine, olive oil, and market finds coming home</li>
+      <li><strong>Scarf/pashmina (Siri + Mom)</strong> — doubles as church shoulder-cover (required at St. Peter's, San Marco) and warmth</li>
+      <li><strong>Sunglasses</strong> — low autumn sun is blinding on the autostrada</li>
+      <li><strong>Downloaded offline maps</strong> — Google Maps offline for Rome, Tuscany (critical — rural signal gaps), Venice</li>
+      <li><strong>Apps to install:</strong> Trenitalia, Italo, AVM Venezia (vaporetto tickets), FreeNow (taxis in Rome)</li>
+    </ul>
+  </div>
+
+  <div class="warn"><strong>Leave room:</strong> one carry-on + one checked bag each, max. Venice means carrying everything over stepped bridges from the vaporetto stop to the hotel — every kilo counts.</div>
+</section>
+
 <!-- ═══════════════════════════════ BOOKING CHECKLIST ═══════════════════════════════ -->
 <section id="checklist" class="section">
   <h2 class="sec">Book now — priority order</h2>
@@ -1200,6 +1339,30 @@ function cp(id, btn) {
   }
 }
 
+// Scroll-reveal: cards and timeline items fade up as they enter the viewport
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll('.card, .chrono-item, .wx, .opt').forEach(el => {
+    el.classList.add('reveal'); io.observe(el);
+  });
+  // Re-trigger for tab switches: anything already on screen reveals immediately
+  window.addEventListener('click', () => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.section.active .reveal:not(.in)').forEach(el => io.observe(el));
+    });
+  }, true);
+})();
+
+// crypto.subtle only exists on secure origins — force https
+if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  location.replace('https://' + location.host + location.pathname + location.search);
+}
+
 const PW_HASH = '2e5d7cb7a53c51b7ed289218e2c8a16db05401113616fbae6b7d9487f95f2842';
 
 async function sha256(str) {
@@ -1207,16 +1370,86 @@ async function sha256(str) {
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
+// Pure-JS SHA-256 fallback for browsers/contexts without crypto.subtle
+function sha256Sync(ascii) {
+  function rr(v, a) { return (v >>> a) | (v << (32 - a)); }
+  var maxWord = Math.pow(2, 32), result = '';
+  var words = [], asciiBitLength = ascii.length * 8;
+  var hash = [], k = [], primeCounter = 0, isComposite = {}, i, j;
+  for (var candidate = 2; primeCounter < 64; candidate++) {
+    if (!isComposite[candidate]) {
+      for (i = 0; i < 313; i += candidate) isComposite[i] = candidate;
+      hash[primeCounter] = (Math.pow(candidate, .5) * maxWord) | 0;
+      k[primeCounter++] = (Math.pow(candidate, 1 / 3) * maxWord) | 0;
+    }
+  }
+  ascii += '\x80';
+  while (ascii.length % 64 - 56) ascii += '\x00';
+  for (i = 0; i < ascii.length; i++) {
+    j = ascii.charCodeAt(i);
+    if (j >> 8) return '';
+    words[i >> 2] |= j << ((3 - i) % 4) * 8;
+  }
+  words[words.length] = (asciiBitLength / maxWord) | 0;
+  words[words.length] = asciiBitLength;
+  for (j = 0; j < words.length;) {
+    var w = words.slice(j, j += 16);
+    var oldHash = hash.slice(0, 8);
+    hash = hash.slice(0, 8);
+    for (i = 0; i < 64; i++) {
+      var w15 = w[i - 15], w2 = w[i - 2];
+      var a = hash[0], e = hash[4];
+      var temp1 = hash[7]
+        + (rr(e, 6) ^ rr(e, 11) ^ rr(e, 25))
+        + ((e & hash[5]) ^ (~e & hash[6]))
+        + k[i]
+        + (w[i] = (i < 16) ? w[i] : (
+            w[i - 16]
+            + (rr(w15, 7) ^ rr(w15, 18) ^ (w15 >>> 3))
+            + w[i - 7]
+            + (rr(w2, 17) ^ rr(w2, 19) ^ (w2 >>> 10))
+          ) | 0);
+      var temp2 = (rr(a, 2) ^ rr(a, 13) ^ rr(a, 22))
+        + ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2]));
+      hash = [(temp1 + temp2) | 0].concat(hash);
+      hash[4] = (hash[4] + temp1) | 0;
+    }
+    for (i = 0; i < 8; i++) hash[i] = (hash[i] + oldHash[i]) | 0;
+  }
+  for (i = 0; i < 8; i++) {
+    for (j = 3; j + 1; j--) {
+      var b = (hash[i] >> (j * 8)) & 255;
+      result += ((b < 16) ? 0 : '') + b.toString(16);
+    }
+  }
+  return result;
+}
+
+function unlock() {
+  try { sessionStorage.setItem('italy-auth', '1'); } catch (e) {}
+  document.getElementById('pw-gate').style.display = 'none';
+  document.getElementById('protected-content').style.display = 'block';
+}
+
 async function checkPw(e) {
-  e.preventDefault();
-  const pw = document.getElementById('pw-input').value;
-  const hash = await sha256(pw);
+  if (e && e.preventDefault) e.preventDefault();
+  var pw = document.getElementById('pw-input').value.trim().toLowerCase();
+  var hash = '';
+  try {
+    if (window.crypto && crypto.subtle && crypto.subtle.digest) {
+      hash = await sha256(pw);
+    } else {
+      hash = sha256Sync(pw);
+    }
+  } catch (err) {
+    try { hash = sha256Sync(pw); } catch (e2) { hash = ''; }
+  }
   if (hash === PW_HASH) {
-    try { sessionStorage.setItem('italy-auth','1'); } catch(e) {}
-    document.getElementById('pw-gate').style.display = 'none';
-    document.getElementById('protected-content').style.display = 'block';
+    unlock();
   } else {
-    document.getElementById('pw-error').style.display = 'block';
+    var errEl = document.getElementById('pw-error');
+    errEl.textContent = hash === '' ? 'Something went wrong — try a hard refresh (Ctrl+Shift+R).' : 'Incorrect password.';
+    errEl.style.display = 'block';
     document.getElementById('pw-input').value = '';
     document.getElementById('pw-input').focus();
   }
@@ -1225,11 +1458,8 @@ async function checkPw(e) {
 
 (function() {
   try {
-    if (sessionStorage.getItem('italy-auth') === '1') {
-      document.getElementById('pw-gate').style.display = 'none';
-      document.getElementById('protected-content').style.display = 'block';
-    }
-  } catch(e) {}
+    if (sessionStorage.getItem('italy-auth') === '1') unlock();
+  } catch (e) {}
 })();
 </script>
 </div><!-- /protected-content -->
