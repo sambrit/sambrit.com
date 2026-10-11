@@ -1,13 +1,9 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Italy Trip Planner</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap">
+<title>Italy Trip — Sam, Siri & Mom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap">
 
 <style>
-/* ─── Design tokens ─────────────────────────────────────────────
-   Layout: full-width sticky nav + constrained content column
-   Color: warm ivory with Chianti red accent, deep olive for headers
-   Type: Cormorant Garamond (editorial display) + Inter (data/UI)
-   ────────────────────────────────────────────────────────────── */
+/* ── Design tokens ───────────────────────────────── */
 :root {
   --bg:        #faf8f4;
   --bg-card:   #ffffff;
@@ -22,449 +18,412 @@
   --gold-soft: #fdf6e3;
   --olive:     #3d4a2b;
   --olive-soft:#eef0e8;
+  --teal:      #1a5c6b;
+  --teal-soft: #e5f3f6;
+  --r: 8px;
   --shadow-sm: 0 1px 3px rgba(42,34,23,.08);
-  --shadow-md: 0 4px 16px rgba(42,34,23,.10);
-  --r:         8px;
+  --shadow-md: 0 4px 16px rgba(42,34,23,.12);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:        #1a1610;
-    --bg-card:   #231f17;
-    --bg-muted:  #2a2520;
-    --border:    #3d3628;
+    --bg:        #17140f;
+    --bg-card:   #211d15;
+    --bg-muted:  #2a2419;
+    --border:    #3d3525;
     --fg:        #ede8df;
     --fg-mid:    #c4b89a;
     --fg-muted:  #857563;
-    --red:       #c0392b;
-    --red-soft:  #2e1a15;
+    --red:       #c05040;
+    --red-soft:  #2e1810;
     --gold:      #d4a83a;
-    --gold-soft: #241f0d;
+    --gold-soft: #241d08;
     --olive:     #8aab5e;
-    --olive-soft:#1a2210;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,.25);
-    --shadow-md: 0 4px 16px rgba(0,0,0,.35);
+    --olive-soft:#192210;
+    --teal:      #4ab8cc;
+    --teal-soft: #0d2d33;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.4);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg:        #1a1610;
-  --bg-card:   #231f17;
-  --bg-muted:  #2a2520;
-  --border:    #3d3628;
+  --bg:        #17140f;
+  --bg-card:   #211d15;
+  --bg-muted:  #2a2419;
+  --border:    #3d3525;
   --fg:        #ede8df;
   --fg-mid:    #c4b89a;
   --fg-muted:  #857563;
-  --red:       #c0392b;
-  --red-soft:  #2e1a15;
+  --red:       #c05040;
+  --red-soft:  #2e1810;
   --gold:      #d4a83a;
-  --gold-soft: #241f0d;
+  --gold-soft: #241d08;
   --olive:     #8aab5e;
-  --olive-soft:#1a2210;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.25);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.35);
+  --olive-soft:#192210;
+  --teal:      #4ab8cc;
+  --teal-soft: #0d2d33;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.4);
   color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-
 body {
+  margin: 0; padding: 0;
   background: var(--bg);
   color: var(--fg);
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
 }
 
-/* ─── Header ─── */
+/* ── Header ── */
 .site-header {
   background: var(--olive);
   color: #fff;
-  padding: 24px 20px;
+  padding: 28px 20px 24px;
   text-align: center;
+  position: relative;
 }
 .site-header .eyebrow {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  opacity: .7;
-  margin: 0 0 8px;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  opacity: .65; margin: 0 0 10px;
 }
 .site-header h1 {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 6vw, 3.2rem);
-  font-weight: 500;
-  font-style: italic;
-  margin: 0;
-  line-height: 1.1;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-weight: 500; font-style: italic;
+  margin: 0; line-height: 1.1;
   text-wrap: balance;
-  letter-spacing: -.01em;
 }
-.site-header .subtitle {
-  font-size: 13px;
-  opacity: .75;
-  margin: 8px 0 0;
-  letter-spacing: .03em;
+.site-header .sub {
+  font-size: 13px; opacity: .7;
+  margin: 8px 0 0; letter-spacing: .03em;
 }
 
-/* ─── Navigation tabs ─── */
+/* ── Nav ── */
 .nav-wrap {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
-  background: var(--olive);
   z-index: 100;
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  background: var(--olive);
+  border-bottom: 1px solid rgba(255,255,255,.12);
 }
 .nav-scroll {
-  display: flex;
-  overflow-x: auto;
-  scrollbar-width: none;
-  gap: 0;
-  padding: 0 8px;
+  display: flex; overflow-x: auto;
+  scrollbar-width: none; gap: 0; padding: 0 6px;
 }
 .nav-scroll::-webkit-scrollbar { display: none; }
 .nav-btn {
-  flex: 0 0 auto;
-  background: none;
-  border: none;
-  color: rgba(255,255,255,.65);
+  flex: 0 0 auto; background: none; border: none;
+  color: rgba(255,255,255,.6);
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 10px 14px;
-  cursor: pointer;
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 10px 13px; cursor: pointer;
   border-bottom: 2px solid transparent;
   transition: color .15s, border-color .15s;
   white-space: nowrap;
 }
-.nav-btn:hover { color: rgba(255,255,255,.9); }
+.nav-btn:hover { color: rgba(255,255,255,.88); }
 .nav-btn.active { color: #fff; border-bottom-color: var(--gold); }
 
-/* ─── Content ─── */
+/* ── Content ── */
 .content {
-  max-width: 860px;
-  margin: 0 auto;
-  padding-inline: 20px;
-  padding-block: 32px;
+  max-width: 880px; margin: 0 auto;
+  padding: 32px 20px;
 }
 .section { display: none; }
 .section.active { display: block; }
 
-/* ─── Cards ─── */
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  box-shadow: var(--shadow-sm);
-  padding: 20px;
-  margin-bottom: 16px;
+/* ── Section headings ── */
+h2.sec {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.9rem; font-weight: 500; font-style: italic;
+  margin: 0 0 22px; text-wrap: balance; line-height: 1.2;
 }
-.card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+h3.sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--olive);
+  margin: 26px 0 10px;
+  padding-bottom: 5px; border-bottom: 1px solid var(--border);
+}
+.day-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .13em; text-transform: uppercase;
+  color: var(--fg-muted); margin: 22px 0 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.day-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r); box-shadow: var(--shadow-sm);
+  padding: 18px 20px; margin-bottom: 14px;
+}
+.card-hd {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 10px;
+  margin-bottom: 10px; flex-wrap: wrap;
 }
 .card-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.35rem;
-  font-weight: 600;
-  line-height: 1.25;
-  margin: 0;
-  color: var(--fg);
+  font-size: 1.3rem; font-weight: 600; margin: 0;
+  line-height: 1.2; color: var(--fg);
 }
-.card-title em {
-  font-style: italic;
-  color: var(--red);
-}
+.card p { margin: 0 0 9px; color: var(--fg-mid); font-size: 13.5px; }
+.card p:last-child { margin-bottom: 0; }
+.card ul { margin: 6px 0 9px; padding-left: 18px;
+  color: var(--fg-mid); font-size: 13px; line-height: 1.9; }
+
+/* ── Badges ── */
 .badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 20px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: 3px 8px;
+  border-radius: 20px; white-space: nowrap; flex-shrink: 0;
 }
 .badge-red    { background: var(--red-soft); color: var(--red); }
 .badge-gold   { background: var(--gold-soft); color: var(--gold); }
 .badge-olive  { background: var(--olive-soft); color: var(--olive); }
+.badge-teal   { background: var(--teal-soft); color: var(--teal); }
 .badge-muted  { background: var(--bg-muted); color: var(--fg-mid); }
 
-.card p { margin: 0 0 10px; color: var(--fg-mid); font-size: 13.5px; }
-.card p:last-child { margin-bottom: 0; }
-
-/* ─── Day blocks ─── */
-.day-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  margin: 24px 0 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.day-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-/* ─── Option toggles ─── */
-.options-group { display: flex; flex-direction: column; gap: 10px; }
-.option {
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  overflow: hidden;
-}
-.option-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  cursor: pointer;
-  background: var(--bg-muted);
-  transition: background .12s;
-  user-select: none;
-}
-.option-header:hover { background: var(--border); }
-.option-num {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--red);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.option-name {
-  font-weight: 600;
-  font-size: 13.5px;
-  flex: 1;
-  min-width: 0;
-}
-.option-meta {
-  font-size: 12px;
-  color: var(--fg-muted);
-  white-space: nowrap;
-}
-.option-chevron {
-  font-size: 12px;
-  color: var(--fg-muted);
-  transition: transform .2s;
-  flex-shrink: 0;
-}
-.option.open .option-chevron { transform: rotate(180deg); }
-.option-body {
-  display: none;
-  padding: 14px;
-  border-top: 1px solid var(--border);
-  background: var(--bg-card);
-}
-.option.open .option-body { display: block; }
-.option-body p { margin: 0 0 8px; font-size: 13px; color: var(--fg-mid); }
-.option-body p:last-child { margin-bottom: 0; }
-.option-body strong { color: var(--fg); font-weight: 600; }
-
-/* ─── Link pills ─── */
-.links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.link-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--fg-mid);
-  text-decoration: none;
-  transition: background .12s, color .12s;
-}
-.link-pill:hover { background: var(--red-soft); color: var(--red); border-color: var(--red); }
-.link-pill svg { width: 12px; height: 12px; flex-shrink: 0; }
-
-/* ─── Info rows ─── */
+/* ── Info grid ── */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  margin: 10px 0;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px; margin: 10px 0;
 }
 .info-item {
-  background: var(--bg-muted);
-  border-radius: 6px;
-  padding: 10px 12px;
+  background: var(--bg-muted); border-radius: 6px; padding: 10px 12px;
 }
-.info-item .label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  margin-bottom: 2px;
+.info-item .lbl {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--fg-muted); margin-bottom: 2px;
 }
-.info-item .value {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--fg);
-}
+.info-item .val { font-size: 13.5px; font-weight: 600; color: var(--fg); }
 
-/* ─── Warning box ─── */
+/* ── Warning ── */
 .warn {
-  background: var(--gold-soft);
-  border: 1px solid var(--gold);
-  border-radius: 6px;
-  padding: 10px 12px;
-  font-size: 12.5px;
-  color: var(--fg-mid);
-  margin: 10px 0;
+  background: var(--gold-soft); border: 1px solid var(--gold);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px; padding: 10px 13px;
+  font-size: 12.5px; color: var(--fg-mid); margin: 10px 0;
 }
 .warn strong { color: var(--gold); }
 
-/* ─── Checklist ─── */
-.checklist { list-style: none; padding: 0; margin: 8px 0 0; }
-.checklist li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 5px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-  color: var(--fg-mid);
+/* ── Tip ── */
+.tip {
+  background: var(--teal-soft); border: 1px solid var(--teal);
+  border-left: 3px solid var(--teal);
+  border-radius: 6px; padding: 10px 13px;
+  font-size: 12.5px; color: var(--fg-mid); margin: 10px 0;
 }
-.checklist li:last-child { border-bottom: none; }
-.checklist li::before {
-  content: '□';
-  font-size: 14px;
-  color: var(--red);
-  flex-shrink: 0;
-  line-height: 1.4;
-}
-.checklist li strong { color: var(--fg); }
+.tip strong { color: var(--teal); }
 
-/* ─── Draft message box ─── */
-.draft-box {
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 16px;
-  position: relative;
-  font-size: 13px;
-  font-style: italic;
-  color: var(--fg-mid);
-  line-height: 1.7;
-  white-space: pre-wrap;
+/* ── Option toggles ── */
+.opts { display: flex; flex-direction: column; gap: 10px; }
+.opt { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.opt-hd {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; cursor: pointer;
+  background: var(--bg-muted); transition: background .12s;
+  user-select: none;
+}
+.opt-hd:hover { background: var(--border); }
+.opt-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--red); color: #fff;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.opt-name { font-weight: 600; font-size: 13.5px; flex: 1; min-width: 0; }
+.opt-meta { font-size: 12px; color: var(--fg-muted); white-space: nowrap; }
+.opt-chev { font-size: 11px; color: var(--fg-muted); transition: transform .2s; flex-shrink: 0; }
+.opt.open .opt-chev { transform: rotate(180deg); }
+.opt-body {
+  display: none; padding: 14px 16px;
+  border-top: 1px solid var(--border); background: var(--bg-card);
+}
+.opt.open .opt-body { display: block; }
+.opt-body p { margin: 0 0 8px; font-size: 13px; color: var(--fg-mid); }
+.opt-body p:last-child { margin-bottom: 0; }
+.opt-body strong { color: var(--fg); font-weight: 600; }
+
+/* ── Link pills ── */
+.links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.lp {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--bg-muted); border: 1px solid var(--border);
+  border-radius: 20px; padding: 4px 11px;
+  font-size: 12px; font-weight: 500; color: var(--fg-mid);
+  text-decoration: none; transition: background .12s, color .12s, border-color .12s;
+}
+.lp:hover { background: var(--red-soft); color: var(--red); border-color: var(--red); }
+.lp svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+/* ── Checklist ── */
+.cl { list-style: none; padding: 0; margin: 8px 0 0; }
+.cl li {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 5px 0; border-bottom: 1px solid var(--border);
+  font-size: 13px; color: var(--fg-mid);
+}
+.cl li:last-child { border-bottom: none; }
+.cl li::before { content: '□'; font-size: 14px; color: var(--red); flex-shrink: 0; line-height: 1.4; }
+.cl li strong { color: var(--fg); }
+
+/* ── Draft box ── */
+.draft {
+  background: var(--bg-muted); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 16px; position: relative;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 15px;
+  font-size: 15px; font-style: italic;
+  color: var(--fg-mid); line-height: 1.75;
+  white-space: pre-wrap;
 }
 .copy-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  padding: 4px 10px;
-  font-size: 11px;
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  color: var(--fg-mid);
-  cursor: pointer;
+  position: absolute; top: 10px; right: 10px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 5px; padding: 4px 10px;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-style: normal;
+  font-weight: 600; color: var(--fg-mid); cursor: pointer;
   transition: background .12s, color .12s;
 }
 .copy-btn:hover { background: var(--red-soft); color: var(--red); }
 
-/* ─── Section headings ─── */
-h2.sec-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.8rem;
-  font-weight: 500;
-  font-style: italic;
-  color: var(--fg);
-  margin: 0 0 20px;
-  text-wrap: balance;
-  line-height: 1.2;
-}
-h3.sub-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--olive);
-  margin: 20px 0 8px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--border);
-}
+.divider { border: none; border-top: 1px solid var(--border); margin: 26px 0; }
 
-/* ─── Divider ─── */
-.divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 24px 0;
+/* ── VISUAL MAP ── */
+.map-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r); box-shadow: var(--shadow-md);
+  padding: 24px; margin-bottom: 24px;
+  overflow-x: auto;
 }
-
-/* ─── Timeline strip ─── */
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 8px;
-  margin: 0 0 24px;
-}
-.tl-block {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 10px 12px;
-  text-align: center;
-}
-.tl-block .tl-date {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-}
-.tl-block .tl-city {
+.map-section h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--fg);
-  margin: 2px 0;
-  line-height: 1.2;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--fg-muted); margin: 0 0 20px;
+  text-transform: uppercase; letter-spacing: .08em;
+  font-style: normal;
 }
-.tl-block .tl-nights {
-  font-size: 11px;
-  color: var(--fg-muted);
-}
-.tl-block.active-leg { border-color: var(--red); background: var(--red-soft); }
-.tl-block.active-leg .tl-city { color: var(--red); }
 
-/* responsive */
-@media (max-width: 600px) {
+/* SVG Italy map */
+.map-svg-wrap {
+  position: relative; width: 100%; min-width: 320px; max-width: 600px;
+  margin: 0 auto;
+}
+.map-svg-wrap svg { width: 100%; height: auto; display: block; }
+
+/* Route flow diagram */
+.route-flow {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0;
+  margin: 18px 0;
+}
+.route-city {
+  display: flex; flex-direction: column; align-items: center;
+  background: var(--bg-card); border: 2px solid var(--border);
+  border-radius: 10px; padding: 10px 16px;
+  text-align: center; min-width: 100px;
+  transition: border-color .2s, background .2s;
+  cursor: default; position: relative;
+}
+.route-city:hover { border-color: var(--red); background: var(--red-soft); }
+.route-city .rc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600; color: var(--fg);
+  line-height: 1;
+}
+.route-city .rc-dates {
+  font-size: 10.5px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--fg-muted); margin-top: 4px;
+}
+.route-city .rc-nights {
+  font-size: 11px; color: var(--fg-muted); margin-top: 2px;
+}
+.route-city.active-city {
+  border-color: var(--olive);
+  background: var(--olive-soft);
+}
+.route-city.active-city .rc-name { color: var(--olive); }
+.route-arrow {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 8px; color: var(--fg-muted); font-size: 18px;
+  flex-shrink: 0;
+}
+.route-arrow .arr-mode {
+  font-size: 9.5px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--fg-muted); margin-top: 2px;
+}
+
+/* Phase legend */
+.phase-legend {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;
+}
+.pl-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--fg-mid);
+}
+.pl-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* ── Chrono timeline ── */
+.chrono {
+  position: relative; padding-left: 28px; margin: 0;
+}
+.chrono::before {
+  content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px;
+  width: 2px; background: var(--border); border-radius: 1px;
+}
+.chrono-item {
+  position: relative; margin-bottom: 20px;
+}
+.chrono-item:last-child { margin-bottom: 0; }
+.chrono-dot {
+  position: absolute; left: -22px; top: 5px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg-card); border: 2px solid var(--border);
+  z-index: 1;
+}
+.chrono-item.c-rome .chrono-dot   { border-color: var(--red); background: var(--red-soft); }
+.chrono-item.c-tus  .chrono-dot  { border-color: var(--olive); background: var(--olive-soft); }
+.chrono-item.c-ven  .chrono-dot  { border-color: var(--teal); background: var(--teal-soft); }
+.chrono-item.c-dep  .chrono-dot  { border-color: var(--gold); background: var(--gold-soft); }
+.chrono-date {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--fg-muted); margin-bottom: 3px;
+}
+.chrono-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600; color: var(--fg); line-height: 1.2;
+}
+.chrono-body {
+  font-size: 13px; color: var(--fg-mid); margin-top: 4px;
+}
+.chrono-body strong { color: var(--fg); font-weight: 600; }
+
+/* ── Confirmed box ── */
+.confirmed {
+  background: var(--olive-soft); border: 1px solid var(--olive);
+  border-left: 3px solid var(--olive);
+  border-radius: 6px; padding: 10px 13px;
+  font-size: 13px; color: var(--fg-mid); margin: 10px 0;
+}
+.confirmed strong { color: var(--olive); }
+
+@media (max-width: 580px) {
+  .route-flow { flex-direction: column; align-items: flex-start; }
+  .route-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .opt-meta { display: none; }
   .info-grid { grid-template-columns: 1fr 1fr; }
-  .option-meta { display: none; }
 }
 </style>
 
@@ -484,331 +443,429 @@ h3.sub-title {
 </div>
 
 <div id="protected-content" style="display:none;">
+<!-- ═══════ NAV ═══════ -->
 <header class="site-header">
-  <p class="eyebrow">Sam · Oct 22 – Nov 4, 2026</p>
-  <h1>Italy: Rome, Tuscany & Venice</h1>
-  <p class="subtitle">Sam · Siri · Mom &nbsp;·&nbsp; Full day-by-day itinerary with three options for everything</p>
+  <p class="eyebrow">Sam · Siri · Mom &nbsp;·&nbsp; Oct 22 – Nov 4, 2026</p>
+  <h1>Rome · Tuscany · Venice</h1>
+  <p class="sub">Full itinerary · three options for everything · day-by-day</p>
 </header>
 
-<nav class="nav-wrap" aria-label="Trip sections">
+<nav class="nav-wrap">
   <div class="nav-scroll">
-    <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
-    <button class="nav-btn" onclick="showSection('transport')">Getting There</button>
-    <button class="nav-btn" onclick="showSection('rome')">Rome</button>
-    <button class="nav-btn" onclick="showSection('tuscany')">Tuscany</button>
-    <button class="nav-btn" onclick="showSection('venice')">Venice</button>
-    <button class="nav-btn" onclick="showSection('departure')">Departure</button>
-    <button class="nav-btn" onclick="showSection('checklist')">Booking List</button>
+    <button class="nav-btn active" onclick="show('overview')">Overview</button>
+    <button class="nav-btn" onclick="show('transport')">Getting There</button>
+    <button class="nav-btn" onclick="show('rome')">Rome</button>
+    <button class="nav-btn" onclick="show('tuscany')">Tuscany</button>
+    <button class="nav-btn" onclick="show('venice')">Venice</button>
+    <button class="nav-btn" onclick="show('checklist')">Book Now</button>
   </div>
 </nav>
 
 <main class="content">
 
-<!-- ═══════════════════════════════════════════════════════ OVERVIEW -->
+<!-- ═══════════════════════════════ OVERVIEW ═══════════════════════════════ -->
 <section id="overview" class="section active">
-  <h2 class="sec-title">The full picture</h2>
+  <h2 class="sec">Your trip at a glance</h2>
 
-  <div class="timeline">
-    <div class="tl-block">
-      <div class="tl-date">Oct 16</div>
-      <div class="tl-city">Binghamton</div>
-      <div class="tl-nights">arrive from SEA</div>
+  <!-- VISUAL ROUTE MAP -->
+  <div class="map-section">
+    <h3>Route &amp; flow</h3>
+
+    <div class="route-flow">
+      <div class="route-city">
+        <div class="rc-name">BGM</div>
+        <div class="rc-dates">Oct 22</div>
+        <div class="rc-nights">evening</div>
+      </div>
+      <div class="route-arrow">
+        ✈︎
+        <div class="arr-mode">car/bus</div>
+      </div>
+      <div class="route-city">
+        <div class="rc-name">JFK</div>
+        <div class="rc-dates">Oct 22 night</div>
+        <div class="rc-nights">overnight flight</div>
+      </div>
+      <div class="route-arrow">
+        ✈︎
+        <div class="arr-mode">~9 hrs</div>
+      </div>
+      <div class="route-city active-city">
+        <div class="rc-name">Rome</div>
+        <div class="rc-dates">Oct 23–28</div>
+        <div class="rc-nights">5 nights</div>
+      </div>
+      <div class="route-arrow">
+        🚗
+        <div class="arr-mode">~3 hrs</div>
+      </div>
+      <div class="route-city active-city">
+        <div class="rc-name">Tuscany</div>
+        <div class="rc-dates">Oct 28–Nov 1</div>
+        <div class="rc-nights">4 nights</div>
+      </div>
+      <div class="route-arrow">
+        🚆
+        <div class="arr-mode">~2 hrs</div>
+      </div>
+      <div class="route-city active-city">
+        <div class="rc-name">Venice</div>
+        <div class="rc-dates">Nov 1–4</div>
+        <div class="rc-nights">3 nights</div>
+      </div>
+      <div class="route-arrow">
+        ✈︎
+        <div class="arr-mode">Nov 4</div>
+      </div>
+      <div class="route-city">
+        <div class="rc-name">Depart</div>
+        <div class="rc-dates">Nov 4</div>
+        <div class="rc-nights">Mom → BGM<br>Sam+D → AMS</div>
+      </div>
     </div>
-    <div class="tl-block">
-      <div class="tl-date">Oct 22 night</div>
-      <div class="tl-city">JFK → Rome</div>
-      <div class="tl-nights">overnight flight</div>
-    </div>
-    <div class="tl-block active-leg">
-      <div class="tl-date">Oct 23–28</div>
-      <div class="tl-city">Rome</div>
-      <div class="tl-nights">5 nights</div>
-    </div>
-    <div class="tl-block active-leg">
-      <div class="tl-date">Oct 28 – Nov 1</div>
-      <div class="tl-city">Tuscany</div>
-      <div class="tl-nights">4–5 nights</div>
-    </div>
-    <div class="tl-block active-leg">
-      <div class="tl-date">Nov 1–4</div>
-      <div class="tl-city">Venice</div>
-      <div class="tl-nights">3 nights</div>
-    </div>
-    <div class="tl-block">
-      <div class="tl-date">Nov 4</div>
-      <div class="tl-city">Departure</div>
-      <div class="tl-nights">Mom → BGM · Sam+Siri → AMS or NYC</div>
+
+    <div class="phase-legend">
+      <div class="pl-item"><div class="pl-dot" style="background:var(--red)"></div> Rome (5 nights)</div>
+      <div class="pl-item"><div class="pl-dot" style="background:var(--olive)"></div> Tuscany (4 nights)</div>
+      <div class="pl-item"><div class="pl-dot" style="background:var(--teal)"></div> Venice (3 nights)</div>
+      <div class="pl-item"><div class="pl-dot" style="background:var(--gold)"></div> Pre/post travel</div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Who's traveling</h3>
-    </div>
-    <div class="info-grid">
-      <div class="info-item"><div class="label">Sam</div><div class="value">Entire trip · remote worker</div></div>
-      <div class="info-item"><div class="label">Siri (wife)</div><div class="value">Entire trip + extra week Europe</div></div>
-      <div class="info-item"><div class="label">Mom</div><div class="value">Entire trip · flies home Nov 4</div></div>
-      <div class="info-item"><div class="label">Party size</div><div class="value">3 adults, all legs</div></div>
-    </div>
-  </div>
+  <!-- FULL CHRONO TIMELINE -->
+  <h3 class="sub">Day-by-day chronology</h3>
+  <div class="chrono">
 
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Budget at a glance</h3>
-    </div>
-    <div class="info-grid">
-      <div class="info-item"><div class="label">Hotels (Italy)</div><div class="value">~$300/night target</div></div>
-      <div class="info-item"><div class="label">Remote-work stay</div><div class="value">~$2,000/week (Sam+Siri)</div></div>
-      <div class="info-item"><div class="label">Car rental</div><div class="value">Tuscany only · auto transmission</div></div>
-      <div class="info-item"><div class="label">Rome transport</div><div class="value">Walk + taxi + Vatican bus</div></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Top priorities (in your words)</h3>
-    </div>
-    <ul class="checklist">
-      <li><strong>No grocery shopping anxiety</strong> — Agriturismo model in Tuscany: meals, wine, breakfast all on-site</li>
-      <li><strong>Good wine + food</strong> — Chianti Classico country, agriturismo farm dinners, Rome market trattorias</li>
-      <li><strong>Nice views + pool + spa</strong> — All three hotel picks have pool, spa or spa access</li>
-      <li><strong>Vatican + Borghese</strong> — Must book in advance; links in Booking Checklist tab</li>
-      <li><strong>Off the beaten path</strong> — Orvieto day trip, Chianti backroads, Venice outer islands</li>
-      <li><strong>Driving made easy</strong> — ZTL parking guide in Tuscany tab; agriturismo always has parking</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════ TRANSPORT -->
-<section id="transport" class="section">
-  <h2 class="sec-title">Binghamton → JFK</h2>
-  <p style="color:var(--fg-mid);font-size:13.5px;margin-bottom:20px;">
-    Night of <strong>Thursday, Oct 22</strong>. Your flight departs late/overnight — you need to be at JFK by ~9 PM. Leave Binghamton by <strong>3–5 PM</strong> to give yourself buffer (the ride is ~3–3.5 hours without traffic, then taxi/AirTrain to terminal).
-  </p>
-
-  <div class="options-group">
-
-    <div class="option open" id="opt-transport-1">
-      <div class="option-header" onclick="toggleOpt('opt-transport-1')">
-        <span class="option-num">1</span>
-        <span class="option-name">Private Car Service — Most Comfortable</span>
-        <span class="option-meta">~$300–400 · door-to-terminal</span>
-        <span class="option-chevron">▼</span>
-      </div>
-      <div class="option-body">
-        <p><strong>Best option for 3 people with luggage.</strong> A black-car or private SUV picks you up at the Binghamton door and drops all three of you at the JFK departure terminal — no transfers, no bus stations, no taxi scramble at Port Authority with bags.</p>
-        <p><strong>Who to contact:</strong> Reach out to <strong>Binghamton Limousine & Transportation</strong> or <strong>Winfield Transportation</strong> — both serve BGM→JFK. At ~$350 split three ways it's under $120/person and vastly less stressful than the bus.</p>
-        <p><strong>Draft message to send:</strong> (copy the text below)</p>
-        <div class="draft-box" id="draft-car">Hello,
-
-I am looking to book a private car or SUV transfer for 3 adults with luggage from Binghamton, NY to JFK Airport (Terminal — to be confirmed) on the evening of Thursday, October 22, 2026.
-
-We would like to depart Binghamton around 3:30 PM and arrive JFK by approximately 8:00 PM.
-
-Could you please confirm:
-1. Availability for this date and time
-2. Your rate for 3 passengers with full-size luggage
-3. Whether the driver meets us at the address or curbside
-4. Payment and cancellation policy
-
-Our pickup address is: [YOUR ADDRESS IN BINGHAMTON]
-
-Thank you, and I look forward to hearing from you.
-
-— Sam</div>
-        <button class="copy-btn" onclick="copyText('draft-car', this)">Copy</button>
-        <div class="links">
-          <a class="link-pill" href="https://www.binghamtonlimo.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Binghamton Limo
-          </a>
-          <a class="link-pill" href="https://www.winfield-transportation.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Winfield Transportation
-          </a>
-        </div>
-      </div>
+    <div class="chrono-item c-dep">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Thu Oct 22</div>
+      <div class="chrono-title">BGM → JFK → overnight to Rome</div>
+      <div class="chrono-body">Leave Binghamton by 3:30 PM. Private car or bus to JFK. Overnight flight departs ~midnight.</div>
     </div>
 
-    <div class="option" id="opt-transport-2">
-      <div class="option-header" onclick="toggleOpt('opt-transport-2')">
-        <span class="option-num">2</span>
-        <span class="option-name">Trailways Bus — Budget Pick</span>
-        <span class="option-meta">~$30–50 per person · Port Authority</span>
-        <span class="option-chevron">▼</span>
-      </div>
-      <div class="option-body">
-        <p><strong>Trailways of New York</strong> runs express coaches from Binghamton Chenango St to <strong>Port Authority Bus Terminal (NYC)</strong> several times per day, roughly every 4 hours. For an Oct 22 evening departure you want a <strong>3 PM or 5 PM bus</strong> — arriving Port Authority ~6:30–8:30 PM, then 60 min taxi or AirTrain to JFK.</p>
-        <div class="warn"><strong>Check live times:</strong> Schedules change seasonally. Book at trailways.com/schedules — sort by Oct 22 departures from Binghamton. For 3 people with rolling bags the $30/seat saving vs. private car is small, and you'll handle luggage on/off the bus + at Port Authority.</div>
-        <p><strong>Greyhound alternative:</strong> 5 departures/day, also to Port Authority. FlixBus goes to Midtown (3x/day). Both bookable at their sites or on Google Maps transit.</p>
-        <div class="links">
-          <a class="link-pill" href="https://www.trailways.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Trailways
-          </a>
-          <a class="link-pill" href="https://www.greyhound.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Greyhound
-          </a>
-          <a class="link-pill" href="https://www.flixbus.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            FlixBus
-          </a>
-        </div>
-      </div>
+    <div class="chrono-item c-rome">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Fri Oct 23</div>
+      <div class="chrono-title">Arrive Rome · Day 1</div>
+      <div class="chrono-body">Land, rest, gentle first evening. Trastevere neighborhood walk. Dinner: <strong>Da Enzo al 29</strong>.</div>
     </div>
 
-    <div class="option" id="opt-transport-3">
-      <div class="option-header" onclick="toggleOpt('opt-transport-3')">
-        <span class="option-num">3</span>
-        <span class="option-name">Rental Car + Park at JFK — DIY</span>
-        <span class="option-meta">~$80–120 · most flexible</span>
-        <span class="option-chevron">▼</span>
-      </div>
-      <div class="option-body">
-        <p>Rent a one-way car from Binghamton, drive to JFK (~3 hrs), return the car at JFK's rental center. Long-term JFK parking is also an option (~$25/day x 12 days = $300) if you'd rather drive your own car and not deal with rental logistics.</p>
-        <p><strong>Note:</strong> This adds a drop-off errand right before an international flight. Generally the private car option is less stress unless cost is the primary concern.</p>
-      </div>
+    <div class="chrono-item c-rome">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Sat Oct 24</div>
+      <div class="chrono-title">Vatican · Borghese Gallery (2 PM–4 PM) · Day 2</div>
+      <div class="chrono-body"><strong>✓ Borghese: Tickets purchased — seats 244/245/246, Oct 24 2 PM–4 PM, €54 total.</strong> Morning: Vatican Museums + Sistine Chapel (skip-the-line tour). Afternoon: Borghese Gallery. Evening: Glass Hostaria dinner.</div>
+    </div>
+
+    <div class="chrono-item c-rome">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Sun Oct 25</div>
+      <div class="chrono-title">Colosseum + Roman Forum · Day 3</div>
+      <div class="chrono-body">Colosseum + Palatine Hill combo (pre-book underground access). Campo de' Fiori area for dinner — <strong>Roscioli</strong> or Emma Pizzeria.</div>
+    </div>
+
+    <div class="chrono-item c-rome">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Mon Oct 26</div>
+      <div class="chrono-title">Testaccio + Neighborhoods · Day 4</div>
+      <div class="chrono-body">Testaccio Market morning. Pantheon, Piazza Navona, Trevi Fountain (go early or late night). Afternoon: spa day. Dinner: <strong>Osteria dell'Angelo</strong> (Prati, legendary fixed-price Roman feast).</div>
+    </div>
+
+    <div class="chrono-item c-rome">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Tue Oct 27</div>
+      <div class="chrono-title">Slow day · Trastevere + QC Terme · Day 5</div>
+      <div class="chrono-body">Free morning. QC Terme spa afternoon (pools, saunas, Roman baths, massage — book ahead). Easy dinner in Trastevere.</div>
+    </div>
+
+    <div class="chrono-item c-rome">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Wed Oct 28</div>
+      <div class="chrono-title">Pasta Class 1 PM → Drive to Tuscany · Day 6</div>
+      <div class="chrono-body"><strong>1 PM–3 PM:</strong> Pasta-making class near Piazza Navona (see Rome tab). <strong>3:30 PM:</strong> Pick up rental car (auto transmission) near Termini. Drive north A1 → SS222 Chiantigiana through vineyards. Arrive agriturismo ~6–7 PM.</div>
+    </div>
+
+    <div class="chrono-item c-tus">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Thu Oct 29</div>
+      <div class="chrono-title">Siena day trip · Day 7</div>
+      <div class="chrono-body">Drive 30–45 min to Siena. Park outside walls (free). Piazza del Campo, Duomo di Siena, Libreria Piccolomini. Back to agriturismo for farm dinner.</div>
+    </div>
+
+    <div class="chrono-item c-tus">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Fri Oct 30</div>
+      <div class="chrono-title">Chianti Vineyard Crawl · Day 8</div>
+      <div class="chrono-body">Castello di Brolio + Antinori winery tours (book in advance). Via Chiantigiana scenic drive. Farm dinner.</div>
+    </div>
+
+    <div class="chrono-item c-tus">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Sat Oct 31 · Halloween!</div>
+      <div class="chrono-title">Saturnia Hot Springs (hidden gem) · Day 9</div>
+      <div class="chrono-body"><strong>Secret:</strong> Saturnia thermal springs — free, 37°C volcanic pools, steaming waterfalls in the countryside (~2 hrs from Chianti). Best at dawn. San Gimignano on the way back (towers, world-champion gelato). Last farm dinner.</div>
+    </div>
+
+    <div class="chrono-item c-ven">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Sun Nov 1</div>
+      <div class="chrono-title">Drive to Florence → Train to Venice · Day 10</div>
+      <div class="chrono-body">Return car at Florence airport. Frecciarossa or Italo high-speed Florence SMN → Venezia Santa Lucia (~2 hrs). Arrive Venice afternoon. Rialto walk, Grand Canal. Dinner: <strong>Alle Testiere</strong> (22-seat gem — book now).</div>
+    </div>
+
+    <div class="chrono-item c-ven">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Mon Nov 2</div>
+      <div class="chrono-title">St. Mark's + Doge's Palace · Day 11</div>
+      <div class="chrono-body">Basilica di San Marco (timed entry, €3). Doge's Palace Secret Itineraries tour (hidden rooms + Casanova's prison cell). Afternoon: get lost in Dorsoduro/Cannaregio. Cicchetti bar-hop at aperitivo hour.</div>
+    </div>
+
+    <div class="chrono-item c-ven">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Tue Nov 3</div>
+      <div class="chrono-title">Murano + Burano outer islands · Day 12</div>
+      <div class="chrono-body">Vaporetto to Murano (glass-blowing furnace demo) then Burano (painted houses, November mist — magical). Last Venice dinner: Antiche Carampane or Venissa (Michelin, vineyard island).</div>
+    </div>
+
+    <div class="chrono-item c-dep">
+      <div class="chrono-dot"></div>
+      <div class="chrono-date">Wed Nov 4</div>
+      <div class="chrono-title">Departure</div>
+      <div class="chrono-body">Mom: water taxi to Marco Polo → BGM flight. Sam + Siri: next stop Amsterdam, Barcelona, or Lisbon for remote work week (~$2,000 budget).</div>
     </div>
 
   </div>
 
   <hr class="divider">
-  <h3 class="sub-title">JFK to the gate</h3>
-  <p style="color:var(--fg-mid);font-size:13.5px;">Most trans-Atlantic flights depart from <strong>Terminal 1, 4, or 7</strong>. Check your airline. Once at Port Authority (if taking bus), grab a <strong>taxi (~$70 flat rate)</strong> or the <strong>AirTrain + E/J/Z subway ($7)</strong> — taxi is strongly preferred with luggage for 3.</p>
+
+  <div class="card">
+    <div class="card-hd"><h4 class="card-title">Party + budget</h4></div>
+    <div class="info-grid">
+      <div class="info-item"><div class="lbl">Travelers</div><div class="val">Sam · Siri · Mom (all 3 legs)</div></div>
+      <div class="info-item"><div class="lbl">Italy hotels</div><div class="val">~$300/night target</div></div>
+      <div class="info-item"><div class="lbl">Tuscany</div><div class="val">€150–300/night agriturismo</div></div>
+      <div class="info-item"><div class="lbl">Remote work stay</div><div class="val">~$2,000/week (Sam + D)</div></div>
+    </div>
+  </div>
+
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ ROME -->
-<section id="rome" class="section">
-  <h2 class="sec-title">Rome — 5 nights</h2>
-  <p style="color:var(--fg-mid);font-size:13.5px;margin-bottom:20px;">
-    <strong>Oct 23 (arrive) – Oct 28 (depart for Tuscany).</strong> You have your Airbnb. The itinerary below fills your days; the hotel option is in case you want to upgrade the last night or use a pool/spa on a free afternoon.
+<!-- ═══════════════════════════════ GETTING THERE ═══════════════════════════════ -->
+<section id="transport" class="section">
+  <h2 class="sec">Binghamton → JFK</h2>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 20px;">
+    <strong>Thursday night Oct 22.</strong> Flight departs JFK late/overnight — be at the terminal by 9 PM. Leave Binghamton by 3:30 PM to allow 3+ hours travel time plus check-in buffer.
   </p>
 
-  <h3 class="sub-title">Day-by-Day in Rome</h3>
+  <div class="opts">
+    <div class="opt open" id="o-t1">
+      <div class="opt-hd" onclick="tog('o-t1')">
+        <span class="opt-num">1</span>
+        <span class="opt-name">Private Car Service — recommended</span>
+        <span class="opt-meta">~$300–400 total · door-to-terminal</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p><strong>Best choice for 3 people with luggage.</strong> A private SUV picks you up at your Binghamton door and drops all three of you at your departure terminal — no transfers, no dragging bags through Port Authority.</p>
+        <p>Contact <strong>Binghamton Limousine</strong> or <strong>Winfield Transportation</strong> — both serve BGM→JFK. At ~$350 total, split three ways it's about $115/person. Send this draft:</p>
+        <div class="draft" id="d-car">Hello,
 
-  <div class="day-label">Day 1 — Friday Oct 23 · Arrive + Recover</div>
-  <div class="card">
-    <p><strong>Morning/afternoon:</strong> Land, collect bags, get to Airbnb. Nap is mandatory — you've been up all night. This is not a sightseeing day.</p>
-    <p><strong>Late afternoon:</strong> Walk to the nearest neighborhood bar for espresso (do not fall asleep at 4 PM — push through until 9 PM). If your Airbnb is near Trastevere, wander the streets: Piazza di Santa Maria in Trastevere, the fountains, the market stalls.</p>
-    <p><strong>Dinner:</strong> <a class="link-pill" href="https://daenzoal29.com" target="_blank" style="display:inline-flex;">Da Enzo al 29</a> — classic Roman trattoria, Trastevere. Cacio e pepe, coda alla vaccinara (oxtail). Reservations online 3–4 weeks ahead.</p>
+I am looking to book a private SUV transfer for 3 adults with full-size luggage from Binghamton, NY to JFK Airport on the evening of Thursday, October 22, 2026.
+
+Departure: ~3:30 PM from Binghamton
+Arrival target: JFK by 8:30 PM
+
+Could you please confirm availability, your rate for 3 passengers, and your cancellation policy?
+
+Pickup address: [YOUR BINGHAMTON ADDRESS]
+
+Thank you,
+Sam</div>
+        <button class="copy-btn" onclick="cp('d-car',this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="opt" id="o-t2">
+      <div class="opt-hd" onclick="tog('o-t2')">
+        <span class="opt-num">2</span>
+        <span class="opt-name">Trailways / Greyhound Bus</span>
+        <span class="opt-meta">~$30–50/person · Port Authority NYC</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p>Several express coaches daily from Binghamton to Port Authority Bus Terminal in Midtown Manhattan. Target a 3 PM or 4 PM departure to arrive NYC by 7 PM, then 45–60 min taxi to JFK (recommended with luggage) or AirTrain+subway ($9).</p>
+        <div class="warn"><strong>Check current schedules:</strong> Book directly at trailways.com or greyhound.com — schedules change seasonally. For 3 people with rolling bags, the private car option saves about $150 total and eliminates 2 bag transfers.</div>
+      </div>
+    </div>
+
+    <div class="opt" id="o-t3">
+      <div class="opt-hd" onclick="tog('o-t3')">
+        <span class="opt-num">3</span>
+        <span class="opt-name">Drive Own Car + Park at JFK</span>
+        <span class="opt-meta">~$25/day parking · most flexible</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p>Drive to JFK and use long-term parking (~$25/day × 13 days = ~$325). You avoid any ground transfer at both ends, but you're driving into JFK traffic right before an international flight and paying the same as a private car. Fine if you prefer not coordinating with a driver.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ ROME ═══════════════════════════════ -->
+<section id="rome" class="section">
+  <h2 class="sec">Rome — 5 nights</h2>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 6px;"><strong>Oct 23–28.</strong> You're in an Airbnb. The day-by-day below is your guide.</p>
+
+  <div class="confirmed">
+    <strong>✓ CONFIRMED:</strong> Borghese Gallery — Oct 24 at <strong>2:00 PM–4:00 PM</strong> · Seats 244, 245, 246 · 3 tickets · €54 total paid. You're in — this was the right call. Slots for the following week were gone within days.
   </div>
 
-  <div class="day-label">Day 2 — Saturday Oct 24 · Vatican + Borghese</div>
+  <h3 class="sub">Day-by-day Rome</h3>
+
+  <div class="day-label">Day 1 — Friday Oct 23 · Arrive</div>
   <div class="card">
-    <div class="card-header">
-      <h4 class="card-title">The Vatican</h4>
-      <span class="badge badge-red">Book morning slot</span>
-    </div>
-    <p><strong>Morning 8 AM:</strong> Vatican Museums + Sistine Chapel. Go early via skip-the-line tour to beat the crowd. The line for walk-ins routinely reaches 2+ hours and you can't enter the Sistine Chapel without getting through the museums first.</p>
-    <p><strong>Late morning:</strong> St. Peter's Basilica — free entry, no ticket needed. Climb the dome (~€8) for views over Rome. Budget 2 hours.</p>
+    <p><strong>This is a recovery day.</strong> Land, collect bags, get to the Airbnb, nap. Do not fight the jet lag — you've been up all night on a transatlantic flight.</p>
+    <p><strong>Late afternoon:</strong> Force yourself awake by 4 PM. Walk to the nearest espresso bar. If near Trastevere, wander to Piazza di Santa Maria in Trastevere — one of Rome's most beautiful squares. The fountain, the basilica façade, the aperitivo crowd.</p>
+    <p><strong>Dinner:</strong> <strong>Da Enzo al 29</strong> — the quintessential Roman trattoria in Trastevere. Cacio e pepe, coda alla vaccinara (braised oxtail), abbacchio (roast lamb). Reserve on their website 2–3 weeks ahead.</p>
     <div class="links">
-      <a class="link-pill" href="https://www.getyourguide.com/rome-l33/vatican-museums-sistine-chapel-skip-the-line-t32969/" target="_blank">
+      <a class="lp" href="https://daenzoal29.com" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        GetYourGuide Skip-the-line (~€33)
-      </a>
-      <a class="link-pill" href="https://www.museivaticani.va/content/museivaticani/en/i-musei-vaticani/biglietti-e-prenotazioni.html" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Official Vatican Tickets (€18 + booking fee)
+        Da Enzo al 29
       </a>
     </div>
   </div>
+
+  <div class="day-label">Day 2 — Saturday Oct 24 · Vatican + Borghese (2 PM)</div>
   <div class="card">
-    <div class="card-header">
-      <h4 class="card-title">Borghese Gallery</h4>
-      <span class="badge badge-olive">Confirmed · 2:00–4:00 PM</span>
+    <div class="card-hd">
+      <h4 class="card-title">Vatican Museums + Borghese Gallery</h4>
+      <span class="badge badge-red">Borghese: ✓ Booked</span>
     </div>
-    <p><strong>Afternoon 2:00 PM:</strong> Borghese Gallery — the world's finest private art collection (Bernini, Caravaggio, Raphael) in a villa inside Villa Borghese park. <strong>Seats 244/245/246 · 3 tickets · €54 paid.</strong> Strict timed entry, 2-hour visit. Arrive 15 min early.</p>
-    <p><strong>Dinner:</strong> <a class="link-pill" href="https://glasshostaria.it" target="_blank" style="display:inline-flex;">Glass Hostaria</a> (Michelin-starred, Trastevere, book 4+ weeks ahead) — or <strong>Freni e Frizioni</strong> for excellent aperitivo cocktails first, then dinner nearby.</p>
+    <p><strong>Morning 8:30–9 AM:</strong> Vatican Museums + Sistine Chapel. This takes 3–4 hours. Go with a skip-the-line guided small-group tour — walk-in lines regularly exceed 2 hours, and a guide gets you through the galleries faster. Book at getyourguide.com or the official Vatican site (museivaticani.va).</p>
+    <p><strong>Quick lunch</strong> near the Vatican (Prati neighborhood). Then taxi or short walk to Villa Borghese park.</p>
+    <p><strong>2:00 PM sharp:</strong> Borghese Gallery — your confirmed slot. Be at the gate 15 minutes early. This is 2 hours of Bernini sculptures, Caravaggio paintings, and Raphael — arguably the finest art collection in any building in the world.</p>
+    <p><strong>Evening:</strong> Aperitivo at Freni e Frizioni in Trastevere. Dinner: <strong>Glass Hostaria</strong> (Michelin-starred, Trastevere — book now).</p>
+    <div class="links">
+      <a class="lp" href="https://www.museivaticani.va" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Vatican Museums (official)
+      </a>
+      <a class="lp" href="https://www.getyourguide.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        GetYourGuide (skip-the-line tours)
+      </a>
+    </div>
   </div>
 
   <div class="day-label">Day 3 — Sunday Oct 25 · Colosseum</div>
   <div class="card">
-    <div class="card-header">
+    <div class="card-hd">
       <h4 class="card-title">Colosseum + Roman Forum + Palatine Hill</h4>
-      <span class="badge badge-red">Book underground access</span>
+      <span class="badge badge-red">Book ahead — coopculture.it</span>
     </div>
-    <p><strong>Morning/Afternoon:</strong> Buy combo ticket at <a href="https://www.coopculture.it" target="_blank" class="link-pill" style="display:inline-flex;">coopculture.it</a>. Book a small-group guided tour to get the underground arena access (normally off-limits). Budget 3–4 hours.</p>
-    <p><strong>Dinner:</strong> Campo de' Fiori area. Try <strong>Roscioli</strong> (outstanding deli/restaurant, book in advance) or <strong>Emma Pizzeria</strong> for Neapolitan wood-fired pizza near the Pantheon.</p>
+    <p>Buy the <strong>combo ticket</strong> including Forum and Palatine (€16 + €2 booking). Pre-book the <strong>Underground Arena</strong> add-on to walk where gladiators waited before entering the ring — not accessible on general admission. Plan 3–4 hours here.</p>
+    <p>Walk through the Forum afterwards: the Via Sacra, the Arch of Titus, the Temple of Saturn. Then up to Palatine Hill for panoramic views over Rome.</p>
+    <p><strong>Dinner:</strong> <strong>Roscioli</strong> (deli-restaurant hybrid in the old ghetto area — extraordinary pastas, cured meats and wine list. Book 2–3 weeks ahead) or <strong>Emma Pizzeria</strong> (Neapolitan pizza near the Pantheon).</p>
     <div class="links">
-      <a class="link-pill" href="https://www.coopculture.it/en/" target="_blank">
+      <a class="lp" href="https://www.coopculture.it/en/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Book Colosseum
+        Book Colosseum (coopculture.it)
       </a>
     </div>
   </div>
 
-  <div class="day-label">Day 4 — Monday Oct 26 · Day Trip to Orvieto</div>
+  <div class="day-label">Day 4 — Monday Oct 26 · Neighborhoods + Spa</div>
   <div class="card">
-    <div class="card-header">
-      <h4 class="card-title">Orvieto — Hidden Gem, 90 min from Rome</h4>
-      <span class="badge badge-olive">Off the beaten path</span>
-    </div>
-    <p>A medieval cliff-top city in Umbria, dramatically perched on volcanic rock, best seen as a day trip from Rome. Far fewer tourists than Florence. <strong>Highlights:</strong> the Duomo di Orvieto (better exterior than Notre Dame, some say), the Etruscan underground caves (book tour at <a href="https://www.orvietounderground.it" target="_blank" class="link-pill" style="display:inline-flex;">orvietounderground.it</a>), Pozzo di San Patrizio (a double-helix Renaissance well), local Orvieto Classico white wine.</p>
-    <p><strong>Getting there:</strong> Train from Roma Termini → Orvieto station (~1.5 hrs, €12–20). Funicular from the station up to the old city (€1.30 each way). This also puts you en route to Tuscany if you want to drive or stop.</p>
-    <p><strong>Dinner back in Rome:</strong> <strong>Le Mani in Pasta</strong> (Trastevere, upscale pasta/seafood, reservations recommended) or back to your Airbnb neighborhood bar.</p>
+    <p><strong>Testaccio Market</strong> (Rome's best food market — suppli, mortadella sandwiches, fresh pasta, closes at 2 PM). Then Pantheon (free, but long line — arrive at 9 AM opening or book the €5 timed entry). Piazza Navona for people-watching.</p>
+    <p><strong>Afternoon:</strong> QC Terme day spa or hotel spa if you've upgraded. Book in advance. A massage, Roman baths, and mineral pools — exactly what you wanted.</p>
+    <p><strong>Dinner:</strong> <strong>Osteria dell'Angelo</strong> — fixed-price Roman feast in Prati (near the Vatican). No menu decisions, just wave after wave of classic Roman plates. Legendary for a reason.</p>
   </div>
 
-  <div class="day-label">Day 5 — Tuesday Oct 27 · Free Day / Neighborhoods</div>
+  <div class="day-label">Day 5 — Tuesday Oct 27 · Free + Wander</div>
   <div class="card">
-    <p>Slow morning. <strong>Testaccio Market</strong> (Rome's best food market, closes at 2 PM) — eat suppli (fried rice balls), fresh pasta, local cheese. Then walk to <strong>Piazza Navona</strong>, the <strong>Pantheon</strong> (free, long lines — go early), <strong>Trevi Fountain</strong> (go at 7 AM or after midnight to avoid crowds).</p>
-    <p><strong>Afternoon spa:</strong> If staying at Villa Agrippina, use the Clarins spa — book a treatment (massage) in advance at the hotel.</p>
-    <p><strong>Dinner:</strong> <strong>Osteria dell'Angelo</strong> (Prati neighborhood, fixed-price Roman feast, legendary) or <strong>Tonnarello</strong> (Trastevere, buzzing atmosphere, classic plates).</p>
+    <p>Sleep in. No agenda. Walk wherever looks interesting. Trevi Fountain is best before 8 AM or after 11 PM — go at one of those times. Campo de' Fiori has a good produce market in the morning.</p>
+    <p><strong>Worth adding:</strong> Palazzo Doria Pamphilj — a private palace museum that most tourists skip. Contains one of Rome's finest art collections (Velázquez, Titian, Caravaggio) in a working family palace. Usually no wait at all.</p>
+    <p><strong>Dinner:</strong> <strong>Tonnarello</strong> (Trastevere, buzzy atmosphere, classics done well) or cook at the Airbnb with stuff from the morning market.</p>
+  </div>
+
+  <div class="day-label">Day 6 — Wednesday Oct 28 · Pasta Class → Drive to Tuscany</div>
+  <div class="card">
+    <div class="card-hd">
+      <h4 class="card-title">Pasta Class 1 PM + Drive to Tuscany</h4>
+      <span class="badge badge-gold">Book pasta class</span>
+    </div>
+    <div class="warn"><strong>Timing note:</strong> A 1 PM class ends at ~3 PM. Pick up the rental car nearby and be on the road to Tuscany by 3:30–4 PM. You'll arrive the agriturismo around 6:30–7 PM — totally fine, they expect this. Pick a 2-hour class (not 3-hour) to keep the drive comfortable.</div>
+    <p><strong>Pasta class to book:</strong> "Pasta Fettuccine Making Class near Piazza Navona" — 1:00 PM start, 2 hours, you make fettuccine from scratch with a local cook, then eat what you made. Book via Viator (search "pasta class Piazza Navona 1pm"). ~€50–65/person. This is the right one for your timing — gets you out by 3 PM.</p>
+    <p><strong>Car rental:</strong> Book an <strong>automatic transmission</strong> now (manual transmissions are standard in Italy — always request automatic explicitly or you might get a stick shift). Hertz, Europcar, and Sixt all have locations near Roma Termini station. The pasta class is near Piazza Navona — pick up the car after, then you're heading north.</p>
+    <div class="links">
+      <a class="lp" href="https://www.viator.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Viator — search "pasta Piazza Navona 1pm"
+      </a>
+      <a class="lp" href="https://www.hertz.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Hertz Rome Termini
+      </a>
+      <a class="lp" href="https://www.europcar.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Europcar
+      </a>
+    </div>
   </div>
 
   <hr class="divider">
-  <h3 class="sub-title">Where to stay in Rome — 3 options</h3>
+  <h3 class="sub">Rome hotels — 3 options</h3>
+  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">You have an Airbnb already. These are alternatives or places to use the spa/pool.</p>
 
-  <div class="options-group">
-    <div class="option open" id="opt-rome-1">
-      <div class="option-header" onclick="toggleOpt('opt-rome-1')">
-        <span class="option-num">1</span>
-        <span class="option-name">Villa Agrippina Gran Meliá</span>
-        <span class="option-meta">~$350–500/night · Outdoor pool + Clarins spa</span>
-        <span class="option-chevron">▼</span>
+  <div class="opts">
+    <div class="opt open" id="o-rh1">
+      <div class="opt-hd" onclick="tog('o-rh1')">
+        <span class="opt-num">1</span>
+        <span class="opt-name">Villa Agrippina Gran Meliá</span>
+        <span class="opt-meta">~$350–500/night · Pool + Clarins spa</span>
+        <span class="opt-chev">▼</span>
       </div>
-      <div class="option-body">
-        <p><strong>The clear winner for what you want.</strong> Historic 17th-century villa turned 5-star hotel, 800 meters from the Vatican, walkable to Trastevere. <strong>Features:</strong> outdoor swimming pool, Clarins spa (one of only 12 worldwide — massages, facials, hammam), manicured garden terraces, 4 restaurants and bars, free WiFi, breakfast included in some rates. Stunning sunset views from the garden. The rooms overlook the Tiber or the gardens.</p>
-        <p>Villa Agrippina sits just outside the ZTL zone — no driving restrictions when you arrive. When you're ready to drive to Tuscany on Oct 28, just pick up the rental car at a nearby agency.</p>
+      <div class="opt-body">
+        <p><strong>Best for what you want.</strong> 17th-century villa near the Vatican with an outdoor pool, Clarins spa (one of only 12 worldwide), garden terraces overlooking the Tiber, and 4 restaurants. Not in the ZTL zone. If you're upgrading from the Airbnb for even one night, this is the move — book the spa treatment for all three of you.</p>
         <div class="links">
-          <a class="link-pill" href="https://www.melia.com/en/hotels/italy/rome/gran-melia-villa-agrippina/index.htm" target="_blank">
+          <a class="lp" href="https://www.melia.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Book at Meliá.com
+            Meliá Hotels
           </a>
         </div>
       </div>
     </div>
 
-    <div class="option" id="opt-rome-2">
-      <div class="option-header" onclick="toggleOpt('opt-rome-2')">
-        <span class="option-num">2</span>
-        <span class="option-name">Hotel de Russie (Rocco Forte)</span>
-        <span class="option-meta">~$600–900/night · Best-in-class wellness</span>
-        <span class="option-chevron">▼</span>
+    <div class="opt" id="o-rh2">
+      <div class="opt-hd" onclick="tog('o-rh2')">
+        <span class="opt-num">2</span>
+        <span class="opt-name">Hotel de Russie (Rocco Forte)</span>
+        <span class="opt-meta">~$600–900/night · Best spa in Rome</span>
+        <span class="opt-chev">▼</span>
       </div>
-      <div class="option-body">
-        <p>Rome's most celebrated luxury hotel. Terraced garden, 600m² spa with pool (indoor), Stravinskij Bar (Rome's best cocktail bar), spa with Russian banya and treatment rooms. In Piazza del Popolo between the Spanish Steps and the Tiber. Prices are high but it's a once-in-a-lifetime stay.</p>
+      <div class="opt-body">
+        <p>Rome's finest. Terraced garden, indoor pool, 600m² spa, Stravinskij Bar (Rome's best cocktail bar), between the Spanish Steps and Piazza del Popolo. High price but genuinely one of the great European hotel experiences.</p>
         <div class="links">
-          <a class="link-pill" href="https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-russie/" target="_blank">
+          <a class="lp" href="https://www.roccofortehotels.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Hotel de Russie
+            Rocco Forte Hotels
           </a>
         </div>
       </div>
     </div>
 
-    <div class="option" id="opt-rome-3">
-      <div class="option-header" onclick="toggleOpt('opt-rome-3')">
-        <span class="option-num">3</span>
-        <span class="option-name">Keep the Airbnb, add day spa</span>
-        <span class="option-meta">Budget-friendly · full flexibility</span>
-        <span class="option-chevron">▼</span>
+    <div class="opt" id="o-rh3">
+      <div class="opt-hd" onclick="tog('o-rh3')">
+        <span class="opt-num">3</span>
+        <span class="opt-name">Keep Airbnb + QC Terme day spa</span>
+        <span class="opt-meta">~€75–90/person day pass</span>
+        <span class="opt-chev">▼</span>
       </div>
-      <div class="option-body">
-        <p>Stay in your Airbnb (already booked through Oct 28). For the pool and massage fix, book a day pass at <strong>QC Terme Roma</strong> — a gorgeous spa complex near the Colosseum with pools, saunas, Roman baths, and treatments. €70–90 per person day pass.</p>
+      <div class="opt-body">
+        <p>Stay in your Airbnb (already booked). Get your pool + massage fix at <strong>QC Terme Roma</strong> — a gorgeous spa near the Colosseum. Roman thermal baths, pools, saunas, full treatment menu. Book a day pass + massage for all three. This is genuinely excellent and gets you the spa without changing accommodation.</p>
         <div class="links">
-          <a class="link-pill" href="https://qcterme.com/en/rome" target="_blank">
+          <a class="lp" href="https://qcterme.com/en/rome" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             QC Terme Roma
           </a>
@@ -818,89 +875,77 @@ Thank you, and I look forward to hearing from you.
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ TUSCANY -->
+<!-- ═══════════════════════════════ TUSCANY ═══════════════════════════════ -->
 <section id="tuscany" class="section">
-  <h2 class="sec-title">Tuscany — 4–5 nights</h2>
-  <p style="color:var(--fg-mid);font-size:13.5px;margin-bottom:8px;">
-    <strong>Oct 28 – Nov 1 (drive or train from Rome).</strong> All three of you together in the Chianti hills. Vineyards, wine, hill towns, Siena, no grocery shopping ever.
-  </p>
+  <h2 class="sec">Tuscany — 4 nights</h2>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 6px;"><strong>Oct 28 – Nov 1.</strong> All three of you in the Chianti hills. Vineyards outside the window, wine at dinner every night, no grocery shopping ever.</p>
 
-  <div class="warn"><strong>ZTL Parking rule for Tuscany:</strong> Historic centers (Siena, San Gimignano, Cortona) have Zona Traffico Limitato zones — cameras will ticket you automatically if you drive in. <strong>The move:</strong> drive to the edge of the old town, park FREE at the signposted parking areas outside the walls (usually within 5 min walk), and walk in. Never drive into the stone-walled city centers. Your agriturismo will always have free parking — no ZTL issues at the property.</div>
+  <div class="warn"><strong>ZTL parking rule:</strong> Historic hill towns (Siena, San Gimignano, Cortona) have camera-enforced restricted zones. Drive to the edge, park FREE at the signposted parcheggio outside the walls (5-min walk max), walk in. Never drive into the stone-walled centers. Your agriturismo always has free parking — no ZTL concerns at home base.</div>
 
-  <h3 class="sub-title">Day-by-Day in Tuscany</h3>
+  <div class="tip"><strong>SS222 — The Chiantigiana:</strong> The road from Florence south through Greve in Chianti to Siena. If you do nothing else in Tuscany, drive this road. Rolling vineyards, medieval farmhouses, cypress-lined lanes, Chianti black rooster signs at every gate. This is the postcard. Take it slow on Day 6 when you arrive.</div>
 
-  <div class="day-label">Day 6 — Wednesday Oct 28 · Pasta Class + Drive to Chianti</div>
+  <h3 class="sub">Day-by-day Tuscany</h3>
+
+  <div class="day-label">Day 6 — Oct 28 · Arrive via pasta class (see Rome)</div>
   <div class="card">
-    <p><strong>1:00 PM — Pasta-making class</strong> near Piazza Navona (~2 hours, ~€50–65/person). Search Viator "pasta Piazza Navona 1pm" to book. Learn to make fresh pasta from scratch in the heart of Rome before heading to Tuscany.</p>
-    <p><strong>~3:30 PM — Pick up rental car</strong> near Roma Termini (book auto-transmission; Hertz, Europcar, or Sixt). Drive north on the A1 autostrada, then scenic SS222 (Chiantigiana road) through the heart of Chianti wine country. <strong>~2.5–3 hrs direct.</strong></p>
-    <p><strong>Stop en route:</strong> Greve in Chianti (the unofficial capital of Chianti wine country) — browse Enoteca Falorni, the oldest wine shop in Chianti, for a tasting.</p>
-    <p><strong>Arrive agriturismo by 7–8 PM.</strong> Pre-dinner aperitivo on the terrace (farm wine included). Dinner on-site.</p>
+    <p>After your 1 PM pasta class in Rome, pick up the rental car near Termini (~3:30 PM) and drive north on A1, then exit to the SS222 Chiantigiana through the heart of Chianti wine country. Pull over and stop in <strong>Greve in Chianti</strong> for a quick look around the main piazza and maybe a wine shop tasting (Enoteca Falorni — the oldest wine shop in Chianti, in the piazza since 1806).</p>
+    <p>Arrive agriturismo by 6:30–7 PM. You'll be tired from Rome. Drop bags, have a glass of the house wine, eat whatever the farm is serving. That's it. That's the plan.</p>
   </div>
 
-  <div class="day-label">Day 7 — Wednesday Oct 29 · Siena</div>
+  <div class="day-label">Day 7 — Oct 29 · Siena</div>
   <div class="card">
-    <p>Drive to Siena (~30–45 min from Chianti). Park at <strong>Parcheggio Il Campo</strong> or <strong>Parcheggio Stadio Comunale</strong> outside the walls (~€2–3/hr). Walk up into the city. <strong>Piazza del Campo</strong> (one of Europe's great medieval piazzas), <strong>Duomo di Siena</strong> (book tickets at operaduomo.siena.it to access the full complex), the Libreria Piccolomini, terracotta rooftops.</p>
-    <p>Lunch at a trattoria on Piazza del Campo. Back to the agriturismo by late afternoon. Wine tasting with the owner in the evening.</p>
-  </div>
-
-  <div class="day-label">Day 8 — Thursday Oct 30 · Vineyard day</div>
-  <div class="card">
-    <p><strong>This is the wine day.</strong> The Chianti Classico DOCG zone is right outside your door. Visit 2–3 wineries. Worth booking in advance for a proper cellar tour + tasting (not just the gift shop):</p>
-    <ul style="margin:8px 0;padding-left:18px;color:var(--fg-mid);font-size:13px;line-height:2;">
-      <li><strong>Castello di Brolio</strong> (Barone Ricasoli — the estate that invented Chianti; epic castle, full cellar tours)</li>
-      <li><strong>Antinori nel Chianti Classico</strong> (modern architecture, underground cellar carved into the hill — spectacular)</li>
-      <li><strong>Fonterutoli</strong> or <strong>Fèlsina</strong> for smaller, more intimate tasting rooms</li>
-    </ul>
-    <p>Don't drive after a full day of tastings — designate a driver or do one winery seriously and come home for the farm dinner.</p>
-  </div>
-
-  <div class="day-label">Day 9 — Friday Oct 31 · Saturnia Hot Springs + San Gimignano</div>
-  <div class="card">
-    <div class="card-header">
-      <h4 class="card-title">Cascate del Mulino — <em>Saturnia Hot Springs</em></h4>
-      <span class="badge badge-olive">Hidden gem · Free entry</span>
-    </div>
-    <p><strong>Morning:</strong> Drive to <strong>Saturnia hot springs</strong> (~2 hrs from Chianti). The Cascate del Mulino are free, natural 37°C volcanic pools cascading down travertine terraces. Open 24/7, no tickets needed. Go early morning to beat crowds. Bring towels and water shoes. Halloween in a volcanic hot spring — hard to top.</p>
-    <p><strong>Afternoon (on the way back):</strong> Stop at <strong>San Gimignano</strong> (medieval towers, gelato di San Gimignano — Gelateria Dondoli has won the World Gelato Championship multiple times). Park outside the walls at Parcheggio Montemaggio.</p>
-    <p>Evening: last farm dinner and wine at the agriturismo.</p>
-  </div>
-
-  <div class="day-label">Day 10 — Saturday Nov 1 · Drive to Venice</div>
-  <div class="card">
-    <p>Return rental car at Florence airport (<strong>Aeroporto di Firenze–Peretola</strong>, 30 min from Chianti). Take the <strong>Frecciarossa or Italo high-speed train</strong> Florence SMN → Venezia Santa Lucia. <strong>~2 hours, ~€30–60/person.</strong> Book at trenitalia.com or thetrainline.com. 25+ trains per day — no need to pre-book far ahead but do book a few days before to lock the price. Drop bags at hotel, walk to the Grand Canal. Venice in the evening light in early November (off-season) is extraordinary.</p>
+    <p>Drive 30–45 min to Siena. Park at <strong>Parcheggio Il Campo</strong> or <strong>Stadio Comunale</strong> outside the walls. Walk up through the medieval gate into the city.</p>
+    <p><strong>Piazza del Campo</strong> — the shell-shaped piazza is one of the greatest public spaces in Europe. Sit at a café and watch it for a while. <strong>Duomo di Siena</strong> — grander than most cathedrals, floor covered in elaborate marble inlaid designs. The Libreria Piccolomini inside has stunning Renaissance frescoes. Book tickets at operaduomo.siena.it.</p>
+    <p>Lunch on the Campo (splurge). Back to the agriturismo by late afternoon. Farm dinner and Chianti.</p>
     <div class="links">
-      <a class="link-pill" href="https://www.trenitalia.com" target="_blank">
+      <a class="lp" href="https://www.operaduomo.siena.it" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Trenitalia
-      </a>
-      <a class="link-pill" href="https://www.thetrainline.com" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        The Trainline
-      </a>
-      <a class="link-pill" href="https://www.italotreno.it" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Italo
+        Siena Duomo tickets
       </a>
     </div>
+  </div>
+
+  <div class="day-label">Day 8 — Oct 30 · Vineyard crawl + Chianti roads</div>
+  <div class="card">
+    <p><strong>This is the wine day.</strong> Book winery visits in advance — not just the gift shop, a proper cellar tour and seated tasting.</p>
+    <ul>
+      <li><strong>Castello di Brolio</strong> (Barone Ricasoli) — the estate that literally invented the modern Chianti blend in 1872. Stunning medieval castle, full cellar tours, panoramic views. Book at ricasoli.com.</li>
+      <li><strong>Antinori nel Chianti Classico</strong> — spectacular modern winery architecture built into a hillside underground. Tours of the circular cave cellar are remarkable. The Osteria on-site has excellent food too.</li>
+      <li>Or: stay small with <strong>Fèlsina</strong> or <strong>Isole e Olena</strong> for a more personal, intimate tasting.</li>
+    </ul>
+    <p>Drive the Chiantigiana between stops. This road is the point. Budget 1.5 hours per winery.</p>
+  </div>
+
+  <div class="day-label">Day 9 — Oct 31 · Saturnia Hot Springs (hidden gem) + San Gimignano</div>
+  <div class="card">
+    <div class="card-hd">
+      <h4 class="card-title">Saturnia Thermal Springs — Italy's best-kept secret</h4>
+      <span class="badge badge-teal">Hidden gem</span>
+    </div>
+    <p><strong>This is the most unique thing in Tuscany.</strong> Saturnia is a series of naturally occurring volcanic hot spring pools in the countryside near Grosseto — the water runs at 37°C (99°F) and cascades in terraced waterfalls surrounded by fields. It's completely free, open 24 hours, and most tourists don't know it exists. On Halloween morning with steam rising off the hot water — unforgettable.</p>
+    <p><strong>Logistics:</strong> Drive south from Chianti (~1.5–2 hrs). Arrive early (6–7 AM is magical — sunrise over steaming waterfalls). Bring towels and a change of clothes. Park free in the gravel lot. The famous "Cascate del Mulino" waterfall section is right at the parking lot.</p>
+    <p><strong>On the way back:</strong> Stop at <strong>San Gimignano</strong> (~1 hr from Saturnia) — the medieval towers, the piazza, and <strong>Gelateria Dondoli</strong> (two-time World Gelato Championship winners — the saffron gelato is extraordinary).</p>
+    <p>Home to the agriturismo for the last farm dinner.</p>
   </div>
 
   <hr class="divider">
-  <h3 class="sub-title">Where to stay in Tuscany — 3 options</h3>
-  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">All three are agriturismi — working farms with on-site restaurants, wine produced on the property, and breakfast included. <strong>No grocery shopping ever. Dinner is on the farm.</strong></p>
+  <h3 class="sub">Where to stay — 3 agriturismo options (€150–300/night)</h3>
+  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">All three are working farms. On-site meals, farm wine, breakfast included. No grocery shopping. Dinner is at the farm. Free parking.</p>
 
-  <div class="options-group">
-    <div class="option open" id="opt-tus-1">
-      <div class="option-header" onclick="toggleOpt('opt-tus-1')">
-        <span class="option-num">1</span>
-        <span class="option-name">Fattoria di Rignana — Greve in Chianti</span>
-        <span class="option-meta">~€102–168/night · Best value · Pool + wine + views</span>
-        <span class="option-chevron">▼</span>
+  <div class="opts">
+    <div class="opt open" id="o-th1">
+      <div class="opt-hd" onclick="tog('o-th1')">
+        <span class="opt-num">1</span>
+        <span class="opt-name">Fattoria di Rignana — Greve in Chianti</span>
+        <span class="opt-meta">€102–168/night · Pool + vineyard · verified</span>
+        <span class="opt-chev">▼</span>
       </div>
-      <div class="option-body">
-        <p><strong>Leading pick.</strong> A working wine and olive oil estate in the hills between Greve and Panzano in Chianti. Stone farmhouse apartments with vineyard views, outdoor pool, on-site restaurant serving estate wines and farm-to-table Tuscan dishes. Surrounded by the Chianti Classico DOCG zone — wine tastings on-site. Incredibly good value for what you get.</p>
-        <p><strong>Why it works for you:</strong> Full meal service (breakfast + dinner available on the farm), their own Chianti Classico, pool, free parking, and at €102–168/night it leaves budget for great dinners out.</p>
+      <div class="opt-body">
+        <p><strong>Best value + atmosphere for your group.</strong> A 120-hectare working estate with vineyards, olive groves, and an outdoor pool. They grow and make almost everything you eat and drink here — wine, olive oil, vegetables. The farmhouse rooms are simple but beautifully characterful. Breakfast included. Dinner available on-site (the farm restaurant is genuinely good).</p>
+        <p><strong>Location:</strong> Greve in Chianti — right in the heart of the Classico zone. 25 min to Siena, 30 min to Florence. Note: there's an unpaved access road for the last stretch — totally normal for Chianti farmhouses, just take it slow.</p>
+        <p><strong>Price:</strong> €102–168/night double room. For 3 adults you'll need 2 rooms — budget ~€200–336/night total. Well within your range.</p>
         <div class="links">
-          <a class="link-pill" href="https://www.rignana.it" target="_blank">
+          <a class="lp" href="https://www.rignana.it" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             Fattoria di Rignana
           </a>
@@ -908,37 +953,38 @@ Thank you, and I look forward to hearing from you.
       </div>
     </div>
 
-    <div class="option" id="opt-tus-2">
-      <div class="option-header" onclick="toggleOpt('opt-tus-2')">
-        <span class="option-num">2</span>
-        <span class="option-name">Castello di Fonterutoli</span>
-        <span class="option-meta">~€200–350/night · Medieval hamlet, private winery</span>
-        <span class="option-chevron">▼</span>
+    <div class="opt" id="o-th2">
+      <div class="opt-hd" onclick="tog('o-th2')">
+        <span class="opt-num">2</span>
+        <span class="opt-name">Castello di Verrazzano — Greve in Chianti</span>
+        <span class="opt-meta">€145–250/night · Medieval castle, km-zero meals</span>
+        <span class="opt-chev">▼</span>
       </div>
-      <div class="option-body">
-        <p>An entire medieval village converted into a luxury stay by the Mazzei family — one of Chianti's most celebrated winemaking dynasties. Your accommodation is inside a 700-year-old village; the restaurant uses produce from the estate's gardens and olive groves, paired with the estate's own Chianti Classico. Private cellar tours and wine tasting are included. The pool is heated and surrounded by vines.</p>
+      <div class="opt-body">
+        <p>A genuine medieval castle (same Verrazzano as the NYC bridge — the explorer was born here in 1485) with accommodation in the historic foresteria (guest quarters). Vineyard setting, pergola dining terrace, breakfast from their own farm ("km zero" products — olive oil, honey, wine, vegetables). 20 km from Florence, easy day-trip access.</p>
+        <p>No pool, but the terraced gardens and vineyard views are stunning. They do wine tours and tastings of their own Chianti Classico on-site.</p>
         <div class="links">
-          <a class="link-pill" href="https://www.fonterutoli.it" target="_blank">
+          <a class="lp" href="https://www.verrazzano.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Castello di Fonterutoli
+            Castello di Verrazzano
           </a>
         </div>
       </div>
     </div>
 
-    <div class="option" id="opt-tus-3">
-      <div class="option-header" onclick="toggleOpt('opt-tus-3')">
-        <span class="option-num">3</span>
-        <span class="option-name">Rosewood Castiglion del Bosco</span>
-        <span class="option-meta">~$600–900/night · Ultra-luxury, Montalcino</span>
-        <span class="option-chevron">▼</span>
+    <div class="opt" id="o-th3">
+      <div class="opt-hd" onclick="tog('o-th3')">
+        <span class="opt-num">3</span>
+        <span class="opt-name">Rosewood Castiglion del Bosco — Montalcino</span>
+        <span class="opt-meta">~$600–900/night · Ultra-luxury, Brunello country</span>
+        <span class="opt-chev">▼</span>
       </div>
-      <div class="option-body">
-        <p>If budget is flexible, this is one of the finest properties in all of Italy — a 5,000-acre private estate near Montalcino, home to Brunello di Montalcino (arguably Italy's greatest red wine). The estate has its own vineyard, chapel, golf course, two restaurants, spa, tennis courts, and 39 private accommodations in restored stone farmhouses. <em>This is the place for a truly exceptional stay.</em> A 30-minute detour from Chianti but worth the drive.</p>
+      <div class="opt-body">
+        <p>If budget isn't the constraint, this is one of the finest properties in Italy — a 5,000-acre private estate near Montalcino (home of Brunello di Montalcino, arguably Italy's greatest red wine). Private vineyard, two restaurants, spa, 39 restored stone farmhouses. A 30-minute detour from Chianti but a completely different level of experience. Worth it for a special occasion.</p>
         <div class="links">
-          <a class="link-pill" href="https://www.rosewoodhotels.com/en/castiglion-del-bosco" target="_blank">
+          <a class="lp" href="https://www.rosewoodhotels.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Rosewood Castiglion del Bosco
+            Rosewood Hotels
           </a>
         </div>
       </div>
@@ -946,82 +992,58 @@ Thank you, and I look forward to hearing from you.
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ VENICE -->
+<!-- ═══════════════════════════════ VENICE ═══════════════════════════════ -->
 <section id="venice" class="section">
-  <h2 class="sec-title">Venice — 3 nights</h2>
-  <p style="color:var(--fg-mid);font-size:13.5px;margin-bottom:20px;">
-    <strong>Nov 1–4.</strong> Early November is magical: fewer tourists, mist on the lagoon, no summer heat, the light is extraordinary. No cars exist in Venice — all transport is by foot and vaporetto (water bus). Park concerns are gone.
-  </p>
+  <h2 class="sec">Venice — 3 nights</h2>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 16px;"><strong>Nov 1–4.</strong> Early November in Venice is one of Italy's best-kept secrets: nearly no tourists, mist rising off the lagoon, golden light, none of the summer crush. No cars anywhere — your parking anxiety is completely gone.</p>
 
-  <div class="warn"><strong>Getting from train station to hotel:</strong> Arrive at Venezia Santa Lucia (on the island). Most hotels send a private water taxi for guests — arrange in advance. Or take the public vaporetto (Line 1 along the Grand Canal, €9.50 single or €25 for 48-hr pass per person).</div>
+  <div class="tip"><strong>Florence → Venice:</strong> Return the rental car at Florence airport (Aeroporto Peretola, FLR — 25 min from Chianti). Take the Frecciarossa or Italo high-speed train from Firenze SMN → Venezia Santa Lucia. <strong>~2 hours, ~€30–50/person.</strong> Trains every hour. Book a few days ahead for the best prices at trenitalia.com or thetrainline.com.</div>
 
-  <h3 class="sub-title">What to do in Venice</h3>
-
-  <div class="day-label">Day 11 — Saturday Nov 1 · Arrive + Grand Canal</div>
+  <div class="day-label">Day 10 — Nov 1 · Arrive + Grand Canal</div>
   <div class="card">
-    <p>Check in. Walk the <strong>Rialto Bridge</strong> and Rialto Market (closes by noon — if arriving before lunch, go straight there). Vaporetto ride down the Grand Canal from the train station to San Marco (€9.50) — the best way to see the palaces.</p>
-    <p><strong>Dinner:</strong> <strong>Osteria alle Testiere</strong> — 22-seat Venetian seafood osteria, one of the best restaurants in Italy. Book 3–4 weeks ahead. Lagoon cuttlefish, spider crab, Soave wine. The chef Marco buys directly from the fish market each morning.</p>
+    <p>Check in. Walk the <strong>Rialto Bridge</strong> and the Rialto Market area (it'll be late afternoon — just get oriented). Take vaporetto Line 1 down the Grand Canal from Santa Lucia station to San Marco — €9.50, slowest water bus, most spectacular view. The palazzo facades reflected in the canal at dusk.</p>
+    <p><strong>Dinner:</strong> <strong>Osteria alle Testiere</strong> — 22 seats, the best restaurant in Venice. Lagoon cuttlefish in ink, spider crab pasta, Soave. Book 3–4 weeks ahead. The chef Marco shops at the Rialto fish market personally every morning.</p>
     <div class="links">
-      <a class="link-pill" href="https://www.osterialletestiere.it" target="_blank">
+      <a class="lp" href="https://www.osterialletestiere.it" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Book Alle Testiere
+        Alle Testiere (reserve now)
+      </a>
+      <a class="lp" href="https://www.trenitalia.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Trenitalia Florence→Venice
       </a>
     </div>
   </div>
 
-  <div class="day-label">Day 12 — Sunday Nov 2 · St. Mark's + Doge's Palace</div>
+  <div class="day-label">Day 11 — Nov 2 · St. Mark's + Doge's Palace + getting lost</div>
   <div class="card">
-    <p><strong>Morning:</strong> St. Mark's Basilica — free, but book timed entry at <a href="https://www.veneziaunica.it" target="_blank" class="link-pill" style="display:inline-flex;">veneziaunica.it</a> (€3 reservation, avoids the 45-min queue). Climb the Campanile (bell tower) for rooftop lagoon views.</p>
-    <p><strong>Doge's Palace</strong> — the political and artistic heart of Venice for 1,000 years. Book the <strong>Secret Itineraries tour</strong> (in hidden rooms including the prisons; this is where Casanova escaped from). Book at palazzoducale.visitmuve.it.</p>
-    <p><strong>Afternoon:</strong> Get lost. Venice's best experience is wandering away from the tourist path into Dorsoduro or Cannaregio — small bridges, hidden campi (squares), local bars serving cicchetti (Venetian tapas) for €1–2 each.</p>
-    <p><strong>Dinner:</strong> <strong>Trattoria da Marisa</strong> (Cannaregio, zero tourists, fixed-menu Venetian food, cash only, reservations by phone) or <strong>Antiche Carampane</strong> (outstanding seafood, no pizza on menu — that's a good sign).</p>
+    <p><strong>Morning:</strong> Basilica di San Marco — free entry but book the timed reservation at veneziaunica.it (€3 to skip the queue). Go early. The Byzantine mosaics covering every inch of the ceiling and the four bronze horses are astonishing.</p>
+    <p><strong>Doge's Palace:</strong> Book the <strong>Secret Itineraries Tour</strong> — this takes you through rooms and passageways not on the general route, including the cell where Casanova was imprisoned and from which he made his famous escape. Available at palazzoducale.visitmuve.it.</p>
+    <p><strong>Afternoon:</strong> Get deliberately lost. Walk away from San Marco toward Dorsoduro or Cannaregio and just wander. At aperitivo hour (6 PM), stop at whichever bar has the most locals and order a Spritz and cicchetti — little crostini with seafood, €1–2 each. This is how Venetians eat before dinner.</p>
+    <p><strong>Dinner:</strong> <strong>Antiche Carampane</strong> (no pizza on the menu — that's a deliberate policy and a good sign; outstanding seafood in a residential neighborhood almost no tourist finds).</p>
   </div>
 
-  <div class="day-label">Day 13 — Monday Nov 3 · Murano + Burano</div>
+  <div class="day-label">Day 12 — Nov 3 · Murano + Burano outer islands</div>
   <div class="card">
-    <p>Take the vaporetto to the outer islands. <strong>Murano</strong> (glass-blowing capital of the world — watch a live demonstration at a real furnace, not a tourist shop) and <strong>Burano</strong> (colored fishing houses, the most photogenic neighborhood in Italy, famous for lace-making). November light on Burano's painted facades is otherworldly.</p>
-    <p><strong>Last dinner in Venice:</strong> <strong>Venissa</strong> on Mazzorbo island (between Murano and Burano) — a Michelin-starred restaurant on a small vineyard island, lagoon views, extraordinary. Book well in advance for Nov 3.</p>
-    <div class="links">
-      <a class="link-pill" href="https://www.venissa.it" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Book Venissa
-      </a>
-    </div>
+    <p>Take the vaporetto to the outer lagoon islands. <strong>Murano:</strong> the world capital of hand-blown glass since 1291. Watch a master glassblower work at a real furnace (not the tourist shops — find a working fornace with a demo). <strong>Burano:</strong> every building painted a different bright color by law — fishermen's tradition so they could see their house from the water. In November mist, with no crowds, it's extraordinarily beautiful.</p>
+    <p><strong>Last Venice dinner:</strong> <strong>Venissa</strong> on Mazzorbo island (between Murano and Burano) — a Michelin-starred restaurant on a small island with its own vineyard. The lagoon view at dinner is the perfect way to end Italy.</p>
   </div>
 
   <hr class="divider">
-  <h3 class="sub-title">Where to stay in Venice — 3 options</h3>
+  <h3 class="sub">Venice hotels — 3 options</h3>
 
-  <div class="options-group">
-    <div class="option open" id="opt-ven-1">
-      <div class="option-header" onclick="toggleOpt('opt-ven-1')">
-        <span class="option-num">1</span>
-        <span class="option-name">The Gritti Palace (Marriott Luxury)</span>
-        <span class="option-meta">~€800–1,000/night · Grand Canal views</span>
-        <span class="option-chevron">▼</span>
+  <div class="opts">
+    <div class="opt open" id="o-vh1">
+      <div class="opt-hd" onclick="tog('o-vh1')">
+        <span class="opt-num">1</span>
+        <span class="opt-name">Palazzo Venart Luxury Hotel</span>
+        <span class="opt-meta">~€400–600/night · Rooftop terrace + Grand Canal</span>
+        <span class="opt-chev">▼</span>
       </div>
-      <div class="option-body">
-        <p><strong>Best value-to-luxury ratio for Venice.</strong> A restored 15th-century Doge's palace directly on the Grand Canal in San Marco. The terrace restaurant overlooks the water — one of the most beautiful dining experiences in Italy. Spa with treatments, private boat service, and the Hemingway Bar (he finished "Across the River" here). Three nights here for 3 people is a splurge but deeply worth it.</p>
+      <div class="opt-body">
+        <p>A 16th-century palazzo on the Grand Canal converted into a 18-room luxury hotel. Stunning rooftop terrace with 360° lagoon views, private garden, and the on-site restaurant Glam (Michelin-starred). Intimate enough to feel like a private palazzo, professional enough to have real hotel service. This is the sweet spot between characterful and comfortable.</p>
         <div class="links">
-          <a class="link-pill" href="https://www.thegrittipalace.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            The Gritti Palace
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="option" id="opt-ven-2">
-      <div class="option-header" onclick="toggleOpt('opt-ven-2')">
-        <span class="option-num">2</span>
-        <span class="option-name">Palazzo Venart Luxury Hotel</span>
-        <span class="option-meta">~€400–650/night · Garden, pool, quieter</span>
-        <span class="option-chevron">▼</span>
-      </div>
-      <div class="option-body">
-        <p>A restored 16th-century palace in Santa Croce with one of the only private gardens in Venice — and a pool (rare in a city built on water). 18 rooms, more intimate than the grand hotels, with outstanding breakfast. Their restaurant Glam has a Michelin star. Good for a quieter stay away from the San Marco crowds, 10-min walk to the Rialto.</p>
-        <div class="links">
-          <a class="link-pill" href="https://www.palazzovenart.com" target="_blank">
+          <a class="lp" href="https://www.palazzovenart.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             Palazzo Venart
           </a>
@@ -1029,19 +1051,31 @@ Thank you, and I look forward to hearing from you.
       </div>
     </div>
 
-    <div class="option" id="opt-ven-3">
-      <div class="option-header" onclick="toggleOpt('opt-ven-3')">
-        <span class="option-num">3</span>
-        <span class="option-name">Hotel Danieli</span>
-        <span class="option-meta">~$1,500–2,000+/night · Most iconic · lagoon views</span>
-        <span class="option-chevron">▼</span>
+    <div class="opt" id="o-vh2">
+      <div class="opt-hd" onclick="tog('o-vh2')">
+        <span class="opt-num">2</span>
+        <span class="opt-name">Hotel Nani Mocenigo Palace</span>
+        <span class="opt-meta">~€200–350/night · Dorsoduro, local neighborhood</span>
+        <span class="opt-chev">▼</span>
       </div>
-      <div class="option-body">
-        <p>Venice's most legendary hotel — a Gothic palazzo directly on the waterfront next to the Doge's Palace, with a rooftop terrace restaurant overlooking the entire lagoon and San Giorgio island. George Sand, Charles Dickens, and every head of state who visited Venice stayed here. Price is high but the rooftop views at sunset are unmatchable. If budget allows, worth one splurge night.</p>
+      <div class="opt-body">
+        <p>A 15th-century palazzo in Dorsoduro — Venice's most livable neighborhood (university area, local restaurants, the Zattere promenade along the Giudecca canal). €200–350/night, canal views, genuine Venetian character without the San Marco tourist bubble. Three of you can be very comfortable here.</p>
+      </div>
+    </div>
+
+    <div class="opt" id="o-vh3">
+      <div class="opt-hd" onclick="tog('o-vh3')">
+        <span class="opt-num">3</span>
+        <span class="opt-name">The Gritti Palace (Marriott Luxury Collection)</span>
+        <span class="opt-meta">~$800–1,400/night · Grand Canal, legendary</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p>If you're splurging for the finale, The Gritti is the grande dame of Venice — a 15th-century palazzo directly on the Grand Canal, Ernest Hemingway and Truman Capote's former haunt, full spa, terrace dining over the water. This is expensive but it is one of the great hotel experiences on earth.</p>
         <div class="links">
-          <a class="link-pill" href="https://www.marriott.com/hotels/travel/vcehd-hotel-danieli-a-luxury-collection-hotel-venice/" target="_blank">
+          <a class="lp" href="https://www.thegrittipalace.com" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Hotel Danieli
+            The Gritti Palace
           </a>
         </div>
       </div>
@@ -1049,195 +1083,121 @@ Thank you, and I look forward to hearing from you.
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ DEPARTURE -->
-<section id="departure" class="section">
-  <h2 class="sec-title">Departure — Nov 4</h2>
-
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Mom returns to Binghamton</h3>
-      <span class="badge badge-gold">Book flights now</span>
-    </div>
-    <p>From Venice, Mom's best options are <strong>Marco Polo Airport (VCE)</strong> — 15 min by water taxi or Alilaguna boat from Venice. Flights to NYC (JFK/EWR) connect via Frankfurt, Amsterdam, London Heathrow, or Zurich. From NYC she can take the bus or a car back to Binghamton. Book return flights from VCE now.</p>
-    <div class="info-grid">
-      <div class="info-item"><div class="label">Venice → Airport</div><div class="value">Alilaguna boat €15 (50 min) or private water taxi €120</div></div>
-      <div class="info-item"><div class="label">Best connections</div><div class="value">KLM via AMS, Lufthansa via FRA, Swiss via ZRH</div></div>
-      <div class="info-item"><div class="label">NYC → Binghamton</div><div class="value">Trailways/Greyhound or Winfield car service</div></div>
-    </div>
-    <div class="links">
-      <a class="link-pill" href="https://www.veneziaairport.it" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Venice Marco Polo Airport
-      </a>
-      <a class="link-pill" href="https://www.alilaguna.it/en/" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Alilaguna Boat to Airport
-      </a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Sam + Siri → Next destination</h3>
-      <span class="badge badge-olive">Decide before Nov 1</span>
-    </div>
-    <p>You and Siri head onward from Venice Marco Polo (VCE). <strong>Top options:</strong></p>
-    <div class="options-group" style="margin-top:12px;">
-      <div class="option" id="opt-dep-1">
-        <div class="option-header" onclick="toggleOpt('opt-dep-1')">
-          <span class="option-num">1</span>
-          <span class="option-name">Amsterdam</span>
-          <span class="option-meta">1.5 hr direct · Remote-work friendly</span>
-          <span class="option-chevron">▼</span>
-        </div>
-        <div class="option-body">
-          <p>Best for remote work: excellent broadband everywhere, English widely spoken, walkable city, outstanding café culture. KLM direct VCE→AMS in 1.5 hrs. Airbnb in the Jordaan or De Pijp neighborhoods ~€200–300/night for a full apartment. Week budget ~€1,400–2,100 for two well within your $2k target.</p>
-        </div>
-      </div>
-      <div class="option" id="opt-dep-2">
-        <div class="option-header" onclick="toggleOpt('opt-dep-2')">
-          <span class="option-num">2</span>
-          <span class="option-name">Lisbon</span>
-          <span class="option-meta">2.5 hrs · Best cost-to-quality ratio</span>
-          <span class="option-chevron">▼</span>
-        </div>
-        <div class="option-body">
-          <p>Most cost-effective option: full apartments ~€100–200/night, great restaurants at half Italian prices, excellent pastel de nata + espresso culture, safe and walkable. Many US tech companies have offices here — reliable digital nomad infrastructure. TAP Air Portugal or Vueling has VCE→LIS routes (via BCN or MAD).</p>
-        </div>
-      </div>
-      <div class="option" id="opt-dep-3">
-        <div class="option-header" onclick="toggleOpt('opt-dep-3')">
-          <span class="option-num">3</span>
-          <span class="option-name">Barcelona</span>
-          <span class="option-meta">1.5 hrs · Best food + nightlife</span>
-          <span class="option-chevron">▼</span>
-        </div>
-        <div class="option-body">
-          <p>If you want to extend the good food and wine streak: Barcelona's food scene is extraordinary (Boqueria market, pintxos bars, natural wine). Gràcia or Eixample neighborhoods for a nice apartment. ~€150–250/night for a quality flat. VCE→BCN via Vueling or easyJet (~1.5 hrs, ~€60–100).</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════ CHECKLIST -->
+<!-- ═══════════════════════════════ BOOKING CHECKLIST ═══════════════════════════════ -->
 <section id="checklist" class="section">
-  <h2 class="sec-title">What to book right now</h2>
-  <p style="color:var(--fg-mid);font-size:13.5px;margin-bottom:20px;">
-    Today is Oct 10, 2026. You leave in 12 days. Several things below sell out weeks in advance.
-  </p>
+  <h2 class="sec">Book now — priority order</h2>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 20px;">Today is Oct 11. You have <strong>11 days until departure.</strong> The items marked urgent are either already sold out or will be within the week.</p>
 
-  <h3 class="sub-title">🚨 Book immediately (sell out fast)</h3>
-  <div class="card">
-    <ul class="checklist">
-      <li style="opacity:.5;text-decoration:line-through;">
-        <div>
-          <strong>Borghese Gallery — BOOKED</strong><br>
-          Oct 24, 2:00–4:00 PM · Seats 244/245/246 · 3 tickets · €54 paid
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Vatican Museums — museivaticani.va</strong><br>
-          Book Oct 24 morning slot (before Borghese at 2 PM). €33/person with guide.
-          <div class="links" style="margin-top:6px;">
-            <a class="link-pill" href="https://www.museivaticani.va/content/museivaticani/en/i-musei-vaticani/biglietti-e-prenotazioni.html" target="_blank">Official Vatican</a>
-            <a class="link-pill" href="https://www.getyourguide.com/rome-l33/vatican-museums-sistine-chapel-skip-the-line-t32969/" target="_blank">GetYourGuide Tour</a>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Alle Testiere (Venice) — osterialletestiere.it</strong><br>
-          22 seats only. Book for Nov 1 or 2. Fills 3–4 weeks out.
-          <div class="links" style="margin-top:6px;">
-            <a class="link-pill" href="https://www.osterialletestiere.it" target="_blank">Book Alle Testiere</a>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Glass Hostaria Rome — glasshostaria.it</strong><br>
-          Michelin-starred Trastevere. Book for Oct 24 dinner.
-          <div class="links" style="margin-top:6px;">
-            <a class="link-pill" href="https://www.glasshostaria.it" target="_blank">Glass Hostaria</a>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Tuscany agriturismo</strong><br>
-          Oct 28–Nov 1 (4 nights). See Tuscany tab for your 3 options. Call or email directly — most agriturismi prefer direct booking.
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Venice hotel</strong><br>
-          Nov 1–4 (3 nights). See Venice tab. The Gritti Palace and Palazzo Venart both book quickly in early November (Venice Film Festival crowd + leaf-peeper season).
-        </div>
-      </li>
-    </ul>
+  <div class="confirmed" style="margin-bottom:20px;">
+    <strong>✓ Already done:</strong> Borghese Gallery — Oct 24 at 2 PM · 3 tickets · seats 244/245/246 · €54 paid. ✓
   </div>
 
-  <h3 class="sub-title">Book within the next few days</h3>
-  <div class="card">
-    <ul class="checklist">
-      <li><strong>Private car BGM→JFK (Oct 22)</strong> — Use draft message in Getting There tab. Confirm with Binghamton Limo or Winfield.</li>
-      <li><strong>Pasta class Oct 28, 1 PM</strong> — Search Viator "pasta Piazza Navona 1pm" · ~€50–65/person · 2 hours</li>
-      <li><strong>Colosseum + Underground Arena</strong> — coopculture.it · Book Oct 25. <a class="link-pill" href="https://www.coopculture.it/en/" target="_blank" style="display:inline-flex;margin-left:8px;">Book Colosseum</a></li>
-      <li><strong>Da Enzo al 29 Rome</strong> — Classic Trastevere trattoria for Oct 23 dinner. <a class="link-pill" href="https://daenzoal29.com" target="_blank" style="display:inline-flex;margin-left:8px;">daenzoal29.com</a></li>
-      <li><strong>Orvieto Underground caves</strong> — orvietounderground.it — book tour for Oct 26. <a class="link-pill" href="https://www.orvietounderground.it" target="_blank" style="display:inline-flex;margin-left:8px;">Book caves</a></li>
-      <li><strong>Florence→Venice train</strong> — Frecciarossa or Italo for Nov 1. trenitalia.com or thetrainline.com. <a class="link-pill" href="https://www.trenitalia.com" target="_blank" style="display:inline-flex;margin-left:8px;">Trenitalia</a></li>
-      <li><strong>Mom's return flight VCE→JFK</strong> — Nov 4. KLM (via AMS), Lufthansa (via FRA), Swiss (via ZRH).</li>
-      <li><strong>Tuscany car rental</strong> — Pick up near Roma Termini Oct 28 ~3:30 PM, return Florence airport Nov 1. Book auto transmission. Hertz, Europcar, Sixt. <a class="link-pill" href="https://www.hertz.com" target="_blank" style="display:inline-flex;margin-left:8px;">Hertz Italy</a></li>
-    </ul>
-  </div>
+  <h3 class="sub">🔴 Do today or this week</h3>
+  <ul class="cl">
+    <li><strong>Vatican Museums</strong> — museivaticani.va · Pre-book timed entry for Oct 24 morning (you need a slot before 2 PM Borghese). ~€18 + €4 booking fee. Friday night opening (7–11 PM Oct 23) is another option.</li>
+    <li><strong>Pasta class, Oct 28 at 1 PM</strong> — Search Viator for "pasta making Piazza Navona 1pm" — 2-hour class. ~€50–65/person. Must be exactly 1 PM start to give you time to drive to Tuscany.</li>
+    <li><strong>Car rental, auto transmission, Oct 28</strong> — Hertz.com, Europcar.com, or Sixt.com. Pick up near Roma Termini after the pasta class (~3 PM). Return Florence airport (FLR) Nov 1. Book automatic transmission explicitly.</li>
+    <li><strong>Tuscany agriturismo</strong> — Fattoria di Rignana (rignana.it) or Castello di Verrazzano (verrazzano.com) for Oct 28–Nov 1 (4 nights, 3 adults = 2 rooms). Call or email directly — these are family-run properties that prefer it.</li>
+    <li><strong>Colosseum + Forum + Underground</strong> — coopculture.it · Book underground arena add-on now. Oct 25.</li>
+    <li><strong>Alle Testiere, Venice</strong> — osterialletestiere.it · 22 seats. Book by phone or email for Nov 1 or 2 dinner.</li>
+  </ul>
 
-  <h3 class="sub-title">Before you leave (Oct 22)</h3>
-  <div class="card">
-    <ul class="checklist">
-      <li><strong>Venice vaporetto pass</strong> — buy 72-hr Venezia Unica pass on arrival. <a class="link-pill" href="https://www.veneziaunica.it" target="_blank" style="display:inline-flex;margin-left:8px;">veneziaunica.it</a></li>
-      <li><strong>Doge's Palace Secret Itineraries</strong> — book for Nov 2. <a class="link-pill" href="https://palazzoducale.visitmuve.it/en/home/" target="_blank" style="display:inline-flex;margin-left:8px;">Book palace</a></li>
-      <li><strong>Venissa Venice</strong> — Nov 3 dinner. Outstanding Michelin restaurant on the lagoon. <a class="link-pill" href="https://www.venissa.it" target="_blank" style="display:inline-flex;margin-left:8px;">venissa.it</a></li>
-      <li><strong>Notify bank + credit card</strong> — Italy + Netherlands/Portugal/Spain. Activate foreign transaction alerts.</li>
-      <li><strong>Download offline Google Maps</strong> — Rome, Tuscany (Chianti area), Venice before you leave.</li>
-    </ul>
+  <h3 class="sub">🟡 Book within the week</h3>
+  <ul class="cl">
+    <li><strong>QC Terme day spa, Rome</strong> — qcterme.com/rome · Day pass + massage for 3 people. Oct 27 (or the afternoon of Oct 26).</li>
+    <li><strong>Florence → Venice train</strong> — trenitalia.com · Frecciarossa or Italo, Nov 1. Book a week ahead for the best price (€30–50/person).</li>
+    <li><strong>Siena Duomo</strong> — operaduomo.siena.it · Combo ticket for Oct 29.</li>
+    <li><strong>Chianti winery visits</strong> — Castello di Brolio (ricasoli.com) for Oct 30 — email to book a proper cellar tour. Antinori (antinori.it) for the same day or the next.</li>
+    <li><strong>Venice hotel</strong> — Palazzo Venart or Nani Mocenigo, Nov 1–4 (3 nights).</li>
+  </ul>
+
+  <h3 class="sub">🟢 Nice to add</h3>
+  <ul class="cl">
+    <li><strong>Roscioli dinner, Rome</strong> — roscioli.com · Oct 25 evening. Reserve ahead.</li>
+    <li><strong>Doge's Palace Secret Itineraries</strong> — palazzoducale.visitmuve.it · Nov 2. Fits in with your regular admission.</li>
+    <li><strong>Osteria alle Testiere, Venice dinner #2</strong> — Book a second night if available (they do two seatings per evening).</li>
+    <li><strong>BGM → JFK private car</strong> — Contact Binghamton limo service now for Oct 22 evening. Use the draft message in the Getting There tab.</li>
+  </ul>
+
+  <hr class="divider">
+  <h3 class="sub">After Italy: Sam + Siri remote work week</h3>
+  <div class="opts">
+    <div class="opt open" id="o-rw1">
+      <div class="opt-hd" onclick="tog('o-rw1')">
+        <span class="opt-num">1</span>
+        <span class="opt-name">Amsterdam</span>
+        <span class="opt-meta">~$1,500–2,500/week · Best for remote work</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p>Direct flights from Venice Marco Polo. English everywhere, excellent fast WiFi, canal apartment Airbnbs in the Jordaan or De Pijp neighborhoods for $200–350/night. World-class food scene (Indonesian, French, Dutch). November is cool but walkable and uncrowded. The coffee shop scene is a bonus.</p>
+      </div>
+    </div>
+    <div class="opt" id="o-rw2">
+      <div class="opt-hd" onclick="tog('o-rw2')">
+        <span class="opt-num">2</span>
+        <span class="opt-name">Lisbon</span>
+        <span class="opt-meta">~$1,200–2,000/week · Best weather + value</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p>Most affordable of the three. 18–20°C in early November. Excellent Airbnbs in Bairro Alto or Mouraria, €150–250/night. Strong digital nomad infrastructure. Restaurants are outstanding and cheap. Pastéis de nata for breakfast every morning.</p>
+      </div>
+    </div>
+    <div class="opt" id="o-rw3">
+      <div class="opt-hd" onclick="tog('o-rw3')">
+        <span class="opt-num">3</span>
+        <span class="opt-name">Barcelona</span>
+        <span class="opt-meta">~$1,500–2,500/week · Best food + architecture</span>
+        <span class="opt-chev">▼</span>
+      </div>
+      <div class="opt-body">
+        <p>November is still mild (16–18°C). Eixample or Gràcia neighborhoods have excellent Airbnbs and cafés with good WiFi. Tapas scene is arguably the best in Europe. Direct flight from Venice. The architecture (Gaudí) is worth a week just for that.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 </main>
 
 <script>
-function showSection(id) {
+function show(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   const sec = document.getElementById(id);
   if (sec) sec.classList.add('active');
   const btns = document.querySelectorAll('.nav-btn');
-  btns.forEach(b => { if (b.getAttribute('onclick') === `showSection('${id}')`) b.classList.add('active'); });
+  btns.forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + id + "'")) {
+      b.classList.add('active');
+    }
+  });
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function toggleOpt(id) {
+function tog(id) {
   const el = document.getElementById(id);
   if (el) el.classList.toggle('open');
 }
 
-function copyText(id, btn) {
+function cp(id, btn) {
   const el = document.getElementById(id);
   if (!el) return;
-  const text = el.innerText.replace(btn.innerText, '').trim();
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = 'Copied!';
-    setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-  }).catch(() => {
-    const range = document.createRange();
-    range.selectNode(el);
+  const text = el.innerText.replace(/^Copy\n/, '').trim();
+  try {
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    }).catch(() => fallback());
+  } catch(e) { fallback(); }
+  function fallback() {
+    const r = document.createRange();
+    r.selectNode(el);
     window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    btn.textContent = 'Selected';
+    window.getSelection().addRange(r);
+    btn.textContent = 'Selected!';
     setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-  });
+  }
 }
 
 const PW_HASH = '2e5d7cb7a53c51b7ed289218e2c8a16db05401113616fbae6b7d9487f95f2842';
