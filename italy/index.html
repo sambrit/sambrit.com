@@ -504,6 +504,125 @@ h3.sub {
 
 /* ── Star rating ── */
 .stars { color: var(--gold); letter-spacing: 1px; font-size: 12px; }
+
+/* ── Section hero banners (photo over themed gradient, never breaks) ── */
+.hero {
+  position: relative; border-radius: var(--r); overflow: hidden;
+  margin: 0 0 22px; min-height: 180px; display: flex; align-items: flex-end;
+  box-shadow: var(--shadow-md); isolation: isolate;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-size: cover; background-position: center;
+}
+.hero-photo {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 1; opacity: 0;
+  transition: opacity .8s ease;
+}
+.hero-photo.loaded { opacity: 1; }
+.hero::after {
+  content: ''; position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to top, rgba(20,14,6,.72) 0%, rgba(20,14,6,.28) 45%, rgba(20,14,6,.05) 100%);
+}
+.hero-txt { position: relative; z-index: 3; padding: 22px 24px; color: #fff; }
+.hero-txt .hero-kicker {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; opacity: .85; margin: 0 0 6px;
+  text-shadow: 0 1px 6px rgba(0,0,0,.5);
+}
+.hero-txt .hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.9rem, 6vw, 2.9rem); font-weight: 600; font-style: italic;
+  margin: 0; line-height: 1.05; text-shadow: 0 2px 14px rgba(0,0,0,.55);
+}
+.hero-txt .hero-sub {
+  font-size: 12.5px; margin: 7px 0 0; opacity: .92;
+  text-shadow: 0 1px 6px rgba(0,0,0,.5);
+}
+/* Themed gradient fallbacks per city — always present behind the photo */
+.hero-rome .hero-bg    { background:
+  radial-gradient(120% 90% at 15% 10%, #c98a4a 0%, transparent 55%),
+  radial-gradient(130% 100% at 90% 20%, #8b3a2a 0%, transparent 60%),
+  linear-gradient(135deg, #6f2e1c 0%, #a5512a 48%, #cf9a52 100%); }
+.hero-tus .hero-bg     { background:
+  radial-gradient(120% 90% at 85% 15%, #e3c766 0%, transparent 55%),
+  linear-gradient(150deg, #3d4a2b 0%, #6b7a3e 45%, #b7a24a 100%); }
+.hero-venice .hero-bg  { background:
+  radial-gradient(120% 90% at 20% 10%, #e8c15a 0%, transparent 50%),
+  linear-gradient(150deg, #12414c 0%, #1a5c6b 45%, #3f8fa0 100%); }
+.hero-stops .hero-bg   { background:
+  radial-gradient(120% 90% at 80% 12%, #e3c766 0%, transparent 52%),
+  linear-gradient(140deg, #244a4a 0%, #4a7a6a 45%, #c7a24a 100%); }
+
+/* ── Map-link pill (pin icon, opens Google Maps) ── */
+.maplink {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--olive-soft); border: 1px solid var(--olive);
+  border-radius: 20px; padding: 3px 9px;
+  font-size: 11.5px; font-weight: 600; color: var(--olive);
+  text-decoration: none; transition: background .12s, transform .12s;
+  white-space: nowrap;
+}
+.maplink:hover { background: var(--olive); color: #fff; transform: translateY(-1px); }
+.maplink svg { width: 10px; height: 10px; flex-shrink: 0; }
+/* inline place link inside prose */
+a.place {
+  color: var(--red); text-decoration: none;
+  border-bottom: 1px dotted var(--red); font-weight: 600;
+  transition: background .12s;
+}
+a.place:hover { background: var(--red-soft); }
+
+/* ── Decorative divider with motif ── */
+.ornament {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin: 26px 0; color: var(--gold);
+}
+.ornament::before, .ornament::after {
+  content: ''; height: 1px; flex: 1; max-width: 120px;
+  background: linear-gradient(to var(--dir, right), transparent, var(--border));
+}
+.ornament::before { --dir: left; }
+.ornament svg { width: 22px; height: 22px; opacity: .8; }
+
+/* ── "Along the way" stop cards ── */
+.stop {
+  display: grid; grid-template-columns: 54px 1fr; gap: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r); box-shadow: var(--shadow-sm);
+  padding: 16px 18px; margin-bottom: 12px;
+  transition: transform .25s, box-shadow .25s;
+}
+.stop:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.stop-badge {
+  width: 54px; height: 54px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; background: var(--bg-muted);
+}
+.stop h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;
+  font-weight: 600; margin: 0 0 3px; color: var(--fg); line-height: 1.15;
+}
+.stop .stop-meta {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--fg-muted); margin: 0 0 7px;
+}
+.stop p { margin: 0 0 8px; font-size: 13px; color: var(--fg-mid); }
+.stop p:last-child { margin-bottom: 0; }
+
+/* ── Home base card ── */
+.homebase {
+  background: linear-gradient(135deg, var(--red-soft), var(--gold-soft));
+  border: 1px solid var(--gold); border-radius: var(--r);
+  padding: 16px 18px; margin-bottom: 18px;
+}
+.homebase .hb-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600;
+  color: var(--fg); margin: 0 0 6px; display: flex; align-items: center; gap: 8px;
+}
+.homebase p { margin: 0 0 8px; font-size: 13px; color: var(--fg-mid); }
+.homebase p:last-child { margin-bottom: 0; }
 </style>
 
 <!-- Password gate -->
@@ -535,6 +654,7 @@ h3.sub {
     <button class="nav-btn" onclick="show('transport')">Getting There</button>
     <button class="nav-btn" onclick="show('rome')">Rome</button>
     <button class="nav-btn" onclick="show('tuscany')">Tuscany</button>
+    <button class="nav-btn" onclick="show('stops')">Along the Way</button>
     <button class="nav-btn" onclick="show('venice')">Venice</button>
     <button class="nav-btn" onclick="show('food')">Food Guide</button>
     <button class="nav-btn" onclick="show('packing')">Packing</button>
@@ -546,7 +666,17 @@ h3.sub {
 
 <!-- ═══════════════════════════════ OVERVIEW ═══════════════════════════════ -->
 <section id="overview" class="section active">
-  <h2 class="sec">Your trip at a glance</h2>
+  <div class="hero hero-rome">
+    <div class="hero-bg"></div>
+    <img class="hero-photo" alt="" loading="lazy"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%202020.jpg?width=1280"
+      onload="this.classList.add('loaded')" onerror="this.remove()">
+    <div class="hero-txt">
+      <p class="hero-kicker">Sam · Siri · Mom · Oct 22 – Nov 4, 2026</p>
+      <h2 class="hero-title">Rome · Tuscany · Venice</h2>
+      <p class="hero-sub">13 days · a slow, delicious loop up the spine of Italy</p>
+    </div>
+  </div>
 
   <!-- VISUAL ROUTE MAP -->
   <div class="map-section">
@@ -573,8 +703,8 @@ h3.sub {
       </div>
       <div class="route-city active-city">
         <div class="rc-name">Rome</div>
-        <div class="rc-dates">Oct 23–28</div>
-        <div class="rc-nights">5 nights</div>
+        <div class="rc-dates">Oct 23–27</div>
+        <div class="rc-nights">4 nights</div>
       </div>
       <div class="route-arrow">
         🚗
@@ -582,17 +712,17 @@ h3.sub {
       </div>
       <div class="route-city active-city">
         <div class="rc-name">Tuscany</div>
-        <div class="rc-dates">Oct 28–Nov 1</div>
-        <div class="rc-nights">4 nights</div>
+        <div class="rc-dates">Oct 27 →</div>
+        <div class="rc-nights">3–5 nights</div>
       </div>
       <div class="route-arrow">
         🚆
-        <div class="arr-mode">~2 hrs</div>
+        <div class="arr-mode">stops?</div>
       </div>
       <div class="route-city active-city">
         <div class="rc-name">Venice</div>
-        <div class="rc-dates">Nov 1–4</div>
-        <div class="rc-nights">3 nights</div>
+        <div class="rc-dates">→ Nov 4</div>
+        <div class="rc-nights">~3 nights</div>
       </div>
       <div class="route-arrow">
         ✈︎
@@ -601,16 +731,17 @@ h3.sub {
       <div class="route-city">
         <div class="rc-name">Depart</div>
         <div class="rc-dates">Nov 4</div>
-        <div class="rc-nights">Mom → BGM<br>Sam+D → AMS</div>
+        <div class="rc-nights">Mom → BGM<br>Sam+Siri → AMS/LIS/BCN</div>
       </div>
     </div>
 
     <div class="phase-legend">
-      <div class="pl-item"><div class="pl-dot" style="background:var(--red)"></div> Rome (5 nights)</div>
-      <div class="pl-item"><div class="pl-dot" style="background:var(--olive)"></div> Tuscany (4 nights)</div>
-      <div class="pl-item"><div class="pl-dot" style="background:var(--teal)"></div> Venice (3 nights)</div>
+      <div class="pl-item"><div class="pl-dot" style="background:var(--red)"></div> Rome (4 nights, locked)</div>
+      <div class="pl-item"><div class="pl-dot" style="background:var(--olive)"></div> Tuscany + stops (flexible)</div>
+      <div class="pl-item"><div class="pl-dot" style="background:var(--teal)"></div> Venice (~3 nights)</div>
       <div class="pl-item"><div class="pl-dot" style="background:var(--gold)"></div> Pre/post travel</div>
     </div>
+    <div class="tip" style="margin-top:14px;"><strong>Middle still flexible:</strong> Rome is locked at 4 nights (checkout Tue Oct 27) and you fly home from Venice Nov 4. The 8 nights in between — how much Tuscany, whether to add Florence/Bologna, and the Venice length — are still open. The <strong>Along the Way</strong> tab has the options and stop ideas.</div>
   </div>
 
   <!-- FULL CHRONO TIMELINE -->
@@ -648,71 +779,43 @@ h3.sub {
     <div class="chrono-item c-rome">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Mon Oct 26</div>
-      <div class="chrono-title">Testaccio + Pantheon + Centro · Day 4</div>
-      <div class="chrono-body">Testaccio Market morning. Pantheon timed entry, Sant'Eustachio coffee, Piazza Navona, Via dei Coronari. Dinner: <strong>Roscioli</strong> (book now) or Osteria dell'Angelo.</div>
+      <div class="chrono-title">Testaccio + Centro + spa + Michelin finale · Day 4</div>
+      <div class="chrono-body">Testaccio Market, Pantheon, Sant'Eustachio coffee, Piazza Navona. Spa afternoon (AcquaMadre, in the center). Big Rome dinner: <strong>Il Pagliaccio</strong> (2★) or <strong>Roscioli</strong>.</div>
     </div>
 
     <div class="chrono-item c-rome">
       <div class="chrono-dot"></div>
       <div class="chrono-date">Tue Oct 27</div>
-      <div class="chrono-title">Slow day · Spa + Michelin finale · Day 5</div>
-      <div class="chrono-body">Doria Pamphilj morning. Spa afternoon: <strong>AcquaMadre Hammam</strong> (center) or QC Spa (Fiumicino, 45 min out). Big dinner: <strong>Il Pagliaccio</strong> (2★) or Pipero.</div>
-    </div>
-
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Wed Oct 28</div>
-      <div class="chrono-title">Pasta Class 1 PM → Drive to Tuscany · Day 6</div>
-      <div class="chrono-body"><strong>1–3 PM:</strong> pasta class near Piazza Navona. <strong>3:30 PM:</strong> car pickup, Termini Rental Car Center (Via Giolitti 34, automatic guaranteed). Exit east (ZTL!) → A24 → GRA → A1 north. Arrive farm ~7 PM.</div>
+      <div class="chrono-title">Checkout → pasta class → drive to Tuscany</div>
+      <div class="chrono-body"><strong>Checkout 10 AM.</strong> Late-morning pasta class near Piazza Navona, then pick up the car at Termini (15 min from your Airbnb — no airport needed), exit east (ZTL!) → A1 north. Arrive Chianti by evening.</div>
     </div>
 
     <div class="chrono-item c-tus">
       <div class="chrono-dot"></div>
-      <div class="chrono-date">Thu Oct 29</div>
-      <div class="chrono-title">Siena + San Gimignano · Day 7</div>
+      <div class="chrono-date">Wed Oct 28</div>
+      <div class="chrono-title">Siena + San Gimignano</div>
       <div class="chrono-body">Siena AM (park Santa Caterina — escalators up; Duomo's marble floor is <strong>uncovered until Nov 2026</strong>). San Gimignano PM: towers + Dondoli gelato. Farm dinner.</div>
     </div>
 
     <div class="chrono-item c-tus">
       <div class="chrono-dot"></div>
-      <div class="chrono-date">Fri Oct 30</div>
-      <div class="chrono-title">Chianti wine day · Day 8</div>
+      <div class="chrono-date">Thu Oct 29</div>
+      <div class="chrono-title">Chianti wine day</div>
       <div class="chrono-body">Castello di Brolio Classic Tour (10:30, €30) + Fèlsina tasting — or the Antinori architecture pilgrimage. Chiantigiana at golden hour. Farm dinner.</div>
     </div>
 
     <div class="chrono-item c-tus">
       <div class="chrono-dot"></div>
-      <div class="chrono-date">Sat Oct 31 · Halloween!</div>
-      <div class="chrono-title">Saturnia Hot Springs (hidden gem) · Day 9</div>
-      <div class="chrono-body"><strong>Secret:</strong> free 37.5°C volcanic pools + steaming waterfalls, near-empty in late Oct. Its own day: ~2.5 hrs each way, early start, Montemerano lunch. Last farm dinner. (Mellow fallback: Volpaia walk + olive harvest at the farm.)</div>
-    </div>
-
-    <div class="chrono-item c-ven">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Sun Nov 1</div>
-      <div class="chrono-title">Drive to Florence → Train to Venice · Day 10</div>
-      <div class="chrono-body">Car back at FLR, tram T2 to Firenze SMN (€1.70, 20 min), Frecciarossa to Venezia S. Lucia (~2h05 — holiday Sunday, book seats). Grand Canal on vaporetto Line 1. Dinner: Sunday <strong>bacari crawl</strong> (the osterias close Sun–Mon).</div>
-    </div>
-
-    <div class="chrono-item c-ven">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Mon Nov 2</div>
-      <div class="chrono-title">Doge's Palace secrets + St. Mark's · Day 11</div>
-      <div class="chrono-body">Doge's Palace <strong>Secret Itineraries</strong> 10 AM (€32 — Casanova's cell). St. Mark's timed entry 2:30 PM. Dorsoduro sunset walk. Dinner: <strong>Glam</strong> (2★) or Wisteria.</div>
-    </div>
-
-    <div class="chrono-item c-ven">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Tue Nov 3</div>
-      <div class="chrono-title">Murano + Burano + Mazzorbo · Day 12</div>
-      <div class="chrono-body">Wave Murano Glass furnace, Burano's painted houses in the mist, Venissa Osteria lunch on the vineyard island. Finale dinner: <strong>Alle Testiere</strong> (its only open night of your stay — book first).</div>
+      <div class="chrono-date">Fri Oct 30 →</div>
+      <div class="chrono-title">More Tuscany, or start drifting north</div>
+      <div class="chrono-body">Saturnia hot springs, the Val d'Orcia loop, truffle hunting, or a slow olive-harvest day — see the <strong>Along the Way</strong> tab. From here the plan is flexible until Venice; this is the part we'll lock together.</div>
     </div>
 
     <div class="chrono-item c-dep">
       <div class="chrono-dot"></div>
-      <div class="chrono-date">Wed Nov 4</div>
-      <div class="chrono-title">Departure</div>
-      <div class="chrono-body">Mom: water taxi to Marco Polo → BGM flight. Sam + Siri: next stop Amsterdam, Barcelona, or Lisbon for remote work week (~$2,000 budget).</div>
+      <div class="chrono-date">… → Nov 4</div>
+      <div class="chrono-title">Venice finale → fly home</div>
+      <div class="chrono-body">However we shape the middle, you land in Venice for ~3 nights (St. Mark's, Doge's Palace secrets, the islands, Alle Testiere) and fly out Nov 4 — Mom toward Binghamton, Sam + Siri on to Amsterdam / Lisbon / Barcelona.</div>
     </div>
 
   </div>
@@ -725,7 +828,7 @@ h3.sub {
       <div class="info-item"><div class="lbl">Travelers</div><div class="val">Sam · Siri · Mom (all 3 legs)</div></div>
       <div class="info-item"><div class="lbl">Italy hotels</div><div class="val">~$300/night target</div></div>
       <div class="info-item"><div class="lbl">Tuscany</div><div class="val">€150–300/night agriturismo</div></div>
-      <div class="info-item"><div class="lbl">Remote work stay</div><div class="val">~$2,000/week (Sam + D)</div></div>
+      <div class="info-item"><div class="lbl">Remote work stay</div><div class="val">~$2,000/week (Sam + Siri)</div></div>
     </div>
   </div>
 
@@ -795,8 +898,33 @@ Sam</div>
 
 <!-- ═══════════════════════════════ ROME ═══════════════════════════════ -->
 <section id="rome" class="section">
-  <h2 class="sec">Rome — 5 nights</h2>
-  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 6px;"><strong>Oct 23–28.</strong> You're in an Airbnb. The day-by-day below is your guide.</p>
+  <div class="hero hero-rome">
+    <div class="hero-bg"></div>
+    <img class="hero-photo" alt="" loading="lazy"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseum%20in%20Rome-April%202007-1-%20copie%202B.jpg?width=1280"
+      onload="this.classList.add('loaded')" onerror="this.remove()">
+    <div class="hero-txt">
+      <p class="hero-kicker">Leg 1 · Oct 23–27 · 4 nights</p>
+      <h2 class="hero-title">Rome</h2>
+      <p class="hero-sub">Your home base is a 5-minute walk from the Colosseum</p>
+    </div>
+  </div>
+
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 14px;"><strong>Fri Oct 23 → Tue Oct 27 (checkout 10 AM).</strong> Four nights, then pasta class + car + drive to Tuscany on the 27th. The day-by-day below is your guide.</p>
+
+  <div class="homebase">
+    <div class="hb-title">🏛️ Your home base — Monti / Celio, by the Colosseum</div>
+    <p>Your Airbnb is right by the <a class="place" href="https://www.google.com/maps/search/?api=1&query=The+Race+Club+Via+Labicana+52+Roma" target="_blank">Race Club speakeasy</a> (Via Labicana 52) — that puts you in the <strong>Monti / Celio</strong> area, the oldest and most charming part of central Rome, a few steps east of the Colosseum. This is a fantastic location: you can walk home from dinner.</p>
+    <div class="info-grid">
+      <div class="info-item"><div class="lbl">Colosseum</div><div class="val">3–5 min walk</div></div>
+      <div class="info-item"><div class="lbl">Roman Forum</div><div class="val">5–8 min walk</div></div>
+      <div class="info-item"><div class="lbl">Pantheon</div><div class="val">20–25 min walk</div></div>
+      <div class="info-item"><div class="lbl">Termini (car pickup)</div><div class="val">15–18 min walk · 5–8 min taxi</div></div>
+      <div class="info-item"><div class="lbl">Trastevere</div><div class="val">25–30 min walk · 12 min taxi</div></div>
+      <div class="info-item"><div class="lbl">Vatican</div><div class="val">Metro B→A or ~20 min taxi</div></div>
+    </div>
+    <p style="margin-top:8px;"><strong>Monti is a dining destination in its own right</strong> — see "Eat near home base" below, so you're not always trekking to Trastevere.</p>
+  </div>
 
   <div class="confirmed">
     <strong>✓ CONFIRMED:</strong> Borghese Gallery — Oct 24 at <strong>2:00 PM–4:00 PM</strong> · Seats 244, 245, 246 · 3 tickets · €54 total paid. You're in — this was the right call. Slots for the following week were gone within days.
@@ -808,19 +936,20 @@ Sam</div>
 
   <div class="warn"><strong>Two date quirks this week:</strong> (1) <strong>Oct 25 is a Sunday</strong> — Vatican Museums are closed, and several top restaurants (Roscioli, Da Enzo, Armando) don't open Sundays. The plan below routes around it. (2) <strong>Clocks fall back the night of Oct 24→25</strong> — free extra hour of sleep, but sunset drops to ~5:10 PM after that, so do outdoor sights before 5.</div>
 
-  <div class="day-label">Day 1 — Friday Oct 23 · Arrive + Trastevere</div>
+  <div class="day-label">Day 1 — Friday Oct 23 · Arrive + settle into Monti</div>
   <div class="card">
     <ul class="sched">
       <li><span class="t">Morning</span><span>Land FCO → <strong>€55 flat-rate taxi</strong> to the Airbnb. Drop bags, shower, nap — but set an alarm.</span></li>
-      <li><span class="t">4:00 PM</span><span>Force yourselves up. Espresso standing at the bar like Romans do. Wander to <strong>Piazza di Santa Maria in Trastevere</strong> — fountain, golden mosaics on the basilica façade, aperitivo crowd arriving.</span></li>
-      <li><span class="t">5:45 PM</span><span>Walk to <strong>Da Enzo al 29</strong> (Via dei Vascellari 29) and join the line — <strong>they take no reservations</strong>; be there 30–45 min before the 6:30 opening and you're in the first seating. Cacio e pepe, carbonara, oxtail. ~€40/person. (Closed Sundays — tonight is the night.)</span></li>
-      <li><span class="t">8:30 PM</span><span>Gelato at <strong>Otaleg</strong> (Via di San Cosimato 14a — one of Rome's best), then early night. Jet lag wins today; that's fine.</span></li>
+      <li><span class="t">4:00 PM</span><span>Force yourselves up. Espresso standing at the bar like Romans do. Then a gentle wander through <a class="place" href="https://www.google.com/maps/search/?api=1&query=Rione+Monti+Roma" target="_blank">Monti</a> — cobbled lanes, artisan shops, the little <a class="place" href="https://www.google.com/maps/search/?api=1&query=Piazza+della+Madonna+dei+Monti" target="_blank">Piazza della Madonna dei Monti</a> — and down to see the <a class="place" href="https://www.google.com/maps/search/?api=1&query=Colosseum+Rome" target="_blank">Colosseum</a> lit up, 5 minutes from your door.</span></li>
+      <li><span class="t">6:00 PM</span><span><strong>Aperitivo</strong> at <a class="place" href="https://www.google.com/maps/search/?api=1&query=Ai+Tre+Scalini+Via+Panisperna+251+Roma" target="_blank">Ai Tre Scalini</a> — the ivy-covered Monti wine bar, 12 min from home. Polpette, cheese, a glass of Montepulciano.</span></li>
+      <li><span class="t">7:30 PM</span><span><strong>Easy first dinner, close to home:</strong> <a class="place" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Luzzi+Roma" target="_blank">Trattoria Luzzi</a> (loud, cheap, old-school, 5 min away) or <a class="place" href="https://www.google.com/maps/search/?api=1&query=La+Taverna+dei+Fori+Imperiali+Roma" target="_blank">La Taverna dei Fori Imperiali</a> (better cooking, reserve ahead). Jet-lagged night one — don't trek across the river.</span></li>
+      <li><span class="t">9:00 PM</span><span>Gelato at <a class="place" href="https://www.google.com/maps/search/?api=1&query=Fatamorgana+Monti+Piazza+degli+Zingari+Roma" target="_blank">Fatamorgana Monti</a> (natural, inventive — Bacio del Principe), then early night. Jet lag wins today; that's fine.</span></li>
     </ul>
+    <div class="tip" style="margin:4px 0 0;"><strong>Save Da Enzo for a lunch:</strong> the famous <a class="place" href="https://www.daenzoal29.com/en/" target="_blank">Da Enzo al 29</a> in Trastevere is worth the trip, but it's 25–30 min away and takes no reservations — do it as a midday stop on a Trastevere wander rather than a jet-lagged night-one dinner.</div>
     <div class="links">
-      <a class="lp" href="https://www.daenzoal29.com/en/" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Da Enzo al 29
-      </a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Luzzi+Roma" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Trattoria Luzzi</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ai+Tre+Scalini+Via+Panisperna+251+Roma" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ai Tre Scalini</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Fatamorgana+Monti+Roma" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Fatamorgana</a>
     </div>
   </div>
 
@@ -853,6 +982,11 @@ Sam</div>
         Bonci Pizzarium
       </a>
     </div>
+    <div class="links">
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Vatican+Museums+entrance+Rome" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Vatican</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Galleria+Borghese+Rome" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Borghese Gallery</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Terrazza+del+Pincio+Rome" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pincio terrace</a>
+    </div>
   </div>
 
   <div class="day-label">Day 3 — Sunday Oct 25 · Colosseum + Forum</div>
@@ -880,6 +1014,12 @@ Sam</div>
         Walks of Italy (backup)
       </a>
     </div>
+    <div class="links">
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Colosseum+Rome" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Colosseum</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Roman+Forum+entrance+Rome" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Roman Forum</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Trevi+Fountain+Rome" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Trevi Fountain</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Tonnarello+Trastevere+Rome" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Tonnarello</a>
+    </div>
   </div>
 
   <div class="day-label">Day 4 — Monday Oct 26 · Testaccio + Pantheon + Centro</div>
@@ -889,8 +1029,9 @@ Sam</div>
       <li><span class="t">11:30 AM</span><span>Taxi to the centro: <strong>Pantheon</strong> timed entry (~€7 — price went up July 2026; book at pantheonroma.com). The oculus beam of light is best before noon.</span></li>
       <li><span class="t">12:30 PM</span><span>Coffee ritual: <strong>Sant'Eustachio il Caffè</strong> (pay the register first, then hand the receipt to the barman — their gran caffè is legendary). Then <strong>Piazza Navona</strong> + Bernini's Four Rivers fountain.</span></li>
       <li><span class="t">1:30 PM</span><span>Lunch: pizza bianca at <strong>Antico Forno Roscioli</strong> (Via dei Chiavari 34) or a proper sit-down at the Salumeria if you snag a slot.</span></li>
-      <li><span class="t">3:00 PM</span><span><strong>Gelateria del Teatro</strong> (Via dei Coronari 65 — rosemary-honey, ricotta & sour cherry), then stroll Via dei Coronari, Rome's prettiest street, toward the river.</span></li>
-      <li><span class="t">8:00 PM</span><span><strong>Dinner: Roscioli Salumeria con Cucina</strong> — the famous deli-restaurant (book 2–4 weeks out, card guarantee; dinner slots 7:00/9:30). The carbonara and burrata-anchovy plate are canonical. Fallback: <strong>Osteria dell'Angelo</strong>, the fixed-price Roman feast in Prati (~€30–35, book by phone +39 06 372 9470).</span></li>
+      <li><span class="t">3:00 PM</span><span><strong><a class="place" href="https://www.google.com/maps/search/?api=1&query=Gelateria+del+Teatro+Via+dei+Coronari+Roma" target="_blank">Gelateria del Teatro</a></strong> (Via dei Coronari 65 — rosemary-honey, ricotta & sour cherry), then stroll Via dei Coronari, Rome's prettiest street, toward the river.</span></li>
+      <li><span class="t">4:30 PM</span><span><strong>Spa afternoon — your last full Rome day.</strong> Best in-the-center option: <a class="place" href="https://www.google.com/maps/search/?api=1&query=AcquaMadre+Hammam+Roma" target="_blank">AcquaMadre Hammam</a> (Via di S. Ambrogio 17, Jewish Ghetto) — a proper Roman-style hammam, steam rooms, scrubs, massages. Book the slot this week. <em>(The famous QC Terme is actually out by Fiumicino, ~45 min away — skip it unless you want to burn a whole day on it.)</em></span></li>
+      <li><span class="t">8:00 PM</span><span><strong>Big Rome finale dinner.</strong> Top pick <a class="place" href="https://www.ristoranteilpagliaccio.com/" target="_blank">Il Pagliaccio</a> (2★, surprise tasting €150–190, calm and elegant — lovely with Mom) or the beloved <a class="place" href="https://salumeriaroscioli.com/en/pages/prenota" target="_blank">Roscioli Salumeria con Cucina</a> (canonical carbonara, book 2–4 weeks out). Blowout wildcard: <a class="place" href="https://romecavalieri.com/la-pergola/" target="_blank">La Pergola</a>, Rome's only 3★ with the whole city below — call about cancellations.</span></li>
     </ul>
     <div class="links">
       <a class="lp" href="https://www.pantheonroma.com/en/visit-the-pantheon/" target="_blank">
@@ -901,58 +1042,32 @@ Sam</div>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         Roscioli reservations
       </a>
-      <a class="lp" href="https://caffesanteustachio.com/?lang=en" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Sant'Eustachio
-      </a>
-    </div>
-  </div>
-
-  <div class="day-label">Day 5 — Tuesday Oct 27 · Spa day + Michelin finale</div>
-  <div class="card">
-    <div class="card-hd">
-      <h4 class="card-title">Slow morning, spa afternoon, big dinner</h4>
-      <span class="badge badge-gold">Pick a spa option</span>
-    </div>
-    <p><strong>Morning:</strong> sleep in. Campo de' Fiori produce market, then <strong>Palazzo Doria Pamphilj</strong> — a private palace most tourists skip: Velázquez's Innocent X, Caravaggio, Titian, usually no line at all.</p>
-    <p><strong>Afternoon — two spa routes (book this week):</strong></p>
-    <ul>
-      <li><strong>In the city: AcquaMadre Hammam</strong> (Via di S. Ambrogio 17, Jewish Ghetto) — a proper Roman-style hammam 10 minutes from everything: steam rooms, exfoliation, massages. The practical pick.</li>
-      <li><strong>The full QC Terme experience:</strong> heads-up — QC's Rome spa is actually out by <strong>Fiumicino, ~45 min from the center</strong> (taxi ~€50–60 each way). 5-hr pass from €64, pools, saunas, gardens. Gorgeous, but it eats the afternoon — only do it if the spa IS the plan for the day.</li>
-    </ul>
-    <p><strong>8:00 PM — the Michelin dinner:</strong> <strong>Il Pagliaccio</strong> (2★, Via dei Banchi Vecchi — surprise tasting menus €150–190, open Tuesdays, calm and elegant: perfect with Mom) or <strong>Pipero Roma</strong> (1★, the famous carbonara). Blowout alternative: <strong>La Pergola</strong>, Rome's only 3★, with the whole city below — needs booking months out, but cancellations happen; worth a call.</p>
-    <div class="links">
       <a class="lp" href="https://www.ristoranteilpagliaccio.com/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         Il Pagliaccio (2★)
       </a>
-      <a class="lp" href="https://www.piperoroma.it/eng/" target="_blank">
+      <a class="lp" href="https://www.acquamadre.it" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Pipero (1★)
-      </a>
-      <a class="lp" href="https://www.qcterme.com/destinations/roma/qc-spa-roma" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        QC Spa Roma
-      </a>
-      <a class="lp" href="https://romecavalieri.com/la-pergola/" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        La Pergola (3★)
+        AcquaMadre Hammam
       </a>
     </div>
   </div>
 
-  <div class="day-label">Day 6 — Wednesday Oct 28 · Pasta Class → Drive to Tuscany</div>
+  <div class="day-label">Day 5 — Tuesday Oct 27 · Checkout → pasta class → Tuscany</div>
   <div class="card">
     <div class="card-hd">
-      <h4 class="card-title">Pasta Class 1 PM + Drive to Tuscany</h4>
+      <h4 class="card-title">Last Roman morning, then north to Chianti</h4>
       <span class="badge badge-gold">Book pasta class</span>
     </div>
+    <div class="confirmed"><strong>No airport trip to rent the car.</strong> You pick up at the <strong>Termini Rental Car Center, Via Giovanni Giolitti 34</strong> — right in the center, a 15-min walk (or 5-min taxi) from your Airbnb. Fiumicino is only for dropping Mom's flight later; the car is all central.</div>
     <ul class="sched">
-      <li><span class="t">1:00 PM</span><span><strong>Pasta class near Piazza Navona</strong> — 2 hours, you make fettuccine from scratch and eat what you made. Two verified bookable options: the <strong>Viator fettuccine class near Piazza Navona</strong> (~$46–58/person, multiple daily times — pick the early-afternoon slot) or the <strong>GetYourGuide class at Ristorante Panzirone</strong> on the piazza itself (max 6 people, ~$43–54). Book 1 PM explicitly.</span></li>
-      <li><span class="t">3:15 PM</span><span>Taxi to Termini (10 min). <strong>Car pickup: Termini Rental Car Center, Via Giovanni Giolitti 34</strong> — Hertz, Avis, Sixt, Europcar all at the station's south side. Your booking must say <strong>automatic transmission, guaranteed</strong> (manuals are the Italian default). ~€280–450 total for 4 days compact-SUV automatic with Florence-airport drop — confirm the one-way fee is included in the quote.</span></li>
-      <li><span class="t">3:45 PM</span><span><strong>Drive out — the ZTL matters here:</strong> the restricted-camera zone starts a block west of Termini and is active Wed afternoons (€80+ fine per camera, mailed months later). Head <strong>east</strong>, away from the center: Via Prenestina → Tangenziale Est → <strong>A24 → GRA ring → A1 north toward Firenze</strong>. Set the GPS to avoid the city center.</span></li>
-      <li><span class="t">6:45 PM</span><span>Exit <strong>Firenze-Impruneta</strong>, then 20 min down the SS222 to Greve. Tolls ~€18–20 (use the white "CARTE" lanes, never yellow Telepass). It'll be dark — save the scenic Chiantigiana for daylight tomorrow.</span></li>
-      <li><span class="t">7:15 PM</span><span>Arrive the agriturismo. House wine, farm dinner, done. You're in Tuscany.</span></li>
+      <li><span class="t">10:00 AM</span><span><strong>Checkout.</strong> Leave bags with the Airbnb or a luggage locker near Termini for a few hours.</span></li>
+      <li><span class="t">10:30 AM</span><span>Last espresso + a wander you haven't done yet — the <a class="place" href="https://www.google.com/maps/search/?api=1&query=Basilica+San+Clemente+Roma" target="_blank">Basilica of San Clemente</a> (a church on a church on a Roman temple, 3 min from home) is an underrated Monti-area gem.</span></li>
+      <li><span class="t">12:00 PM</span><span><strong>Pasta class near Piazza Navona</strong> — make fettuccine from scratch, then eat it. Two bookable options: the <a class="place" href="https://www.viator.com/tours/Rome/Pasta-Class-in-Rome-Fettuccine-Cooking-Class-near-Piazza-Navona/d511-348924P2" target="_blank">Viator fettuccine class</a> (~$46–58 pp) or the <a class="place" href="https://www.getyourguide.com/roma-l33/ravioli-cooking-class-in-piazza-navona-roma-italia-t457110/" target="_blank">GetYourGuide class at Panzirone</a> (max 6). Book a noon/early-afternoon slot.</span></li>
+      <li><span class="t">2:30 PM</span><span>Grab bags, taxi or walk to <strong>Termini</strong>. <strong>Car pickup, Via Giolitti 34</strong> — booking must say <strong>automatic, guaranteed</strong> (manuals are the Italian default). ~€280–450 for the compact-SUV automatic with Florence-airport drop; confirm the one-way fee is in the quote.</span></li>
+      <li><span class="t">3:15 PM</span><span><strong>Drive out — mind the ZTL:</strong> the camera zone starts just west of Termini. Head <strong>east</strong>, away from the center: Via Prenestina → Tangenziale Est → <strong>A24 → GRA ring → A1 north toward Firenze</strong>. Set GPS to avoid the center.</span></li>
+      <li><span class="t">6:15 PM</span><span>Exit <strong>Firenze-Impruneta</strong>, 20 min down to Greve. Tolls ~€18–20 (white "CARTE" lanes, never yellow Telepass). Dark by now — save the scenic Chiantigiana for tomorrow.</span></li>
+      <li><span class="t">6:45 PM</span><span>Arrive the agriturismo. House wine, farm dinner, done. You're in Tuscany.</span></li>
     </ul>
     <div class="links">
       <a class="lp" href="https://www.viator.com/tours/Rome/Pasta-Class-in-Rome-Fettuccine-Cooking-Class-near-Piazza-Navona/d511-348924P2" target="_blank">
@@ -965,13 +1080,27 @@ Sam</div>
       </a>
       <a class="lp" href="https://www.autoeurope.eu" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Auto Europe (compare quotes)
+        Auto Europe (compare)
       </a>
-      <a class="lp" href="https://www.avis.com/en/locations/it/rome" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Avis Termini
-      </a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Termini+Rental+Car+Center+Via+Giolitti+34+Roma" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Car pickup (Termini)</a>
     </div>
+  </div>
+
+  <hr class="divider">
+  <h3 class="sub">Eat near home base — Monti &amp; Celio</h3>
+  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">All a 3–15 min walk from the Airbnb, so you can roll home after dinner. Tap any name for the map.</p>
+  <div class="card">
+    <table class="dist">
+      <tr><th>Place</th><th>What</th><th>Walk</th></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Luzzi+Roma" target="_blank">Trattoria Luzzi</a></td><td>Cheap, loud, old-school Roman — pasta, ragù, pizza</td><td>5 min</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Li+Rioni+Roma" target="_blank">Li Rioni</a></td><td>Charcoal-oven thin-crust Roman pizza (evenings)</td><td>5 min</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=La+Taverna+dei+Fori+Imperiali+Roma" target="_blank">La Taverna dei Fori Imperiali</a></td><td>Classic pastas, tiny room — reserve ahead</td><td>12 min</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Ai+Tre+Scalini+Via+Panisperna+Roma" target="_blank">Ai Tre Scalini</a></td><td>Ivy-covered wine bar, aperitivo, polpette</td><td>12 min</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Zia+Rosetta+Via+Urbana+Roma" target="_blank">Zia Rosetta</a></td><td>Gourmet mini-panini + juices — casual lunch</td><td>12 min</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Monti+Via+di+San+Vito+Roma" target="_blank">Trattoria Monti</a></td><td>Refined Marche cooking, famous egg-yolk tortello — book</td><td>15 min</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Fatamorgana+Monti+Roma" target="_blank">Fatamorgana Monti</a></td><td>Natural, inventive gelato</td><td>10 min</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Aroma+Palazzo+Manfredi+Roma" target="_blank">Aroma</a> <span class="stars">★</span></td><td>Michelin rooftop, face-to-face Colosseum view — splurge</td><td>3 min</td></tr>
+    </table>
   </div>
 
   <hr class="divider">
