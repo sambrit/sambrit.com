@@ -432,7 +432,7 @@ h3.sub {
   <div style="text-align:center;max-width:360px;width:100%;">
     <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;font-style:italic;color:var(--fg);margin-bottom:8px;">Italy 2026</div>
     <p style="color:var(--fg-muted);font-size:13px;margin:0 0 24px;">Enter the password to view the trip planner.</p>
-    <form id="pw-form" onsubmit="return checkPw(event)" style="display:flex;gap:8px;">
+    <form id="pw-form" onsubmit="checkPw(event); return false;" style="display:flex;gap:8px;">
       <input id="pw-input" type="password" placeholder="Password" autocomplete="off" autofocus
         style="flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:var(--r);background:var(--bg-card);color:var(--fg);font-family:'Inter',sans-serif;font-size:14px;outline:none;">
       <button type="submit"
