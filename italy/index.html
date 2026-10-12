@@ -1,70 +1,101 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Italy Trip — Sam, Siri & Mom</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap">
 
 <style>
 /* ── Design tokens ───────────────────────────────── */
 :root {
-  --bg:        #faf8f4;
-  --bg-card:   #ffffff;
-  --bg-muted:  #f2ede4;
-  --border:    #e4d9c8;
-  --fg:        #2a2217;
+  --bg:        #f4ede0;
+  --bg-2:      #efe6d6;
+  --bg-card:   #fffdf8;
+  --bg-muted:  #efe6d5;
+  --border:    #e0d2bc;
+  --border-2:  #d2c0a4;
+  --fg:        #2a2016;
   --fg-mid:    #5a4e3a;
-  --fg-muted:  #8a7d69;
-  --red:       #8b1a1a;
-  --red-soft:  #f5ede7;
+  --fg-muted:  #8a7c66;
+  --red:       #9c2b1e;
+  --red-soft:  #f8ebe4;
+  --terra:     #c25b34;
   --gold:      #b8922a;
-  --gold-soft: #fdf6e3;
-  --olive:     #3d4a2b;
-  --olive-soft:#eef0e8;
+  --gold-soft: #fbf2da;
+  --olive:     #44532c;
+  --olive-soft:#ebeede;
   --teal:      #1a5c6b;
-  --teal-soft: #e5f3f6;
-  --r: 8px;
-  --shadow-sm: 0 1px 3px rgba(42,34,23,.08);
-  --shadow-md: 0 4px 16px rgba(42,34,23,.12);
+  --teal-soft: #e3f1f4;
+  --sea:       #2d7d8a;
+  --ink:       #241c12;
+  --r: 10px;
+  --r-lg: 18px;
+  --shadow-sm: 0 1px 3px rgba(42,34,23,.09);
+  --shadow-md: 0 6px 22px rgba(60,42,20,.13);
+  --shadow-lg: 0 18px 48px rgba(60,42,20,.20);
+  --paper:
+    radial-gradient(circle at 18% 12%, rgba(194,91,52,.045), transparent 38%),
+    radial-gradient(circle at 85% 8%, rgba(184,146,42,.05), transparent 42%),
+    radial-gradient(circle at 50% 100%, rgba(68,83,44,.045), transparent 55%);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:        #17140f;
-    --bg-card:   #211d15;
+    --bg:        #15120d;
+    --bg-2:      #1b1710;
+    --bg-card:   #221d15;
     --bg-muted:  #2a2419;
     --border:    #3d3525;
-    --fg:        #ede8df;
-    --fg-mid:    #c4b89a;
-    --fg-muted:  #857563;
-    --red:       #c05040;
-    --red-soft:  #2e1810;
-    --gold:      #d4a83a;
-    --gold-soft: #241d08;
-    --olive:     #8aab5e;
-    --olive-soft:#192210;
+    --border-2:  #4c4230;
+    --fg:        #efe8dc;
+    --fg-mid:    #c8bc9e;
+    --fg-muted:  #8a7a64;
+    --red:       #d8604c;
+    --red-soft:  #311811;
+    --terra:     #e07a4e;
+    --gold:      #d8ac3e;
+    --gold-soft: #271f0a;
+    --olive:     #9bbb66;
+    --olive-soft:#1a2410;
     --teal:      #4ab8cc;
     --teal-soft: #0d2d33;
+    --sea:       #4fb3c2;
+    --ink:       #efe8dc;
     --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-    --shadow-md: 0 4px 16px rgba(0,0,0,.4);
+    --shadow-md: 0 6px 22px rgba(0,0,0,.45);
+    --shadow-lg: 0 18px 48px rgba(0,0,0,.6);
+    --paper:
+      radial-gradient(circle at 18% 12%, rgba(224,122,78,.07), transparent 40%),
+      radial-gradient(circle at 85% 8%, rgba(216,172,62,.06), transparent 44%);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg:        #17140f;
-  --bg-card:   #211d15;
+  --bg:        #15120d;
+  --bg-2:      #1b1710;
+  --bg-card:   #221d15;
   --bg-muted:  #2a2419;
   --border:    #3d3525;
-  --fg:        #ede8df;
-  --fg-mid:    #c4b89a;
-  --fg-muted:  #857563;
-  --red:       #c05040;
-  --red-soft:  #2e1810;
-  --gold:      #d4a83a;
-  --gold-soft: #241d08;
-  --olive:     #8aab5e;
-  --olive-soft:#192210;
+  --border-2:  #4c4230;
+  --fg:        #efe8dc;
+  --fg-mid:    #c8bc9e;
+  --fg-muted:  #8a7a64;
+  --red:       #d8604c;
+  --red-soft:  #311811;
+  --terra:     #e07a4e;
+  --gold:      #d8ac3e;
+  --gold-soft: #271f0a;
+  --olive:     #9bbb66;
+  --olive-soft:#1a2410;
   --teal:      #4ab8cc;
   --teal-soft: #0d2d33;
+  --sea:       #4fb3c2;
+  --ink:       #efe8dc;
   --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.4);
+  --shadow-md: 0 6px 22px rgba(0,0,0,.45);
+  --shadow-lg: 0 18px 48px rgba(0,0,0,.6);
+  --paper:
+    radial-gradient(circle at 18% 12%, rgba(224,122,78,.07), transparent 40%),
+    radial-gradient(circle at 85% 8%, rgba(216,172,62,.06), transparent 44%);
   color-scheme: dark;
 }
 
@@ -72,109 +103,140 @@
 body {
   margin: 0; padding: 0;
   background: var(--bg);
+  background-image: var(--paper);
+  background-attachment: fixed;
   color: var(--fg);
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+::selection { background: var(--terra); color: #fff; }
 
 /* ── Header ── */
 .site-header {
-  background: var(--olive);
+  background:
+    radial-gradient(120% 140% at 50% -20%, rgba(194,91,52,.55), transparent 60%),
+    linear-gradient(165deg, #3e4b29 0%, #2c3420 55%, #221a11 100%);
   color: #fff;
-  padding: 28px 20px 24px;
+  padding: 40px 20px 0;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 .site-header .eyebrow {
-  font-size: 10.5px; font-weight: 700;
-  letter-spacing: .15em; text-transform: uppercase;
-  opacity: .65; margin: 0 0 10px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 14px;
 }
 .site-header h1 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 6vw, 3.4rem);
-  font-weight: 500; font-style: italic;
-  margin: 0; line-height: 1.1;
+  font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 600; font-style: italic;
+  margin: 0; line-height: 1.02; letter-spacing: -.01em;
   text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0,0,0,.3);
 }
 .site-header .sub {
-  font-size: 13px; opacity: .7;
-  margin: 8px 0 0; letter-spacing: .03em;
+  font-size: 13px; opacity: .8;
+  margin: 12px 0 0; letter-spacing: .02em;
 }
+.site-header .skyline {
+  display: block; width: 100%; height: 46px; margin-top: 18px;
+}
+.site-header .skyline path { fill: rgba(244,237,224,.14); }
 
 /* ── Nav ── */
 .nav-wrap {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   z-index: 100;
-  background: var(--olive);
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .nav-scroll {
   display: flex; overflow-x: auto;
-  scrollbar-width: none; gap: 0; padding: 0 6px;
+  scrollbar-width: none; gap: 4px; padding: 8px 12px;
+  max-width: 920px; margin: 0 auto;
 }
 .nav-scroll::-webkit-scrollbar { display: none; }
 .nav-btn {
   flex: 0 0 auto; background: none; border: none;
-  color: rgba(255,255,255,.6);
+  color: var(--fg-muted);
   font-family: 'Inter', sans-serif;
   font-size: 11.5px; font-weight: 600;
-  letter-spacing: .07em; text-transform: uppercase;
-  padding: 10px 13px; cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color .15s, border-color .15s;
+  letter-spacing: .05em;
+  padding: 7px 14px; cursor: pointer; border-radius: 20px;
+  transition: color .18s, background .18s, box-shadow .18s;
   white-space: nowrap;
 }
-.nav-btn:hover { color: rgba(255,255,255,.88); }
-.nav-btn.active { color: #fff; border-bottom-color: var(--gold); }
+.nav-btn:hover { color: var(--fg); background: var(--bg-muted); }
+.nav-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--terra), var(--red));
+  box-shadow: 0 2px 10px rgba(156,43,30,.35);
+}
 
 /* ── Content ── */
 .content {
   max-width: 880px; margin: 0 auto;
-  padding: 32px 20px;
+  padding: 30px 20px 48px;
 }
 .section { display: none; }
 .section.active { display: block; }
 
 /* ── Section headings ── */
 h2.sec {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.9rem; font-weight: 500; font-style: italic;
-  margin: 0 0 22px; text-wrap: balance; line-height: 1.2;
+  font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.9rem, 5vw, 2.5rem); font-weight: 600; font-style: italic;
+  margin: 0 0 22px; text-wrap: balance; line-height: 1.1; letter-spacing: -.01em;
+  color: var(--fg);
 }
 h3.sub {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.15rem; font-weight: 600; color: var(--olive);
-  margin: 26px 0 10px;
-  padding-bottom: 5px; border-bottom: 1px solid var(--border);
+  font-size: 1.45rem; font-weight: 700; color: var(--fg);
+  margin: 30px 0 12px;
+  padding-bottom: 7px; position: relative;
+}
+h3.sub::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  width: 54px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--terra), var(--gold));
 }
 .day-label {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: .13em; text-transform: uppercase;
-  color: var(--fg-muted); margin: 22px 0 8px;
-  display: flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink); margin: 26px 0 10px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--bg-card));
+  border: 1px solid var(--border-2);
+  border-left: 4px solid var(--terra);
+  padding: 8px 14px 8px 12px; border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
-.day-label::after {
-  content: ''; flex: 1; height: 1px; background: var(--border);
-}
+.day-label::before { content: '📍'; font-size: 13px; }
 
 /* ── Cards ── */
 .card {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--r); box-shadow: var(--shadow-sm);
-  padding: 18px 20px; margin-bottom: 14px;
+  padding: 20px 22px; margin-bottom: 16px;
+  position: relative;
 }
 .card-hd {
   display: flex; align-items: flex-start;
   justify-content: space-between; gap: 10px;
-  margin-bottom: 10px; flex-wrap: wrap;
+  margin-bottom: 12px; flex-wrap: wrap;
 }
 .card-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.3rem; font-weight: 600; margin: 0;
-  line-height: 1.2; color: var(--fg);
+  font-size: 1.45rem; font-weight: 700; margin: 0;
+  line-height: 1.15; color: var(--fg);
 }
 .card p { margin: 0 0 9px; color: var(--fg-mid); font-size: 13.5px; }
 .card p:last-child { margin-bottom: 0; }
@@ -623,29 +685,119 @@ a.place:hover { background: var(--red-soft); }
 }
 .homebase p { margin: 0 0 8px; font-size: 13px; color: var(--fg-mid); }
 .homebase p:last-child { margin-bottom: 0; }
+
+/* ── Dated journey (overview centerpiece) ── */
+.journey { position: relative; margin: 8px 0 6px; padding-left: 0; }
+.leg {
+  display: grid; grid-template-columns: 92px 1fr; gap: 0;
+  position: relative;
+}
+.leg-rail { position: relative; padding-top: 6px; }
+.leg-rail::before {
+  content: ''; position: absolute; left: 11px; top: 0; bottom: -4px;
+  width: 3px; background: var(--border-2);
+}
+.leg:last-child .leg-rail::before { bottom: auto; height: 34px; }
+.leg-dot {
+  position: absolute; left: 4px; top: 8px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--bg-card); border: 3px solid var(--c, var(--terra));
+  z-index: 1; box-shadow: 0 0 0 4px var(--bg);
+}
+.leg-day {
+  font-family: 'Fraunces', serif; font-weight: 600;
+  font-size: 12px; color: var(--fg); margin-left: 28px; padding-top: 7px;
+  line-height: 1.15;
+}
+.leg-day small { display: block; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 10px; color: var(--fg-muted); letter-spacing: .04em; }
+.leg-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--c, var(--terra));
+  border-radius: 12px; padding: 13px 16px; margin: 0 0 14px 6px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s, box-shadow .2s;
+}
+.leg-card:hover { transform: translateX(3px); box-shadow: var(--shadow-md); }
+.leg-city {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700;
+  color: var(--fg); line-height: 1; margin: 0 0 3px;
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+}
+.leg-city .nights { font-family:'Inter',sans-serif; font-size: 10.5px; font-weight: 700; color: var(--c, var(--terra)); letter-spacing: .04em; text-transform: uppercase; }
+.leg-card p { margin: 4px 0 0; font-size: 12.5px; color: var(--fg-mid); line-height: 1.5; }
+.who {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 20px; margin-top: 7px;
+}
+.who-all { background: var(--olive-soft); color: var(--olive); }
+.who-ss  { background: var(--teal-soft); color: var(--sea); }
+.who-mom { background: var(--gold-soft); color: var(--gold); }
+.leg-rome   { --c: var(--red); }
+.leg-tus    { --c: var(--olive); }
+.leg-flo    { --c: var(--terra); }
+.leg-ven    { --c: var(--sea); }
+.leg-slo    { --c: #6a4ea0; }
+.leg-dep    { --c: var(--gold); }
+
+/* ── Section intro hero (illustrated) ── */
+.shero {
+  position: relative; border-radius: var(--r-lg); overflow: hidden;
+  margin: 0 0 24px; padding: 26px 24px 22px; color: #fff;
+  box-shadow: var(--shadow-md); isolation: isolate;
+}
+.shero .shero-art { position: absolute; right: -10px; bottom: -8px; width: 190px; height: auto; opacity: .9; z-index: 1; pointer-events: none; }
+.shero .shero-art path, .shero .shero-art line, .shero .shero-art circle, .shero .shero-art rect, .shero .shero-art polyline { stroke: rgba(255,255,255,.5); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.shero-txt { position: relative; z-index: 2; max-width: 74%; }
+.shero-kicker { font-family:'Caveat',cursive; font-size: 1.3rem; opacity: .95; margin: 0 0 1px; }
+.shero-title { font-family:'Fraunces',serif; font-style: italic; font-weight: 600; font-size: clamp(2rem,7vw,2.9rem); margin: 0; line-height: 1; letter-spacing: -.01em; text-shadow: 0 2px 18px rgba(0,0,0,.3); }
+.shero-sub { font-size: 12.5px; opacity: .9; margin: 9px 0 0; }
+.shero-rome { background: linear-gradient(135deg,#7a3320,#a5512a 55%,#c98a4a); }
+.shero-tus  { background: linear-gradient(135deg,#3d4a2b,#6b7a3e 55%,#b7a24a); }
+.shero-ven  { background: linear-gradient(135deg,#12414c,#1a5c6b 55%,#3f8fa0); }
+.shero-slo  { background: linear-gradient(135deg,#3b2f57,#6a4ea0 60%,#b58fd0); }
+.shero-stops{ background: linear-gradient(135deg,#244a4a,#4a7a6a 55%,#c7a24a); }
+
+@media (max-width: 480px) {
+  .shero-txt { max-width: 100%; }
+  .shero .shero-art { opacity: .35; }
+}
 </style>
 
 <!-- Password gate -->
-<div id="pw-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--bg);padding:20px;">
-  <div style="text-align:center;max-width:360px;width:100%;">
-    <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;font-style:italic;color:var(--fg);margin-bottom:8px;">Italy 2026</div>
-    <p style="color:var(--fg-muted);font-size:13px;margin:0 0 24px;">Enter the password to view the trip planner.</p>
+<div id="pw-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:radial-gradient(130% 120% at 50% -10%, rgba(194,91,52,.5), transparent 55%), linear-gradient(165deg,#3e4b29,#2c3420 55%,#221a11);padding:20px;">
+  <div style="text-align:center;max-width:380px;width:100%;color:#fff;">
+    <svg viewBox="0 0 120 40" style="width:120px;height:40px;margin:0 auto 10px;display:block;opacity:.9;" aria-hidden="true">
+      <g fill="none" stroke="#e8c15a" stroke-width="1.6" stroke-linecap="round">
+        <path d="M14 34 V18 a8 8 0 0 1 16 0 V34"/><path d="M14 24 h16 M22 16 V10"/>
+        <rect x="44" y="14" width="18" height="20"/><path d="M44 14 l9 -8 l9 8"/><rect x="51" y="24" width="4" height="10"/>
+        <path d="M78 34 V12 a6 6 0 0 1 12 0 V34"/><path d="M84 6 V12"/>
+        <path d="M100 34 V20 h10 V34 M100 20 l5 -6 l5 6"/>
+      </g>
+    </svg>
+    <div style="font-family:'Caveat',cursive;font-size:1.1rem;color:#e8c15a;letter-spacing:.02em;margin-bottom:2px;">our trip to</div>
+    <div style="font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:2.7rem;font-weight:600;font-style:italic;line-height:1.05;margin-bottom:10px;">Italy 2026</div>
+    <p style="color:rgba(255,255,255,.75);font-size:13px;margin:0 0 22px;">Rome · Tuscany · Venice &nbsp;·&nbsp; enter the password to come along</p>
     <form id="pw-form" onsubmit="checkPw(event); return false;" style="display:flex;gap:8px;">
       <input id="pw-input" type="password" placeholder="Password" autocomplete="off" autofocus
-        style="flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:var(--r);background:var(--bg-card);color:var(--fg);font-family:'Inter',sans-serif;font-size:14px;outline:none;">
+        style="flex:1;padding:12px 16px;border:1px solid rgba(255,255,255,.25);border-radius:12px;background:rgba(255,255,255,.1);color:#fff;font-family:'Inter',sans-serif;font-size:15px;outline:none;">
       <button type="submit"
-        style="padding:10px 20px;background:var(--olive);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.03em;">Enter</button>
+        style="padding:12px 22px;background:linear-gradient(135deg,#c25b34,#9c2b1e);color:#fff;border:none;border-radius:12px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.02em;">Enter</button>
     </form>
-    <p id="pw-error" style="color:var(--red);font-size:12px;margin:10px 0 0;display:none;">Incorrect password.</p>
+    <p id="pw-error" style="color:#ffd7cc;font-size:12px;margin:12px 0 0;display:none;">Incorrect password.</p>
   </div>
 </div>
 
 <div id="protected-content" style="display:none;">
 <!-- ═══════ NAV ═══════ -->
 <header class="site-header">
-  <p class="eyebrow">Sam · Siri · Mom &nbsp;·&nbsp; Oct 22 – Nov 4, 2026</p>
-  <h1>Rome · Tuscany · Venice</h1>
-  <p class="sub">Day-by-day plans · food guide · verified bookings · packing — all in one place</p>
+  <p class="eyebrow">Sam &middot; Siri &middot; Mom</p>
+  <p style="font-family:'Caveat',cursive;font-size:1.4rem;color:var(--gold);margin:0 0 2px;">our big autumn trip</p>
+  <h1>Rome · Tuscany · Venice<br>&amp; on to Slovenia</h1>
+  <p class="sub">Oct 23 – departures early November 2026 &nbsp;·&nbsp; everything in one place</p>
+  <svg class="skyline" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 90 V62 h40 v-10 l14 -12 l14 12 v10 h26 V40 a30 30 0 0 1 60 0 v22 h22 l0 -30 h8 v-14 h8 v14 h8 l0 30 h30 V48 a24 24 0 0 1 48 0 v14 h28 V36 l16 -16 l16 16 v26 h26 V52 h40 v-6 l10 -10 l10 10 v6 h34 V40 a26 26 0 0 1 52 0 v22 h30 l0 -34 h10 v-12 h8 v12 h10 l0 34 h34 V50 h46 V62 h30 V44 l18 -18 l18 18 v18 h28 V40 a30 30 0 0 1 60 0 v22 h40 V58 h40 v32 Z"/>
+  </svg>
 </header>
 
 <nav class="nav-wrap">
@@ -656,6 +808,7 @@ a.place:hover { background: var(--red-soft); }
     <button class="nav-btn" onclick="show('tuscany')">Tuscany</button>
     <button class="nav-btn" onclick="show('stops')">Along the Way</button>
     <button class="nav-btn" onclick="show('venice')">Venice</button>
+    <button class="nav-btn" onclick="show('slovenia')">Slovenia</button>
     <button class="nav-btn" onclick="show('food')">Food Guide</button>
     <button class="nav-btn" onclick="show('packing')">Packing</button>
     <button class="nav-btn" onclick="show('checklist')">Book Now</button>
@@ -666,169 +819,103 @@ a.place:hover { background: var(--red-soft); }
 
 <!-- ═══════════════════════════════ OVERVIEW ═══════════════════════════════ -->
 <section id="overview" class="section active">
-  <div class="hero hero-rome">
-    <div class="hero-bg"></div>
-    <img class="hero-photo" alt="" loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%202020.jpg?width=1280"
-      onload="this.classList.add('loaded')" onerror="this.remove()">
-    <div class="hero-txt">
-      <p class="hero-kicker">Sam · Siri · Mom · Oct 22 – Nov 4, 2026</p>
-      <h2 class="hero-title">Rome · Tuscany · Venice</h2>
-      <p class="hero-sub">13 days · a slow, delicious loop up the spine of Italy</p>
+  <div class="shero shero-rome">
+    <svg class="shero-art" viewBox="0 0 200 120" aria-hidden="true">
+      <path d="M12 104 Q60 70 100 86 T190 54" stroke-dasharray="2 7"/>
+      <circle cx="12" cy="104" r="4"/><circle cx="100" cy="86" r="4"/><circle cx="190" cy="54" r="4"/>
+      <path d="M150 20 l4 8 l8 1 l-6 6 l2 9 l-8 -5 l-8 5 l2 -9 l-6 -6 l8 -1 z"/>
+    </svg>
+    <div class="shero-txt">
+      <p class="shero-kicker">the whole journey</p>
+      <h2 class="shero-title">Italy &amp; Slovenia</h2>
+      <p class="shero-sub">Rome → Tuscany → Florence → a little Venice → working from Ljubljana</p>
     </div>
   </div>
 
-  <!-- VISUAL ROUTE MAP -->
-  <div class="map-section">
-    <h3>Route &amp; flow</h3>
+  <p style="color:var(--fg-mid);font-size:14px;margin:0 0 6px;">Here's the shape of it, start to finish. Everyone's together through <strong>Florence</strong>; then <strong>Mom flies home</strong> for work and <strong>Sam &amp; Siri</strong> carry on to Slovenia.</p>
 
-    <div class="route-flow">
-      <div class="route-city">
-        <div class="rc-name">BGM</div>
-        <div class="rc-dates">Oct 22</div>
-        <div class="rc-nights">evening</div>
-      </div>
-      <div class="route-arrow">
-        ✈︎
-        <div class="arr-mode">car/bus</div>
-      </div>
-      <div class="route-city">
-        <div class="rc-name">JFK</div>
-        <div class="rc-dates">Oct 22 night</div>
-        <div class="rc-nights">overnight flight</div>
-      </div>
-      <div class="route-arrow">
-        ✈︎
-        <div class="arr-mode">~9 hrs</div>
-      </div>
-      <div class="route-city active-city">
-        <div class="rc-name">Rome</div>
-        <div class="rc-dates">Oct 23–27</div>
-        <div class="rc-nights">4 nights</div>
-      </div>
-      <div class="route-arrow">
-        🚗
-        <div class="arr-mode">~3 hrs</div>
-      </div>
-      <div class="route-city active-city">
-        <div class="rc-name">Tuscany</div>
-        <div class="rc-dates">Oct 27 →</div>
-        <div class="rc-nights">3–5 nights</div>
-      </div>
-      <div class="route-arrow">
-        🚆
-        <div class="arr-mode">stops?</div>
-      </div>
-      <div class="route-city active-city">
-        <div class="rc-name">Venice</div>
-        <div class="rc-dates">→ Nov 4</div>
-        <div class="rc-nights">~3 nights</div>
-      </div>
-      <div class="route-arrow">
-        ✈︎
-        <div class="arr-mode">Nov 4</div>
-      </div>
-      <div class="route-city">
-        <div class="rc-name">Depart</div>
-        <div class="rc-dates">Nov 4</div>
-        <div class="rc-nights">Mom → BGM<br>Sam+Siri → AMS/LIS/BCN</div>
+  <!-- DATED JOURNEY -->
+  <h3 class="sub">The journey, by date</h3>
+  <div class="journey">
+
+    <div class="leg leg-dep">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Thu<br><small>OCT 22</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Fly out ✈︎</div>
+        <p>Binghamton → JFK (private car or Greyhound/FlixBus), overnight flight to Rome.</p>
+        <span class="who who-all">All three</span>
       </div>
     </div>
 
-    <div class="phase-legend">
-      <div class="pl-item"><div class="pl-dot" style="background:var(--red)"></div> Rome (4 nights, locked)</div>
-      <div class="pl-item"><div class="pl-dot" style="background:var(--olive)"></div> Tuscany + stops (flexible)</div>
-      <div class="pl-item"><div class="pl-dot" style="background:var(--teal)"></div> Venice (~3 nights)</div>
-      <div class="pl-item"><div class="pl-dot" style="background:var(--gold)"></div> Pre/post travel</div>
-    </div>
-    <div class="tip" style="margin-top:14px;"><strong>Middle still flexible:</strong> Rome is locked at 4 nights (checkout Tue Oct 27) and you fly home from Venice Nov 4. The 8 nights in between — how much Tuscany, whether to add Florence/Bologna, and the Venice length — are still open. The <strong>Along the Way</strong> tab has the options and stop ideas.</div>
-  </div>
-
-  <!-- FULL CHRONO TIMELINE -->
-  <h3 class="sub">Day-by-day chronology</h3>
-  <div class="chrono">
-
-    <div class="chrono-item c-dep">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Thu Oct 22</div>
-      <div class="chrono-title">BGM → JFK → overnight to Rome</div>
-      <div class="chrono-body">Leave Binghamton by 3:30 PM. Private car or bus to JFK. Overnight flight departs ~midnight.</div>
+    <div class="leg leg-rome">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Fri–Tue<br><small>OCT 23–27</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Rome <span class="nights">4 nights</span></div>
+        <p>Home base by the Colosseum. Vatican + Borghese (booked), ancient Rome, beautiful walks, big dinners. Checkout Tue the 27th.</p>
+        <span class="who who-all">All three</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Fri Oct 23</div>
-      <div class="chrono-title">Arrive Rome · Day 1</div>
-      <div class="chrono-body">Land, €55 flat-rate taxi in, rest. Trastevere evening walk. Dinner: <strong>Da Enzo al 29</strong> (no reservations — line up 5:45 PM).</div>
+    <div class="leg leg-tus">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Tue–Fri<br><small>OCT 27–31</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Tuscany <span class="nights">4 nights</span></div>
+        <p>Chianti farmhouse base. Siena, wine day, the <strong>Val d'Orcia UNESCO hills</strong> and the <strong>Saturnia hot springs</strong> — your two favourites get real room here.</p>
+        <span class="who who-all">All three</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Sat Oct 24</div>
-      <div class="chrono-title">Vatican · Borghese Gallery (2 PM–4 PM) · Day 2</div>
-      <div class="chrono-body"><strong>✓ Borghese: Tickets purchased — seats 244/245/246, Oct 24 2 PM–4 PM, €54 total.</strong> Morning: Vatican Museums + Sistine Chapel (timed entry). Bonci Pizzarium lunch. Afternoon: Borghese. Dinner: <strong>Zia</strong> (1★, Trastevere).</div>
+    <div class="leg leg-flo">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Fri–Sun<br><small>OCT 31–NOV 2</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Florence <span class="nights">~2 nights</span></div>
+        <p>One hour up the road, no detour. The Duomo, the David, Renaissance streets and river walks. The last stop all three share.</p>
+        <span class="who who-all">All three</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Sun Oct 25</div>
-      <div class="chrono-title">Colosseum Underground + Forum · Day 3</div>
-      <div class="chrono-body">Full Experience Underground ticket (€24, ticketing.colosseo.it — book NOW). It's Sunday: dinner at <strong>Tonnarello</strong> or Emma (the famous spots close Sundays). Trevi at 10:30 PM. Clocks fall back tonight.</div>
+    <div class="leg leg-dep">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">~Sun<br><small>NOV 1–2</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Mom flies home ✈︎</div>
+        <p>From Florence/Bologna → home to Binghamton. She needs to be back for <strong>work on Nov 3</strong>, so she peels off a day or two early (we'll build her the exact flight).</p>
+        <span class="who who-mom">Mom → New York</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Mon Oct 26</div>
-      <div class="chrono-title">Testaccio + Centro + spa + Michelin finale · Day 4</div>
-      <div class="chrono-body">Testaccio Market, Pantheon, Sant'Eustachio coffee, Piazza Navona. Spa afternoon (AcquaMadre, in the center). Big Rome dinner: <strong>Il Pagliaccio</strong> (2★) or <strong>Roscioli</strong>.</div>
+    <div class="leg leg-ven">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Mon<br><small>~NOV 2</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Venice <span class="nights">light &amp; quick</span></div>
+        <p>Just the two of you, kept short on purpose — a morning of canals and quiet corners before the crowds, not a human zoo. Then the direct bus to Slovenia.</p>
+        <span class="who who-ss">Sam + Siri</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Tue Oct 27</div>
-      <div class="chrono-title">Checkout → pasta class → drive to Tuscany</div>
-      <div class="chrono-body"><strong>Checkout 10 AM.</strong> Late-morning pasta class near Piazza Navona, then pick up the car at Termini (15 min from your Airbnb — no airport needed), exit east (ZTL!) → A1 north. Arrive Chianti by evening.</div>
-    </div>
-
-    <div class="chrono-item c-tus">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Wed Oct 28</div>
-      <div class="chrono-title">Siena + San Gimignano</div>
-      <div class="chrono-body">Siena AM (park Santa Caterina — escalators up; Duomo's marble floor is <strong>uncovered until Nov 2026</strong>). San Gimignano PM: towers + Dondoli gelato. Farm dinner.</div>
-    </div>
-
-    <div class="chrono-item c-tus">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Thu Oct 29</div>
-      <div class="chrono-title">Chianti wine day</div>
-      <div class="chrono-body">Castello di Brolio Classic Tour (10:30, €30) + Fèlsina tasting — or the Antinori architecture pilgrimage. Chiantigiana at golden hour. Farm dinner.</div>
-    </div>
-
-    <div class="chrono-item c-tus">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Fri Oct 30 →</div>
-      <div class="chrono-title">More Tuscany, or start drifting north</div>
-      <div class="chrono-body">Saturnia hot springs, the Val d'Orcia loop, truffle hunting, or a slow olive-harvest day — see the <strong>Along the Way</strong> tab. From here the plan is flexible until Venice; this is the part we'll lock together.</div>
-    </div>
-
-    <div class="chrono-item c-dep">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">… → Nov 4</div>
-      <div class="chrono-title">Venice finale → fly home</div>
-      <div class="chrono-body">However we shape the middle, you land in Venice for ~3 nights (St. Mark's, Doge's Palace secrets, the islands, Alle Testiere) and fly out Nov 4 — Mom toward Binghamton, Sam + Siri on to Amsterdam / Lisbon / Barcelona.</div>
+    <div class="leg leg-slo">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">~Nov 3 →<br><small>~1 WEEK</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Ljubljana <span class="nights">remote-work week</span></div>
+        <p>Direct <strong>FlixBus from Venice, ~4 hrs</strong>. Work from a storybook little capital; weekend trips to Lake Bled and the caves. (First-draft plan — more later.)</p>
+        <span class="who who-ss">Sam + Siri</span>
+      </div>
     </div>
 
   </div>
+
+  <div class="tip" style="margin-top:4px;"><strong>What's locked vs. open:</strong> Rome (4 nights) and Mom's Nov 3 work deadline are fixed. The exact Tuscany/Florence/Venice night counts are a draft — nudge any of them and I'll re-flow the dates. The <strong>Along the Way</strong> tab lays out the trade-offs.</div>
 
   <hr class="divider">
 
   <div class="card">
-    <div class="card-hd"><h4 class="card-title">Party + budget</h4></div>
+    <div class="card-hd"><h4 class="card-title">Who, and the budget</h4></div>
     <div class="info-grid">
-      <div class="info-item"><div class="lbl">Travelers</div><div class="val">Sam · Siri · Mom (all 3 legs)</div></div>
-      <div class="info-item"><div class="lbl">Italy hotels</div><div class="val">~$300/night target</div></div>
-      <div class="info-item"><div class="lbl">Tuscany</div><div class="val">€150–300/night agriturismo</div></div>
-      <div class="info-item"><div class="lbl">Remote work stay</div><div class="val">~$2,000/week (Sam + Siri)</div></div>
+      <div class="info-item"><div class="lbl">Together (Rome→Florence)</div><div class="val">Sam · Siri · Mom</div></div>
+      <div class="info-item"><div class="lbl">Mom from ~Nov 2</div><div class="val">Home to Binghamton</div></div>
+      <div class="info-item"><div class="lbl">Sam + Siri after</div><div class="val">Venice → Slovenia</div></div>
+      <div class="info-item"><div class="lbl">Italy lodging</div><div class="val">~$300/night · agriturismo €150–300</div></div>
+      <div class="info-item"><div class="lbl">Ljubljana week</div><div class="val">~$2,000 (Sam + Siri)</div></div>
+      <div class="info-item"><div class="lbl">Weather</div><div class="val">Crisp autumn, 6–20°C, pack layers</div></div>
     </div>
   </div>
 
@@ -838,7 +925,7 @@ a.place:hover { background: var(--red-soft); }
 <section id="transport" class="section">
   <h2 class="sec">Getting there &amp; home</h2>
   <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 20px;">
-    <strong>Out: Thursday night Oct 22.</strong> Flight departs JFK late/overnight — be at the terminal by 9 PM. Leave Binghamton by 3:30 PM to allow 3+ hours travel plus check-in buffer. <strong>Home:</strong> everyone flies out of Venice Nov 4 — details at the bottom.
+    <strong>Out: Thursday night Oct 22.</strong> Flight departs JFK late/overnight — be at the terminal by 9 PM. Leave Binghamton by 3:30 PM to allow 3+ hours travel plus check-in buffer. <strong>Home:</strong> only Mom flies back (she's due at work Nov 3); Sam + Siri head on to Slovenia — details at the bottom.
   </p>
 
   <div class="opts">
@@ -906,44 +993,46 @@ Sam</div>
   </div>
 
   <hr class="divider">
-  <h3 class="sub">Getting home from Venice — yes, you fly out of Venice</h3>
+  <h3 class="sub">Mom's flight home — back for work Nov 3</h3>
   <div class="confirmed">
-    <strong>You do NOT need Milan.</strong> Venice Marco Polo (VCE) is a full international airport with tons of connections. Everyone flies out of Venice on Nov 4. The only wrinkle is Binghamton itself, not Venice.
+    <strong>Only Mom flies home</strong> (Sam + Siri continue to Slovenia). She needs to be in Binghamton for <strong>work on Nov 3</strong>, so she peels off from the group a day or two early — most likely from <strong>Florence or Bologna</strong>, not Venice.
   </div>
 
   <div class="card">
-    <div class="card-hd"><h4 class="card-title">Mom → Binghamton</h4><span class="badge badge-gold">Plan the connection</span></div>
-    <p>In 2026 <strong>BGM is down to one daily flight — Delta via Detroit (DTW)</strong>. So the realistic one-ticket route home is:</p>
-    <p style="text-align:center;font-weight:600;color:var(--fg);background:var(--bg-muted);border-radius:6px;padding:10px;">Venice (VCE) → Amsterdam or Paris → Detroit (DTW) → Binghamton (BGM)</p>
-    <p><strong>Worth comparing:</strong> because BGM has just that one flight a day, a missed connection can mean an overnight. Often easier and cheaper to <strong>fly into <a class="place" href="https://www.google.com/maps/search/?api=1&query=Syracuse+Hancock+International+Airport" target="_blank">Syracuse (SYR, ~1h15 drive)</a> or Newark (EWR) and drive</strong> — far more connections and schedule flexibility. Price it both ways on Google Flights (~$450–800 one-way VCE→BGM in low season; SYR/EWR often less).</p>
+    <div class="card-hd"><h4 class="card-title">The timing problem (and fix)</h4><span class="badge badge-red">Tight — plan early</span></div>
+    <p>In 2026 <strong>Binghamton (BGM) has just one flight a day — Delta via Detroit</strong>, arriving ~1:45 PM. A transatlantic that lands on the US East Coast in the afternoon usually <em>can't</em> make that same-day connection, so a Nov 2 departure risks getting her home only late Nov 2 or Nov 3 — cutting it close for work.</p>
+    <p><strong>Recommendation: fly out ~Nov 1</strong> to be safely home and rested by Nov 2. Two good routings:</p>
+    <div class="info-grid">
+      <div class="info-item"><div class="lbl">One ticket to BGM</div><div class="val">Florence/Bologna → hub → Detroit → Binghamton</div></div>
+      <div class="info-item"><div class="lbl">Easier + flexible</div><div class="val">Fly into <a class="place" href="https://www.google.com/maps/search/?api=1&query=Syracuse+Airport" target="_blank">Syracuse</a> or Newark, drive ~1–3 hrs</div></div>
+    </div>
+    <p style="margin-top:8px;">Syracuse (SYR, ~1h15 from Binghamton) and Newark (EWR) have far more connections and no single-flight bottleneck — usually the safer bet for a hard work deadline. Price all three on Google Flights.</p>
     <div class="links">
       <a class="lp" href="https://www.google.com/travel/flights" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Google Flights</a>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-hd"><h4 class="card-title">Sam + Siri → remote-work week</h4></div>
-    <p>All three options are <strong>easy nonstops from Venice</strong> on Nov 4:</p>
-    <div class="info-grid">
-      <div class="info-item"><div class="lbl">Amsterdam</div><div class="val">KLM nonstop · ~1h50 · 3–4×/day</div></div>
-      <div class="info-item"><div class="lbl">Lisbon</div><div class="val">TAP nonstop · ~3h · ~2×/day</div></div>
-      <div class="info-item"><div class="lbl">Barcelona</div><div class="val">Vueling nonstop · ~1h55 · multiple/day</div></div>
-    </div>
-    <p style="margin-top:8px;">Budget-carrier one-ways run roughly €60–200 each. Book once you pick the city.</p>
+    <div class="card-hd"><h4 class="card-title">Sam + Siri → Slovenia (no flight needed)</h4></div>
+    <p>You two don't fly out at all — after a light Venice, it's the <strong>direct FlixBus from Venezia Mestre to Ljubljana, ~4 hrs</strong>, to start the remote-work week. Full details in the <a class="place" href="#" onclick="show('slovenia');return false;">Slovenia</a> tab.</p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════ ROME ═══════════════════════════════ -->
 <section id="rome" class="section">
-  <div class="hero hero-rome">
-    <div class="hero-bg"></div>
-    <img class="hero-photo" alt="" loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseum%20in%20Rome-April%202007-1-%20copie%202B.jpg?width=1280"
-      onload="this.classList.add('loaded')" onerror="this.remove()">
-    <div class="hero-txt">
-      <p class="hero-kicker">Leg 1 · Oct 23–27 · 4 nights</p>
-      <h2 class="hero-title">Rome</h2>
-      <p class="hero-sub">Your home base is a 5-minute walk from the Colosseum</p>
+  <div class="shero shero-rome">
+    <svg class="shero-art" viewBox="0 0 200 130" aria-hidden="true">
+      <path d="M20 118 V54 a34 34 0 0 1 68 0 V118"/>
+      <path d="M20 72 H88 M20 90 H88 M34 54 V40 M54 50 V36 M74 54 V40"/>
+      <path d="M30 72 a6 8 0 0 1 12 0 M50 72 a6 8 0 0 1 12 0 M66 72 a6 8 0 0 1 12 0"/>
+      <path d="M30 90 a6 8 0 0 1 12 0 M50 90 a6 8 0 0 1 12 0 M66 90 a6 8 0 0 1 12 0"/>
+      <path d="M110 118 V58 h44 V118 M110 58 l22 -16 l22 16 M126 118 V92 h12 v26"/>
+      <path d="M168 118 V44 a8 8 0 0 1 16 0 V118 M176 36 V44"/>
+    </svg>
+    <div class="shero-txt">
+      <p class="shero-kicker">leg one · all three</p>
+      <h2 class="shero-title">Rome</h2>
+      <p class="shero-sub">Oct 23–27 · 4 nights · home base a 5-min walk from the Colosseum</p>
     </div>
   </div>
 
@@ -1005,6 +1094,14 @@ Sam</div>
       <li><span class="t">6:30 PM</span><span>Aperitivo at <strong>Freni e Frizioni</strong> (Trastevere). </span></li>
       <li><span class="t">8:30 PM</span><span><strong>Dinner: Zia</strong> — Trastevere's Michelin star (Via Goffredo Mameli 45, 5-course ~€110). The hardest one-star booking in Rome, so reserve the moment you read this; fallback <strong>Tonnarello</strong> (no reservations, walk in).</span></li>
     </ul>
+    <div class="tip"><strong>Vatican without the €60–100 tour markup:</strong> the pricey "skip-the-line" guided tours are optional. Cheaper ways in:
+      <ul style="margin:6px 0 0;">
+        <li><strong>Official timed entry — the cheapest skip-the-line:</strong> ~€25 all-in (€20 + €5 booking) direct at museivaticani.va. That reservation <em>is</em> your line-skip — you don't need a tour on top. Rent the €7 audio guide if you want narration.</li>
+        <li><strong>Go late, not early:</strong> book an entry around <strong>2–3 PM</strong> — mornings are the crush. The last two hours before close are the calmest.</li>
+        <li><strong>Prefer beautiful buildings + walks over the museum crush?</strong> <strong>St. Peter's Basilica is free</strong> (you only pay ~€10 to climb the dome) and is one of the most jaw-dropping interiors on earth. You could skip the Museums/Sistine entirely, do free St. Peter's + the dome, and spend the rest wandering — see the "beautiful buildings &amp; nice walks" box on Day 3.</li>
+        <li><strong>Avoid</strong> the last-Sunday-of-month free entry (Oct 26) — free but mobbed.</li>
+      </ul>
+    </div>
     <div class="links">
       <a class="lp" href="https://www.museivaticani.va/content/museivaticani/en.html" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1026,29 +1123,27 @@ Sam</div>
     </div>
   </div>
 
-  <div class="day-label">Day 3 — Sunday Oct 25 · Colosseum + Forum</div>
+  <div class="day-label">Day 3 — Sunday Oct 25 · Ancient Rome, your way</div>
   <div class="card">
     <div class="card-hd">
-      <h4 class="card-title">Colosseum Underground + Roman Forum + Palatine</h4>
-      <span class="badge badge-red">Book TODAY — ticketing.colosseo.it</span>
+      <h4 class="card-title">Colosseum + Forum + beautiful walks</h4>
+      <span class="badge badge-olive">Underground optional</span>
     </div>
-    <div class="warn"><strong>Ticketing changed:</strong> the official seller is now <strong>ticketing.colosseo.it</strong> (not CoopCulture — older guides are wrong). The <strong>Full Experience Underground + Arena</strong> ticket is €24, valid 2 days, includes Forum + Palatine. Slots opened 30 days out and the underground sells fast — <strong>book immediately</strong>; if it's gone, licensed operators (Walks of Italy, The Tour Guy) hold underground allocations at €90–130/person.</div>
+    <div class="tip"><strong>You said the underground isn't a priority — good, it saves money and stress.</strong> The plain <strong>standard Colosseum ticket is €18</strong> (vs €24 underground), books easily at the official <strong>ticketing.colosseo.it</strong>, and includes the Forum + Palatine. The underground is a small-capacity add-on that sells out fast and needs a tour; skip it with a clear conscience. You can even just admire the Colosseum from outside (it's stunning from the street, 5 min from your door) and spend your energy on the Forum, the hills, and walks.</div>
     <ul class="sched">
-      <li><span class="t">9:00 AM</span><span><strong>Colosseum</strong> with underground access — walk the tunnels where gladiators and animals waited beneath the arena floor. 2–2.5 hrs with the arena-floor viewpoint.</span></li>
-      <li><span class="t">11:30 AM</span><span><strong>Roman Forum</strong>: Via Sacra → Arch of Titus → Temple of Saturn → up <strong>Palatine Hill</strong> for the panorama over the whole Forum.</span></li>
-      <li><span class="t">1:30 PM</span><span>Late lunch in Monti (the cool neighborhood next door) — wander Via del Boschetto's boutiques after.</span></li>
-      <li><span class="t">4:00 PM</span><span>Rest at the Airbnb. It's Sunday — most shops shut, Rome slows down. So should you.</span></li>
-      <li><span class="t">7:30 PM</span><span><strong>Dinner (Sunday-proof): Tonnarello</strong> or <strong>Emma Pizzeria</strong> — both open daily, no reservation needed at Tonnarello (expect a short line).</span></li>
-      <li><span class="t">10:30 PM</span><span><strong>Trevi Fountain at night</strong> — after 10:30 PM the crowds thin to nothing and the marble glows. One of Rome's great free experiences. (Clocks fall back tonight — you get the hour back.)</span></li>
+      <li><span class="t">9:00 AM</span><span><strong>Colosseum</strong> — standard entry (€18). An hour inside is plenty; the exterior is half the magic.</span></li>
+      <li><span class="t">10:30 AM</span><span><strong>Roman Forum → Palatine Hill</strong>: wander the Via Sacra, the Arch of Titus, the Temple of Saturn, then up Palatine for the big view. This is the beautiful-ruins walk.</span></li>
+      <li><span class="t">12:30 PM</span><span>Up to the <strong><a class="place" href="https://www.google.com/maps/search/?api=1&query=Piazza+del+Campidoglio+Rome" target="_blank">Campidoglio</a></strong> — Michelangelo's perfect piazza on the Capitoline Hill — and the terrace behind it for a postcard view back over the Forum.</span></li>
+      <li><span class="t">1:30 PM</span><span>Lunch in <strong>Monti</strong> (next door, your neighborhood), then a slow wander of Via del Boschetto and Via Panisperna.</span></li>
+      <li><span class="t">4:00 PM</span><span>Rest, or a gentle walk in the <a class="place" href="https://www.google.com/maps/search/?api=1&query=Villa+Celimontana+Rome" target="_blank">Villa Celimontana park</a> right by your Airbnb. It's Sunday — Rome slows down; so should you.</span></li>
+      <li><span class="t">7:30 PM</span><span><strong>Dinner (Sunday-proof): Tonnarello</strong> or a Monti spot near home — both open daily, no reservation needed (short line).</span></li>
+      <li><span class="t">10:30 PM</span><span><strong>Trevi Fountain at night</strong> — after 10:30 the crowds vanish and the marble glows. One of Rome's great free moments. (Clocks fall back tonight — you get the hour back.)</span></li>
     </ul>
+    <div class="warn" style="background:var(--olive-soft);border-color:var(--olive);border-left-color:var(--olive);"><strong>If you'd rather trade the Colosseum interior for more beautiful buildings &amp; walks</strong> (very valid), swap in: the <a class="place" href="https://www.google.com/maps/search/?api=1&query=Baths+of+Caracalla+Rome" target="_blank">Baths of Caracalla</a> (vast, atmospheric, nearly empty), a stroll up the <a class="place" href="https://www.google.com/maps/search/?api=1&query=Aventine+Hill+orange+garden+Rome" target="_blank">Aventine Hill</a> to the Orange Garden + the famous <a class="place" href="https://www.google.com/maps/search/?api=1&query=Aventine+Keyhole+Rome" target="_blank">keyhole view</a> of St. Peter's, and the <a class="place" href="https://www.google.com/maps/search/?api=1&query=Basilica+di+San+Clemente+Roma" target="_blank">Basilica di San Clemente</a> (a church stacked on a church stacked on a Roman temple, 3 min from home). All quiet, all gorgeous.</div>
     <div class="links">
-      <a class="lp" href="https://ticketing.colosseo.it/en/eventi/full-experience-sotterranei-e-arena/" target="_blank">
+      <a class="lp" href="https://ticketing.colosseo.it/en/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Colosseum Underground (official)
-      </a>
-      <a class="lp" href="https://www.walksofitaly.com" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Walks of Italy (backup)
+        Colosseum tickets (official)
       </a>
     </div>
     <div class="links">
@@ -1223,19 +1318,23 @@ Sam</div>
 
 <!-- ═══════════════════════════════ TUSCANY ═══════════════════════════════ -->
 <section id="tuscany" class="section">
-  <div class="hero hero-tus">
-    <div class="hero-bg"></div>
-    <img class="hero-photo" alt="" loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Toscane%20Val%20d%27Orcia1.JPG?width=1280"
-      onload="this.classList.add('loaded')" onerror="this.remove()">
-    <div class="hero-txt">
-      <p class="hero-kicker">Leg 2 · arrive Tue Oct 27 · 3–5 nights (flexible)</p>
-      <h2 class="hero-title">Tuscany</h2>
-      <p class="hero-sub">Chianti hills · vineyards · olive-harvest season</p>
+  <div class="shero shero-tus">
+    <svg class="shero-art" viewBox="0 0 200 130" aria-hidden="true">
+      <path d="M0 118 Q50 92 100 104 T200 86"/>
+      <path d="M0 118 Q60 108 110 116 T200 108"/>
+      <path d="M40 104 l-3 -26 M40 78 q6 -2 6 -8 q-6 0 -6 6 M40 86 q-6 -2 -6 -8 q6 0 6 6"/>
+      <path d="M70 100 l-3 -30 M70 74 q6 -2 6 -9 q-6 0 -6 7 M70 84 q-6 -2 -6 -9 q6 0 6 7"/>
+      <path d="M150 94 l-3 -34 M150 66 q7 -2 7 -10 q-7 0 -7 8 M150 78 q-7 -2 -7 -10 q7 0 7 8"/>
+      <path d="M120 96 V72 h20 V96 M120 72 l10 -9 l10 9 M127 96 V84 h6 v12"/>
+    </svg>
+    <div class="shero-txt">
+      <p class="shero-kicker">leg two · all three</p>
+      <h2 class="shero-title">Tuscany</h2>
+      <p class="shero-sub">Arrive Oct 27 · 4 nights · Chianti hills, Val d'Orcia &amp; the hot springs</p>
     </div>
   </div>
 
-  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 10px;"><strong>Arrive Tue Oct 27 from Rome.</strong> All three of you in the Chianti hills: vineyards outside the window, wine at dinner every night, no grocery shopping ever. <strong>How many nights is still open</strong> — you felt 4 might be a lot, so the <a class="place" href="#" onclick="show('stops');return false;">Along the Way</a> tab lays out trimming Tuscany and adding Florence/Bologna. The days below are the core; keep as many as you like.</p>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 10px;"><strong>Arrive Tue Oct 27 from Rome.</strong> All three of you in the Chianti hills: vineyards outside the window, wine at dinner every night, no grocery shopping ever. This is where the two things you loved most live — the <strong>Val d'Orcia UNESCO hills</strong> and the <strong>Saturnia hot springs</strong> — so it earns its 4 nights. Florence is the next stop, one hour up the road (see <a class="place" href="#" onclick="show('stops');return false;">Along the Way</a>).</p>
 
   <div class="warn"><strong>ZTL parking rule:</strong> Historic hill towns (Siena, San Gimignano, Cortona) have camera-enforced restricted zones. Drive to the edge, park FREE at the signposted parcheggio outside the walls (5-min walk max), walk in. Never drive into the stone-walled centers. Your agriturismo always has free parking — no ZTL concerns at home base.</div>
 
@@ -1456,31 +1555,35 @@ Sam</div>
 
 <!-- ═══════════════════════════════ ALONG THE WAY ═══════════════════════════════ -->
 <section id="stops" class="section">
-  <div class="hero hero-stops">
-    <div class="hero-bg"></div>
-    <img class="hero-photo" alt="" loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Vineyard%20in%20Chianti.jpg?width=1280"
-      onload="this.classList.add('loaded')" onerror="this.remove()">
-    <div class="hero-txt">
-      <p class="hero-kicker">The flexible middle · Oct 27 → Nov 4</p>
-      <h2 class="hero-title">Along the Way</h2>
-      <p class="hero-sub">Everything north of Rome is a straight line — no backtracking</p>
+  <div class="shero shero-stops">
+    <svg class="shero-art" viewBox="0 0 200 130" aria-hidden="true">
+      <path d="M14 108 Q66 60 108 84 T192 40" stroke-dasharray="2 7"/>
+      <circle cx="14" cy="108" r="4"/><circle cx="76" cy="74" r="4"/><circle cx="130" cy="74" r="4"/><circle cx="192" cy="40" r="4"/>
+      <path d="M70 74 l6 -14 l6 14 Z"/><path d="M124 74 l6 -14 l6 14 Z"/>
+    </svg>
+    <div class="shero-txt">
+      <p class="shero-kicker">the flexible middle</p>
+      <h2 class="shero-title">Along the Way</h2>
+      <p class="shero-sub">Florence &amp; the stops between Tuscany and the onward journey</p>
     </div>
   </div>
 
-  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 16px;">Rome is locked (4 nights, checkout Oct 27) and you fly home from Venice Nov 4. The <strong>8 nights in between</strong> are yours to shape. The good news: Italy's spine runs <strong>Rome → Florence → Bologna → Venice</strong> in one straight line, so anything here is "on the way," never a detour. The only real cost of adding a stop is a hotel change (one more pack/unpack).</p>
+  <div class="confirmed" style="margin-bottom:16px;"><strong>Florence is NOT a separate trip.</strong> It's one hour up the road from Chianti — right where you return the rental car. So the line is continuous: <strong>Rome → Tuscany → Florence</strong> (all three), then Mom flies home and Sam + Siri carry on to a light Venice and Slovenia. Nothing here is a detour.</div>
 
-  <h3 class="sub">Four ways to split the middle 5 nights</h3>
-  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">(Assuming Venice stays ~3 nights, which you felt was plenty.)</p>
+  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 16px;">The exact night counts in the middle are still a draft. Below: the full Florence plan, plus the other stops and natural wonders you could weave in.</p>
+
+  <h3 class="sub">The current plan (and tweaks)</h3>
+  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">Now that Venice is a light day/overnight and Slovenia is the finale for Sam + Siri, the together-time (Rome → Florence) is the part to get right. The working draft:</p>
   <div class="card">
     <table class="dist">
-      <tr><th>Shape</th><th>Nights</th><th>Feel</th></tr>
-      <tr><td><strong>Tuscany + Florence</strong></td><td>Tus 3 · Flo 2</td><td>Add a must-see city you drive past anyway. Trims Tuscany. <span class="badge badge-olive">recommended</span></td></tr>
-      <tr><td><strong>Tuscany + Bologna</strong></td><td>Tus 3 · Bol 2</td><td>Italy's food capital, less touristy; see Florence as a day trip from Chianti.</td></tr>
-      <tr><td><strong>All countryside</strong></td><td>Tus 4 · Ven 4</td><td>Fewest hotel changes, most relaxed, no new city. Easiest on Mom.</td></tr>
-      <tr><td><strong>The grand tour</strong></td><td>Tus 2 · Flo 2 · Bol 1</td><td>Five cities, richest trip, but you repack every 2 nights.</td></tr>
+      <tr><th>Leg</th><th>Nights</th><th>Who</th></tr>
+      <tr><td><strong>Rome</strong></td><td>4 (Oct 23–27)</td><td>All three · locked</td></tr>
+      <tr><td><strong>Tuscany</strong> (Chianti)</td><td>4 (Oct 27–31)</td><td>All three · Val d'Orcia + Saturnia</td></tr>
+      <tr><td><strong>Florence</strong></td><td>~2 (Oct 31–Nov 2)</td><td>All three · Mom flies home ~Nov 1</td></tr>
+      <tr><td><strong>Venice</strong></td><td>light / 1 night</td><td>Sam + Siri</td></tr>
+      <tr><td><strong>Ljubljana</strong></td><td>~1 week</td><td>Sam + Siri</td></tr>
     </table>
-    <p style="font-size:12px;color:var(--fg-muted);">No wrong answer — tell me which and I'll build the days out. Below are all the pieces you'd be choosing between.</p>
+    <p style="font-size:12px;color:var(--fg-muted);">Easy tweaks: want more Florence and less Chianti? Shift a night. Want to swap Florence for <strong>Bologna</strong> (Italy's food capital, also on the line) and see Florence as a day trip? Also easy. Just say the word.</p>
   </div>
 
   <div class="ornament"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.5 3 1.5 5 0 7-1.5-2-1.5-4 0-7zm0 6c3 1.5 4 3.5 4 6 0 2.2-1.8 4-4 4s-4-1.8-4-4c0-2.5 1-4.5 4-6zm0 16v-4"/></svg></div>
@@ -1594,27 +1697,34 @@ Sam</div>
     </div>
   </div>
 
-  <div class="tip"><strong>My read:</strong> add <strong>Florence (2 nights)</strong> for the big-city art fix you'd regret skipping, keep the Val d'Orcia or truffle day as a Tuscany highlight, and save Cinque Terre for a future Italy trip since it pulls you off the line. But tell me your gut and I'll build it.</div>
+  <div class="tip"><strong>My read:</strong> keep <strong>Florence at 2 nights</strong> (the art + buildings + river walks you'd regret missing), lean into the <strong>Val d'Orcia + Saturnia</strong> days you already love in Tuscany, and save Cinque Terre for a future trip since it pulls you off the line. Then a light Venice morning and on to Slovenia. But tell me your gut and I'll re-flow it.</div>
 </section>
 
 <!-- ═══════════════════════════════ VENICE ═══════════════════════════════ -->
 <section id="venice" class="section">
-  <div class="hero hero-venice">
-    <div class="hero-bg"></div>
-    <img class="hero-photo" alt="" loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Venezia%20-%20Canal%20Grande.jpg?width=1280"
-      onload="this.classList.add('loaded')" onerror="this.remove()">
-    <div class="hero-txt">
-      <p class="hero-kicker">Leg 3 · ~3 nights · fly home Nov 4</p>
-      <h2 class="hero-title">Venice</h2>
-      <p class="hero-sub">Low-season lagoon — mist, gold light, no crowds</p>
+  <div class="shero shero-ven">
+    <svg class="shero-art" viewBox="0 0 200 130" aria-hidden="true">
+      <path d="M8 96 q8 -10 16 0 q8 10 16 0 q8 -10 16 0 q8 10 16 0 q8 -10 16 0 q8 10 16 0 q8 -10 16 0 q8 10 16 0 q8 -10 16 0 q8 10 16 0"/>
+      <path d="M44 92 l10 -52 l10 52"/><path d="M54 40 l0 -8 l5 3 l-5 2"/>
+      <path d="M150 92 V58 h26 V92 M150 58 l13 -12 l13 12 M158 92 V74 h10 v18"/>
+      <path d="M120 96 q20 -8 40 0"/>
+    </svg>
+    <div class="shero-txt">
+      <p class="shero-kicker">a light stop · Sam + Siri</p>
+      <h2 class="shero-title">Venice</h2>
+      <p class="shero-sub">Quick and early — the magic without the human zoo</p>
     </div>
   </div>
-  <p style="color:var(--fg-mid);font-size:13.5px;margin:0 0 16px;"><strong>Arriving early November</strong> (exact dates depend on the middle plan). Early-November Venice is one of Italy's best-kept secrets: nearly no tourists, mist rising off the lagoon, golden light, none of the summer crush. No cars anywhere — your parking anxiety is completely gone. Sunset is ~5 PM, so front-load the mornings. (The Venice day-tripper access fee does <em>not</em> run in November, and overnight hotel guests are exempt anyway — nothing to do.)</p>
 
-  <div class="warn"><strong>Nov 1 is a Sunday AND All Saints' Day.</strong> Two things follow: (1) St. Mark's Basilica admits tourists only after 2 PM on Sundays — plan it for Nov 2 or 3 instead. (2) Several of the best restaurants (Alle Testiere, Antiche Carampane) are closed Sun–Mon, which means <strong>Nov 3 is your only Testiere night — book it first.</strong></div>
+  <div class="homebase" style="background:linear-gradient(135deg,var(--teal-soft),var(--gold-soft));border-color:var(--sea);">
+    <div class="hb-title">🚤 The plan: keep Venice light</div>
+    <p>After Mom flies home, it's just the two of you, and you don't want the cruise-ship crush. So Venice is a <strong>quick visit, not a 3-night stay</strong> — arrive the evening before or early morning, see the canals and the quiet corners while day-trippers are still on their trains, then take the <strong>direct FlixBus to Ljubljana (~4 hrs)</strong>. You get the beauty and skip the zoo.</p>
+    <p style="margin:0;"><strong>Two ways to do it:</strong> (1) <em>One night</em> — sleep in Venice, get the magical empty-at-dawn morning, bus out midday. (2) <em>Pure day-trip</em> — come in early from Padua/Verona, spend the day, bus to Slovenia that evening. Either keeps it short and sweet.</p>
+  </div>
 
-  <div class="tip"><strong>Florence → Venice (Nov 1):</strong> Return the car at Florence airport (FLR), tram/taxi to Firenze S.M. Novella, then Frecciarossa or Italo direct to Venezia Santa Lucia — <strong>~2h05, €15–30 booked ahead</strong> (€45–65 walk-up). Trains roughly hourly, but holiday-Sunday afternoons fill up: book seats now at trenitalia.com or italotreno.com.</div>
+  <div class="tip"><strong>Avoid the human-zoo feeling:</strong> the crowds are a 10 AM–5 PM, St. Mark's-Rialto phenomenon. Be out at <strong>7–9 AM</strong> and wander <strong>Cannaregio and Dorsoduro</strong> (residential, canal-lined, almost empty) instead of the San Marco funnel, and Venice feels like a private film set. Early November is already the quietest season — mist on the water, gold light, locals outnumbering tourists.</div>
+
+  <div class="tip"><strong>Onward to Slovenia:</strong> <strong>FlixBus Venice (Mestre) → Ljubljana, ~4 hrs, ~€15–37</strong>, several a day — the easy way to start the remote-work week. (GoOpti door-to-door shuttle is the pricier, comfier alternative with luggage.)</div>
 
   <div class="card">
     <div class="card-hd">
@@ -1636,9 +1746,11 @@ Sam</div>
     </div>
   </div>
 
-  <h3 class="sub">Day-by-day Venice</h3>
+  <hr class="divider">
+  <h3 class="sub">If you linger — the fuller Venice</h3>
+  <p style="color:var(--fg-mid);font-size:13px;margin-bottom:12px;">Keeping it light is the plan — but if you two decide Venice deserves a night or two more, here's the richer version to pull from (and the 72-hour pass above makes sense if you stay 2–3 days). Cherry-pick the morning you want.</p>
 
-  <div class="day-label">Day 10 — Sunday Nov 1 · Arrive + Grand Canal + bacari night</div>
+  <div class="day-label">Arrival evening / early morning · Grand Canal + bacari</div>
   <div class="card">
     <ul class="sched">
       <li><span class="t">~2:30 PM</span><span>Arrive <strong>Venezia Santa Lucia</strong> — the station opens straight onto the Grand Canal. Buy 72h passes at the machines.</span></li>
@@ -1649,7 +1761,7 @@ Sam</div>
     </ul>
   </div>
 
-  <div class="day-label">Day 11 — Monday Nov 2 · Doge's Palace secrets + San Marco + Michelin night</div>
+  <div class="day-label">A full day · Doge's Palace secrets + San Marco + Michelin night</div>
   <div class="card">
     <ul class="sched">
       <li><span class="t">10:00 AM</span><span><strong>Doge's Palace — Secret Itineraries tour</strong> (English slots 10:00 / 11:30 / 13:00, €32, ~75 min): hidden passages, the torture room, Casanova's prison cell and escape route, then free run of the whole palace after. Book 2–4 weeks ahead — groups cap at ~25.</span></li>
@@ -1660,7 +1772,7 @@ Sam</div>
     </ul>
   </div>
 
-  <div class="day-label">Day 12 — Tuesday Nov 3 · Murano → Burano → Mazzorbo + Testiere finale</div>
+  <div class="day-label">A second day · Murano → Burano → Mazzorbo + Testiere finale</div>
   <div class="card">
     <ul class="sched">
       <li><span class="t">9:00 AM</span><span>Vaporetto 4.1/4.2 from <strong>Fondamente Nove → Murano</strong> (10 min). Watch glass masters at a real working furnace: <strong>Wave Murano Glass</strong> (Fondamenta da Mula 152 — guided furnace tours, book ahead). Skip the free "showroom demos" that end in a sales pitch.</span></li>
@@ -1689,10 +1801,10 @@ Sam</div>
     </div>
   </div>
 
-  <div class="day-label">Nov 4 · Departure day</div>
+  <div class="day-label">Leaving Venice · on to Slovenia</div>
   <div class="card">
-    <p><strong>Mom → Marco Polo (VCE):</strong> with luggage, take a <strong>private water taxi</strong> straight from the hotel's nearest dock to the airport dock — ~€120–160, 30 min, zero bridge-schlepping. Budget option: <strong>Alilaguna</strong> water bus (~€15, 60–90 min, runs every 30 min). Book the water taxi the day before through the hotel desk.</p>
-    <p><strong>Sam + Siri:</strong> same water taxi to VCE for the Amsterdam/Lisbon/Barcelona leg, or the ATVO bus from Piazzale Roma (€10, 20 min) if flying budget airlines.</p>
+    <p><strong>Sam + Siri → Ljubljana:</strong> the easy move is the <strong>FlixBus from Venezia Mestre (the mainland station), ~4 hrs, ~€15–37</strong> — a scenic ride across the Friuli plain and into Slovenia. From the islands, take the vaporetto or the ATVO/train one stop to Mestre, then the coach. (Prefer door-to-door with bags? <strong>GoOpti</strong> shared shuttle runs the same route for more.)</p>
+    <p style="margin:0;color:var(--fg-muted);">Note: Mom isn't here for this — she flew home from Florence/Bologna a couple of days earlier (see the Getting There tab). This leg is just the two of you.</p>
   </div>
 
   <hr class="divider">
@@ -1795,6 +1907,57 @@ Sam</div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLOVENIA ═══════════════════════════════ -->
+<section id="slovenia" class="section">
+  <div class="shero shero-slo">
+    <svg class="shero-art" viewBox="0 0 200 130" aria-hidden="true">
+      <path d="M20 118 L50 50 L80 118 M60 118 L95 30 L130 118 M110 118 L150 60 L190 118"/>
+      <path d="M150 92 V66 h22 V92 M150 66 l11 -10 l11 10 M157 92 V78 h8 v14"/>
+      <path d="M40 112 q18 -8 36 0" stroke-dasharray="2 5"/>
+    </svg>
+    <div class="shero-txt">
+      <p class="shero-kicker">the remote-work week · Sam + Siri</p>
+      <h2 class="shero-title">Slovenia</h2>
+      <p class="shero-sub">Ljubljana base · ~1 week · first draft — we'll flesh this out later</p>
+    </div>
+  </div>
+
+  <div class="tip"><strong>Status:</strong> this is a rough first pass, as you asked — just enough to see the shape. We'll build it out properly once Italy is locked.</div>
+
+  <h3 class="sub">Getting there from Venice</h3>
+  <div class="card">
+    <p><strong>The easy way: <a class="place" href="https://www.google.com/maps/search/?api=1&query=Ljubljana+Slovenia" target="_blank">FlixBus</a> from Venezia Mestre → Ljubljana</strong> — ~4 hrs, roughly €15–37, several departures a day, one bag each included. Direct, cheap, scenic across the Friuli plain into Slovenia.</p>
+    <p><strong>Comfier with luggage:</strong> <strong>GoOpti</strong> shared door-to-door shuttle runs the same route (~3 hrs) for more money. <strong>Flying</strong> isn't worth it — Ljubljana's airport is small with no cheap direct hop from Venice. If you skip Venice, the overland route via Trieste works but is a longer day.</p>
+    <div class="info-grid">
+      <div class="info-item"><div class="lbl">Currency</div><div class="val">Euro — no change from Italy</div></div>
+      <div class="info-item"><div class="lbl">English</div><div class="val">Widely, fluently spoken</div></div>
+      <div class="info-item"><div class="lbl">Schengen</div><div class="val">Same zone — your 90-day clock keeps running</div></div>
+      <div class="info-item"><div class="lbl">November</div><div class="val">Cool &amp; quiet, 2–9°C, pack layers</div></div>
+    </div>
+  </div>
+
+  <h3 class="sub">Ljubljana — a genuinely nomad-friendly little capital</h3>
+  <div class="card">
+    <p>Compact, walkable, safe, and cheaper than Italy — a storybook old town along the Ljubljanica river, a castle on the hill, café culture that tolerates laptops. In November it's calm and local, autumn colours in the parks.</p>
+    <p><strong>Where to base:</strong> in or near <strong>Center / Old Town</strong> to walk everywhere; <strong>Trnovo</strong> and the riverbank south are quieter and charming. (Low-season Airbnb rates — worth a direct check for your dates.)</p>
+    <p><strong>Coworking / good wifi:</strong> <a class="place" href="https://www.google.com/maps/search/?api=1&query=ABC+Hub+Ljubljana" target="_blank">ABC Hub</a> (fast, 24/7 for members, ~€15/day), <a class="place" href="https://www.google.com/maps/search/?api=1&query=Poligon+Ljubljana" target="_blank">Poligon Creative Centre</a> (~€12/day), and work-friendly cafés like ČinČin and Lolita.</p>
+    <p style="margin:0;"><strong>In the city:</strong> Ljubljana Castle (funicular up), the Plečnik bridges and old town, Tivoli Park, and Metelkova — the street-art/alt-culture district.</p>
+  </div>
+
+  <h3 class="sub">Weekend trips (the good stuff)</h3>
+  <div class="card">
+    <table class="dist">
+      <tr><th>Place</th><th>What</th><th>From Ljubljana</th><th>November?</th></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Lake+Bled+Slovenia" target="_blank">Lake Bled</a></td><td>Island church + cliff castle — the postcard</td><td>~45 min</td><td>Yes, fewer crowds</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Postojna+Cave+Slovenia" target="_blank">Postojna + Predjama</a></td><td>Huge show cave (train inside) + cliff castle</td><td>~50 min</td><td>Yes — indoors, year-round</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Piran+Slovenia" target="_blank">Piran</a></td><td>Venetian town on the Adriatic coast</td><td>~2–2.5 hr</td><td>Yes — mild, atmospheric, empty</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Lake+Bohinj+Slovenia" target="_blank">Lake Bohinj</a></td><td>Bigger, wilder alpine lake near Bled</td><td>~1 hr</td><td>Scenery yes; boats May–Oct</td></tr>
+      <tr><td><a class="place" href="https://www.google.com/maps/search/?api=1&query=Vintgar+Gorge+Slovenia" target="_blank">Vintgar Gorge</a></td><td>Boardwalk gorge walk (add-on to Bled)</td><td>past Bled</td><td>Verify — often closes for winter</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--fg-muted);margin-top:8px;">Best November picks: Bled, Postojna (weatherproof), and a Piran coast day. High alpine passes can be snowed in.</p>
   </div>
 </section>
 
@@ -1941,15 +2104,15 @@ Sam</div>
 
   <h3 class="sub">🔴 Do TODAY — these are time-critical</h3>
   <ul class="cl">
-    <li><strong>Colosseum Underground, Oct 25</strong> — <strong>ticketing.colosseo.it</strong> (the new official seller — NOT CoopCulture). Full Experience Underground + Arena €24. The 30-day window already opened Sep 25 and underground slots go fast — <strong>book this minute</strong>; fallback: Walks of Italy / The Tour Guy underground tours (€90–130 pp).</li>
+    <li><strong>Colosseum, Oct 25</strong> — <strong>ticketing.colosseo.it</strong> (official seller). You're skipping the pricey underground, so just grab the <strong>standard €18 ticket</strong> (includes Forum + Palatine) — easy to get, no tour needed. Any day this week is fine to book.</li>
     <li><strong>International Driving Permit (Sam)</strong> — legally required to drive in Italy. AAA office, $20, 15 minutes, walk-in — but you need it <em>in hand</em> before Oct 22, so go this week.</li>
     <li><strong>Automatic rental car, Oct 28 → Nov 1</strong> — Termini Rental Car Center pickup (Via Giolitti 34), FLR drop. "Automatic guaranteed" in writing, one-way fee included in quote. ~€280–450. Compare on autoeurope.eu + direct sites.</li>
     <li><strong>Tuscany agriturismo, Oct 28–Nov 1</strong> — 4 nights, 3 adults (2 rooms). Email today: Podere Terreno, Rignana, Verrazzano, or Querceto — <strong>and ask which nights dinner is served.</strong> Family-run places answer email personally.</li>
-    <li><strong>Alle Testiere, Venice — Nov 3 dinner</strong> — their only open night of your stay (closed Sun–Mon). 22 seats. Book via osterialletestiere.it now.</li>
+    <li><strong>Mom's flight home (~Nov 1)</strong> — she's due at work Nov 3, and Binghamton has one flight/day. Price Florence/Bologna → Detroit → BGM vs. flying into Syracuse/Newark + drive, on Google Flights. Book early.</li>
     <li><strong>Zia (Rome, Oct 24)</strong> — hardest 1★ table in Rome, Saturday night. Book now; Tonnarello is the walk-in fallback.</li>
     <li><strong>Vatican Museums, Oct 24 morning</strong> — tickets.museivaticani.va · timed entry €25, named tickets (bring passports). You need to be out by ~12:30 for Borghese at 2.</li>
     <li><strong>Pasta class Oct 28, 1 PM</strong> — Viator "Fettuccine class near Piazza Navona" (~$50 pp) or GetYourGuide Panzirone class. Confirm the 1 PM start.</li>
-    <li><strong>Florence → Venice train, Nov 1</strong> — All Saints' Day Sunday, trains fill. Trenitalia/Italo, ~€15–30 booked now.</li>
+    <li><strong>FlixBus Venice → Ljubljana (Sam + Siri)</strong> — the onward ride to Slovenia, ~4 hrs. Cheap and frequent; book a few days ahead on flixbus.com once the Venice date is set.</li>
   </ul>
 
   <h3 class="sub">🟡 This week</h3>
