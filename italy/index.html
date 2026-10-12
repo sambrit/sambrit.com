@@ -1,70 +1,101 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Italy Trip — Sam, Siri & Mom</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap">
 
 <style>
 /* ── Design tokens ───────────────────────────────── */
 :root {
-  --bg:        #faf8f4;
-  --bg-card:   #ffffff;
-  --bg-muted:  #f2ede4;
-  --border:    #e4d9c8;
-  --fg:        #2a2217;
+  --bg:        #f4ede0;
+  --bg-2:      #efe6d6;
+  --bg-card:   #fffdf8;
+  --bg-muted:  #efe6d5;
+  --border:    #e0d2bc;
+  --border-2:  #d2c0a4;
+  --fg:        #2a2016;
   --fg-mid:    #5a4e3a;
-  --fg-muted:  #8a7d69;
-  --red:       #8b1a1a;
-  --red-soft:  #f5ede7;
+  --fg-muted:  #8a7c66;
+  --red:       #9c2b1e;
+  --red-soft:  #f8ebe4;
+  --terra:     #c25b34;
   --gold:      #b8922a;
-  --gold-soft: #fdf6e3;
-  --olive:     #3d4a2b;
-  --olive-soft:#eef0e8;
+  --gold-soft: #fbf2da;
+  --olive:     #44532c;
+  --olive-soft:#ebeede;
   --teal:      #1a5c6b;
-  --teal-soft: #e5f3f6;
-  --r: 8px;
-  --shadow-sm: 0 1px 3px rgba(42,34,23,.08);
-  --shadow-md: 0 4px 16px rgba(42,34,23,.12);
+  --teal-soft: #e3f1f4;
+  --sea:       #2d7d8a;
+  --ink:       #241c12;
+  --r: 10px;
+  --r-lg: 18px;
+  --shadow-sm: 0 1px 3px rgba(42,34,23,.09);
+  --shadow-md: 0 6px 22px rgba(60,42,20,.13);
+  --shadow-lg: 0 18px 48px rgba(60,42,20,.20);
+  --paper:
+    radial-gradient(circle at 18% 12%, rgba(194,91,52,.045), transparent 38%),
+    radial-gradient(circle at 85% 8%, rgba(184,146,42,.05), transparent 42%),
+    radial-gradient(circle at 50% 100%, rgba(68,83,44,.045), transparent 55%);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:        #17140f;
-    --bg-card:   #211d15;
+    --bg:        #15120d;
+    --bg-2:      #1b1710;
+    --bg-card:   #221d15;
     --bg-muted:  #2a2419;
     --border:    #3d3525;
-    --fg:        #ede8df;
-    --fg-mid:    #c4b89a;
-    --fg-muted:  #857563;
-    --red:       #c05040;
-    --red-soft:  #2e1810;
-    --gold:      #d4a83a;
-    --gold-soft: #241d08;
-    --olive:     #8aab5e;
-    --olive-soft:#192210;
+    --border-2:  #4c4230;
+    --fg:        #efe8dc;
+    --fg-mid:    #c8bc9e;
+    --fg-muted:  #8a7a64;
+    --red:       #d8604c;
+    --red-soft:  #311811;
+    --terra:     #e07a4e;
+    --gold:      #d8ac3e;
+    --gold-soft: #271f0a;
+    --olive:     #9bbb66;
+    --olive-soft:#1a2410;
     --teal:      #4ab8cc;
     --teal-soft: #0d2d33;
+    --sea:       #4fb3c2;
+    --ink:       #efe8dc;
     --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-    --shadow-md: 0 4px 16px rgba(0,0,0,.4);
+    --shadow-md: 0 6px 22px rgba(0,0,0,.45);
+    --shadow-lg: 0 18px 48px rgba(0,0,0,.6);
+    --paper:
+      radial-gradient(circle at 18% 12%, rgba(224,122,78,.07), transparent 40%),
+      radial-gradient(circle at 85% 8%, rgba(216,172,62,.06), transparent 44%);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg:        #17140f;
-  --bg-card:   #211d15;
+  --bg:        #15120d;
+  --bg-2:      #1b1710;
+  --bg-card:   #221d15;
   --bg-muted:  #2a2419;
   --border:    #3d3525;
-  --fg:        #ede8df;
-  --fg-mid:    #c4b89a;
-  --fg-muted:  #857563;
-  --red:       #c05040;
-  --red-soft:  #2e1810;
-  --gold:      #d4a83a;
-  --gold-soft: #241d08;
-  --olive:     #8aab5e;
-  --olive-soft:#192210;
+  --border-2:  #4c4230;
+  --fg:        #efe8dc;
+  --fg-mid:    #c8bc9e;
+  --fg-muted:  #8a7a64;
+  --red:       #d8604c;
+  --red-soft:  #311811;
+  --terra:     #e07a4e;
+  --gold:      #d8ac3e;
+  --gold-soft: #271f0a;
+  --olive:     #9bbb66;
+  --olive-soft:#1a2410;
   --teal:      #4ab8cc;
   --teal-soft: #0d2d33;
+  --sea:       #4fb3c2;
+  --ink:       #efe8dc;
   --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.4);
+  --shadow-md: 0 6px 22px rgba(0,0,0,.45);
+  --shadow-lg: 0 18px 48px rgba(0,0,0,.6);
+  --paper:
+    radial-gradient(circle at 18% 12%, rgba(224,122,78,.07), transparent 40%),
+    radial-gradient(circle at 85% 8%, rgba(216,172,62,.06), transparent 44%);
   color-scheme: dark;
 }
 
@@ -72,109 +103,140 @@
 body {
   margin: 0; padding: 0;
   background: var(--bg);
+  background-image: var(--paper);
+  background-attachment: fixed;
   color: var(--fg);
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+::selection { background: var(--terra); color: #fff; }
 
 /* ── Header ── */
 .site-header {
-  background: var(--olive);
+  background:
+    radial-gradient(120% 140% at 50% -20%, rgba(194,91,52,.55), transparent 60%),
+    linear-gradient(165deg, #3e4b29 0%, #2c3420 55%, #221a11 100%);
   color: #fff;
-  padding: 28px 20px 24px;
+  padding: 40px 20px 0;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 .site-header .eyebrow {
-  font-size: 10.5px; font-weight: 700;
-  letter-spacing: .15em; text-transform: uppercase;
-  opacity: .65; margin: 0 0 10px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 14px;
 }
 .site-header h1 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 6vw, 3.4rem);
-  font-weight: 500; font-style: italic;
-  margin: 0; line-height: 1.1;
+  font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 600; font-style: italic;
+  margin: 0; line-height: 1.02; letter-spacing: -.01em;
   text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0,0,0,.3);
 }
 .site-header .sub {
-  font-size: 13px; opacity: .7;
-  margin: 8px 0 0; letter-spacing: .03em;
+  font-size: 13px; opacity: .8;
+  margin: 12px 0 0; letter-spacing: .02em;
 }
+.site-header .skyline {
+  display: block; width: 100%; height: 46px; margin-top: 18px;
+}
+.site-header .skyline path { fill: rgba(244,237,224,.14); }
 
 /* ── Nav ── */
 .nav-wrap {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   z-index: 100;
-  background: var(--olive);
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .nav-scroll {
   display: flex; overflow-x: auto;
-  scrollbar-width: none; gap: 0; padding: 0 6px;
+  scrollbar-width: none; gap: 4px; padding: 8px 12px;
+  max-width: 920px; margin: 0 auto;
 }
 .nav-scroll::-webkit-scrollbar { display: none; }
 .nav-btn {
   flex: 0 0 auto; background: none; border: none;
-  color: rgba(255,255,255,.6);
+  color: var(--fg-muted);
   font-family: 'Inter', sans-serif;
   font-size: 11.5px; font-weight: 600;
-  letter-spacing: .07em; text-transform: uppercase;
-  padding: 10px 13px; cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color .15s, border-color .15s;
+  letter-spacing: .05em;
+  padding: 7px 14px; cursor: pointer; border-radius: 20px;
+  transition: color .18s, background .18s, box-shadow .18s;
   white-space: nowrap;
 }
-.nav-btn:hover { color: rgba(255,255,255,.88); }
-.nav-btn.active { color: #fff; border-bottom-color: var(--gold); }
+.nav-btn:hover { color: var(--fg); background: var(--bg-muted); }
+.nav-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--terra), var(--red));
+  box-shadow: 0 2px 10px rgba(156,43,30,.35);
+}
 
 /* ── Content ── */
 .content {
   max-width: 880px; margin: 0 auto;
-  padding: 32px 20px;
+  padding: 30px 20px 48px;
 }
 .section { display: none; }
 .section.active { display: block; }
 
 /* ── Section headings ── */
 h2.sec {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.9rem; font-weight: 500; font-style: italic;
-  margin: 0 0 22px; text-wrap: balance; line-height: 1.2;
+  font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.9rem, 5vw, 2.5rem); font-weight: 600; font-style: italic;
+  margin: 0 0 22px; text-wrap: balance; line-height: 1.1; letter-spacing: -.01em;
+  color: var(--fg);
 }
 h3.sub {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.15rem; font-weight: 600; color: var(--olive);
-  margin: 26px 0 10px;
-  padding-bottom: 5px; border-bottom: 1px solid var(--border);
+  font-size: 1.45rem; font-weight: 700; color: var(--fg);
+  margin: 30px 0 12px;
+  padding-bottom: 7px; position: relative;
+}
+h3.sub::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  width: 54px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--terra), var(--gold));
 }
 .day-label {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: .13em; text-transform: uppercase;
-  color: var(--fg-muted); margin: 22px 0 8px;
-  display: flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink); margin: 26px 0 10px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--bg-card));
+  border: 1px solid var(--border-2);
+  border-left: 4px solid var(--terra);
+  padding: 8px 14px 8px 12px; border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
-.day-label::after {
-  content: ''; flex: 1; height: 1px; background: var(--border);
-}
+.day-label::before { content: '📍'; font-size: 13px; }
 
 /* ── Cards ── */
 .card {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--r); box-shadow: var(--shadow-sm);
-  padding: 18px 20px; margin-bottom: 14px;
+  padding: 20px 22px; margin-bottom: 16px;
+  position: relative;
 }
 .card-hd {
   display: flex; align-items: flex-start;
   justify-content: space-between; gap: 10px;
-  margin-bottom: 10px; flex-wrap: wrap;
+  margin-bottom: 12px; flex-wrap: wrap;
 }
 .card-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.3rem; font-weight: 600; margin: 0;
-  line-height: 1.2; color: var(--fg);
+  font-size: 1.45rem; font-weight: 700; margin: 0;
+  line-height: 1.15; color: var(--fg);
 }
 .card p { margin: 0 0 9px; color: var(--fg-mid); font-size: 13.5px; }
 .card p:last-child { margin-bottom: 0; }
@@ -623,29 +685,119 @@ a.place:hover { background: var(--red-soft); }
 }
 .homebase p { margin: 0 0 8px; font-size: 13px; color: var(--fg-mid); }
 .homebase p:last-child { margin-bottom: 0; }
+
+/* ── Dated journey (overview centerpiece) ── */
+.journey { position: relative; margin: 8px 0 6px; padding-left: 0; }
+.leg {
+  display: grid; grid-template-columns: 92px 1fr; gap: 0;
+  position: relative;
+}
+.leg-rail { position: relative; padding-top: 6px; }
+.leg-rail::before {
+  content: ''; position: absolute; left: 11px; top: 0; bottom: -4px;
+  width: 3px; background: var(--border-2);
+}
+.leg:last-child .leg-rail::before { bottom: auto; height: 34px; }
+.leg-dot {
+  position: absolute; left: 4px; top: 8px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--bg-card); border: 3px solid var(--c, var(--terra));
+  z-index: 1; box-shadow: 0 0 0 4px var(--bg);
+}
+.leg-day {
+  font-family: 'Fraunces', serif; font-weight: 600;
+  font-size: 12px; color: var(--fg); margin-left: 28px; padding-top: 7px;
+  line-height: 1.15;
+}
+.leg-day small { display: block; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 10px; color: var(--fg-muted); letter-spacing: .04em; }
+.leg-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--c, var(--terra));
+  border-radius: 12px; padding: 13px 16px; margin: 0 0 14px 6px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s, box-shadow .2s;
+}
+.leg-card:hover { transform: translateX(3px); box-shadow: var(--shadow-md); }
+.leg-city {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700;
+  color: var(--fg); line-height: 1; margin: 0 0 3px;
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+}
+.leg-city .nights { font-family:'Inter',sans-serif; font-size: 10.5px; font-weight: 700; color: var(--c, var(--terra)); letter-spacing: .04em; text-transform: uppercase; }
+.leg-card p { margin: 4px 0 0; font-size: 12.5px; color: var(--fg-mid); line-height: 1.5; }
+.who {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 20px; margin-top: 7px;
+}
+.who-all { background: var(--olive-soft); color: var(--olive); }
+.who-ss  { background: var(--teal-soft); color: var(--sea); }
+.who-mom { background: var(--gold-soft); color: var(--gold); }
+.leg-rome   { --c: var(--red); }
+.leg-tus    { --c: var(--olive); }
+.leg-flo    { --c: var(--terra); }
+.leg-ven    { --c: var(--sea); }
+.leg-slo    { --c: #6a4ea0; }
+.leg-dep    { --c: var(--gold); }
+
+/* ── Section intro hero (illustrated) ── */
+.shero {
+  position: relative; border-radius: var(--r-lg); overflow: hidden;
+  margin: 0 0 24px; padding: 26px 24px 22px; color: #fff;
+  box-shadow: var(--shadow-md); isolation: isolate;
+}
+.shero .shero-art { position: absolute; right: -10px; bottom: -8px; width: 190px; height: auto; opacity: .9; z-index: 1; pointer-events: none; }
+.shero .shero-art path, .shero .shero-art line, .shero .shero-art circle, .shero .shero-art rect, .shero .shero-art polyline { stroke: rgba(255,255,255,.5); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.shero-txt { position: relative; z-index: 2; max-width: 74%; }
+.shero-kicker { font-family:'Caveat',cursive; font-size: 1.3rem; opacity: .95; margin: 0 0 1px; }
+.shero-title { font-family:'Fraunces',serif; font-style: italic; font-weight: 600; font-size: clamp(2rem,7vw,2.9rem); margin: 0; line-height: 1; letter-spacing: -.01em; text-shadow: 0 2px 18px rgba(0,0,0,.3); }
+.shero-sub { font-size: 12.5px; opacity: .9; margin: 9px 0 0; }
+.shero-rome { background: linear-gradient(135deg,#7a3320,#a5512a 55%,#c98a4a); }
+.shero-tus  { background: linear-gradient(135deg,#3d4a2b,#6b7a3e 55%,#b7a24a); }
+.shero-ven  { background: linear-gradient(135deg,#12414c,#1a5c6b 55%,#3f8fa0); }
+.shero-slo  { background: linear-gradient(135deg,#3b2f57,#6a4ea0 60%,#b58fd0); }
+.shero-stops{ background: linear-gradient(135deg,#244a4a,#4a7a6a 55%,#c7a24a); }
+
+@media (max-width: 480px) {
+  .shero-txt { max-width: 100%; }
+  .shero .shero-art { opacity: .35; }
+}
 </style>
 
 <!-- Password gate -->
-<div id="pw-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--bg);padding:20px;">
-  <div style="text-align:center;max-width:360px;width:100%;">
-    <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;font-style:italic;color:var(--fg);margin-bottom:8px;">Italy 2026</div>
-    <p style="color:var(--fg-muted);font-size:13px;margin:0 0 24px;">Enter the password to view the trip planner.</p>
+<div id="pw-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:radial-gradient(130% 120% at 50% -10%, rgba(194,91,52,.5), transparent 55%), linear-gradient(165deg,#3e4b29,#2c3420 55%,#221a11);padding:20px;">
+  <div style="text-align:center;max-width:380px;width:100%;color:#fff;">
+    <svg viewBox="0 0 120 40" style="width:120px;height:40px;margin:0 auto 10px;display:block;opacity:.9;" aria-hidden="true">
+      <g fill="none" stroke="#e8c15a" stroke-width="1.6" stroke-linecap="round">
+        <path d="M14 34 V18 a8 8 0 0 1 16 0 V34"/><path d="M14 24 h16 M22 16 V10"/>
+        <rect x="44" y="14" width="18" height="20"/><path d="M44 14 l9 -8 l9 8"/><rect x="51" y="24" width="4" height="10"/>
+        <path d="M78 34 V12 a6 6 0 0 1 12 0 V34"/><path d="M84 6 V12"/>
+        <path d="M100 34 V20 h10 V34 M100 20 l5 -6 l5 6"/>
+      </g>
+    </svg>
+    <div style="font-family:'Caveat',cursive;font-size:1.1rem;color:#e8c15a;letter-spacing:.02em;margin-bottom:2px;">our trip to</div>
+    <div style="font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:2.7rem;font-weight:600;font-style:italic;line-height:1.05;margin-bottom:10px;">Italy 2026</div>
+    <p style="color:rgba(255,255,255,.75);font-size:13px;margin:0 0 22px;">Rome · Tuscany · Venice &nbsp;·&nbsp; enter the password to come along</p>
     <form id="pw-form" onsubmit="checkPw(event); return false;" style="display:flex;gap:8px;">
       <input id="pw-input" type="password" placeholder="Password" autocomplete="off" autofocus
-        style="flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:var(--r);background:var(--bg-card);color:var(--fg);font-family:'Inter',sans-serif;font-size:14px;outline:none;">
+        style="flex:1;padding:12px 16px;border:1px solid rgba(255,255,255,.25);border-radius:12px;background:rgba(255,255,255,.1);color:#fff;font-family:'Inter',sans-serif;font-size:15px;outline:none;">
       <button type="submit"
-        style="padding:10px 20px;background:var(--olive);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.03em;">Enter</button>
+        style="padding:12px 22px;background:linear-gradient(135deg,#c25b34,#9c2b1e);color:#fff;border:none;border-radius:12px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.02em;">Enter</button>
     </form>
-    <p id="pw-error" style="color:var(--red);font-size:12px;margin:10px 0 0;display:none;">Incorrect password.</p>
+    <p id="pw-error" style="color:#ffd7cc;font-size:12px;margin:12px 0 0;display:none;">Incorrect password.</p>
   </div>
 </div>
 
 <div id="protected-content" style="display:none;">
 <!-- ═══════ NAV ═══════ -->
 <header class="site-header">
-  <p class="eyebrow">Sam · Siri · Mom &nbsp;·&nbsp; Oct 22 – Nov 4, 2026</p>
-  <h1>Rome · Tuscany · Venice</h1>
-  <p class="sub">Day-by-day plans · food guide · verified bookings · packing — all in one place</p>
+  <p class="eyebrow">Sam &middot; Siri &middot; Mom</p>
+  <p style="font-family:'Caveat',cursive;font-size:1.4rem;color:var(--gold);margin:0 0 2px;">our big autumn trip</p>
+  <h1>Rome · Tuscany · Venice<br>&amp; on to Slovenia</h1>
+  <p class="sub">Oct 23 – departures early November 2026 &nbsp;·&nbsp; everything in one place</p>
+  <svg class="skyline" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 90 V62 h40 v-10 l14 -12 l14 12 v10 h26 V40 a30 30 0 0 1 60 0 v22 h22 l0 -30 h8 v-14 h8 v14 h8 l0 30 h30 V48 a24 24 0 0 1 48 0 v14 h28 V36 l16 -16 l16 16 v26 h26 V52 h40 v-6 l10 -10 l10 10 v6 h34 V40 a26 26 0 0 1 52 0 v22 h30 l0 -34 h10 v-12 h8 v12 h10 l0 34 h34 V50 h46 V62 h30 V44 l18 -18 l18 18 v18 h28 V40 a30 30 0 0 1 60 0 v22 h40 V58 h40 v32 Z"/>
+  </svg>
 </header>
 
 <nav class="nav-wrap">
@@ -656,6 +808,7 @@ a.place:hover { background: var(--red-soft); }
     <button class="nav-btn" onclick="show('tuscany')">Tuscany</button>
     <button class="nav-btn" onclick="show('stops')">Along the Way</button>
     <button class="nav-btn" onclick="show('venice')">Venice</button>
+    <button class="nav-btn" onclick="show('slovenia')">Slovenia</button>
     <button class="nav-btn" onclick="show('food')">Food Guide</button>
     <button class="nav-btn" onclick="show('packing')">Packing</button>
     <button class="nav-btn" onclick="show('checklist')">Book Now</button>
@@ -666,169 +819,103 @@ a.place:hover { background: var(--red-soft); }
 
 <!-- ═══════════════════════════════ OVERVIEW ═══════════════════════════════ -->
 <section id="overview" class="section active">
-  <div class="hero hero-rome">
-    <div class="hero-bg"></div>
-    <img class="hero-photo" alt="" loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%202020.jpg?width=1280"
-      onload="this.classList.add('loaded')" onerror="this.remove()">
-    <div class="hero-txt">
-      <p class="hero-kicker">Sam · Siri · Mom · Oct 22 – Nov 4, 2026</p>
-      <h2 class="hero-title">Rome · Tuscany · Venice</h2>
-      <p class="hero-sub">13 days · a slow, delicious loop up the spine of Italy</p>
+  <div class="shero shero-rome">
+    <svg class="shero-art" viewBox="0 0 200 120" aria-hidden="true">
+      <path d="M12 104 Q60 70 100 86 T190 54" stroke-dasharray="2 7"/>
+      <circle cx="12" cy="104" r="4"/><circle cx="100" cy="86" r="4"/><circle cx="190" cy="54" r="4"/>
+      <path d="M150 20 l4 8 l8 1 l-6 6 l2 9 l-8 -5 l-8 5 l2 -9 l-6 -6 l8 -1 z"/>
+    </svg>
+    <div class="shero-txt">
+      <p class="shero-kicker">the whole journey</p>
+      <h2 class="shero-title">Italy &amp; Slovenia</h2>
+      <p class="shero-sub">Rome → Tuscany → Florence → a little Venice → working from Ljubljana</p>
     </div>
   </div>
 
-  <!-- VISUAL ROUTE MAP -->
-  <div class="map-section">
-    <h3>Route &amp; flow</h3>
+  <p style="color:var(--fg-mid);font-size:14px;margin:0 0 6px;">Here's the shape of it, start to finish. Everyone's together through <strong>Florence</strong>; then <strong>Mom flies home</strong> for work and <strong>Sam &amp; Siri</strong> carry on to Slovenia.</p>
 
-    <div class="route-flow">
-      <div class="route-city">
-        <div class="rc-name">BGM</div>
-        <div class="rc-dates">Oct 22</div>
-        <div class="rc-nights">evening</div>
-      </div>
-      <div class="route-arrow">
-        ✈︎
-        <div class="arr-mode">car/bus</div>
-      </div>
-      <div class="route-city">
-        <div class="rc-name">JFK</div>
-        <div class="rc-dates">Oct 22 night</div>
-        <div class="rc-nights">overnight flight</div>
-      </div>
-      <div class="route-arrow">
-        ✈︎
-        <div class="arr-mode">~9 hrs</div>
-      </div>
-      <div class="route-city active-city">
-        <div class="rc-name">Rome</div>
-        <div class="rc-dates">Oct 23–27</div>
-        <div class="rc-nights">4 nights</div>
-      </div>
-      <div class="route-arrow">
-        🚗
-        <div class="arr-mode">~3 hrs</div>
-      </div>
-      <div class="route-city active-city">
-        <div class="rc-name">Tuscany</div>
-        <div class="rc-dates">Oct 27 →</div>
-        <div class="rc-nights">3–5 nights</div>
-      </div>
-      <div class="route-arrow">
-        🚆
-        <div class="arr-mode">stops?</div>
-      </div>
-      <div class="route-city active-city">
-        <div class="rc-name">Venice</div>
-        <div class="rc-dates">→ Nov 4</div>
-        <div class="rc-nights">~3 nights</div>
-      </div>
-      <div class="route-arrow">
-        ✈︎
-        <div class="arr-mode">Nov 4</div>
-      </div>
-      <div class="route-city">
-        <div class="rc-name">Depart</div>
-        <div class="rc-dates">Nov 4</div>
-        <div class="rc-nights">Mom → BGM<br>Sam+Siri → AMS/LIS/BCN</div>
+  <!-- DATED JOURNEY -->
+  <h3 class="sub">The journey, by date</h3>
+  <div class="journey">
+
+    <div class="leg leg-dep">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Thu<br><small>OCT 22</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Fly out ✈︎</div>
+        <p>Binghamton → JFK (private car or Greyhound/FlixBus), overnight flight to Rome.</p>
+        <span class="who who-all">All three</span>
       </div>
     </div>
 
-    <div class="phase-legend">
-      <div class="pl-item"><div class="pl-dot" style="background:var(--red)"></div> Rome (4 nights, locked)</div>
-      <div class="pl-item"><div class="pl-dot" style="background:var(--olive)"></div> Tuscany + stops (flexible)</div>
-      <div class="pl-item"><div class="pl-dot" style="background:var(--teal)"></div> Venice (~3 nights)</div>
-      <div class="pl-item"><div class="pl-dot" style="background:var(--gold)"></div> Pre/post travel</div>
-    </div>
-    <div class="tip" style="margin-top:14px;"><strong>Middle still flexible:</strong> Rome is locked at 4 nights (checkout Tue Oct 27) and you fly home from Venice Nov 4. The 8 nights in between — how much Tuscany, whether to add Florence/Bologna, and the Venice length — are still open. The <strong>Along the Way</strong> tab has the options and stop ideas.</div>
-  </div>
-
-  <!-- FULL CHRONO TIMELINE -->
-  <h3 class="sub">Day-by-day chronology</h3>
-  <div class="chrono">
-
-    <div class="chrono-item c-dep">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Thu Oct 22</div>
-      <div class="chrono-title">BGM → JFK → overnight to Rome</div>
-      <div class="chrono-body">Leave Binghamton by 3:30 PM. Private car or bus to JFK. Overnight flight departs ~midnight.</div>
+    <div class="leg leg-rome">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Fri–Tue<br><small>OCT 23–27</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Rome <span class="nights">4 nights</span></div>
+        <p>Home base by the Colosseum. Vatican + Borghese (booked), ancient Rome, beautiful walks, big dinners. Checkout Tue the 27th.</p>
+        <span class="who who-all">All three</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Fri Oct 23</div>
-      <div class="chrono-title">Arrive Rome · Day 1</div>
-      <div class="chrono-body">Land, €55 flat-rate taxi in, rest. Trastevere evening walk. Dinner: <strong>Da Enzo al 29</strong> (no reservations — line up 5:45 PM).</div>
+    <div class="leg leg-tus">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Tue–Fri<br><small>OCT 27–31</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Tuscany <span class="nights">4 nights</span></div>
+        <p>Chianti farmhouse base. Siena, wine day, the <strong>Val d'Orcia UNESCO hills</strong> and the <strong>Saturnia hot springs</strong> — your two favourites get real room here.</p>
+        <span class="who who-all">All three</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Sat Oct 24</div>
-      <div class="chrono-title">Vatican · Borghese Gallery (2 PM–4 PM) · Day 2</div>
-      <div class="chrono-body"><strong>✓ Borghese: Tickets purchased — seats 244/245/246, Oct 24 2 PM–4 PM, €54 total.</strong> Morning: Vatican Museums + Sistine Chapel (timed entry). Bonci Pizzarium lunch. Afternoon: Borghese. Dinner: <strong>Zia</strong> (1★, Trastevere).</div>
+    <div class="leg leg-flo">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Fri–Sun<br><small>OCT 31–NOV 2</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Florence <span class="nights">~2 nights</span></div>
+        <p>One hour up the road, no detour. The Duomo, the David, Renaissance streets and river walks. The last stop all three share.</p>
+        <span class="who who-all">All three</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Sun Oct 25</div>
-      <div class="chrono-title">Colosseum Underground + Forum · Day 3</div>
-      <div class="chrono-body">Full Experience Underground ticket (€24, ticketing.colosseo.it — book NOW). It's Sunday: dinner at <strong>Tonnarello</strong> or Emma (the famous spots close Sundays). Trevi at 10:30 PM. Clocks fall back tonight.</div>
+    <div class="leg leg-dep">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">~Sun<br><small>NOV 1–2</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Mom flies home ✈︎</div>
+        <p>From Florence/Bologna → home to Binghamton. She needs to be back for <strong>work on Nov 3</strong>, so she peels off a day or two early (we'll build her the exact flight).</p>
+        <span class="who who-mom">Mom → New York</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Mon Oct 26</div>
-      <div class="chrono-title">Testaccio + Centro + spa + Michelin finale · Day 4</div>
-      <div class="chrono-body">Testaccio Market, Pantheon, Sant'Eustachio coffee, Piazza Navona. Spa afternoon (AcquaMadre, in the center). Big Rome dinner: <strong>Il Pagliaccio</strong> (2★) or <strong>Roscioli</strong>.</div>
+    <div class="leg leg-ven">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">Mon<br><small>~NOV 2</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Venice <span class="nights">light &amp; quick</span></div>
+        <p>Just the two of you, kept short on purpose — a morning of canals and quiet corners before the crowds, not a human zoo. Then the direct bus to Slovenia.</p>
+        <span class="who who-ss">Sam + Siri</span>
+      </div>
     </div>
 
-    <div class="chrono-item c-rome">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Tue Oct 27</div>
-      <div class="chrono-title">Checkout → pasta class → drive to Tuscany</div>
-      <div class="chrono-body"><strong>Checkout 10 AM.</strong> Late-morning pasta class near Piazza Navona, then pick up the car at Termini (15 min from your Airbnb — no airport needed), exit east (ZTL!) → A1 north. Arrive Chianti by evening.</div>
-    </div>
-
-    <div class="chrono-item c-tus">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Wed Oct 28</div>
-      <div class="chrono-title">Siena + San Gimignano</div>
-      <div class="chrono-body">Siena AM (park Santa Caterina — escalators up; Duomo's marble floor is <strong>uncovered until Nov 2026</strong>). San Gimignano PM: towers + Dondoli gelato. Farm dinner.</div>
-    </div>
-
-    <div class="chrono-item c-tus">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Thu Oct 29</div>
-      <div class="chrono-title">Chianti wine day</div>
-      <div class="chrono-body">Castello di Brolio Classic Tour (10:30, €30) + Fèlsina tasting — or the Antinori architecture pilgrimage. Chiantigiana at golden hour. Farm dinner.</div>
-    </div>
-
-    <div class="chrono-item c-tus">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">Fri Oct 30 →</div>
-      <div class="chrono-title">More Tuscany, or start drifting north</div>
-      <div class="chrono-body">Saturnia hot springs, the Val d'Orcia loop, truffle hunting, or a slow olive-harvest day — see the <strong>Along the Way</strong> tab. From here the plan is flexible until Venice; this is the part we'll lock together.</div>
-    </div>
-
-    <div class="chrono-item c-dep">
-      <div class="chrono-dot"></div>
-      <div class="chrono-date">… → Nov 4</div>
-      <div class="chrono-title">Venice finale → fly home</div>
-      <div class="chrono-body">However we shape the middle, you land in Venice for ~3 nights (St. Mark's, Doge's Palace secrets, the islands, Alle Testiere) and fly out Nov 4 — Mom toward Binghamton, Sam + Siri on to Amsterdam / Lisbon / Barcelona.</div>
+    <div class="leg leg-slo">
+      <div class="leg-rail"><div class="leg-dot"></div><div class="leg-day">~Nov 3 →<br><small>~1 WEEK</small></div></div>
+      <div class="leg-card">
+        <div class="leg-city">Ljubljana <span class="nights">remote-work week</span></div>
+        <p>Direct <strong>FlixBus from Venice, ~4 hrs</strong>. Work from a storybook little capital; weekend trips to Lake Bled and the caves. (First-draft plan — more later.)</p>
+        <span class="who who-ss">Sam + Siri</span>
+      </div>
     </div>
 
   </div>
+
+  <div class="tip" style="margin-top:4px;"><strong>What's locked vs. open:</strong> Rome (4 nights) and Mom's Nov 3 work deadline are fixed. The exact Tuscany/Florence/Venice night counts are a draft — nudge any of them and I'll re-flow the dates. The <strong>Along the Way</strong> tab lays out the trade-offs.</div>
 
   <hr class="divider">
 
   <div class="card">
-    <div class="card-hd"><h4 class="card-title">Party + budget</h4></div>
+    <div class="card-hd"><h4 class="card-title">Who, and the budget</h4></div>
     <div class="info-grid">
-      <div class="info-item"><div class="lbl">Travelers</div><div class="val">Sam · Siri · Mom (all 3 legs)</div></div>
-      <div class="info-item"><div class="lbl">Italy hotels</div><div class="val">~$300/night target</div></div>
-      <div class="info-item"><div class="lbl">Tuscany</div><div class="val">€150–300/night agriturismo</div></div>
-      <div class="info-item"><div class="lbl">Remote work stay</div><div class="val">~$2,000/week (Sam + Siri)</div></div>
+      <div class="info-item"><div class="lbl">Together (Rome→Florence)</div><div class="val">Sam · Siri · Mom</div></div>
+      <div class="info-item"><div class="lbl">Mom from ~Nov 2</div><div class="val">Home to Binghamton</div></div>
+      <div class="info-item"><div class="lbl">Sam + Siri after</div><div class="val">Venice → Slovenia</div></div>
+      <div class="info-item"><div class="lbl">Italy lodging</div><div class="val">~$300/night · agriturismo €150–300</div></div>
+      <div class="info-item"><div class="lbl">Ljubljana week</div><div class="val">~$2,000 (Sam + Siri)</div></div>
+      <div class="info-item"><div class="lbl">Weather</div><div class="val">Crisp autumn, 6–20°C, pack layers</div></div>
     </div>
   </div>
 
