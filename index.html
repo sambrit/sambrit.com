@@ -204,6 +204,42 @@
     transform: translateX(-50%) scale(0.97);
   }
 
+  .name { cursor: pointer; }
+
+  .wish, .sparkle {
+    position: fixed;
+    z-index: 5;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .wish {
+    font-size: 14px;
+    color: #fff;
+    animation: wish 1.5s ease-out forwards;
+  }
+
+  .sparkle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffe08a;
+    box-shadow: 0 0 8px #ffd700;
+    animation: sparkle 900ms ease-out forwards;
+  }
+
+  @keyframes wish {
+    0% { transform: translate(-50%, -40%) scale(.7); opacity: 0; }
+    18% { opacity: 1; }
+    100% { transform: translate(-50%, -64px) scale(1); opacity: 0; }
+  }
+
+  @keyframes sparkle {
+    0% { transform: translate(0, 0) scale(.4); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(var(--sx), var(--sy)) scale(1); opacity: 0; }
+  }
+
   .rocket {
     position: fixed;
     font-size: 2rem;
@@ -717,7 +753,7 @@
   @media (prefers-reduced-motion: reduce) {
     .nav-link { transition: none !important; }
     .btn { transition: none !important; }
-    .launch-button { transition: none !important; }
+    .launch-button, .wish, .sparkle { transition: none !important; animation: none !important; }
     .bulb, .deer-bob, .leg, .wave, .nose-glow, .scarf, .spark-trail i,
     .holiday-ico, .corner-deco, .santa-bob, .ghosts span {
       animation: none !important;
@@ -737,11 +773,22 @@
     .kicker { font-size: .64rem; }
     .nav-link { font-size: .92rem; padding: 10px 13px; }
     .holiday-toggle { font-size: .82rem; padding: 8px 12px 8px 8px; }
-    .holiday-toast { font-size: .78rem; }
-    .corner-deco { font-size: 36px; }
-    .corner-deco.right { font-size: 26px; right: 64px; }
+    .holiday-toast { font-size: .78rem; max-width: 88vw; }
+    .corner-deco { font-size: 32px; }
+    .corner-deco.right { font-size: 24px; right: 58px; bottom: 64px; }
     .mode-switch-label { display: none; }
-    .mode-switch { padding: 8px 10px; }
+    .mode-switch {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 12px;
+      justify-content: center;
+      bottom: calc(16px + env(safe-area-inset-bottom));
+    }
+    .launch-button {
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      padding: 12px 20px;
+    }
+    .rocket { font-size: 1.6rem; }
   }
   </style>
 </head>
@@ -985,19 +1032,70 @@ copyBtn.addEventListener('click', async () => {
   }
 });
 
-/* ========================= LAUNCH BUTTON ========================= */
+/* ========================= LAUNCH BUTTON =========================
+   One rocket, then a small fan if you tap again quickly, then it rests.
+*/
 const launchBtn = document.querySelector('.launch-button');
-launchBtn.addEventListener('click', () => {
+let launchStreak = 0;
+let launchReset = 0;
+
+function spawnRocket(dx) {
   const rocket = document.createElement('div');
   rocket.className = 'rocket';
   rocket.textContent = '🚀';
   const rect = launchBtn.getBoundingClientRect();
   rocket.style.left = (rect.left + rect.width / 2 - 16) + 'px';
-  rocket.style.top = (rect.top - 10) + 'px';
-  const dir = Math.random() < 0.25 ? -1 : 1;
-  rocket.style.setProperty('--dx', (dir * (40 + Math.random() * 25)) + 'vw');
+  rocket.style.top = (rect.top - 8) + 'px';
+  rocket.style.setProperty('--dx', dx);
   document.body.appendChild(rocket);
   setTimeout(() => rocket.remove(), 3300);
+}
+
+launchBtn.addEventListener('click', () => {
+  clearTimeout(launchReset);
+  launchStreak = Math.min(launchStreak + 1, 3);
+  const count = (typeof reduceMotion !== 'undefined' && reduceMotion) ? 1 : launchStreak;
+  for (let i = 0; i < count; i++) {
+    const slot = count === 1 ? (Math.random() < 0.25 ? -1 : 1) : (i - (count - 1) / 2);
+    const dx = (slot * (count === 1 ? (40 + Math.random() * 25) : (16 + Math.abs(slot) * 14))) + 'vw';
+    setTimeout(() => spawnRocket(dx), i * 80);
+  }
+  launchReset = setTimeout(() => { launchStreak = 0; }, 2600);
+});
+
+/* A tap on the open sky leaves one star. A tap on the name leaves a few sparks. */
+function spawnWish(x, y) {
+  const star = document.createElement('div');
+  star.className = 'wish';
+  star.textContent = '✦';
+  star.style.left = x + 'px';
+  star.style.top = y + 'px';
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 1600);
+}
+
+function spawnSparkles(x, y) {
+  for (let i = 0; i < 7; i++) {
+    const bit = document.createElement('div');
+    bit.className = 'sparkle';
+    bit.style.left = x + 'px';
+    bit.style.top = y + 'px';
+    bit.style.setProperty('--sx', (Math.random() * 70 - 35) + 'px');
+    bit.style.setProperty('--sy', (Math.random() * -56 - 8) + 'px');
+    document.body.appendChild(bit);
+    setTimeout(() => bit.remove(), 950);
+  }
+}
+
+document.querySelector('.main-content').addEventListener('click', (e) => {
+  if (e.target.closest('a, button, .name')) return;
+  if (typeof reduceMotion !== 'undefined' && reduceMotion) return;
+  spawnWish(e.clientX, e.clientY);
+});
+
+document.querySelector('.name').addEventListener('click', (e) => {
+  if (typeof reduceMotion !== 'undefined' && reduceMotion) return;
+  spawnSparkles(e.clientX, e.clientY);
 });
 
 /* ========================= SEASONAL MODES =========================
