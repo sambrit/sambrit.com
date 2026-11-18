@@ -258,13 +258,13 @@
     display: inline-block;
   }
 
-  body.holiday .holiday-toggle {
+  html[data-mode="holiday"] .holiday-toggle {
     background: linear-gradient(100deg, #9d1c2c, #1f7a45);
     border-color: rgba(255, 224, 138, .6);
     box-shadow: 0 0 0 1px rgba(255,224,138,.25), 0 10px 28px rgba(227, 40, 70, .35);
   }
 
-  body.holiday .holiday-ico { animation: wiggle .9s ease-in-out infinite; }
+  html[data-mode="holiday"] .holiday-ico { animation: wiggle .9s ease-in-out infinite; }
 
   @keyframes wiggle {
     0%, 100% { transform: rotate(-8deg); }
@@ -310,7 +310,10 @@
     transition: opacity .45s ease, transform .5s ease;
   }
 
-  body.holiday .xmas-lights {
+  html[data-mode="holiday"] .xmas-lights,
+  html[data-mode="halloween"] .xmas-lights,
+  html[data-mode="july4"] .xmas-lights,
+  html[data-mode="patrick"] .xmas-lights {
     opacity: 1;
     transform: none;
   }
@@ -366,7 +369,7 @@
     transition: transform .7s cubic-bezier(.2,.8,.2,1);
   }
 
-  body.holiday .snowbank { transform: translateY(0); }
+  html[data-mode="holiday"] .snowbank { transform: translateY(0); }
 
   .corner-deco {
     position: fixed;
@@ -380,28 +383,37 @@
     transition: transform .6s cubic-bezier(.2,.8,.2,1);
   }
 
-  .corner-deco.tree { left: 14px; }
-  .corner-deco.star {
-    right: 16px;
+  .corner-deco.tree,
+  .corner-deco.pumpkin:not(.right),
+  .corner-deco.flag:not(.right),
+  .corner-deco.shamrock:not(.right) { left: 14px; }
+
+  .holiday-toggle[hidden] { display: none !important; }
+  .corner-deco.right {
+    right: 132px;
     font-size: 34px;
     bottom: 18px;
   }
 
-  body.holiday .corner-deco { transform: translateY(0); }
-  body.holiday .corner-deco.star { animation: spin-slow 8s linear infinite; }
+  html[data-mode="holiday"] .corner-deco.tree,
+  html[data-mode="holiday"] .corner-deco.star { transform: translateY(0); }
+  html[data-mode="holiday"] .corner-deco.star { animation: spin-slow 8s linear infinite; }
+  html[data-mode="halloween"] .corner-deco.pumpkin { transform: translateY(0); }
+  html[data-mode="july4"] .corner-deco.flag { transform: translateY(0); }
+  html[data-mode="patrick"] .corner-deco.shamrock { transform: translateY(0); }
 
   @keyframes spin-slow {
     to { transform: rotate(360deg); }
   }
 
-  body.holiday .glow {
+  html[data-mode="holiday"] .glow {
     background:
       radial-gradient(38vmax 38vmax at 18% 18%, rgba(120, 190, 255, 0.2), transparent 62%),
       radial-gradient(34vmax 34vmax at 82% 78%, rgba(255, 70, 90, 0.14), transparent 66%),
       radial-gradient(40vmax 40vmax at 50% 40%, rgba(255, 210, 90, 0.12), transparent 68%);
   }
 
-  body.holiday .name {
+  html[data-mode="holiday"] .name {
     color: #ffe08a;
     text-shadow:
       0 0 18px rgba(255, 214, 90, .45),
@@ -569,15 +581,148 @@
     100% { transform: translate(var(--dx, 50vw), -100vh); opacity: 0; }
   }
 
+  html[data-mode="halloween"] .holiday-toggle { background: linear-gradient(100deg, #6a1b9a, #e65100); }
+  html[data-mode="july4"] .holiday-toggle { background: linear-gradient(100deg, #b71c1c, #0d47a1); }
+  html[data-mode="patrick"] .holiday-toggle { background: linear-gradient(100deg, #1b5e20, #c99212); }
+
+  html[data-mode="halloween"] .bulb:nth-child(5n+1) { color: #ff6a00; background: #ff6a00; }
+  html[data-mode="halloween"] .bulb:nth-child(5n+2) { color: #b388ff; background: #b388ff; }
+  html[data-mode="halloween"] .bulb:nth-child(5n+3) { color: #ffd24d; background: #ffd24d; }
+  html[data-mode="halloween"] .bulb:nth-child(5n+4) { color: #7c4dff; background: #7c4dff; }
+  html[data-mode="halloween"] .bulb:nth-child(5n) { color: #ff8a50; background: #ff8a50; }
+
+  html[data-mode="july4"] .bulb:nth-child(3n+1) { color: #ff4d4d; background: #ff4d4d; }
+  html[data-mode="july4"] .bulb:nth-child(3n+2) { color: #f7f7f7; background: #f7f7f7; }
+  html[data-mode="july4"] .bulb:nth-child(3n) { color: #6eb6ff; background: #6eb6ff; }
+
+  html[data-mode="patrick"] .bulb:nth-child(5n+1) { color: #3dcc7a; background: #3dcc7a; }
+  html[data-mode="patrick"] .bulb:nth-child(5n+2) { color: #ffe08a; background: #ffe08a; }
+  html[data-mode="patrick"] .bulb:nth-child(5n+3) { color: #1faa5a; background: #1faa5a; }
+  html[data-mode="patrick"] .bulb:nth-child(5n+4) { color: #d6ff9a; background: #d6ff9a; }
+  html[data-mode="patrick"] .bulb:nth-child(5n) { color: #f2c14e; background: #f2c14e; }
+
+  html[data-mode="halloween"] .glow {
+    background:
+      radial-gradient(38vmax 38vmax at 18% 18%, rgba(255, 120, 20, 0.18), transparent 62%),
+      radial-gradient(34vmax 34vmax at 82% 70%, rgba(120, 40, 200, 0.18), transparent 66%),
+      radial-gradient(40vmax 40vmax at 50% 40%, rgba(255, 180, 40, 0.08), transparent 68%);
+  }
+  html[data-mode="july4"] .glow {
+    background:
+      radial-gradient(36vmax 36vmax at 20% 80%, rgba(220, 40, 40, 0.16), transparent 62%),
+      radial-gradient(36vmax 36vmax at 80% 80%, rgba(40, 120, 255, 0.18), transparent 62%),
+      radial-gradient(30vmax 30vmax at 50% 20%, rgba(255, 255, 255, 0.08), transparent 68%);
+  }
+  html[data-mode="patrick"] .glow {
+    background:
+      radial-gradient(38vmax 38vmax at 18% 22%, rgba(40, 180, 70, 0.2), transparent 62%),
+      radial-gradient(34vmax 34vmax at 80% 70%, rgba(255, 210, 60, 0.14), transparent 66%);
+  }
+
+  html[data-mode="halloween"] .name {
+    color: #ffb15a;
+    text-shadow: 0 0 18px rgba(255, 90, 20, .45), 0 2px 10px rgba(0,0,0,.8);
+  }
+  html[data-mode="july4"] .name {
+    color: #fffaf4;
+    text-shadow: 0 0 14px rgba(80, 160, 255, .55), 0 0 2px rgba(220, 40, 40, .85), 0 2px 10px rgba(0,0,0,.8);
+  }
+  html[data-mode="patrick"] .name {
+    color: #d6ffb0;
+    text-shadow: 0 0 18px rgba(40, 180, 70, .5), 0 2px 10px rgba(0,0,0,.8);
+  }
+
+  .moon, .fog, .rainbow { pointer-events: none; opacity: 0; transition: opacity .45s ease; }
+  .moon {
+    position: fixed;
+    top: 14vh;
+    right: 7vw;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    z-index: 1;
+    background: radial-gradient(circle at 35% 35%, #fff8dc, #f0d78c 58%, #c9a84a);
+    box-shadow: 0 0 32px rgba(255, 230, 150, .4);
+  }
+  .fog {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: 140px;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(40, 16, 60, .72), rgba(40, 16, 60, 0));
+  }
+  .rainbow {
+    position: fixed;
+    left: 8vw; right: 8vw; top: 36px;
+    height: 90px;
+    z-index: 1;
+    border-radius: 50% 50% 0 0;
+    border-top: 7px solid rgba(255, 70, 70, .8);
+    box-shadow:
+      0 -7px 0 rgba(255, 160, 40, .75),
+      0 -14px 0 rgba(255, 220, 60, .7),
+      0 -21px 0 rgba(70, 200, 90, .7),
+      0 -28px 0 rgba(70, 140, 255, .7);
+  }
+  html[data-mode="halloween"] .moon,
+  html[data-mode="halloween"] .fog,
+  html[data-mode="patrick"] .rainbow { opacity: 1; }
+
+  .ghosts {
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0;
+  }
+  html[data-mode="halloween"] .ghosts { opacity: 1; }
+  .ghosts span {
+    position: absolute;
+    font-size: 30px;
+    animation: ghostFloat 8s ease-in-out infinite;
+  }
+  .ghosts span:nth-child(1) { left: 12%; top: 22%; animation-delay: -2s; }
+  .ghosts span:nth-child(2) { left: 70%; top: 16%; animation-delay: -5s; font-size: 22px; }
+  @keyframes ghostFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(28px); }
+  }
+
+  .bat-flight { font-size: 34px; letter-spacing: .35em; width: auto; }
+  #witchFly, #lepFly { width: min(280px, 52vw); }
+
+  .mode-switch {
+    position: fixed;
+    z-index: 8;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px 8px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(8,10,16,.72);
+    color: #fafafa;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: .82rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.28);
+  }
+  .mode-switch:hover { background: rgba(255,255,255,.1); }
+  .mode-switch:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
   @media (prefers-reduced-motion: reduce) {
     .nav-link { transition: none !important; }
     .btn { transition: none !important; }
     .launch-button { transition: none !important; }
     .bulb, .deer-bob, .leg, .wave, .nose-glow, .scarf, .spark-trail i,
-    .holiday-ico, .corner-deco, .santa-bob {
+    .holiday-ico, .corner-deco, .santa-bob, .ghosts span {
       animation: none !important;
     }
-    body.holiday .santa-fly.parked {
+    html[data-mode="holiday"] .santa-fly.parked {
       top: auto;
       bottom: 78px;
       right: 8px;
@@ -594,16 +739,22 @@
     .holiday-toggle { font-size: .82rem; padding: 8px 12px 8px 8px; }
     .holiday-toast { font-size: .78rem; }
     .corner-deco { font-size: 36px; }
-    .corner-deco.star { font-size: 26px; }
+    .corner-deco.right { font-size: 26px; right: 64px; }
+    .mode-switch-label { display: none; }
+    .mode-switch { padding: 8px 10px; }
   }
   </style>
 </head>
 <body>
-  <button class="holiday-toggle" id="holidayToggle" type="button" aria-pressed="false">
+  <button class="holiday-toggle" id="holidayToggle" type="button" aria-pressed="false" hidden>
     <span class="holiday-ico" aria-hidden="true">🎄</span>
     <span class="holiday-label">Holiday mode</span>
   </button>
   <p class="holiday-toast" id="holidayToast" role="status"></p>
+  <button class="mode-switch" id="modeSwitch" type="button" aria-label="Change seasonal mode">
+    <span class="mode-switch-ico" aria-hidden="true">✨</span>
+    <span class="mode-switch-label">Modes</span>
+  </button>
 
   <canvas id="bg"></canvas>
   <canvas id="snow" aria-hidden="true"></canvas>
@@ -626,8 +777,19 @@
     </div>
   </div>
 
+  <div class="moon" aria-hidden="true"></div>
+  <div class="fog" aria-hidden="true"></div>
+  <div class="rainbow" aria-hidden="true"></div>
+  <div class="ghosts" aria-hidden="true"><span>👻</span><span>👻</span></div>
+
   <div class="corner-deco tree" aria-hidden="true">🎄</div>
-  <div class="corner-deco star" aria-hidden="true">⭐</div>
+  <div class="corner-deco star right" aria-hidden="true">⭐</div>
+  <div class="corner-deco pumpkin" aria-hidden="true">🎃</div>
+  <div class="corner-deco pumpkin right" aria-hidden="true">🎃</div>
+  <div class="corner-deco flag" aria-hidden="true">🇺🇸</div>
+  <div class="corner-deco flag right" aria-hidden="true">🇺🇸</div>
+  <div class="corner-deco shamrock" aria-hidden="true">☘️</div>
+  <div class="corner-deco shamrock right" aria-hidden="true">☘️</div>
 
   <div class="santa-fly" id="santaFly" hidden>
     <div class="santa-bob">
@@ -721,6 +883,47 @@
     </div>
   </div>
 
+  <div class="santa-fly" id="witchFly" hidden>
+    <div class="santa-bob">
+      <div class="hoho">Hehe!</div>
+      <svg class="santa-svg" viewBox="0 0 240 110" aria-hidden="true">
+        <path d="M36 78 H150" stroke="#6b4a2a" stroke-width="4" stroke-linecap="round"/>
+        <path d="M20 70 Q36 88 54 70 Q36 96 20 70" fill="#c47a3a"/>
+        <path d="M118 70 L146 40 L168 78 Z" fill="#2a2040"/>
+        <circle cx="156" cy="34" r="11" fill="#f1c6a8"/>
+        <circle cx="160" cy="33" r="1.4" fill="#2a140c"/>
+        <path d="M140 30 L156 8 L176 32 Z" fill="#241833"/>
+        <rect x="150" y="30" width="22" height="4" fill="#3a3050"/>
+        <circle cx="172" cy="18" r="4" fill="#ffb15a"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="santa-fly bat-flight" id="batFly" hidden aria-hidden="true">🦇&nbsp;&nbsp;🦇&nbsp;&nbsp;🦇</div>
+
+  <div class="santa-fly" id="lepFly" hidden>
+    <div class="santa-bob">
+      <div class="hoho">Top o' the mornin'!</div>
+      <svg class="santa-svg" viewBox="0 0 260 120" aria-hidden="true">
+        <ellipse cx="48" cy="92" rx="26" ry="16" fill="#1b1b1b"/>
+        <ellipse cx="48" cy="86" rx="22" ry="12" fill="#f2c14e"/>
+        <rect x="86" y="48" width="34" height="40" rx="8" fill="#1faa5a"/>
+        <rect x="86" y="74" width="34" height="8" fill="#222"/>
+        <rect x="98" y="74" width="8" height="8" fill="#f2c14e"/>
+        <circle cx="103" cy="40" r="14" fill="#f1c6a8"/>
+        <path d="M88 42 Q103 62 120 42 Q112 52 103 52 Q94 52 88 42" fill="#f4efe4"/>
+        <circle cx="108" cy="38" r="1.5" fill="#2a140c"/>
+        <path d="M86 34 L103 10 L124 34 Z" fill="#1b8a4a"/>
+        <rect x="88" y="32" width="34" height="6" rx="2" fill="#146b38"/>
+        <rect x="100" y="30" width="8" height="8" fill="#f2c14e"/>
+        <g class="wave">
+          <path d="M120 58 L148 46" stroke="#1faa5a" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="152" cy="44" r="5" fill="#f1c6a8"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
   <div class="main-content">
     <p class="kicker">Program Manager + Engineer + Photographer</p>
     <h1 class="name">Sambrit Adhikari</h1>
@@ -797,50 +1000,122 @@ launchBtn.addEventListener('click', () => {
   setTimeout(() => rocket.remove(), 3300);
 });
 
-/* ========================= HOLIDAY MODE ========================= */
+/* ========================= SEASONAL MODES =========================
+   The visitor's local date picks a mode until they choose one.
+   Nov 1 through Jan 2  holiday (after Halloween, before January 3)
+   October              halloween
+   July 1 through July 7   july4
+   March 1 through March 18  patrick
+   The bottom-right switch cycles modes and remembers the choice.
+*/
 const holidayBtn = document.getElementById('holidayToggle');
 const holidayLabel = holidayBtn.querySelector('.holiday-label');
 const holidayIcon = holidayBtn.querySelector('.holiday-ico');
 const holidayToast = document.getElementById('holidayToast');
+const modeSwitch = document.getElementById('modeSwitch');
+const modeLabel = modeSwitch.querySelector('.mode-switch-label');
+const modeIco = modeSwitch.querySelector('.mode-switch-ico');
 const santaFly = document.getElementById('santaFly');
+const witchFly = document.getElementById('witchFly');
+const batFly = document.getElementById('batFly');
+const lepFly = document.getElementById('lepFly');
 const snowCanvas = document.getElementById('snow');
 const sctx = snowCanvas.getContext('2d', { alpha: true });
 
+const MODE_CYCLE = ['off', 'holiday', 'halloween', 'july4', 'patrick'];
+const MODE_META = {
+  off: { ico: '✨', label: 'Modes' },
+  holiday: {
+    ico: '🎄', onIco: '❄️', label: 'Holiday', on: 'Holiday mode on',
+    toastOn: 'Happy holidays — the sleigh is out',
+    notes: [659.25, 659.25, 659.25, 783.99, 659.25, 523.25]
+  },
+  halloween: {
+    ico: '🎃', onIco: '👻', label: 'Halloween', on: 'Halloween on',
+    toastOn: 'Happy Halloween — the witch is out',
+    notes: [523.25, 493.88, 440, 392]
+  },
+  july4: {
+    ico: '🎆', onIco: '🎇', label: 'July 4', on: 'July 4 on',
+    toastOn: 'Light up the sky',
+    notes: [523.25, 659.25, 783.99, 1046.5]
+  },
+  patrick: {
+    ico: '🍀', onIco: '☘️', label: "Patrick", on: "St. Patrick's on",
+    toastOn: "Top o' the mornin'",
+    notes: [587.33, 659.25, 739.99, 783.99, 880]
+  }
+};
+const GIFT_EMOJI = {
+  holiday: ['🎁', '⭐', '🔔', '🍬', '🧦', '❄️'],
+  halloween: ['🍬', '🎃', '🦇', '👻', '🍫'],
+  july4: ['⭐', '🎇'],
+  patrick: ['☘️', '🪙', '🌟', '💚']
+};
+
+let choice = 'auto';
+let activeMode = 'off';
 let holidayOn = false;
 let flakes = [];
 let dust = [];
+let rockets = [];
+let sparks = [];
+let nextFirework = 0;
 let wind = 0;
 let windTarget = 0;
 let nextWindAt = 0;
-let santaTimer = 0;
-let hoTimer = 0;
-let hoTimerOff = 0;
 let giftTimer = 0;
 let toastTimer = 0;
 let snowWasOn = false;
 
-const GIFT_EMOJI = ['🎁', '⭐', '🔔', '🍬', '🧦', '❄️'];
+function seasonalMode(date) {
+  const now = date || new Date();
+  const month = now.getMonth();
+  const day = now.getDate();
+  if (month === 9) return 'halloween';
+  if (month === 10 || month === 11 || (month === 0 && day < 3)) return 'holiday';
+  if (month === 6 && day <= 7) return 'july4';
+  if (month === 2 && day <= 18) return 'patrick';
+  return 'off';
+}
 
-function setHoliday(on, opts) {
+function setMode(mode, opts) {
   const sound = !!(opts && opts.sound);
   const announce = !!(opts && opts.announce);
-  holidayOn = on;
-  document.body.classList.toggle('holiday', on);
-  holidayBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-  holidayLabel.textContent = on ? 'Holiday mode on' : 'Holiday mode';
-  holidayIcon.textContent = on ? '❄️' : '🎄';
-  holidayBtn.setAttribute('aria-label', on ? 'Turn holiday mode off' : 'Turn holiday mode on');
-  try { localStorage.setItem('holiday-mode', on ? '1' : '0'); } catch (e) {}
-  if (on) {
-    startHoliday();
-    if (announce) showToast('Happy holidays — the sleigh is out');
+  activeMode = mode && mode !== 'off' ? mode : 'off';
+  holidayOn = activeMode === 'holiday';
+  if (activeMode === 'off') delete document.documentElement.dataset.mode;
+  else document.documentElement.dataset.mode = activeMode;
+
+  const meta = MODE_META[activeMode];
+  if (activeMode === 'off') {
+    holidayBtn.hidden = true;
+    holidayBtn.setAttribute('aria-pressed', 'false');
+  } else {
+    holidayBtn.hidden = false;
+    holidayBtn.setAttribute('aria-pressed', 'true');
+    holidayLabel.textContent = meta.on;
+    holidayIcon.textContent = meta.onIco;
+    holidayBtn.setAttribute('aria-label', 'Turn ' + meta.label + ' mode off');
+  }
+  const switchName = activeMode === 'off'
+    ? (choice === 'auto' ? 'Season' : 'Off')
+    : meta.label;
+  modeIco.textContent = activeMode === 'off' ? '✨' : meta.ico;
+  modeLabel.textContent = switchName;
+  modeSwitch.setAttribute('aria-label', 'Seasonal mode: ' + switchName + '. Activate to change.');
+  try { localStorage.setItem('site-mode', choice); } catch (e) {}
+
+  if (activeMode === 'off') {
+    stopEffects();
+    if (announce) showToast('Back to a regular night');
+  } else {
+    startEffects();
+    if (announce) showToast(meta.toastOn);
     if (sound) {
       burstFromButton();
-      playJingle();
+      playNotes(meta.notes);
     }
-  } else {
-    stopHolidayEffects();
-    if (announce) showToast('See you next holiday');
   }
 }
 
@@ -851,67 +1126,90 @@ function showToast(text) {
   toastTimer = setTimeout(() => holidayToast.classList.remove('show'), 2600);
 }
 
-function startHoliday() {
-  stopHolidayEffects();
+function flyerAllowed(el) {
+  if (el === santaFly) return activeMode === 'holiday';
+  if (el === witchFly || el === batFly) return activeMode === 'halloween';
+  if (el === lepFly) return activeMode === 'patrick';
+  return false;
+}
+
+function stopFlyer(el) {
+  clearTimeout(el._timer);
+  clearTimeout(el._ho);
+  clearTimeout(el._hoOff);
+  el.hidden = true;
+  el.classList.remove('cheering', 'parked');
+  el.style.animation = 'none';
+}
+
+function queueFlyer(el, delay) {
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => launchFlyer(el), delay);
+}
+
+function launchFlyer(el) {
+  if (!flyerAllowed(el) || reduceMotion) return;
+  const lowPass = el === batFly ? false : Math.random() < 0.18;
+  const duration = lowPass ? rand(8, 10) : rand(el === batFly ? 9 : 12, el === batFly ? 13 : 17);
+  el.hidden = false;
+  el.classList.remove('cheering');
+  el.style.top = (el === batFly ? rand(8, 20) : (lowPass ? rand(24, 34) : rand(7, 18))) + 'vh';
+  el.style.animation = 'none';
+  void el.offsetWidth;
+  el.style.animation = 'santaCross ' + duration + 's linear forwards';
+  if (el !== batFly) {
+    el._ho = setTimeout(() => el.classList.add('cheering'), duration * 320);
+    el._hoOff = setTimeout(() => el.classList.remove('cheering'), duration * 680);
+  }
+  el._timer = setTimeout(() => {
+    el.hidden = true;
+    el.classList.remove('cheering');
+    if (flyerAllowed(el)) queueFlyer(el, rand(2200, 5200));
+  }, duration * 1000 + 40);
+}
+
+function startEffects() {
+  stopEffects();
+  initSnow();
+  rockets = [];
+  sparks = [];
+  nextFirework = 0;
+  const lead = activeMode === 'holiday' ? santaFly : activeMode === 'halloween' ? witchFly : activeMode === 'patrick' ? lepFly : null;
   if (reduceMotion) {
-    santaFly.hidden = false;
-    santaFly.classList.add('parked');
+    if (lead) {
+      lead.hidden = false;
+      lead.classList.add('parked');
+    }
     return;
   }
-  santaFly.classList.remove('parked');
-  queueSanta(650);
-  queueGift(1100);
+  if (lead) queueFlyer(lead, 650);
+  if (activeMode === 'halloween') queueFlyer(batFly, 1600);
+  queueGift(activeMode === 'july4' ? 1800 : 1100);
 }
 
-function stopHolidayEffects() {
-  clearTimeout(santaTimer);
-  clearTimeout(hoTimer);
-  clearTimeout(hoTimerOff);
+function stopEffects() {
   clearTimeout(giftTimer);
-  santaFly.hidden = true;
-  santaFly.classList.remove('cheering', 'parked');
-  santaFly.style.animation = 'none';
+  [santaFly, witchFly, batFly, lepFly].forEach(stopFlyer);
   document.querySelectorAll('.gift').forEach((g) => g.remove());
   dust = [];
-}
-
-function queueSanta(delay) {
-  clearTimeout(santaTimer);
-  santaTimer = setTimeout(launchSanta, delay);
-}
-
-function launchSanta() {
-  if (!holidayOn || reduceMotion) return;
-  const lowPass = Math.random() < 0.18;
-  const duration = lowPass ? rand(8, 10) : rand(12, 17);
-  santaFly.hidden = false;
-  santaFly.classList.remove('cheering');
-  santaFly.style.top = (lowPass ? rand(24, 34) : rand(7, 18)) + 'vh';
-  santaFly.style.animation = 'none';
-  void santaFly.offsetWidth;
-  santaFly.style.animation = 'santaCross ' + duration + 's linear forwards';
-  hoTimer = setTimeout(() => santaFly.classList.add('cheering'), duration * 320);
-  hoTimerOff = setTimeout(() => santaFly.classList.remove('cheering'), duration * 680);
-  santaTimer = setTimeout(() => {
-    santaFly.hidden = true;
-    santaFly.classList.remove('cheering');
-    if (holidayOn) queueSanta(rand(2200, 5200));
-  }, duration * 1000 + 40);
+  rockets = [];
+  sparks = [];
 }
 
 function queueGift(delay) {
   clearTimeout(giftTimer);
   giftTimer = setTimeout(() => {
-    if (!holidayOn || reduceMotion) return;
-    if (document.querySelectorAll('.gift').length < 5) spawnGift();
+    const pack = GIFT_EMOJI[activeMode];
+    if (!pack || reduceMotion) return;
+    if (document.querySelectorAll('.gift').length < 5) spawnGift(pack);
     queueGift(rand(1400, 2800));
   }, delay);
 }
 
-function spawnGift() {
+function spawnGift(pack) {
   const el = document.createElement('div');
   el.className = 'gift';
-  el.textContent = GIFT_EMOJI[(Math.random() * GIFT_EMOJI.length) | 0];
+  el.textContent = pack[(Math.random() * pack.length) | 0];
   el.style.left = rand(4, 92) + 'vw';
   el.style.fontSize = rand(18, 34) + 'px';
   el.style.animationDuration = rand(7, 12) + 's';
@@ -940,12 +1238,11 @@ function burstFromButton() {
   }
 }
 
-function playJingle() {
+function playNotes(notes) {
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  if (!AudioCtx) return;
+  if (!AudioCtx || !notes) return;
   try {
     const audio = new AudioCtx();
-    const notes = [659.25, 659.25, 659.25, 783.99, 659.25, 523.25];
     notes.forEach((freq, i) => {
       const osc = audio.createOscillator();
       const gain = audio.createGain();
@@ -997,9 +1294,122 @@ function drawSnowflake(x, y, r, alpha) {
   sctx.stroke();
 }
 
+function paintFlake(f) {
+  if (activeMode === 'patrick') {
+    sctx.fillStyle = 'rgba(242,193,78,' + f.o + ')';
+    sctx.beginPath();
+    sctx.arc(f.x, f.y, (f.r + 0.8) * dpr, 0, Math.PI * 2);
+    sctx.fill();
+    return;
+  }
+  if (activeMode === 'halloween') {
+    sctx.fillStyle = f.kind === 'star' ? 'rgba(255,140,40,' + f.o + ')' : 'rgba(190,140,255,' + f.o + ')';
+    sctx.beginPath();
+    sctx.ellipse(f.x, f.y, f.r * dpr * 1.8, f.r * dpr * 0.7, f.wobble, 0, Math.PI * 2);
+    sctx.fill();
+    return;
+  }
+  if (f.kind === 'star') drawSnowflake(f.x, f.y, f.r * dpr, f.o);
+  else {
+    sctx.fillStyle = 'rgba(255,255,255,' + f.o + ')';
+    sctx.beginPath();
+    sctx.arc(f.x, f.y, f.r * dpr, 0, Math.PI * 2);
+    sctx.fill();
+  }
+}
+
+function starTint(s) {
+  if (activeMode === 'holiday' && s.depth > 0.72) return s.phase > 3 ? '#ffe08a' : '#d7f6ff';
+  if (activeMode === 'halloween' && s.depth > 0.6) return s.phase > 3 ? '#ffb15a' : '#e2c6ff';
+  if (activeMode === 'july4' && s.depth > 0.55) return ['#ff7a7a', '#ffffff', '#8ecbff'][Math.floor(s.phase) % 3];
+  if (activeMode === 'patrick' && s.depth > 0.6) return s.phase > 3 ? '#d6ff9a' : '#ffe08a';
+  return '#ffffff';
+}
+
+function shootingTint() {
+  if (activeMode === 'halloween') return 'rgba(255,160,60,0.95)';
+  if (activeMode === 'july4') return 'rgba(255,255,255,0.95)';
+  if (activeMode === 'patrick') return 'rgba(190,255,150,0.95)';
+  if (activeMode === 'holiday') return 'rgba(255,224,138,0.95)';
+  return 'rgba(255,255,255,0.90)';
+}
+
+function burstFirework(x, y, color) {
+  for (let i = 0; i < 46; i++) {
+    const ang = (i / 46) * Math.PI * 2 + rand(-0.08, 0.08);
+    const spd = rand(0.5, 2.5) * dpr;
+    sparks.push({
+      x: x, y: y,
+      vx: Math.cos(ang) * spd,
+      vy: Math.sin(ang) * spd,
+      life: 1,
+      r: rand(1.8, 3.4),
+      color: Math.random() < 0.22 ? '#ffffff' : color
+    });
+  }
+}
+
+function drawFireworks(dt, now, sw, sh) {
+  if (now > nextFirework && rockets.length < 4) {
+    nextFirework = now + rand(160, 520);
+    rockets.push({
+      x: rand(sw * 0.15, sw * 0.85),
+      y: sh * 0.96,
+      vx: rand(-0.4, 0.4) * dpr,
+      vy: -rand(3.4, 5.2) * dpr,
+      color: ['#ff4b4b', '#ffffff', '#79b8ff', '#ffd24d'][(Math.random() * 4) | 0],
+      life: rand(520, 900)
+    });
+  }
+  sctx.clearRect(0, 0, sw, sh);
+  for (let i = rockets.length - 1; i >= 0; i--) {
+    const r = rockets[i];
+    r.x += r.vx * dt * 0.16;
+    r.y += r.vy * dt * 0.16;
+    r.vy += 0.0015 * dt;
+    r.life -= dt;
+    sctx.globalAlpha = 0.95;
+    sctx.strokeStyle = 'rgba(255,246,216,0.85)';
+    sctx.lineWidth = 2 * dpr;
+    sctx.beginPath();
+    sctx.moveTo(r.x, r.y);
+    sctx.lineTo(r.x - r.vx * 8, r.y - r.vy * 6);
+    sctx.stroke();
+    if (r.life <= 0) {
+      burstFirework(r.x, r.y, r.color);
+      rockets.splice(i, 1);
+    }
+  }
+  for (let i = sparks.length - 1; i >= 0; i--) {
+    const p = sparks[i];
+    p.x += p.vx * dt * 0.16;
+    p.y += p.vy * dt * 0.16;
+    p.vy += 0.0035 * dt;
+    p.life -= dt / 980;
+    if (p.life <= 0) {
+      sparks.splice(i, 1);
+      continue;
+    }
+    sctx.globalAlpha = Math.max(0, p.life);
+    sctx.fillStyle = p.color;
+    sctx.beginPath();
+    sctx.arc(p.x, p.y, p.r * dpr, 0, Math.PI * 2);
+    sctx.fill();
+  }
+  sctx.globalAlpha = 1;
+  if (sparks.length > 420) sparks.splice(0, sparks.length - 420);
+}
+
 holidayBtn.addEventListener('click', () => {
-  const next = !holidayOn;
-  setHoliday(next, { sound: next, announce: true });
+  choice = 'off';
+  setMode('off', { announce: true });
+});
+
+modeSwitch.addEventListener('click', () => {
+  const current = MODE_CYCLE.indexOf(activeMode);
+  const next = MODE_CYCLE[(current + 1) % MODE_CYCLE.length];
+  choice = next;
+  setMode(next, { sound: next !== 'off', announce: true });
 });
 
 /* ========================= STARFIELD ========================= */
@@ -1097,8 +1507,7 @@ function loop(now) {
     const py = (s.y + my * s.depth * 0.06) * h;
 
     ctx.globalAlpha = s.o * twinkle;
-    const festive = holidayOn && s.depth > 0.72;
-    ctx.fillStyle = festive ? (s.phase > 3 ? '#ffe08a' : '#d7f6ff') : '#ffffff';
+    ctx.fillStyle = starTint(s);
     ctx.beginPath();
     ctx.arc(px, py, s.r * dpr, 0, Math.PI * 2);
     ctx.fill();
@@ -1120,7 +1529,7 @@ function loop(now) {
       const tx = c.x - c.vx * c.length;
       const ty = c.y - c.vy * c.length;
       const grad = ctx.createLinearGradient(c.x, c.y, tx, ty);
-      grad.addColorStop(0, holidayOn ? 'rgba(255,224,138,0.95)' : 'rgba(255,255,255,0.90)');
+      grad.addColorStop(0, shootingTint());
       grad.addColorStop(1, 'rgba(255,255,255,0)');
 
       ctx.strokeStyle = grad;
@@ -1139,12 +1548,16 @@ function loop(now) {
 
   const sw = snowCanvas.width;
   const sh = snowCanvas.height;
-  if (!holidayOn) {
+  const fxOn = activeMode === 'holiday' || activeMode === 'halloween' || activeMode === 'patrick' || activeMode === 'july4';
+  if (!fxOn) {
     if (snowWasOn) {
       sctx.clearRect(0, 0, sw, sh);
       snowWasOn = false;
       dust = [];
     }
+  } else if (activeMode === 'july4' && !reduceMotion) {
+    snowWasOn = true;
+    drawFireworks(dt, now, sw, sh);
   } else if (!reduceMotion) {
     snowWasOn = true;
     if (now > nextWindAt) {
@@ -1165,18 +1578,12 @@ function loop(now) {
       }
       if (f.x < -12) f.x = sw + 8;
       if (f.x > sw + 12) f.x = -8;
-      if (f.kind === 'star') {
-        drawSnowflake(f.x, f.y, f.r * dpr, f.o);
-      } else {
-        sctx.fillStyle = 'rgba(255,255,255,' + f.o + ')';
-        sctx.beginPath();
-        sctx.arc(f.x, f.y, f.r * dpr, 0, Math.PI * 2);
-        sctx.fill();
-      }
+      paintFlake(f);
     }
 
-    if (!santaFly.hidden) {
-      const box = santaFly.getBoundingClientRect();
+    const trailEl = [santaFly, witchFly, lepFly].find((el) => !el.hidden);
+    if (trailEl) {
+      const box = trailEl.getBoundingClientRect();
       if (Math.random() < 0.85) {
         dust.push({
           x: box.left * dpr,
@@ -1201,7 +1608,7 @@ function loop(now) {
         continue;
       }
       sctx.globalAlpha = Math.max(0, p.life);
-      sctx.fillStyle = p.gold ? '#ffe08a' : '#ffffff';
+      sctx.fillStyle = p.gold ? (activeMode === 'halloween' ? '#ffb15a' : '#ffe08a') : '#ffffff';
       sctx.beginPath();
       sctx.arc(p.x, p.y, p.r * dpr, 0, Math.PI * 2);
       sctx.fill();
@@ -1211,16 +1618,7 @@ function loop(now) {
   } else if (!snowWasOn) {
     snowWasOn = true;
     sctx.clearRect(0, 0, sw, sh);
-    for (let i = 0; i < flakes.length; i++) {
-      const f = flakes[i];
-      if (f.kind === 'star') drawSnowflake(f.x, f.y, f.r * dpr, f.o);
-      else {
-        sctx.fillStyle = 'rgba(255,255,255,' + f.o + ')';
-        sctx.beginPath();
-        sctx.arc(f.x, f.y, f.r * dpr, 0, Math.PI * 2);
-        sctx.fill();
-      }
-    }
+    for (let i = 0; i < flakes.length; i++) paintFlake(flakes[i]);
   }
 
   requestAnimationFrame(loop);
@@ -1230,8 +1628,11 @@ resize();
 requestAnimationFrame(loop);
 
 try {
-  if (localStorage.getItem('holiday-mode') === '1') setHoliday(true);
+  const saved = localStorage.getItem('site-mode');
+  if (saved === 'off' || saved === 'holiday' || saved === 'halloween' || saved === 'july4' || saved === 'patrick') choice = saved;
+  else if (localStorage.getItem('holiday-mode') === '0') choice = 'off';
 } catch (e) {}
+setMode(choice === 'auto' ? seasonalMode() : choice);
   </script>
 
   <script type="application/ld+json">
