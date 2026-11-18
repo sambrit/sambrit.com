@@ -30,15 +30,17 @@
     position: relative;
   }
 
-  #bg {
+  #bg, #snow {
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
     display: block;
-    z-index: 0;
     pointer-events: none;
   }
+
+  #bg { z-index: 0; }
+  #snow { z-index: 4; }
 
   .glow {
     position: fixed;
@@ -54,7 +56,7 @@
 
   .main-content {
     position: relative;
-    z-index: 2;
+    z-index: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,6 +65,8 @@
     text-align: center;
     padding: 20px;
   }
+
+  .kicker, .name, .nav-links { position: relative; z-index: 6; }
 
   .kicker {
     margin: 0;
@@ -116,7 +120,7 @@
   .modal {
     position: fixed;
     inset: 0;
-    z-index: 4;
+    z-index: 30;
     display: grid;
     place-items: center;
     background: rgba(0,0,0,0.5);
@@ -174,7 +178,7 @@
 
   .launch-button {
     position: fixed;
-    z-index: 3;
+    z-index: 8;
     left: 50%;
     transform: translateX(-50%);
     bottom: calc(24px + env(safe-area-inset-bottom));
@@ -203,9 +207,360 @@
   .rocket {
     position: fixed;
     font-size: 2rem;
-    z-index: 4;
+    z-index: 9;
     pointer-events: none;
     animation: rocketFly 3.2s forwards cubic-bezier(.2,.6,.3,1);
+  }
+
+  .holiday-toggle {
+    position: fixed;
+    z-index: 8;
+    top: calc(12px + env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(8,10,16,.66);
+    color: #fafafa;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: .92rem;
+    letter-spacing: .01em;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.28);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+
+  .holiday-toggle:hover {
+    transform: translateX(-50%) translateY(-1px);
+    background: rgba(255,255,255,.1);
+  }
+
+  .holiday-toggle:active {
+    transform: translateX(-50%) scale(.98);
+  }
+
+  .holiday-toggle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+
+  .holiday-ico {
+    font-size: 1.05rem;
+    line-height: 1;
+    display: inline-block;
+  }
+
+  body.holiday .holiday-toggle {
+    background: linear-gradient(100deg, #9d1c2c, #1f7a45);
+    border-color: rgba(255, 224, 138, .6);
+    box-shadow: 0 0 0 1px rgba(255,224,138,.25), 0 10px 28px rgba(227, 40, 70, .35);
+  }
+
+  body.holiday .holiday-ico { animation: wiggle .9s ease-in-out infinite; }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+  }
+
+  .holiday-toast {
+    position: fixed;
+    top: calc(58px + env(safe-area-inset-top));
+    left: 50%;
+    z-index: 8;
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(20, 8, 12, .78);
+    color: #ffe08a;
+    font-weight: 700;
+    font-size: .86rem;
+    letter-spacing: .03em;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-6px);
+    transition: opacity .35s ease, transform .35s ease;
+    text-align: center;
+    max-width: min(92vw, 420px);
+  }
+
+  .holiday-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .xmas-lights {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    z-index: 7;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-14px);
+    transition: opacity .45s ease, transform .5s ease;
+  }
+
+  body.holiday .xmas-lights {
+    opacity: 1;
+    transform: none;
+  }
+
+  .xmas-wire {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bulbs {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+  }
+
+  .bulb {
+    display: block;
+    width: 10px;
+    height: 14px;
+    border-radius: 6px 6px 9px 9px;
+    box-shadow: 0 0 10px currentColor, 0 8px 10px rgba(0,0,0,.15);
+    animation: bulb 1.5s ease-in-out infinite;
+  }
+
+  .bulb:nth-child(5n+1) { color: #ff4d4d; background: #ff4d4d; animation-delay: 0s; }
+  .bulb:nth-child(5n+2) { color: #ffd24d; background: #ffd24d; animation-delay: .25s; }
+  .bulb:nth-child(5n+3) { color: #3dcc7a; background: #3dcc7a; animation-delay: .5s; }
+  .bulb:nth-child(5n+4) { color: #7fd4ff; background: #7fd4ff; animation-delay: .75s; }
+  .bulb:nth-child(5n) { color: #ff8ad4; background: #ff8ad4; animation-delay: 1s; }
+
+  @keyframes bulb {
+    0%, 100% { filter: brightness(1.15); opacity: 1; }
+    50% { filter: brightness(.45); opacity: .55; }
+  }
+
+  .snowbank {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 96px;
+    z-index: 2;
+    pointer-events: none;
+    display: block;
+    transform: translateY(105%);
+    transition: transform .7s cubic-bezier(.2,.8,.2,1);
+  }
+
+  body.holiday .snowbank { transform: translateY(0); }
+
+  .corner-deco {
+    position: fixed;
+    z-index: 5;
+    bottom: 8px;
+    font-size: 46px;
+    line-height: 1;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 8px rgba(0,0,0,.35));
+    transform: translateY(140%);
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .corner-deco.tree { left: 14px; }
+  .corner-deco.star {
+    right: 16px;
+    font-size: 34px;
+    bottom: 18px;
+  }
+
+  body.holiday .corner-deco { transform: translateY(0); }
+  body.holiday .corner-deco.star { animation: spin-slow 8s linear infinite; }
+
+  @keyframes spin-slow {
+    to { transform: rotate(360deg); }
+  }
+
+  body.holiday .glow {
+    background:
+      radial-gradient(38vmax 38vmax at 18% 18%, rgba(120, 190, 255, 0.2), transparent 62%),
+      radial-gradient(34vmax 34vmax at 82% 78%, rgba(255, 70, 90, 0.14), transparent 66%),
+      radial-gradient(40vmax 40vmax at 50% 40%, rgba(255, 210, 90, 0.12), transparent 68%);
+  }
+
+  body.holiday .name {
+    color: #ffe08a;
+    text-shadow:
+      0 0 18px rgba(255, 214, 90, .45),
+      0 2px 10px rgba(0,0,0,.8);
+  }
+
+  .santa-fly {
+    position: fixed;
+    left: 0;
+    top: 14vh;
+    z-index: 5;
+    width: min(680px, 88vw);
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .santa-fly[hidden] { display: none !important; }
+
+  .santa-bob {
+    position: relative;
+    animation: santaBob .85s ease-in-out infinite;
+  }
+
+  @keyframes santaBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes santaCross {
+    from { transform: translate3d(-115%, 0, 0); }
+    to { transform: translate3d(125vw, 0, 0); }
+  }
+
+  .santa-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    filter: drop-shadow(0 12px 10px rgba(0,0,0,.35));
+  }
+
+  .deer-bob {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: deerBob .42s ease-in-out infinite;
+  }
+
+  .d2 .deer-bob { animation-delay: -.14s; }
+  .d3 .deer-bob { animation-delay: -.28s; }
+
+  @keyframes deerBob {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-6px) rotate(2deg); }
+  }
+
+  .leg {
+    transform-box: fill-box;
+    transform-origin: 50% 0%;
+    animation: leg .32s ease-in-out infinite;
+  }
+
+  .leg.alt { animation-delay: -.16s; }
+  .d2 .leg { animation-duration: .36s; }
+  .d3 .leg { animation-duration: .3s; }
+
+  @keyframes leg {
+    0%, 100% { transform: rotate(16deg); }
+    50% { transform: rotate(-16deg); }
+  }
+
+  .wave {
+    transform-box: fill-box;
+    transform-origin: 0% 70%;
+    animation: wave .55s ease-in-out infinite;
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: rotate(12deg); }
+    50% { transform: rotate(-26deg); }
+  }
+
+  .nose-glow {
+    fill: #ff2b2b;
+    animation: nosePulse .7s ease-in-out infinite;
+  }
+
+  @keyframes nosePulse {
+    0%, 100% { filter: drop-shadow(0 0 2px #ff2b2b); }
+    50% { filter: drop-shadow(0 0 7px #ffd0d0); }
+  }
+
+  .scarf { animation: scarf .7s ease-in-out infinite; transform-box: fill-box; transform-origin: 100% 0%; }
+  @keyframes scarf {
+    0%, 100% { transform: rotate(6deg); }
+    50% { transform: rotate(-10deg); }
+  }
+
+  .spark-trail {
+    position: absolute;
+    left: -78px;
+    top: 58%;
+    display: flex;
+    gap: 9px;
+    align-items: center;
+  }
+
+  .spark-trail i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffe08a;
+    box-shadow: 0 0 8px #ffd700;
+    animation: tw .7s ease-in-out infinite;
+  }
+
+  .spark-trail i:nth-child(odd) { background: #fff; animation-delay: .2s; }
+  .spark-trail i:nth-child(3n) { width: 4px; height: 4px; animation-delay: .4s; }
+
+  @keyframes tw {
+    50% { opacity: .15; transform: scale(.35); }
+  }
+
+  .hoho {
+    position: absolute;
+    left: 12%;
+    top: -2px;
+    background: #fff;
+    color: #9d1c2c;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .02em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.25);
+    opacity: 0;
+    transform: translateY(6px) scale(.92);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  .santa-fly.cheering .hoho {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .gift {
+    position: fixed;
+    top: -8vh;
+    z-index: 5;
+    pointer-events: none;
+    animation-name: giftFall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    filter: drop-shadow(0 6px 6px rgba(0,0,0,.35));
+  }
+
+  @keyframes giftFall {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    100% { transform: translate3d(var(--drift), 115vh, 0) rotate(260deg); }
   }
 
   @keyframes rocketFly {
@@ -218,17 +573,153 @@
     .nav-link { transition: none !important; }
     .btn { transition: none !important; }
     .launch-button { transition: none !important; }
+    .bulb, .deer-bob, .leg, .wave, .nose-glow, .scarf, .spark-trail i,
+    .holiday-ico, .corner-deco, .santa-bob {
+      animation: none !important;
+    }
+    body.holiday .santa-fly.parked {
+      top: auto;
+      bottom: 78px;
+      right: 8px;
+      left: auto;
+      width: min(300px, 72vw);
+      animation: none !important;
+      transform: none !important;
+    }
   }
 
   @media (max-width: 700px) {
     .kicker { font-size: .64rem; }
     .nav-link { font-size: .92rem; padding: 10px 13px; }
+    .holiday-toggle { font-size: .82rem; padding: 8px 12px 8px 8px; }
+    .holiday-toast { font-size: .78rem; }
+    .corner-deco { font-size: 36px; }
+    .corner-deco.star { font-size: 26px; }
   }
   </style>
 </head>
 <body>
+  <button class="holiday-toggle" id="holidayToggle" type="button" aria-pressed="false">
+    <span class="holiday-ico" aria-hidden="true">🎄</span>
+    <span class="holiday-label">Holiday mode</span>
+  </button>
+  <p class="holiday-toast" id="holidayToast" role="status"></p>
+
   <canvas id="bg"></canvas>
+  <canvas id="snow" aria-hidden="true"></canvas>
   <div class="glow" aria-hidden="true"></div>
+  <svg class="snowbank" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#d7e6f5" d="M0 86 C 140 86 190 34 310 40 C 430 46 480 96 620 88 C 760 80 820 30 960 38 C 1100 46 1160 96 1300 84 C 1360 78 1400 64 1440 70 V 140 H 0 Z"/>
+    <path fill="#f7fbff" d="M0 104 C 160 104 210 62 340 68 C 470 74 530 112 680 104 C 820 96 880 58 1020 66 C 1160 74 1220 110 1360 100 C 1400 96 1420 90 1440 92 V 140 H 0 Z"/>
+  </svg>
+
+  <div class="xmas-lights" aria-hidden="true">
+    <svg class="xmas-wire" viewBox="0 0 1200 36" preserveAspectRatio="none">
+      <path d="M0 8 Q 25 30 50 8 T 100 8 T 150 8 T 200 8 T 250 8 T 300 8 T 350 8 T 400 8 T 450 8 T 500 8 T 550 8 T 600 8 T 650 8 T 700 8 T 750 8 T 800 8 T 850 8 T 900 8 T 950 8 T 1000 8 T 1050 8 T 1100 8 T 1150 8 T 1200 8" fill="none" stroke="rgba(190,210,170,.7)" stroke-width="2"/>
+    </svg>
+    <div class="bulbs">
+      <i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i>
+      <i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i>
+      <i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i>
+      <i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i>
+      <i class="bulb"></i><i class="bulb"></i>
+    </div>
+  </div>
+
+  <div class="corner-deco tree" aria-hidden="true">🎄</div>
+  <div class="corner-deco star" aria-hidden="true">⭐</div>
+
+  <div class="santa-fly" id="santaFly" hidden>
+    <div class="santa-bob">
+      <div class="spark-trail" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hoho">Ho ho ho!</div>
+      <svg class="santa-svg" viewBox="-40 0 720 156" aria-hidden="true">
+        <path d="M168 78 C 230 58 280 96 340 70 C 410 42 460 92 530 66 C 590 48 630 58 668 54" fill="none" stroke="#4a2c16" stroke-width="1.6" stroke-linecap="round"/>
+        <path class="scarf" d="M18 62 Q -8 82 -28 108" stroke="#d7263d" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M30 118 C 48 132 90 134 130 128 C 168 122 188 130 198 116" fill="none" stroke="#e6c36a" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M78 112 L 82 124 M 150 112 L 154 124" stroke="#e6c36a" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M34 100 C 26 100 20 90 26 78 L 40 68 L 176 68 C 196 68 204 80 198 96 C 192 116 168 118 142 114 L 52 114 C 38 114 32 108 34 100 Z" fill="#d7263d" stroke="#8e1424" stroke-width="1.4"/>
+        <path d="M40 82 L 184 82" stroke="#f3d48a" stroke-width="3" stroke-linecap="round"/>
+        <g transform="translate(46,52)">
+          <rect width="16" height="14" rx="1.5" fill="#1b8a4a"/>
+          <path d="M8 0 V14 M0 7 H16" stroke="#f3d48a" stroke-width="1.8"/>
+        </g>
+        <g transform="translate(64,58)">
+          <rect width="13" height="12" rx="1.2" fill="#f2c14e"/>
+          <path d="M6.5 0 V12 M0 6 H13" stroke="#d7263d" stroke-width="1.5"/>
+        </g>
+        <g transform="translate(78,16)">
+          <path d="M8 36 Q 24 8 46 34" fill="#d7263d"/>
+          <ellipse cx="24" cy="36" rx="16" ry="5" fill="#fff"/>
+          <circle cx="46" cy="30" r="5.5" fill="#fff"/>
+          <circle cx="24" cy="42" r="13" fill="#ffd0b5"/>
+          <circle cx="19" cy="40" r="1.5" fill="#3a2016"/>
+          <circle cx="29" cy="40" r="1.5" fill="#3a2016"/>
+          <path d="M20 46 Q 24 49 28 46" stroke="#a15a48" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M12 46 Q 24 68 38 46 Q 32 56 24 58 Q 16 56 12 46 Z" fill="#fff"/>
+          <ellipse cx="24" cy="46" rx="8" ry="3.2" fill="#fff"/>
+          <rect x="6" y="54" width="36" height="26" rx="8" fill="#d7263d"/>
+          <rect x="6" y="70" width="36" height="7" fill="#2a2a2a"/>
+          <rect x="20" y="70" width="8" height="7" rx="1" fill="#f3d48a"/>
+          <g class="wave">
+            <path d="M40 60 L 64 44" stroke="#d7263d" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="66" cy="42" r="5.5" fill="#fff"/>
+          </g>
+        </g>
+        <g class="deer d1" transform="translate(214,4)">
+          <g class="deer-bob">
+            <g class="leg alt"><path d="M30 82 L 22 118" stroke="#5c3318" stroke-width="5" stroke-linecap="round"/></g>
+            <g class="leg"><path d="M50 82 L 56 118" stroke="#5c3318" stroke-width="5" stroke-linecap="round"/></g>
+            <ellipse cx="52" cy="78" rx="32" ry="16" fill="#c6864a"/>
+            <ellipse cx="44" cy="82" rx="16" ry="8" fill="#efc08a" opacity=".7"/>
+            <g class="leg"><path d="M68 78 L 76 116" stroke="#4a2914" stroke-width="5" stroke-linecap="round"/></g>
+            <g class="leg alt"><path d="M84 76 L 96 114" stroke="#4a2914" stroke-width="5" stroke-linecap="round"/></g>
+            <path d="M78 70 C 94 60 104 48 112 36" stroke="#c6864a" stroke-width="12" fill="none" stroke-linecap="round"/>
+            <circle cx="118" cy="32" r="12" fill="#e0a15c"/>
+            <ellipse cx="110" cy="20" rx="4" ry="8" fill="#c6864a" transform="rotate(-18 110 20)"/>
+            <path d="M112 22 L 104 4 M 112 22 L 120 2 M 108 12 L 100 8 M 118 10 L 128 2" stroke="#5a3214" stroke-width="2.1" fill="none" stroke-linecap="round"/>
+            <circle cx="123" cy="30" r="1.7" fill="#2b160e"/>
+            <circle class="nose" cx="130" cy="36" r="3.1" fill="#5a3214"/>
+            <circle cx="96" cy="58" r="3" fill="#f2c14e"/>
+          </g>
+        </g>
+        <g class="deer d2" transform="translate(348,4)">
+          <g class="deer-bob">
+            <g class="leg alt"><path d="M30 82 L 22 118" stroke="#5c3318" stroke-width="5" stroke-linecap="round"/></g>
+            <g class="leg"><path d="M50 82 L 56 118" stroke="#5c3318" stroke-width="5" stroke-linecap="round"/></g>
+            <ellipse cx="52" cy="78" rx="32" ry="16" fill="#b8743c"/>
+            <ellipse cx="44" cy="82" rx="16" ry="8" fill="#efc08a" opacity=".55"/>
+            <g class="leg"><path d="M68 78 L 76 116" stroke="#4a2914" stroke-width="5" stroke-linecap="round"/></g>
+            <g class="leg alt"><path d="M84 76 L 96 114" stroke="#4a2914" stroke-width="5" stroke-linecap="round"/></g>
+            <path d="M78 70 C 94 60 104 48 112 36" stroke="#b8743c" stroke-width="12" fill="none" stroke-linecap="round"/>
+            <circle cx="118" cy="32" r="12" fill="#d4924e"/>
+            <ellipse cx="110" cy="20" rx="4" ry="8" fill="#b8743c" transform="rotate(-18 110 20)"/>
+            <path d="M112 22 L 104 4 M 112 22 L 120 2 M 108 12 L 100 8 M 118 10 L 128 2" stroke="#5a3214" stroke-width="2.1" fill="none" stroke-linecap="round"/>
+            <circle cx="123" cy="30" r="1.7" fill="#2b160e"/>
+            <circle class="nose" cx="130" cy="36" r="3.1" fill="#5a3214"/>
+            <circle cx="96" cy="58" r="3" fill="#f2c14e"/>
+          </g>
+        </g>
+        <g class="deer d3" transform="translate(482,4)">
+          <g class="deer-bob">
+            <g class="leg alt"><path d="M30 82 L 22 118" stroke="#5c3318" stroke-width="5" stroke-linecap="round"/></g>
+            <g class="leg"><path d="M50 82 L 56 118" stroke="#5c3318" stroke-width="5" stroke-linecap="round"/></g>
+            <ellipse cx="52" cy="78" rx="32" ry="16" fill="#c6864a"/>
+            <ellipse cx="44" cy="82" rx="16" ry="8" fill="#efc08a" opacity=".7"/>
+            <g class="leg"><path d="M68 78 L 76 116" stroke="#4a2914" stroke-width="5" stroke-linecap="round"/></g>
+            <g class="leg alt"><path d="M84 76 L 96 114" stroke="#4a2914" stroke-width="5" stroke-linecap="round"/></g>
+            <path d="M78 70 C 94 60 104 48 112 36" stroke="#c6864a" stroke-width="12" fill="none" stroke-linecap="round"/>
+            <circle cx="118" cy="32" r="12" fill="#e0a15c"/>
+            <ellipse cx="110" cy="20" rx="4" ry="8" fill="#c6864a" transform="rotate(-18 110 20)"/>
+            <path d="M112 22 L 104 4 M 112 22 L 120 2 M 108 12 L 100 8 M 118 10 L 128 2" stroke="#5a3214" stroke-width="2.1" fill="none" stroke-linecap="round"/>
+            <circle cx="123" cy="30" r="1.7" fill="#2b160e"/>
+            <circle class="nose nose-glow" cx="130" cy="36" r="4" fill="#ff2b2b"/>
+            <circle cx="96" cy="58" r="3.4" fill="#ffe08a"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
 
   <div class="main-content">
     <p class="kicker">Program Manager + Engineer + Photographer</p>
@@ -306,6 +797,211 @@ launchBtn.addEventListener('click', () => {
   setTimeout(() => rocket.remove(), 3300);
 });
 
+/* ========================= HOLIDAY MODE ========================= */
+const holidayBtn = document.getElementById('holidayToggle');
+const holidayLabel = holidayBtn.querySelector('.holiday-label');
+const holidayIcon = holidayBtn.querySelector('.holiday-ico');
+const holidayToast = document.getElementById('holidayToast');
+const santaFly = document.getElementById('santaFly');
+const snowCanvas = document.getElementById('snow');
+const sctx = snowCanvas.getContext('2d', { alpha: true });
+
+let holidayOn = false;
+let flakes = [];
+let dust = [];
+let wind = 0;
+let windTarget = 0;
+let nextWindAt = 0;
+let santaTimer = 0;
+let hoTimer = 0;
+let hoTimerOff = 0;
+let giftTimer = 0;
+let toastTimer = 0;
+let snowWasOn = false;
+
+const GIFT_EMOJI = ['🎁', '⭐', '🔔', '🍬', '🧦', '❄️'];
+
+function setHoliday(on, opts) {
+  const sound = !!(opts && opts.sound);
+  const announce = !!(opts && opts.announce);
+  holidayOn = on;
+  document.body.classList.toggle('holiday', on);
+  holidayBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  holidayLabel.textContent = on ? 'Holiday mode on' : 'Holiday mode';
+  holidayIcon.textContent = on ? '❄️' : '🎄';
+  holidayBtn.setAttribute('aria-label', on ? 'Turn holiday mode off' : 'Turn holiday mode on');
+  try { localStorage.setItem('holiday-mode', on ? '1' : '0'); } catch (e) {}
+  if (on) {
+    startHoliday();
+    if (announce) showToast('Happy holidays — the sleigh is out');
+    if (sound) {
+      burstFromButton();
+      playJingle();
+    }
+  } else {
+    stopHolidayEffects();
+    if (announce) showToast('See you next holiday');
+  }
+}
+
+function showToast(text) {
+  holidayToast.textContent = text;
+  holidayToast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => holidayToast.classList.remove('show'), 2600);
+}
+
+function startHoliday() {
+  stopHolidayEffects();
+  if (reduceMotion) {
+    santaFly.hidden = false;
+    santaFly.classList.add('parked');
+    return;
+  }
+  santaFly.classList.remove('parked');
+  queueSanta(650);
+  queueGift(1100);
+}
+
+function stopHolidayEffects() {
+  clearTimeout(santaTimer);
+  clearTimeout(hoTimer);
+  clearTimeout(hoTimerOff);
+  clearTimeout(giftTimer);
+  santaFly.hidden = true;
+  santaFly.classList.remove('cheering', 'parked');
+  santaFly.style.animation = 'none';
+  document.querySelectorAll('.gift').forEach((g) => g.remove());
+  dust = [];
+}
+
+function queueSanta(delay) {
+  clearTimeout(santaTimer);
+  santaTimer = setTimeout(launchSanta, delay);
+}
+
+function launchSanta() {
+  if (!holidayOn || reduceMotion) return;
+  const lowPass = Math.random() < 0.18;
+  const duration = lowPass ? rand(8, 10) : rand(12, 17);
+  santaFly.hidden = false;
+  santaFly.classList.remove('cheering');
+  santaFly.style.top = (lowPass ? rand(24, 34) : rand(7, 18)) + 'vh';
+  santaFly.style.animation = 'none';
+  void santaFly.offsetWidth;
+  santaFly.style.animation = 'santaCross ' + duration + 's linear forwards';
+  hoTimer = setTimeout(() => santaFly.classList.add('cheering'), duration * 320);
+  hoTimerOff = setTimeout(() => santaFly.classList.remove('cheering'), duration * 680);
+  santaTimer = setTimeout(() => {
+    santaFly.hidden = true;
+    santaFly.classList.remove('cheering');
+    if (holidayOn) queueSanta(rand(2200, 5200));
+  }, duration * 1000 + 40);
+}
+
+function queueGift(delay) {
+  clearTimeout(giftTimer);
+  giftTimer = setTimeout(() => {
+    if (!holidayOn || reduceMotion) return;
+    if (document.querySelectorAll('.gift').length < 5) spawnGift();
+    queueGift(rand(1400, 2800));
+  }, delay);
+}
+
+function spawnGift() {
+  const el = document.createElement('div');
+  el.className = 'gift';
+  el.textContent = GIFT_EMOJI[(Math.random() * GIFT_EMOJI.length) | 0];
+  el.style.left = rand(4, 92) + 'vw';
+  el.style.fontSize = rand(18, 34) + 'px';
+  el.style.animationDuration = rand(7, 12) + 's';
+  el.style.setProperty('--drift', rand(-70, 90) + 'px');
+  document.body.appendChild(el);
+  const life = parseFloat(el.style.animationDuration) * 1000 + 200;
+  setTimeout(() => el.remove(), life);
+}
+
+function burstFromButton() {
+  const rect = holidayBtn.getBoundingClientRect();
+  const x = (rect.left + rect.width / 2) * dpr;
+  const y = rect.bottom * dpr;
+  for (let i = 0; i < 28; i++) {
+    const ang = rand(-Math.PI, 0);
+    const spd = rand(0.8, 3.2);
+    dust.push({
+      x: x,
+      y: y,
+      vx: Math.cos(ang) * spd,
+      vy: Math.sin(ang) * spd * 0.65,
+      life: 1,
+      r: rand(1.1, 2.6),
+      gold: Math.random() < 0.6
+    });
+  }
+}
+
+function playJingle() {
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtx) return;
+  try {
+    const audio = new AudioCtx();
+    const notes = [659.25, 659.25, 659.25, 783.99, 659.25, 523.25];
+    notes.forEach((freq, i) => {
+      const osc = audio.createOscillator();
+      const gain = audio.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      gain.connect(audio.destination);
+      const t = audio.currentTime + i * 0.14;
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.07, t + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+      osc.start(t);
+      osc.stop(t + 0.24);
+    });
+    setTimeout(() => audio.close(), 1800);
+  } catch (e) {}
+}
+
+function makeFlake(anywhere) {
+  const roll = Math.random();
+  return {
+    x: Math.random() * Math.max(snowCanvas.width, 1),
+    y: anywhere ? Math.random() * Math.max(snowCanvas.height, 1) : -rand(4, 40),
+    r: rand(0.6, 2.7),
+    vy: rand(0.28, 0.95),
+    vx: rand(-0.18, 0.18),
+    wobble: rand(0, Math.PI * 2),
+    wobbleSpeed: rand(0.01, 0.025),
+    o: rand(0.35, 0.95),
+    kind: roll > 0.86 ? 'star' : 'dot'
+  };
+}
+
+function initSnow() {
+  const count = Math.min(200, Math.floor((innerWidth * innerHeight) / 13000));
+  flakes = [];
+  for (let i = 0; i < count; i++) flakes.push(makeFlake(true));
+}
+
+function drawSnowflake(x, y, r, alpha) {
+  sctx.strokeStyle = 'rgba(255,255,255,' + alpha + ')';
+  sctx.lineWidth = Math.max(1, dpr * 0.7);
+  sctx.beginPath();
+  for (let a = 0; a < 6; a++) {
+    const ang = a * Math.PI / 3;
+    sctx.moveTo(x, y);
+    sctx.lineTo(x + Math.cos(ang) * r * 3.1, y + Math.sin(ang) * r * 3.1);
+  }
+  sctx.stroke();
+}
+
+holidayBtn.addEventListener('click', () => {
+  const next = !holidayOn;
+  setHoliday(next, { sound: next, announce: true });
+});
+
 /* ========================= STARFIELD ========================= */
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d', { alpha: true });
@@ -354,7 +1050,13 @@ function resize() {
   canvas.height = Math.floor(innerHeight * dpr);
   canvas.style.width = '100vw';
   canvas.style.height = '100vh';
+  snowCanvas.width = canvas.width;
+  snowCanvas.height = canvas.height;
+  snowCanvas.style.width = '100vw';
+  snowCanvas.style.height = '100vh';
+  snowWasOn = false;
   initStars();
+  initSnow();
 }
 
 addEventListener('resize', resize, { passive: true });
@@ -395,7 +1097,8 @@ function loop(now) {
     const py = (s.y + my * s.depth * 0.06) * h;
 
     ctx.globalAlpha = s.o * twinkle;
-    ctx.fillStyle = '#ffffff';
+    const festive = holidayOn && s.depth > 0.72;
+    ctx.fillStyle = festive ? (s.phase > 3 ? '#ffe08a' : '#d7f6ff') : '#ffffff';
     ctx.beginPath();
     ctx.arc(px, py, s.r * dpr, 0, Math.PI * 2);
     ctx.fill();
@@ -417,7 +1120,7 @@ function loop(now) {
       const tx = c.x - c.vx * c.length;
       const ty = c.y - c.vy * c.length;
       const grad = ctx.createLinearGradient(c.x, c.y, tx, ty);
-      grad.addColorStop(0, 'rgba(255,255,255,0.90)');
+      grad.addColorStop(0, holidayOn ? 'rgba(255,224,138,0.95)' : 'rgba(255,255,255,0.90)');
       grad.addColorStop(1, 'rgba(255,255,255,0)');
 
       ctx.strokeStyle = grad;
@@ -434,11 +1137,101 @@ function loop(now) {
     }
   }
 
+  const sw = snowCanvas.width;
+  const sh = snowCanvas.height;
+  if (!holidayOn) {
+    if (snowWasOn) {
+      sctx.clearRect(0, 0, sw, sh);
+      snowWasOn = false;
+      dust = [];
+    }
+  } else if (!reduceMotion) {
+    snowWasOn = true;
+    if (now > nextWindAt) {
+      windTarget = rand(-0.55, 0.55);
+      nextWindAt = now + rand(2800, 7000);
+    }
+    wind += (windTarget - wind) * 0.012;
+
+    sctx.clearRect(0, 0, sw, sh);
+    for (let i = 0; i < flakes.length; i++) {
+      const f = flakes[i];
+      f.wobble += f.wobbleSpeed * dt;
+      f.y += (f.vy + f.r * 0.18) * dt * 0.07 * dpr;
+      f.x += (f.vx + wind + Math.sin(f.wobble) * 0.28) * dt * 0.07 * dpr;
+      if (f.y > sh + 8) {
+        flakes[i] = makeFlake(false);
+        continue;
+      }
+      if (f.x < -12) f.x = sw + 8;
+      if (f.x > sw + 12) f.x = -8;
+      if (f.kind === 'star') {
+        drawSnowflake(f.x, f.y, f.r * dpr, f.o);
+      } else {
+        sctx.fillStyle = 'rgba(255,255,255,' + f.o + ')';
+        sctx.beginPath();
+        sctx.arc(f.x, f.y, f.r * dpr, 0, Math.PI * 2);
+        sctx.fill();
+      }
+    }
+
+    if (!santaFly.hidden) {
+      const box = santaFly.getBoundingClientRect();
+      if (Math.random() < 0.85) {
+        dust.push({
+          x: box.left * dpr,
+          y: (box.top + box.height * 0.62) * dpr,
+          vx: -rand(0.15, 1.1) * dpr,
+          vy: rand(-0.25, 0.35) * dpr,
+          life: 1,
+          r: rand(1, 2.4),
+          gold: Math.random() < 0.75
+        });
+      }
+    }
+
+    for (let i = dust.length - 1; i >= 0; i--) {
+      const p = dust[i];
+      p.x += p.vx * dt * 0.16;
+      p.y += p.vy * dt * 0.16;
+      p.vy += 0.004 * dt;
+      p.life -= dt / 700;
+      if (p.life <= 0) {
+        dust.splice(i, 1);
+        continue;
+      }
+      sctx.globalAlpha = Math.max(0, p.life);
+      sctx.fillStyle = p.gold ? '#ffe08a' : '#ffffff';
+      sctx.beginPath();
+      sctx.arc(p.x, p.y, p.r * dpr, 0, Math.PI * 2);
+      sctx.fill();
+    }
+    sctx.globalAlpha = 1;
+    if (dust.length > 90) dust.splice(0, dust.length - 90);
+  } else if (!snowWasOn) {
+    snowWasOn = true;
+    sctx.clearRect(0, 0, sw, sh);
+    for (let i = 0; i < flakes.length; i++) {
+      const f = flakes[i];
+      if (f.kind === 'star') drawSnowflake(f.x, f.y, f.r * dpr, f.o);
+      else {
+        sctx.fillStyle = 'rgba(255,255,255,' + f.o + ')';
+        sctx.beginPath();
+        sctx.arc(f.x, f.y, f.r * dpr, 0, Math.PI * 2);
+        sctx.fill();
+      }
+    }
+  }
+
   requestAnimationFrame(loop);
 }
 
 resize();
 requestAnimationFrame(loop);
+
+try {
+  if (localStorage.getItem('holiday-mode') === '1') setHoliday(true);
+} catch (e) {}
   </script>
 
   <script type="application/ld+json">
