@@ -277,47 +277,58 @@
     box-shadow: 0 0 8px rgba(255, 236, 190, .55);
   }
 
-  /* Top control. This is a switch, not a status sentence, because
-     "Holiday mode on" did not read as something you can turn off.
-     The season name is the only label. The track and knob show the
-     state: the knob moves right only while aria-pressed is true.
-     Script keeps the control visible after the scene is turned off,
-     when data-mode is gone, so the knob cannot key off the scene. */
+  /* Season switch. It used to sit in the horizontal center of the
+     light string, and that made the control the first thing on the
+     page. It now sits at the top left, under the bulbs and inset
+     from the safe area, so the lights and the name stay the focus.
+     It is still a real switch: the season name, a track, and a knob.
+     The knob moves right only while aria-pressed is true. The label
+     can wrap to two short lines on a narrow phone. Centering it
+     again would put it back in the lights. Script keeps the control
+     visible after the scene is turned off, when data-mode is gone,
+     so the knob cannot key off the scene. */
   .holiday-toggle {
     position: fixed;
     z-index: 8;
-    top: calc(12px + env(safe-area-inset-top));
-    left: 50%;
-    transform: translateX(-50%);
+    top: calc(54px + env(safe-area-inset-top));
+    left: calc(10px + env(safe-area-inset-left));
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    min-height: 44px;
-    padding: 6px 8px 6px 14px;
+    gap: 6px;
+    min-height: 28px;
+    max-width: min(46vw, 168px);
+    padding: 3px 5px 3px 8px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.16);
-    background: rgba(8,10,16,.72);
-    color: #fafafa;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(8,10,16,.42);
+    color: rgba(250,250,250,.8);
     font-family: inherit;
-    font-weight: 700;
-    font-size: .92rem;
-    letter-spacing: .01em;
-    white-space: nowrap;
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: 0;
+    line-height: 1.05;
+    text-align: left;
     cursor: pointer;
     user-select: none;
     touch-action: manipulation;
     backdrop-filter: blur(8px);
-    box-shadow: 0 8px 24px rgba(0,0,0,.28);
-    transition: transform .2s ease, background .2s ease;
+    box-shadow: none;
+    transition: background .2s ease;
+  }
+
+  .holiday-label {
+    display: block;
+    max-width: 6.5rem;
+    text-align: left;
+    line-height: 1.05;
   }
 
   .holiday-toggle:hover {
-    transform: translateX(-50%) translateY(-1px);
-    background: rgba(255,255,255,.1);
+    background: rgba(255,255,255,.08);
   }
 
   .holiday-toggle:active {
-    transform: translateX(-50%) scale(.98);
+    background: rgba(255,255,255,.12);
   }
 
   .holiday-toggle:focus-visible {
@@ -328,22 +339,22 @@
   .switch {
     position: relative;
     flex: none;
-    width: 42px;
-    height: 24px;
+    width: 32px;
+    height: 18px;
     border-radius: 999px;
     background: #3a4150;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);
   }
 
   .switch-knob {
     position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 18px;
-    height: 18px;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    box-shadow: 0 1px 2px rgba(0,0,0,.35);
     transition: transform .18s ease;
   }
 
@@ -353,12 +364,12 @@
   }
 
   .holiday-toggle[aria-pressed="true"] .switch-knob {
-    transform: translateX(18px);
+    transform: translateX(14px);
   }
 
   .holiday-toast {
     position: fixed;
-    top: calc(58px + env(safe-area-inset-top));
+    top: calc(104px + env(safe-area-inset-top));
     left: 50%;
     z-index: 8;
     margin: 0;
@@ -383,8 +394,10 @@
   }
 
   /* One string of lights for every scene. Each mode only recolors
-     the bulbs, so Halloween, July 4, Valentine, and Spring share
-     the same wire instead of a second decoration. */
+     the bulbs, so Halloween, July 4, Valentine, Spring, and
+     Thanksgiving share the same wire. Valentine stays amber and
+     rose because a field of hearts was the wrong tone here.
+     Thanksgiving is warm amber and brown, lighter than Halloween. */
   .xmas-lights {
     position: fixed;
     top: 0;
@@ -403,7 +416,8 @@
   html[data-mode="july4"] .xmas-lights,
   html[data-mode="patrick"] .xmas-lights,
   html[data-mode="valentine"] .xmas-lights,
-  html[data-mode="spring"] .xmas-lights {
+  html[data-mode="spring"] .xmas-lights,
+  html[data-mode="thanksgiving"] .xmas-lights {
     opacity: 1;
     transform: none;
   }
@@ -477,8 +491,9 @@
   .corner-deco.pumpkin:not(.right),
   .corner-deco.flag:not(.right),
   .corner-deco.shamrock:not(.right),
-  .corner-deco.heart:not(.right),
-  .corner-deco.blossom:not(.right) { left: 14px; }
+  .corner-deco.candle,
+  .corner-deco.blossom:not(.right),
+  .corner-deco.turkey { left: 14px; }
 
   .holiday-toggle[hidden] { display: none !important; }
   .corner-deco.right {
@@ -493,8 +508,11 @@
   html[data-mode="halloween"] .corner-deco.pumpkin { transform: translateY(0); }
   html[data-mode="july4"] .corner-deco.flag { transform: translateY(0); }
   html[data-mode="patrick"] .corner-deco.shamrock { transform: translateY(0); }
-  html[data-mode="valentine"] .corner-deco.heart { transform: translateY(0); }
+  html[data-mode="valentine"] .corner-deco.candle { transform: translateY(0); }
   html[data-mode="spring"] .corner-deco.blossom { transform: translateY(0); }
+  html[data-mode="thanksgiving"] .corner-deco.turkey { transform: translateY(0); }
+  .corner-deco.candle { font-size: 28px; }
+  .corner-deco.turkey { font-size: 30px; }
 
   @keyframes spin-slow {
     to { transform: rotate(360deg); }
@@ -690,17 +708,23 @@
   html[data-mode="patrick"] .bulb:nth-child(5n+4) { color: #d6ff9a; background: #d6ff9a; }
   html[data-mode="patrick"] .bulb:nth-child(5n) { color: #f2c14e; background: #f2c14e; }
 
-  html[data-mode="valentine"] .bulb:nth-child(5n+1) { color: #ff4d6a; background: #ff4d6a; }
-  html[data-mode="valentine"] .bulb:nth-child(5n+2) { color: #ff8ab0; background: #ff8ab0; }
-  html[data-mode="valentine"] .bulb:nth-child(5n+3) { color: #e23b4a; background: #e23b4a; }
-  html[data-mode="valentine"] .bulb:nth-child(5n+4) { color: #ffd0dc; background: #ffd0dc; }
-  html[data-mode="valentine"] .bulb:nth-child(5n) { color: #ff5c8a; background: #ff5c8a; }
+  html[data-mode="valentine"] .bulb:nth-child(5n+1) { color: #ffb15a; background: #ffb15a; }
+  html[data-mode="valentine"] .bulb:nth-child(5n+2) { color: #e7a0ae; background: #e7a0ae; }
+  html[data-mode="valentine"] .bulb:nth-child(5n+3) { color: #ffd08a; background: #ffd08a; }
+  html[data-mode="valentine"] .bulb:nth-child(5n+4) { color: #d98998; background: #d98998; }
+  html[data-mode="valentine"] .bulb:nth-child(5n) { color: #ffe0b0; background: #ffe0b0; }
 
   html[data-mode="spring"] .bulb:nth-child(5n+1) { color: #ffb7c5; background: #ffb7c5; }
   html[data-mode="spring"] .bulb:nth-child(5n+2) { color: #fff1c9; background: #fff1c9; }
   html[data-mode="spring"] .bulb:nth-child(5n+3) { color: #c8f0c0; background: #c8f0c0; }
   html[data-mode="spring"] .bulb:nth-child(5n+4) { color: #f3c6e0; background: #f3c6e0; }
   html[data-mode="spring"] .bulb:nth-child(5n) { color: #ffe08a; background: #ffe08a; }
+
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n+1) { color: #e8a04a; background: #e8a04a; }
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n+2) { color: #8a5a32; background: #8a5a32; }
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n+3) { color: #ffd27a; background: #ffd27a; }
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n+4) { color: #a86b3c; background: #a86b3c; }
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n) { color: #c4844a; background: #c4844a; }
 
   html[data-mode="halloween"] .glow {
     background:
@@ -721,13 +745,18 @@
   }
   html[data-mode="valentine"] .glow {
     background:
-      radial-gradient(36vmax 36vmax at 18% 24%, rgba(255, 90, 130, 0.16), transparent 62%),
-      radial-gradient(34vmax 34vmax at 80% 72%, rgba(220, 40, 70, 0.12), transparent 66%);
+      radial-gradient(36vmax 36vmax at 18% 24%, rgba(255, 176, 110, 0.14), transparent 62%),
+      radial-gradient(34vmax 34vmax at 80% 72%, rgba(210, 120, 130, 0.12), transparent 66%);
   }
   html[data-mode="spring"] .glow {
     background:
       radial-gradient(36vmax 36vmax at 20% 22%, rgba(255, 190, 210, 0.16), transparent 62%),
       radial-gradient(34vmax 34vmax at 78% 74%, rgba(180, 230, 170, 0.12), transparent 66%);
+  }
+  html[data-mode="thanksgiving"] .glow {
+    background:
+      radial-gradient(36vmax 36vmax at 18% 22%, rgba(200, 130, 40, 0.16), transparent 62%),
+      radial-gradient(34vmax 34vmax at 80% 74%, rgba(110, 62, 28, 0.14), transparent 66%);
   }
 
   html[data-mode="halloween"] .name {
@@ -749,6 +778,10 @@
   html[data-mode="spring"] .name {
     color: #ffe7a3;
     text-shadow: 0 0 18px rgba(255, 200, 210, .35), 0 2px 10px rgba(0,0,0,.8);
+  }
+  html[data-mode="thanksgiving"] .name {
+    color: #f0c27a;
+    text-shadow: 0 0 18px rgba(180, 110, 40, .35), 0 2px 10px rgba(0,0,0,.8);
   }
 
   .moon, .fog, .rainbow { pointer-events: none; opacity: 0; transition: opacity .45s ease; }
@@ -809,20 +842,7 @@
 
   .bat-flight { font-size: 34px; letter-spacing: .35em; width: auto; }
   #witchFly, #lepFly { width: min(280px, 52vw); }
-  #springFly { width: min(150px, 36vw); }
   #witchFly .hoho { left: 44%; top: 2px; }
-
-  .wing {
-    transform-box: fill-box;
-    animation: wingFlap .9s ease-in-out infinite;
-  }
-  .wing.back { transform-origin: 92% 55%; }
-  .wing.fore { transform-origin: 8% 55%; }
-
-  @keyframes wingFlap {
-    0%, 100% { transform: scaleX(1); }
-    50% { transform: scaleX(.62); }
-  }
 
   /* Bottom control. It is a separate button because the top switch
      only turns the current scene on or off. This one advances.
@@ -856,15 +876,16 @@
   .mode-switch:hover { background: rgba(255,255,255,.1); }
   .mode-switch:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
-  /* Reduced motion keeps the scenes and drops the travel. Bulbs,
-     wings, and the switch knob stop moving, and a flyer parks in
-     view instead of crossing the sky. */
+  /* Reduced motion keeps the scenes and drops the travel. Bulbs
+     and the switch knob stop moving, and a flyer parks in view
+     instead of crossing the sky. Thanksgiving has no flyer, so the
+     still frame is the lights, the leaves, and the corner mark. */
   @media (prefers-reduced-motion: reduce) {
     .nav-link { transition: none !important; }
     .btn { transition: none !important; }
     .launch-button, .wish, .sparkle { transition: none !important; animation: none !important; }
     .bulb, .deer-bob, .leg, .wave, .nose-glow, .scarf, .spark-trail i,
-    .corner-deco, .santa-bob, .ghosts span, .wing, .switch-knob {
+    .corner-deco, .santa-bob, .ghosts span, .switch-knob {
       animation: none !important;
     }
     .switch-knob { transition: none !important; }
@@ -878,8 +899,7 @@
       transform: none !important;
     }
     html[data-mode="halloween"] #witchFly.parked,
-    html[data-mode="patrick"] #lepFly.parked,
-    html[data-mode="spring"] #springFly.parked {
+    html[data-mode="patrick"] #lepFly.parked {
       top: 11vh;
       left: 5vw;
       right: auto;
@@ -891,7 +911,15 @@
   @media (max-width: 700px) {
     .kicker { font-size: .64rem; }
     .nav-link { font-size: .92rem; padding: 10px 13px; }
-    .holiday-toggle { font-size: .82rem; padding: 8px 12px 8px 8px; }
+    .holiday-toggle {
+      font-size: .68rem;
+      padding: 2px 4px 2px 7px;
+      gap: 5px;
+      max-width: 42vw;
+    }
+    .holiday-label { max-width: 5.4rem; }
+    .corner-deco.turkey { font-size: 24px; }
+    .corner-deco.candle { font-size: 22px; }
     .holiday-toast { font-size: .78rem; max-width: 88vw; }
     .corner-deco { font-size: 32px; }
     .corner-deco.right {
@@ -924,7 +952,7 @@
   <p class="holiday-toast" id="holidayToast" role="status"></p>
   <button class="mode-switch" id="modeSwitch" type="button" aria-label="Next scene: Holiday">
     <span class="mode-switch-label">Next</span>
-    <span class="mode-switch-ico" aria-hidden="true">💗</span>
+    <span class="mode-switch-ico" aria-hidden="true">✨</span>
   </button>
 
   <canvas id="bg"></canvas>
@@ -961,10 +989,10 @@
   <div class="corner-deco flag right" aria-hidden="true">🇺🇸</div>
   <div class="corner-deco shamrock" aria-hidden="true">☘️</div>
   <div class="corner-deco shamrock right" aria-hidden="true">☘️</div>
-  <div class="corner-deco heart" aria-hidden="true">💗</div>
-  <div class="corner-deco heart right" aria-hidden="true">❤️</div>
+  <div class="corner-deco candle" aria-hidden="true">🕯️</div>
   <div class="corner-deco blossom" aria-hidden="true">🌸</div>
   <div class="corner-deco blossom right" aria-hidden="true">🌸</div>
+  <div class="corner-deco turkey" aria-hidden="true">🦃</div>
 
   <div class="santa-fly" id="santaFly" hidden>
     <div class="santa-bob">
@@ -1134,33 +1162,6 @@
     </div>
   </div>
 
-  <!-- One butterfly, drawn in proportion and kept small, so spring
-       has a single flyer without covering the name or becoming a swarm. -->
-  <div class="santa-fly" id="springFly" hidden>
-    <div class="santa-bob">
-      <svg class="santa-svg" viewBox="0 0 180 120" aria-hidden="true">
-        <g class="wing back">
-          <ellipse cx="52" cy="46" rx="36" ry="22" fill="#ffc2d8" stroke="#e07aa0" stroke-width="2" transform="rotate(-24 52 46)"/>
-          <ellipse cx="58" cy="46" rx="12" ry="7" fill="#fff4f8" transform="rotate(-24 58 46)"/>
-          <ellipse cx="60" cy="78" rx="26" ry="16" fill="#d9c6f6" stroke="#b394dc" stroke-width="2" transform="rotate(18 60 78)"/>
-        </g>
-        <g class="wing fore">
-          <ellipse cx="128" cy="46" rx="36" ry="22" fill="#ffc2d8" stroke="#e07aa0" stroke-width="2" transform="rotate(24 128 46)"/>
-          <ellipse cx="122" cy="46" rx="12" ry="7" fill="#fff4f8" transform="rotate(24 122 46)"/>
-          <ellipse cx="120" cy="78" rx="26" ry="16" fill="#d9c6f6" stroke="#b394dc" stroke-width="2" transform="rotate(-18 120 78)"/>
-        </g>
-        <ellipse cx="90" cy="66" rx="7" ry="24" fill="#4a3428"/>
-        <circle cx="90" cy="42" r="8" fill="#3d2b22"/>
-        <circle cx="87" cy="41" r="1.3" fill="#fff"/>
-        <circle cx="93" cy="41" r="1.3" fill="#fff"/>
-        <path d="M84 36 Q72 22 66 16" stroke="#3d2b22" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-        <path d="M96 36 Q108 22 114 16" stroke="#3d2b22" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-        <circle cx="66" cy="16" r="2.4" fill="#3d2b22"/>
-        <circle cx="114" cy="16" r="2.4" fill="#3d2b22"/>
-      </svg>
-    </div>
-  </div>
-
   <div class="main-content">
     <p class="kicker">Program Manager + Engineer + Photographer</p>
     <h1 class="name">Sambrit Adhikari</h1>
@@ -1231,21 +1232,28 @@ copyBtn.addEventListener('click', async () => {
    share of the motion is already sideways. High up, a small payload
    keeps going on that same diagonal and fades. The booster flips,
    arcs back, and lands beside the button. That payload and landing
-   is the extra beat. A second tap during a landing sends one simpler
-   diagonal the other way, so two boosters never share the pad. The
-   emoji points up-right, and its tilt follows the travel. On the
-   landing burn the engines point down, the flame sits underneath,
-   and it cuts out on touchdown.
+   is one flight. Several can be in the air together, capped at six,
+   so a few taps read as a small volley and not a swarm. They
+   alternate up-right and up-left. Every one of them uses this slower
+   diagonal and keeps a flame. Only one booster separates a payload
+   and lands. Further taps while that landing is in progress add
+   diagonal fly-outs. They do not each try to land on the pad. When
+   nothing is landing, the next tap starts a full flight again. The
+   steep straight-up path stays gone. There is no audio. The emoji
+   points up-right, and its tilt follows the travel. On the landing
+   burn the engines point down, the flame sits underneath, and it
+   cuts out on touchdown.
 */
 const launchBtn = document.querySelector('.launch-button');
 const ASCENT_MS = 5200;
 const ARC_MS = 2700;
 const SETTLE_MS = 480;
 const FADE_MS = 260;
+const ROCKET_CAP = 6;
 
 let nextSide = 1;
 let landingSide = 0;
-let flybyOn = false;
+let airborne = 0;
 let calmOn = false;
 
 function noseTilt(vx, vy) {
@@ -1549,16 +1557,19 @@ launchBtn.addEventListener('click', () => {
     spawnCalm(side);
     return;
   }
-  if (landingSide) {
-    if (flybyOn) return;
-    flybyOn = true;
-    runRocket(-landingSide, 'flyby', () => { flybyOn = false; });
-    return;
-  }
+  if (airborne >= ROCKET_CAP) return;
   const side = nextSide;
   nextSide = -nextSide;
+  airborne += 1;
+  if (landingSide) {
+    runRocket(side, 'flyby', () => { airborne -= 1; });
+    return;
+  }
   landingSide = side;
-  runRocket(side, 'land', () => { landingSide = 0; });
+  runRocket(side, 'land', () => {
+    landingSide = 0;
+    airborne -= 1;
+  });
 });
 
 /* A tap on the open sky leaves one star. A tap on the name leaves a
@@ -1603,23 +1614,36 @@ document.querySelector('.name').addEventListener('click', (e) => {
    when the page opens. A saved Off does not keep the season off
    after a reload. The windows are local calendar dates, and they
    leave quiet gaps so the page is a normal night for most of the year.
-   The page never plays audio.
+   The page never plays audio. Hearts and butterflies are gone because
+   they made this personal page read like a greeting card. Valentine
+   is warm amber and rose light. Spring is blossom bulbs and a few
+   plain petals, with no flyer in their place.
 
-   Nov 1 through Jan 2     holiday     after Halloween, before January 3
-   February 1 through 14   valentine   the holiday itself, not all of February
-   March 1 through 18      patrick     ends before the spring equinox
-   March 20 through May 31 spring      after St. Patrick's, before a quiet June
-   July 1 through July 7   july4       the week of the holiday, then night again
-   October                 halloween   the whole month
+   Nov 1 through Jan 2      holiday        except the Thanksgiving weekend
+   Fourth Thursday, November thanksgiving  Wednesday before through Sunday after
+   February 13 through 15   valentine      the day before, the day, and the day after
+   March 1 through 18       patrick        ends before the spring equinox
+   March 20 through May 31  spring         after St. Patrick's, before a quiet June
+   July 1 through July 7    july4          the week of the holiday, then night again
+   October                  halloween      the whole month
 
-   March 19, June, July 8 through September 30, and January 3
-   through 31 stay off until someone picks a scene.
+   March 19, June, July 8 through September 30, January 3 through 31,
+   and February outside the 13th through the 15th stay off until
+   someone picks a scene.
 
-   The two controls are separate on purpose. The top switch only
-   turns the labeled scene on or off. A status sentence did not
-   read as something you can press. The bottom button only advances
-   to the next scene, so turning a scene off is not the same gesture
-   as choosing a different one.
+   Thanksgiving is the fourth Thursday in November, widened to the
+   Wednesday before and the Sunday after. That five-day weekend is
+   one scene. Those days are not also holiday mode. Holiday still
+   covers the rest of November 1 through January 2. Valentine is only
+   those three February days. A run from February 1 through 14 was
+   too long, and it was the heart scene.
+
+   The two controls are separate on purpose. The switch sits at the
+   top left, under the bulbs and clear of the name, and it only turns
+   the labeled scene on or off. It used to sit in the middle of the
+   lights, which made the control the first thing on the page. The
+   bottom button only advances to the next scene, so turning a scene
+   off is not the same gesture as choosing a different one.
 */
 const holidayBtn = document.getElementById('holidayToggle');
 const holidayLabel = holidayBtn.querySelector('.holiday-label');
@@ -1631,16 +1655,17 @@ const santaFly = document.getElementById('santaFly');
 const witchFly = document.getElementById('witchFly');
 const batFly = document.getElementById('batFly');
 const lepFly = document.getElementById('lepFly');
-const springFly = document.getElementById('springFly');
 const snowCanvas = document.getElementById('snow');
 const sctx = snowCanvas.getContext('2d', { alpha: true });
 
 /* The bottom button walks this list one step at a time. Off is in
    the list so the visitor can land on a plain night. The order is
-   the year as this page tells it: the winter holiday, then the
-   dated scenes through Halloween. */
-const MODE_CYCLE = ['off', 'holiday', 'valentine', 'patrick', 'spring', 'july4', 'halloween'];
-const SCENE_IDS = ['holiday', 'halloween', 'july4', 'patrick', 'valentine', 'spring'];
+   the year as this page tells it, from the winter holiday through
+   Halloween, then Thanksgiving. Thanksgiving follows Halloween
+   because the fourth Thursday of November comes after October and
+   before the rest of that winter holiday. */
+const MODE_CYCLE = ['off', 'holiday', 'valentine', 'patrick', 'spring', 'july4', 'halloween', 'thanksgiving'];
+const SCENE_IDS = ['holiday', 'halloween', 'july4', 'patrick', 'valentine', 'spring', 'thanksgiving'];
 const MODE_META = {
   off: { ico: '✨', label: 'Off' },
   holiday: {
@@ -1648,7 +1673,7 @@ const MODE_META = {
     toastOn: 'Happy holidays — the sleigh is out'
   },
   valentine: {
-    ico: '💗', label: 'Valentine',
+    ico: '🕯️', label: 'Valentine',
     toastOn: "Happy Valentine's Day"
   },
   patrick: {
@@ -1656,7 +1681,7 @@ const MODE_META = {
     toastOn: "Top o' the mornin'"
   },
   spring: {
-    ico: '🦋', label: 'Spring',
+    ico: '🌸', label: 'Spring',
     toastOn: 'Spring is in the air'
   },
   july4: {
@@ -1666,14 +1691,18 @@ const MODE_META = {
   halloween: {
     ico: '🎃', label: 'Halloween',
     toastOn: 'Happy Halloween — the witch is out'
+  },
+  thanksgiving: {
+    ico: '🦃', label: 'Thanksgiving',
+    toastOn: 'Happy Thanksgiving'
   }
 };
 const GIFT_EMOJI = {
   holiday: ['🎁', '⭐', '🔔', '🍬', '🧦', '❄️'],
   halloween: ['🍬', '🎃', '🦇', '👻', '🍫'],
   july4: ['⭐', '🎇'],
-  patrick: ['☘️', '🪙', '🌟', '💚'],
-  valentine: ['💗', '❤️', '✨'],
+  patrick: ['☘️', '🪙', '🌟', '🌈'],
+  valentine: ['🕯️', '✨', '🌟'],
   spring: ['🌸', '🌼', '🍃']
 };
 
@@ -1693,13 +1722,25 @@ let giftTimer = 0;
 let toastTimer = 0;
 let snowWasOn = false;
 
+/* Fourth Thursday of November, then the Wednesday before it through
+   the Sunday after it. The weekend is carved out of holiday mode so
+   those five days are one scene, not two. */
+function isThanksgivingSpan(now) {
+  const nov1 = new Date(now.getFullYear(), 10, 1);
+  const firstThursday = 1 + ((4 - nov1.getDay() + 7) % 7);
+  const thursday = firstThursday + 21;
+  const day = now.getDate();
+  return day >= thursday - 1 && day <= thursday + 3;
+}
+
 function seasonalMode(date) {
   const now = date || new Date();
   const month = now.getMonth();
   const day = now.getDate();
   if (month === 9) return 'halloween';
+  if (month === 10 && isThanksgivingSpan(now)) return 'thanksgiving';
   if (month === 10 || month === 11 || (month === 0 && day < 3)) return 'holiday';
-  if (month === 1 && day <= 14) return 'valentine';
+  if (month === 1 && day >= 13 && day <= 15) return 'valentine';
   if (month === 2 && day <= 18) return 'patrick';
   if ((month === 2 && day >= 20) || month === 3 || month === 4) return 'spring';
   if (month === 6 && day <= 7) return 'july4';
@@ -1771,7 +1812,6 @@ function flyerAllowed(el) {
   if (el === santaFly) return activeMode === 'holiday';
   if (el === witchFly || el === batFly) return activeMode === 'halloween';
   if (el === lepFly) return activeMode === 'patrick';
-  if (el === springFly) return activeMode === 'spring';
   return false;
 }
 
@@ -1820,7 +1860,7 @@ function startEffects() {
   rockets = [];
   sparks = [];
   nextFirework = 0;
-  const lead = activeMode === 'holiday' ? santaFly : activeMode === 'halloween' ? witchFly : activeMode === 'patrick' ? lepFly : activeMode === 'spring' ? springFly : null;
+  const lead = activeMode === 'holiday' ? santaFly : activeMode === 'halloween' ? witchFly : activeMode === 'patrick' ? lepFly : null;
   if (reduceMotion) {
     if (lead) {
       lead.hidden = false;
@@ -1835,7 +1875,7 @@ function startEffects() {
 
 function stopEffects() {
   clearTimeout(giftTimer);
-  [santaFly, witchFly, batFly, lepFly, springFly].forEach(stopFlyer);
+  [santaFly, witchFly, batFly, lepFly].forEach(stopFlyer);
   document.querySelectorAll('.gift').forEach((g) => g.remove());
   dust = [];
   rockets = [];
@@ -1886,45 +1926,37 @@ function burstFromButton() {
   }
 }
 
-/* One canvas draws snow, leaves, coins, hearts, or petals.
-   Valentine and spring use only a few slow pieces. A full field
-   would turn those quiet seasons into a blizzard. */
+/* One canvas draws snow, coins, gold-brown leaves, or petals.
+   Valentine draws nothing here. Hearts read wrong on this personal
+   page, so that scene is the amber and rose bulbs and a candle.
+   Spring is a few plain petals, not a butterfly and not a stand-in
+   creature. Thanksgiving is a few slow gold-brown leaves, not the
+   Halloween orange and purple swarm. A full field would turn those
+   quiet seasons into a blizzard. */
 function makeFlake(anywhere) {
-  const gentle = activeMode === 'valentine' || activeMode === 'spring';
+  const gentle = activeMode === 'spring' || activeMode === 'thanksgiving';
   const roll = Math.random();
   return {
     x: Math.random() * Math.max(snowCanvas.width, 1),
     y: anywhere ? Math.random() * Math.max(snowCanvas.height, 1) : -rand(4, 40),
     r: gentle ? rand(2.4, 4.4) : rand(0.6, 2.7),
-    vy: gentle ? rand(0.1, 0.32) : rand(0.28, 0.95),
+    vy: gentle ? rand(0.08, 0.28) : rand(0.28, 0.95),
     vx: rand(-0.18, 0.18),
     wobble: rand(0, Math.PI * 2),
-    wobbleSpeed: gentle ? rand(0.004, 0.012) : rand(0.01, 0.025),
+    wobbleSpeed: gentle ? rand(0.003, 0.01) : rand(0.01, 0.025),
     o: rand(0.4, 0.9),
     hue: Math.random(),
-    kind: activeMode === 'valentine' ? 'heart' : activeMode === 'spring' ? 'petal' : (roll > 0.86 ? 'star' : 'dot')
+    kind: activeMode === 'thanksgiving' ? 'leaf' : activeMode === 'spring' ? 'petal' : (roll > 0.86 ? 'star' : 'dot')
   };
 }
 
 function initSnow() {
   let count = Math.min(200, Math.floor((innerWidth * innerHeight) / 13000));
-  if (activeMode === 'valentine') count = Math.min(16, Math.max(8, Math.floor(innerWidth / 80)));
+  if (activeMode === 'valentine') count = 0;
+  else if (activeMode === 'thanksgiving') count = Math.min(12, Math.max(5, Math.floor(innerWidth / 140)));
   else if (activeMode === 'spring') count = Math.min(20, Math.max(10, Math.floor(innerWidth / 70)));
   flakes = [];
   for (let i = 0; i < count; i++) flakes.push(makeFlake(true));
-}
-
-function drawHeart(x, y, s, color) {
-  sctx.save();
-  sctx.translate(x, y);
-  sctx.scale(s, s);
-  sctx.fillStyle = color;
-  sctx.beginPath();
-  sctx.moveTo(0, 0.35);
-  sctx.bezierCurveTo(-0.62, -0.2, -0.4, -0.9, 0, -0.42);
-  sctx.bezierCurveTo(0.4, -0.9, 0.62, -0.2, 0, 0.35);
-  sctx.fill();
-  sctx.restore();
 }
 
 function drawSnowflake(x, y, r, alpha) {
@@ -1940,9 +1972,20 @@ function drawSnowflake(x, y, r, alpha) {
 }
 
 function paintFlake(f) {
-  if (f.kind === 'heart') {
-    const color = f.hue > 0.5 ? 'rgba(255,77,106,' + f.o + ')' : 'rgba(255,150,180,' + f.o + ')';
-    drawHeart(f.x, f.y, f.r * dpr * 5.2, color);
+  if (f.kind === 'leaf') {
+    const color = f.hue > 0.66
+      ? 'rgba(196,132,74,' + f.o + ')'
+      : f.hue > 0.33
+        ? 'rgba(224,168,72,' + f.o + ')'
+        : 'rgba(122,74,36,' + f.o + ')';
+    sctx.save();
+    sctx.translate(f.x, f.y);
+    sctx.rotate(f.wobble);
+    sctx.fillStyle = color;
+    sctx.beginPath();
+    sctx.ellipse(0, 0, f.r * dpr * 2.1, f.r * dpr * 0.85, 0, 0, Math.PI * 2);
+    sctx.fill();
+    sctx.restore();
     return;
   }
   if (f.kind === 'petal') {
@@ -1989,8 +2032,9 @@ function starTint(s) {
   if (activeMode === 'halloween' && s.depth > 0.6) return s.phase > 3 ? '#ffb15a' : '#e2c6ff';
   if (activeMode === 'july4' && s.depth > 0.55) return ['#ff7a7a', '#ffffff', '#8ecbff'][Math.floor(s.phase) % 3];
   if (activeMode === 'patrick' && s.depth > 0.6) return s.phase > 3 ? '#d6ff9a' : '#ffe08a';
-  if (activeMode === 'valentine' && s.depth > 0.72) return s.phase > 3 ? '#ffd0dc' : '#ffe08a';
+  if (activeMode === 'valentine' && s.depth > 0.72) return s.phase > 3 ? '#ffd0b0' : '#ffe08a';
   if (activeMode === 'spring' && s.depth > 0.72) return s.phase > 3 ? '#ffe9b0' : '#ffd6e4';
+  if (activeMode === 'thanksgiving' && s.depth > 0.72) return s.phase > 3 ? '#e8b86a' : '#c4844a';
   return '#ffffff';
 }
 
@@ -1999,8 +2043,9 @@ function shootingTint() {
   if (activeMode === 'july4') return 'rgba(255,255,255,0.95)';
   if (activeMode === 'patrick') return 'rgba(190,255,150,0.95)';
   if (activeMode === 'holiday') return 'rgba(255,224,138,0.95)';
-  if (activeMode === 'valentine') return 'rgba(255,170,190,0.95)';
+  if (activeMode === 'valentine') return 'rgba(255,196,150,0.95)';
   if (activeMode === 'spring') return 'rgba(255,224,170,0.95)';
+  if (activeMode === 'thanksgiving') return 'rgba(224,168,80,0.95)';
   return 'rgba(255,255,255,0.90)';
 }
 
@@ -2237,7 +2282,7 @@ function loop(now) {
 
   const sw = snowCanvas.width;
   const sh = snowCanvas.height;
-  const fxOn = activeMode === 'holiday' || activeMode === 'halloween' || activeMode === 'patrick' || activeMode === 'july4' || activeMode === 'valentine' || activeMode === 'spring';
+  const fxOn = activeMode === 'holiday' || activeMode === 'halloween' || activeMode === 'patrick' || activeMode === 'july4' || activeMode === 'valentine' || activeMode === 'spring' || activeMode === 'thanksgiving';
   if (!fxOn) {
     if (snowWasOn) {
       sctx.clearRect(0, 0, sw, sh);
@@ -2270,7 +2315,7 @@ function loop(now) {
       paintFlake(f);
     }
 
-    const trailEl = [santaFly, witchFly, lepFly, springFly].find((el) => !el.hidden);
+    const trailEl = [santaFly, witchFly, lepFly].find((el) => !el.hidden);
     if (trailEl) {
       const box = trailEl.getBoundingClientRect();
       if (Math.random() < 0.85) {
@@ -2298,7 +2343,7 @@ function loop(now) {
       }
       sctx.globalAlpha = Math.max(0, p.life);
       sctx.fillStyle = p.gold
-        ? (activeMode === 'halloween' ? '#ffb15a' : activeMode === 'valentine' ? '#ff8ab0' : activeMode === 'spring' ? '#ffd0e0' : '#ffe08a')
+        ? (activeMode === 'halloween' ? '#ffb15a' : activeMode === 'valentine' ? '#e8b090' : activeMode === 'spring' ? '#ffd0e0' : activeMode === 'thanksgiving' ? '#c4844a' : '#ffe08a')
         : '#ffffff';
       sctx.beginPath();
       sctx.arc(p.x, p.y, p.r * dpr, 0, Math.PI * 2);
@@ -2318,13 +2363,13 @@ function loop(now) {
 resize();
 requestAnimationFrame(loop);
 
-/* On each fresh load the calendar scene starts on. site-mode "off"
-   and the older holiday-mode value "0" are ignored, so a previous
-   Off does not leave the season dark after a reload. A saved scene
-   id still wins, because the visitor picked that scene. "auto", a
-   missing value, and a discarded "off" all follow the date. Outside
-   every season the page stays a normal night until Next picks a scene.
-   The page never plays audio. */
+/* On each fresh load the calendar scene starts on, including a
+   Thanksgiving weekend. site-mode "off" and the older holiday-mode
+   value "0" are ignored, so a previous Off does not leave the season
+   dark after a reload. A saved scene id still wins, because the
+   visitor picked that scene. "auto", a missing value, and a discarded
+   "off" all follow the date. Outside every season the page stays a
+   normal night until Next picks a scene. The page never plays audio. */
 try {
   const saved = localStorage.getItem('site-mode');
   if (SCENE_IDS.indexOf(saved) !== -1) choice = saved;
