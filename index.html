@@ -78,6 +78,9 @@
     text-shadow: 0 2px 8px rgba(0,0,0,0.62);
   }
 
+  /* The name stays a solid gold-family color. A seasonal tint is fine.
+     Clipping the letters to a gradient made them look hollow, so the
+     color is painted on the text itself. Flyers sit under this text. */
   .name {
     font-family: 'Montserrat', system-ui, sans-serif;
     font-size: clamp(3rem, 8vw, 6rem);
@@ -204,47 +207,128 @@
     transform: translateX(-50%) scale(0.97);
   }
 
-  .rocket {
+  .name { cursor: pointer; }
+
+  .wish, .sparkle {
     position: fixed;
-    font-size: 2rem;
-    z-index: 9;
+    z-index: 5;
     pointer-events: none;
-    animation: rocketFly 3.2s forwards cubic-bezier(.2,.6,.3,1);
+    line-height: 1;
   }
 
+  .wish {
+    font-size: 14px;
+    color: #fff;
+    animation: wish 1.5s ease-out forwards;
+  }
+
+  .sparkle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffe08a;
+    box-shadow: 0 0 8px #ffd700;
+    animation: sparkle 900ms ease-out forwards;
+  }
+
+  @keyframes wish {
+    0% { transform: translate(-50%, -40%) scale(.7); opacity: 0; }
+    18% { opacity: 1; }
+    100% { transform: translate(-50%, -64px) scale(1); opacity: 0; }
+  }
+
+  @keyframes sparkle {
+    0% { transform: translate(0, 0) scale(.4); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(var(--sx), var(--sy)) scale(1); opacity: 0; }
+  }
+
+  .rocket {
+    position: fixed;
+    width: 2rem;
+    height: 2rem;
+    font-size: 2rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    z-index: 9;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  /* The flame is its own speck, not part of the emoji, so it can sit
+     on the engines and go out on touchdown. The payload is a small
+     unmarked capsule so the separation reads without a caption. */
+  .exhaust {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 7;
+  }
+
+  .payload {
+    position: fixed;
+    z-index: 9;
+    width: 14px;
+    height: 8px;
+    border-radius: 4px;
+    pointer-events: none;
+    background: linear-gradient(180deg, #f7fafc, #c5d2df 58%, #93a6b8);
+    box-shadow: 0 0 8px rgba(255, 236, 190, .55);
+  }
+
+  /* Season switch. It used to sit in the horizontal center of the
+     light string, and that made the control the first thing on the
+     page. It now sits at the top left, under the bulbs and inset
+     from the safe area, so the lights and the name stay the focus.
+     It is still a real switch: the season name, a track, and a knob.
+     The knob moves right only while aria-pressed is true. The label
+     can wrap to two short lines on a narrow phone. Centering it
+     again would put it back in the lights. Script keeps the control
+     visible after the scene is turned off, when data-mode is gone,
+     so the knob cannot key off the scene. */
   .holiday-toggle {
     position: fixed;
     z-index: 8;
-    top: calc(12px + env(safe-area-inset-top));
-    left: 50%;
-    transform: translateX(-50%);
+    top: calc(54px + env(safe-area-inset-top));
+    left: calc(10px + env(safe-area-inset-left));
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 14px 8px 10px;
+    gap: 6px;
+    min-height: 28px;
+    max-width: min(46vw, 168px);
+    padding: 3px 5px 3px 8px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.16);
-    background: rgba(8,10,16,.66);
-    color: #fafafa;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(8,10,16,.42);
+    color: rgba(250,250,250,.8);
     font-family: inherit;
-    font-weight: 700;
-    font-size: .92rem;
-    letter-spacing: .01em;
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: 0;
+    line-height: 1.05;
+    text-align: left;
     cursor: pointer;
     user-select: none;
     touch-action: manipulation;
     backdrop-filter: blur(8px);
-    box-shadow: 0 8px 24px rgba(0,0,0,.28);
-    transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
+    box-shadow: none;
+    transition: background .2s ease;
+  }
+
+  .holiday-label {
+    display: block;
+    max-width: 6.5rem;
+    text-align: left;
+    line-height: 1.05;
   }
 
   .holiday-toggle:hover {
-    transform: translateX(-50%) translateY(-1px);
-    background: rgba(255,255,255,.1);
+    background: rgba(255,255,255,.08);
   }
 
   .holiday-toggle:active {
-    transform: translateX(-50%) scale(.98);
+    background: rgba(255,255,255,.12);
   }
 
   .holiday-toggle:focus-visible {
@@ -252,28 +336,40 @@
     outline-offset: 3px;
   }
 
-  .holiday-ico {
-    font-size: 1.05rem;
-    line-height: 1;
-    display: inline-block;
+  .switch {
+    position: relative;
+    flex: none;
+    width: 32px;
+    height: 18px;
+    border-radius: 999px;
+    background: #3a4150;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);
   }
 
-  body.holiday .holiday-toggle {
-    background: linear-gradient(100deg, #9d1c2c, #1f7a45);
-    border-color: rgba(255, 224, 138, .6);
-    box-shadow: 0 0 0 1px rgba(255,224,138,.25), 0 10px 28px rgba(227, 40, 70, .35);
+  .switch-knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.35);
+    transition: transform .18s ease;
   }
 
-  body.holiday .holiday-ico { animation: wiggle .9s ease-in-out infinite; }
+  .holiday-toggle[aria-pressed="true"] .switch {
+    background: #3dcc7a;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.18);
+  }
 
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(-8deg); }
-    50% { transform: rotate(8deg); }
+  .holiday-toggle[aria-pressed="true"] .switch-knob {
+    transform: translateX(14px);
   }
 
   .holiday-toast {
     position: fixed;
-    top: calc(58px + env(safe-area-inset-top));
+    top: calc(104px + env(safe-area-inset-top));
     left: 50%;
     z-index: 8;
     margin: 0;
@@ -297,6 +393,11 @@
     transform: translateX(-50%) translateY(0);
   }
 
+  /* One string of lights for every scene. Each mode only recolors
+     the bulbs, so Halloween, July 4, Valentine, Spring, and
+     Thanksgiving share the same wire. Valentine stays amber and
+     rose because a field of hearts was the wrong tone here.
+     Thanksgiving is warm amber and brown, lighter than Halloween. */
   .xmas-lights {
     position: fixed;
     top: 0;
@@ -310,7 +411,13 @@
     transition: opacity .45s ease, transform .5s ease;
   }
 
-  body.holiday .xmas-lights {
+  html[data-mode="holiday"] .xmas-lights,
+  html[data-mode="halloween"] .xmas-lights,
+  html[data-mode="july4"] .xmas-lights,
+  html[data-mode="patrick"] .xmas-lights,
+  html[data-mode="valentine"] .xmas-lights,
+  html[data-mode="spring"] .xmas-lights,
+  html[data-mode="thanksgiving"] .xmas-lights {
     opacity: 1;
     transform: none;
   }
@@ -366,7 +473,7 @@
     transition: transform .7s cubic-bezier(.2,.8,.2,1);
   }
 
-  body.holiday .snowbank { transform: translateY(0); }
+  html[data-mode="holiday"] .snowbank { transform: translateY(0); }
 
   .corner-deco {
     position: fixed;
@@ -380,34 +487,55 @@
     transition: transform .6s cubic-bezier(.2,.8,.2,1);
   }
 
-  .corner-deco.tree { left: 14px; }
-  .corner-deco.star {
-    right: 16px;
+  .corner-deco.tree,
+  .corner-deco.pumpkin:not(.right),
+  .corner-deco.flag:not(.right),
+  .corner-deco.shamrock:not(.right),
+  .corner-deco.candle,
+  .corner-deco.blossom:not(.right),
+  .corner-deco.turkey { left: 14px; }
+
+  .holiday-toggle[hidden] { display: none !important; }
+  .corner-deco.right {
+    right: 132px;
     font-size: 34px;
     bottom: 18px;
   }
 
-  body.holiday .corner-deco { transform: translateY(0); }
-  body.holiday .corner-deco.star { animation: spin-slow 8s linear infinite; }
+  html[data-mode="holiday"] .corner-deco.tree,
+  html[data-mode="holiday"] .corner-deco.star { transform: translateY(0); }
+  html[data-mode="holiday"] .corner-deco.star { animation: spin-slow 8s linear infinite; }
+  html[data-mode="halloween"] .corner-deco.pumpkin { transform: translateY(0); }
+  html[data-mode="july4"] .corner-deco.flag { transform: translateY(0); }
+  html[data-mode="patrick"] .corner-deco.shamrock { transform: translateY(0); }
+  html[data-mode="valentine"] .corner-deco.candle { transform: translateY(0); }
+  html[data-mode="spring"] .corner-deco.blossom { transform: translateY(0); }
+  html[data-mode="thanksgiving"] .corner-deco.turkey { transform: translateY(0); }
+  .corner-deco.candle { font-size: 28px; }
+  .corner-deco.turkey { font-size: 30px; }
 
   @keyframes spin-slow {
     to { transform: rotate(360deg); }
   }
 
-  body.holiday .glow {
+  html[data-mode="holiday"] .glow {
     background:
       radial-gradient(38vmax 38vmax at 18% 18%, rgba(120, 190, 255, 0.2), transparent 62%),
       radial-gradient(34vmax 34vmax at 82% 78%, rgba(255, 70, 90, 0.14), transparent 66%),
       radial-gradient(40vmax 40vmax at 50% 40%, rgba(255, 210, 90, 0.12), transparent 68%);
   }
 
-  body.holiday .name {
+  html[data-mode="holiday"] .name {
     color: #ffe08a;
     text-shadow:
       0 0 18px rgba(255, 214, 90, .45),
       0 2px 10px rgba(0,0,0,.8);
   }
 
+  /* Flyers cross the upper sky under the name. Text is z-index 6
+     and these are 5, so a pass never covers the title. The sleigh
+     is wide on purpose. The witch and the leprechaun override that
+     width so their drawings are not stretched to the sleigh. */
   .santa-fly {
     position: fixed;
     left: 0;
@@ -563,21 +691,205 @@
     100% { transform: translate3d(var(--drift), 115vh, 0) rotate(260deg); }
   }
 
-  @keyframes rocketFly {
-    0%   { transform: translate(0, 0); opacity: 1; }
-    75%  { opacity: 1; }
-    100% { transform: translate(var(--dx, 50vw), -100vh); opacity: 0; }
+
+  html[data-mode="halloween"] .bulb:nth-child(5n+1) { color: #ff6a00; background: #ff6a00; }
+  html[data-mode="halloween"] .bulb:nth-child(5n+2) { color: #b388ff; background: #b388ff; }
+  html[data-mode="halloween"] .bulb:nth-child(5n+3) { color: #ffd24d; background: #ffd24d; }
+  html[data-mode="halloween"] .bulb:nth-child(5n+4) { color: #7c4dff; background: #7c4dff; }
+  html[data-mode="halloween"] .bulb:nth-child(5n) { color: #ff8a50; background: #ff8a50; }
+
+  html[data-mode="july4"] .bulb:nth-child(3n+1) { color: #ff4d4d; background: #ff4d4d; }
+  html[data-mode="july4"] .bulb:nth-child(3n+2) { color: #f7f7f7; background: #f7f7f7; }
+  html[data-mode="july4"] .bulb:nth-child(3n) { color: #6eb6ff; background: #6eb6ff; }
+
+  html[data-mode="patrick"] .bulb:nth-child(5n+1) { color: #3dcc7a; background: #3dcc7a; }
+  html[data-mode="patrick"] .bulb:nth-child(5n+2) { color: #ffe08a; background: #ffe08a; }
+  html[data-mode="patrick"] .bulb:nth-child(5n+3) { color: #1faa5a; background: #1faa5a; }
+  html[data-mode="patrick"] .bulb:nth-child(5n+4) { color: #d6ff9a; background: #d6ff9a; }
+  html[data-mode="patrick"] .bulb:nth-child(5n) { color: #f2c14e; background: #f2c14e; }
+
+  html[data-mode="valentine"] .bulb:nth-child(5n+1) { color: #ffb15a; background: #ffb15a; }
+  html[data-mode="valentine"] .bulb:nth-child(5n+2) { color: #e7a0ae; background: #e7a0ae; }
+  html[data-mode="valentine"] .bulb:nth-child(5n+3) { color: #ffd08a; background: #ffd08a; }
+  html[data-mode="valentine"] .bulb:nth-child(5n+4) { color: #d98998; background: #d98998; }
+  html[data-mode="valentine"] .bulb:nth-child(5n) { color: #ffe0b0; background: #ffe0b0; }
+
+  html[data-mode="spring"] .bulb:nth-child(5n+1) { color: #ffb7c5; background: #ffb7c5; }
+  html[data-mode="spring"] .bulb:nth-child(5n+2) { color: #fff1c9; background: #fff1c9; }
+  html[data-mode="spring"] .bulb:nth-child(5n+3) { color: #c8f0c0; background: #c8f0c0; }
+  html[data-mode="spring"] .bulb:nth-child(5n+4) { color: #f3c6e0; background: #f3c6e0; }
+  html[data-mode="spring"] .bulb:nth-child(5n) { color: #ffe08a; background: #ffe08a; }
+
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n+1) { color: #e8a04a; background: #e8a04a; }
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n+2) { color: #8a5a32; background: #8a5a32; }
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n+3) { color: #ffd27a; background: #ffd27a; }
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n+4) { color: #a86b3c; background: #a86b3c; }
+  html[data-mode="thanksgiving"] .bulb:nth-child(5n) { color: #c4844a; background: #c4844a; }
+
+  html[data-mode="halloween"] .glow {
+    background:
+      radial-gradient(38vmax 38vmax at 18% 18%, rgba(255, 120, 20, 0.18), transparent 62%),
+      radial-gradient(34vmax 34vmax at 82% 70%, rgba(120, 40, 200, 0.18), transparent 66%),
+      radial-gradient(40vmax 40vmax at 50% 40%, rgba(255, 180, 40, 0.08), transparent 68%);
+  }
+  html[data-mode="july4"] .glow {
+    background:
+      radial-gradient(36vmax 36vmax at 20% 80%, rgba(220, 40, 40, 0.16), transparent 62%),
+      radial-gradient(36vmax 36vmax at 80% 80%, rgba(40, 120, 255, 0.18), transparent 62%),
+      radial-gradient(30vmax 30vmax at 50% 20%, rgba(255, 255, 255, 0.08), transparent 68%);
+  }
+  html[data-mode="patrick"] .glow {
+    background:
+      radial-gradient(38vmax 38vmax at 18% 22%, rgba(40, 180, 70, 0.2), transparent 62%),
+      radial-gradient(34vmax 34vmax at 80% 70%, rgba(255, 210, 60, 0.14), transparent 66%);
+  }
+  html[data-mode="valentine"] .glow {
+    background:
+      radial-gradient(36vmax 36vmax at 18% 24%, rgba(255, 176, 110, 0.14), transparent 62%),
+      radial-gradient(34vmax 34vmax at 80% 72%, rgba(210, 120, 130, 0.12), transparent 66%);
+  }
+  html[data-mode="spring"] .glow {
+    background:
+      radial-gradient(36vmax 36vmax at 20% 22%, rgba(255, 190, 210, 0.16), transparent 62%),
+      radial-gradient(34vmax 34vmax at 78% 74%, rgba(180, 230, 170, 0.12), transparent 66%);
+  }
+  html[data-mode="thanksgiving"] .glow {
+    background:
+      radial-gradient(36vmax 36vmax at 18% 22%, rgba(200, 130, 40, 0.16), transparent 62%),
+      radial-gradient(34vmax 34vmax at 80% 74%, rgba(110, 62, 28, 0.14), transparent 66%);
   }
 
+  html[data-mode="halloween"] .name {
+    color: #ffb15a;
+    text-shadow: 0 0 18px rgba(255, 90, 20, .45), 0 2px 10px rgba(0,0,0,.8);
+  }
+  html[data-mode="july4"] .name {
+    color: #fffaf4;
+    text-shadow: 0 0 14px rgba(80, 160, 255, .55), 0 0 2px rgba(220, 40, 40, .85), 0 2px 10px rgba(0,0,0,.8);
+  }
+  html[data-mode="patrick"] .name {
+    color: #d6ffb0;
+    text-shadow: 0 0 18px rgba(40, 180, 70, .5), 0 2px 10px rgba(0,0,0,.8);
+  }
+  html[data-mode="valentine"] .name {
+    color: #ffd39a;
+    text-shadow: 0 0 18px rgba(255, 140, 160, .35), 0 2px 10px rgba(0,0,0,.8);
+  }
+  html[data-mode="spring"] .name {
+    color: #ffe7a3;
+    text-shadow: 0 0 18px rgba(255, 200, 210, .35), 0 2px 10px rgba(0,0,0,.8);
+  }
+  html[data-mode="thanksgiving"] .name {
+    color: #f0c27a;
+    text-shadow: 0 0 18px rgba(180, 110, 40, .35), 0 2px 10px rgba(0,0,0,.8);
+  }
+
+  .moon, .fog, .rainbow { pointer-events: none; opacity: 0; transition: opacity .45s ease; }
+  .moon {
+    position: fixed;
+    top: 14vh;
+    right: 7vw;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    z-index: 1;
+    background: radial-gradient(circle at 35% 35%, #fff8dc, #f0d78c 58%, #c9a84a);
+    box-shadow: 0 0 32px rgba(255, 230, 150, .4);
+  }
+  .fog {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: 140px;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(40, 16, 60, .72), rgba(40, 16, 60, 0));
+  }
+  .rainbow {
+    position: fixed;
+    left: 8vw; right: 8vw; top: 36px;
+    height: 90px;
+    z-index: 1;
+    border-radius: 50% 50% 0 0;
+    border-top: 7px solid rgba(255, 70, 70, .8);
+    box-shadow:
+      0 -7px 0 rgba(255, 160, 40, .75),
+      0 -14px 0 rgba(255, 220, 60, .7),
+      0 -21px 0 rgba(70, 200, 90, .7),
+      0 -28px 0 rgba(70, 140, 255, .7);
+  }
+  html[data-mode="halloween"] .moon,
+  html[data-mode="halloween"] .fog,
+  html[data-mode="patrick"] .rainbow { opacity: 1; }
+
+  .ghosts {
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0;
+  }
+  html[data-mode="halloween"] .ghosts { opacity: 1; }
+  .ghosts span {
+    position: absolute;
+    font-size: 30px;
+    animation: ghostFloat 8s ease-in-out infinite;
+  }
+  .ghosts span:nth-child(1) { left: 60%; top: 15%; animation-delay: -2s; }
+  .ghosts span:nth-child(2) { left: 84%; top: 24%; animation-delay: -5s; font-size: 22px; }
+  @keyframes ghostFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(28px); }
+  }
+
+  .bat-flight { font-size: 34px; letter-spacing: .35em; width: auto; }
+  #witchFly, #lepFly { width: min(280px, 52vw); }
+  #witchFly .hoho { left: 44%; top: 2px; }
+
+  /* Bottom control. It is a separate button because the top switch
+     only turns the current scene on or off. This one advances.
+     The visible word is always "Next", beside the icon of the scene
+     you will land on, so the action is obvious on a phone without
+     crowding the centered Launch button. */
+  .mode-switch {
+    position: fixed;
+    z-index: 8;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 12px 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(8,10,16,.72);
+    color: #fafafa;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: .82rem;
+    white-space: nowrap;
+    cursor: pointer;
+    touch-action: manipulation;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.28);
+  }
+  .mode-switch:hover { background: rgba(255,255,255,.1); }
+  .mode-switch:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+  /* Reduced motion keeps the scenes and drops the travel. Bulbs
+     and the switch knob stop moving, and a flyer parks in view
+     instead of crossing the sky. Thanksgiving has no flyer, so the
+     still frame is the lights, the leaves, and the corner mark. */
   @media (prefers-reduced-motion: reduce) {
     .nav-link { transition: none !important; }
     .btn { transition: none !important; }
-    .launch-button { transition: none !important; }
+    .launch-button, .wish, .sparkle { transition: none !important; animation: none !important; }
     .bulb, .deer-bob, .leg, .wave, .nose-glow, .scarf, .spark-trail i,
-    .holiday-ico, .corner-deco, .santa-bob {
+    .corner-deco, .santa-bob, .ghosts span, .switch-knob {
       animation: none !important;
     }
-    body.holiday .santa-fly.parked {
+    .switch-knob { transition: none !important; }
+    html[data-mode="holiday"] .santa-fly.parked {
       top: auto;
       bottom: 78px;
       right: 8px;
@@ -586,24 +898,62 @@
       animation: none !important;
       transform: none !important;
     }
+    html[data-mode="halloween"] #witchFly.parked,
+    html[data-mode="patrick"] #lepFly.parked {
+      top: 11vh;
+      left: 5vw;
+      right: auto;
+      animation: none !important;
+      transform: none !important;
+    }
   }
 
   @media (max-width: 700px) {
     .kicker { font-size: .64rem; }
     .nav-link { font-size: .92rem; padding: 10px 13px; }
-    .holiday-toggle { font-size: .82rem; padding: 8px 12px 8px 8px; }
-    .holiday-toast { font-size: .78rem; }
-    .corner-deco { font-size: 36px; }
-    .corner-deco.star { font-size: 26px; }
+    .holiday-toggle {
+      font-size: .68rem;
+      padding: 2px 4px 2px 7px;
+      gap: 5px;
+      max-width: 42vw;
+    }
+    .holiday-label { max-width: 5.4rem; }
+    .corner-deco.turkey { font-size: 24px; }
+    .corner-deco.candle { font-size: 22px; }
+    .holiday-toast { font-size: .78rem; max-width: 88vw; }
+    .corner-deco { font-size: 32px; }
+    .corner-deco.right {
+      font-size: 22px;
+      right: 12px;
+      bottom: 78px;
+      transform: translateY(150px);
+    }
+    .mode-switch {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 12px;
+      justify-content: center;
+      right: 10px;
+      bottom: calc(16px + env(safe-area-inset-bottom));
+    }
+    .launch-button {
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      padding: 12px 20px;
+    }
+    .rocket { font-size: 1.6rem; width: 1.7rem; height: 1.7rem; }
   }
   </style>
 </head>
 <body>
-  <button class="holiday-toggle" id="holidayToggle" type="button" aria-pressed="false">
-    <span class="holiday-ico" aria-hidden="true">🎄</span>
-    <span class="holiday-label">Holiday mode</span>
+  <button class="holiday-toggle" id="holidayToggle" type="button" aria-pressed="false" hidden>
+    <span class="holiday-label">Holiday</span>
+    <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
   </button>
   <p class="holiday-toast" id="holidayToast" role="status"></p>
+  <button class="mode-switch" id="modeSwitch" type="button" aria-label="Next scene: Holiday">
+    <span class="mode-switch-label">Next</span>
+    <span class="mode-switch-ico" aria-hidden="true">✨</span>
+  </button>
 
   <canvas id="bg"></canvas>
   <canvas id="snow" aria-hidden="true"></canvas>
@@ -626,8 +976,23 @@
     </div>
   </div>
 
+  <div class="moon" aria-hidden="true"></div>
+  <div class="fog" aria-hidden="true"></div>
+  <div class="rainbow" aria-hidden="true"></div>
+  <div class="ghosts" aria-hidden="true"><span>👻</span><span>👻</span></div>
+
   <div class="corner-deco tree" aria-hidden="true">🎄</div>
-  <div class="corner-deco star" aria-hidden="true">⭐</div>
+  <div class="corner-deco star right" aria-hidden="true">⭐</div>
+  <div class="corner-deco pumpkin" aria-hidden="true">🎃</div>
+  <div class="corner-deco pumpkin right" aria-hidden="true">🎃</div>
+  <div class="corner-deco flag" aria-hidden="true">🇺🇸</div>
+  <div class="corner-deco flag right" aria-hidden="true">🇺🇸</div>
+  <div class="corner-deco shamrock" aria-hidden="true">☘️</div>
+  <div class="corner-deco shamrock right" aria-hidden="true">☘️</div>
+  <div class="corner-deco candle" aria-hidden="true">🕯️</div>
+  <div class="corner-deco blossom" aria-hidden="true">🌸</div>
+  <div class="corner-deco blossom right" aria-hidden="true">🌸</div>
+  <div class="corner-deco turkey" aria-hidden="true">🦃</div>
 
   <div class="santa-fly" id="santaFly" hidden>
     <div class="santa-bob">
@@ -721,6 +1086,82 @@
     </div>
   </div>
 
+  <!-- A person on a broom, not a few abstract shapes. The pointed hat
+       with a brim and band, the hair, the face, the cloak, and the
+       straw head are what make her readable while she is parked and
+       while she flies. The element stays narrower than the sleigh. -->
+  <div class="santa-fly" id="witchFly" hidden>
+    <div class="santa-bob">
+      <div class="hoho">Hehe!</div>
+      <svg class="santa-svg" viewBox="0 0 360 200" aria-hidden="true">
+        <g fill="none" stroke="#e2b04a" stroke-width="3.4" stroke-linecap="round">
+          <path d="M78 146 L10 92"/>
+          <path d="M78 148 L6 110"/>
+          <path d="M78 150 L4 132"/>
+          <path d="M78 152 L8 154"/>
+          <path d="M78 152 L12 174"/>
+          <path d="M78 150 L24 190"/>
+          <path d="M78 148 L42 196"/>
+          <path d="M78 146 L18 100"/>
+          <path d="M78 150 L16 142"/>
+        </g>
+        <path d="M74 146 H338" stroke="#7a4e2c" stroke-width="8" stroke-linecap="round"/>
+        <rect x="66" y="132" width="22" height="30" rx="7" fill="#5c3418"/>
+        <path d="M70 147 H86" stroke="#e6c36a" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M156 108 C132 118 124 146 136 168 C158 176 210 174 236 162 C248 140 236 114 214 104 C196 112 174 112 156 108 Z" fill="#3a2064"/>
+        <path d="M168 118 C158 138 166 160 196 166 L228 158 C220 140 214 122 202 112 Z" fill="#542d88"/>
+        <path d="M188 124 L176 150" stroke="#3a2064" stroke-width="11" stroke-linecap="round"/>
+        <circle cx="172" cy="152" r="8" fill="#f3c6aa"/>
+        <path d="M196 162 L188 184" stroke="#1a1024" stroke-width="6" stroke-linecap="round"/>
+        <path d="M220 158 L216 182" stroke="#1a1024" stroke-width="6" stroke-linecap="round"/>
+        <ellipse cx="180" cy="186" rx="11" ry="5" fill="#140c1c"/>
+        <ellipse cx="208" cy="184" rx="11" ry="5" fill="#140c1c"/>
+        <path d="M188 78 C158 84 146 112 154 140 C164 152 178 146 176 128 C166 118 162 98 178 86 Z" fill="#241230"/>
+        <path d="M230 82 C246 98 248 122 236 142 C244 124 246 104 232 86 Z" fill="#321848"/>
+        <circle cx="214" cy="92" r="22" fill="#f6c9ad"/>
+        <path d="M200 84 Q204 82 208 85" stroke="#6a4030" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M220 84 Q224 82 228 85" stroke="#6a4030" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle cx="204" cy="90" r="3.1" fill="#2a160e"/>
+        <circle cx="224" cy="90" r="3.1" fill="#2a160e"/>
+        <circle cx="205.2" cy="88.8" r="1" fill="#fff"/>
+        <circle cx="225.2" cy="88.8" r="1" fill="#fff"/>
+        <path d="M214 94 L218 100" stroke="#e0a888" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M202 106 Q214 116 226 106" stroke="#a15a48" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="196" cy="100" rx="4" ry="2.2" fill="#f0a0a8" opacity=".85"/>
+        <ellipse cx="232" cy="100" rx="4" ry="2.2" fill="#f0a0a8" opacity=".85"/>
+        <ellipse cx="214" cy="74" rx="40" ry="9" fill="#1a1024"/>
+        <path d="M186 72 C196 46 206 22 218 8 C226 28 236 50 246 72 Z" fill="#241433"/>
+        <path d="M190 62 Q214 74 240 60" stroke="#e6c36a" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <rect x="206" y="56" width="16" height="12" rx="2" fill="#fff4c4" stroke="#a88420" stroke-width="1.4"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="santa-fly bat-flight" id="batFly" hidden aria-hidden="true">🦇&nbsp;&nbsp;🦇&nbsp;&nbsp;🦇</div>
+
+  <div class="santa-fly" id="lepFly" hidden>
+    <div class="santa-bob">
+      <div class="hoho">Top o' the mornin'!</div>
+      <svg class="santa-svg" viewBox="0 0 260 120" aria-hidden="true">
+        <ellipse cx="48" cy="92" rx="26" ry="16" fill="#1b1b1b"/>
+        <ellipse cx="48" cy="86" rx="22" ry="12" fill="#f2c14e"/>
+        <rect x="86" y="48" width="34" height="40" rx="8" fill="#1faa5a"/>
+        <rect x="86" y="74" width="34" height="8" fill="#222"/>
+        <rect x="98" y="74" width="8" height="8" fill="#f2c14e"/>
+        <circle cx="103" cy="40" r="14" fill="#f1c6a8"/>
+        <path d="M88 42 Q103 62 120 42 Q112 52 103 52 Q94 52 88 42" fill="#f4efe4"/>
+        <circle cx="108" cy="38" r="1.5" fill="#2a140c"/>
+        <path d="M86 34 L103 10 L124 34 Z" fill="#1b8a4a"/>
+        <rect x="88" y="32" width="34" height="6" rx="2" fill="#146b38"/>
+        <rect x="100" y="30" width="8" height="8" fill="#f2c14e"/>
+        <g class="wave">
+          <path d="M120 58 L148 46" stroke="#1faa5a" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="152" cy="44" r="5" fill="#f1c6a8"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
   <div class="main-content">
     <p class="kicker">Program Manager + Engineer + Photographer</p>
     <h1 class="name">Sambrit Adhikari</h1>
@@ -782,65 +1223,581 @@ copyBtn.addEventListener('click', async () => {
   }
 });
 
-/* ========================= LAUNCH BUTTON ========================= */
+/* ========================= LAUNCH BUTTON =========================
+   A steep, fast climb felt wrong. It read as a sticker shooting
+   straight up, and that is not the flight they wanted. This one is
+   a slower diagonal, up and to the right, then the next one up and
+   to the left, with a little change in steepness from flight to
+   flight. It pitches over early, so by a third of the screen a large
+   share of the motion is already sideways. High up, a small payload
+   keeps going on that same diagonal and fades. The booster flips,
+   arcs back, and lands beside the button. That payload and landing
+   is one flight. Several can be in the air together, capped at six,
+   so a few taps read as a small volley and not a swarm. They
+   alternate up-right and up-left. Every one of them uses this slower
+   diagonal and keeps a flame. Only one booster separates a payload
+   and lands. Further taps while that landing is in progress add
+   diagonal fly-outs. They do not each try to land on the pad. When
+   nothing is landing, the next tap starts a full flight again. The
+   steep straight-up path stays gone. There is no audio. The emoji
+   points up-right, and its tilt follows the travel. On the landing
+   burn the engines point down, the flame sits underneath, and it
+   cuts out on touchdown.
+*/
 const launchBtn = document.querySelector('.launch-button');
-launchBtn.addEventListener('click', () => {
+const ASCENT_MS = 5200;
+const ARC_MS = 2700;
+const SETTLE_MS = 480;
+const FADE_MS = 260;
+const ROCKET_CAP = 6;
+
+let nextSide = 1;
+let landingSide = 0;
+let airborne = 0;
+let calmOn = false;
+
+function noseTilt(vx, vy) {
+  return Math.atan2(vy, vx) * 180 / Math.PI + 45;
+}
+
+function angDiff(a, b) {
+  let d = b - a;
+  while (d > 180) d -= 360;
+  while (d < -180) d += 360;
+  return d;
+}
+
+function easeBlend(t) {
+  return t * t * (3 - 2 * t);
+}
+
+function flightPlan(side) {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const rect = launchBtn.getBoundingClientRect();
+  const ox = rect.left + rect.width / 2;
+  const oy = rect.top - 2;
+  const narrow = w < 520;
+  const spread = 0.28 + Math.random() * 0.62;
+  const vw = narrow ? (30 + spread * 10) : (42 + spread * 20);
+  const margin = narrow ? 34 : 96;
+  const room = Math.max(72, side > 0 ? (w - margin - ox) : (ox - margin));
+  const sepX = side * Math.min((vw / 100) * w, room);
+  const deg = narrow ? (24 + spread * 6) : (34 + spread * 8);
+  const rise = Math.abs(sepX) / Math.tan(deg * Math.PI / 180);
+  const maxRise = Math.max(160, oy - (narrow ? 80 : 150));
+  const sepY = -Math.min(rise, maxRise);
+  const landX = side * (narrow ? 78 : 96);
+  return { sepX, sepY, ox, oy, side, narrow, landX, landY: 16 };
+}
+
+function ascentPoint(u, sepX, sepY) {
+  const pitchEnd = 0.16;
+  if (u <= pitchEnd) {
+    const s = easeBlend(u / pitchEnd);
+    return { x: sepX * 0.22 * s, y: sepY * 0.14 * s };
+  }
+  const t = (u - pitchEnd) / (1 - pitchEnd);
+  return {
+    x: sepX * (0.22 + 0.78 * t),
+    y: sepY * (0.14 + 0.86 * t)
+  };
+}
+
+function quad(p0, p1, p2, t) {
+  const u = 1 - t;
+  return {
+    x: u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x,
+    y: u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y
+  };
+}
+
+function makeRocket(ox, oy) {
   const rocket = document.createElement('div');
   rocket.className = 'rocket';
   rocket.textContent = '🚀';
-  const rect = launchBtn.getBoundingClientRect();
-  rocket.style.left = (rect.left + rect.width / 2 - 16) + 'px';
-  rocket.style.top = (rect.top - 10) + 'px';
-  const dir = Math.random() < 0.25 ? -1 : 1;
-  rocket.style.setProperty('--dx', (dir * (40 + Math.random() * 25)) + 'vw');
+  rocket.style.left = ox + 'px';
+  rocket.style.top = oy + 'px';
   document.body.appendChild(rocket);
-  setTimeout(() => rocket.remove(), 3300);
+  return rocket;
+}
+
+function placeRocket(rocket, ox, oy, x, y, angle, opacity) {
+  rocket.style.left = (ox + x) + 'px';
+  rocket.style.top = (oy + y) + 'px';
+  rocket.style.transform = 'translate(-50%, -50%) rotate(' + angle.toFixed(1) + 'deg)';
+  rocket.style.opacity = String(opacity);
+}
+
+function spawnBit(x, y, ex, ey, big) {
+  const bit = document.createElement('i');
+  bit.className = 'exhaust';
+  const gold = Math.random() < 0.46;
+  const color = gold ? '#ffd15c' : '#ff7a1a';
+  const size = big ? 8 : 4 + Math.random() * 2.5;
+  bit.style.width = size + 'px';
+  bit.style.height = size + 'px';
+  bit.style.background = color;
+  bit.style.boxShadow = '0 0 7px ' + color;
+  bit.style.left = (x + (Math.random() - 0.5) * 3) + 'px';
+  bit.style.top = (y + (Math.random() - 0.5) * 3) + 'px';
+  document.body.appendChild(bit);
+  const dx = ex * (16 + Math.random() * 12);
+  const dy = ey * (16 + Math.random() * 12);
+  const life = big ? 200 : 280 + Math.random() * 100;
+  bit.animate([
+    { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.92 },
+    { transform: 'translate(calc(-50% + ' + dx.toFixed(1) + 'px), calc(-50% + ' + dy.toFixed(1) + 'px)) scale(.25)', opacity: 0 }
+  ], { duration: life, easing: 'ease-out', fill: 'forwards' });
+  setTimeout(() => bit.remove(), life + 24);
+  return bit;
+}
+
+function releasePayload(cx, cy, angle, sepX, sepY, narrow) {
+  const nose = (angle - 45) * Math.PI / 180;
+  const payload = document.createElement('div');
+  payload.className = 'payload';
+  payload.style.left = (cx + Math.cos(nose) * 24) + 'px';
+  payload.style.top = (cy + Math.sin(nose) * 24) + 'px';
+  document.body.appendChild(payload);
+  const dirx = sepX * 0.78;
+  const diry = sepY * 0.86;
+  const len = Math.hypot(dirx, diry) || 1;
+  const travel = Math.min(len * 0.7, narrow ? 380 : 320);
+  const pdx = dirx / len * travel;
+  const pdy = diry / len * travel;
+  const deg = Math.atan2(pdy, pdx) * 180 / Math.PI;
+  const rot = 'rotate(' + deg.toFixed(1) + 'deg)';
+  payload.animate([
+    { transform: 'translate(-50%, -50%) ' + rot, opacity: 1, offset: 0 },
+    { transform: 'translate(calc(-50% + ' + (pdx * 0.55).toFixed(1) + 'px), calc(-50% + ' + (pdy * 0.55).toFixed(1) + 'px)) ' + rot, opacity: 1, offset: 0.58 },
+    { transform: 'translate(calc(-50% + ' + pdx.toFixed(1) + 'px), calc(-50% + ' + pdy.toFixed(1) + 'px)) ' + rot, opacity: 0 }
+  ], { duration: 1680, easing: 'linear', fill: 'forwards' });
+  setTimeout(() => payload.remove(), 1720);
+}
+
+function runRocket(side, kind, onDone) {
+  const plan = flightPlan(side);
+  const rocket = makeRocket(plan.ox, plan.oy);
+  const bits = [];
+  let angle = -48;
+  let sepAngle = null;
+  let acc = 0;
+  let separated = false;
+  let lastSample = null;
+  let lastNow = 0;
+  let lastBurn = 0;
+  let wasBurning = false;
+  const t0 = performance.now();
+  const fly = kind === 'flyby';
+  const endX = plan.sepX * (plan.narrow ? 1.05 : 1.2);
+  const endY = -(plan.oy + 36);
+
+  function engine(cssDeg) {
+    const nose = (cssDeg - 45) * Math.PI / 180;
+    return { x: -Math.cos(nose), y: -Math.sin(nose) };
+  }
+
+  function puff(cx, cy, cssDeg, n) {
+    const e = engine(cssDeg);
+    for (let i = 0; i < n; i++) bits.push(spawnBit(cx + e.x * 18, cy + e.y * 18, e.x, e.y, i === 0));
+  }
+
+  function killBits() {
+    while (bits.length) {
+      const bit = bits.pop();
+      bit.remove();
+    }
+  }
+
+  function frame(now) {
+    const elapsed = now - t0;
+    let x = 0;
+    let y = 0;
+    let opacity = 1;
+    let burning = false;
+    let done = false;
+
+    if (fly) {
+      const u = Math.min(1, elapsed / 5000);
+      const p = ascentPoint(u, endX, endY);
+      x = p.x;
+      y = p.y;
+      burning = u < 0.92;
+      if (u > 0.8) opacity = 1 - (u - 0.8) / 0.2;
+      done = u >= 1;
+    } else if (elapsed < ASCENT_MS) {
+      const u = elapsed / ASCENT_MS;
+      const p = ascentPoint(u, plan.sepX, plan.sepY);
+      x = p.x;
+      y = p.y;
+      burning = true;
+    } else if (elapsed < ASCENT_MS + ARC_MS) {
+      const u = (elapsed - ASCENT_MS) / ARC_MS;
+      if (sepAngle == null) sepAngle = angle;
+      const room = Math.max(80, plan.side > 0
+        ? (window.innerWidth - 32 - plan.ox)
+        : (plan.ox - 32));
+      let cx = plan.sepX * 0.72;
+      if (Math.abs(cx) > room) cx = plan.side * room;
+      const p = quad(
+        { x: plan.sepX, y: plan.sepY },
+        { x: cx, y: plan.sepY * 0.4 },
+        { x: plan.landX, y: plan.landY },
+        u
+      );
+      x = p.x;
+      y = p.y;
+      if (!separated) {
+        separated = true;
+        releasePayload(plan.ox + x, plan.oy + y, sepAngle, plan.sepX, plan.sepY, plan.narrow);
+        puff(plan.ox + x, plan.oy + y, sepAngle, 4);
+      }
+      if (u < 0.72) {
+        const spun = sepAngle + 180 * easeBlend(Math.min(1, u / 0.42));
+        const f = u < 0.42 ? 0 : easeBlend((u - 0.42) / 0.3);
+        angle = spun + angDiff(spun, -45) * f;
+      } else {
+        angle = -45;
+      }
+      burning = u > 0.78;
+    } else if (elapsed < ASCENT_MS + ARC_MS + SETTLE_MS) {
+      x = plan.landX;
+      y = plan.landY;
+      angle = -45;
+      burning = false;
+    } else if (elapsed < ASCENT_MS + ARC_MS + SETTLE_MS + FADE_MS) {
+      x = plan.landX;
+      y = plan.landY;
+      angle = -45;
+      opacity = 1 - (elapsed - ASCENT_MS - ARC_MS - SETTLE_MS) / FADE_MS;
+      burning = false;
+    } else {
+      done = true;
+    }
+
+    if (!fly && elapsed >= ASCENT_MS + ARC_MS && wasBurning) killBits();
+    wasBurning = burning;
+
+    if (!done && (fly || elapsed < ASCENT_MS)) {
+      const sample = fly
+        ? ascentPoint(Math.min(1, elapsed / 5000), endX, endY)
+        : ascentPoint(Math.min(1, elapsed / ASCENT_MS), plan.sepX, plan.sepY);
+      if (lastSample) {
+        const vx = sample.x - lastSample.x;
+        const vy = sample.y - lastSample.y;
+        if (vx * vx + vy * vy > 0.01) {
+          const target = noseTilt(vx, vy);
+          const k = 1 - Math.exp(-(now - lastNow) / 80);
+          angle = angle + angDiff(angle, target) * k;
+        }
+      }
+      lastSample = sample;
+      lastNow = now;
+    }
+
+    placeRocket(rocket, plan.ox, plan.oy, x, y, angle, Math.max(0, opacity));
+
+    if (burning) {
+      const dt = lastBurn ? Math.min(now - lastBurn, 48) : 16;
+      lastBurn = now;
+      acc += dt;
+      let n = 0;
+      const e = engine(angle);
+      while (acc >= 78 && n < 2) {
+        acc -= 78;
+        n += 1;
+        bits.push(spawnBit(plan.ox + x + e.x * 18, plan.oy + y + e.y * 18, e.x, e.y, n === 1));
+      }
+    } else {
+      acc = 0;
+      lastBurn = 0;
+    }
+
+    if (done) {
+      killBits();
+      rocket.remove();
+      if (onDone) onDone();
+      return;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  placeRocket(rocket, plan.ox, plan.oy, 0, 0, angle, 1);
+  requestAnimationFrame(frame);
+}
+
+function spawnCalm(side) {
+  const rect = launchBtn.getBoundingClientRect();
+  const ox = rect.left + rect.width / 2;
+  const oy = rect.top - 2;
+  const rocket = makeRocket(ox, oy);
+  const narrow = window.innerWidth < 520;
+  const dx = side * Math.min(window.innerWidth * (narrow ? 0.22 : 0.28), narrow ? 110 : 240);
+  const dy = -Math.min(window.innerHeight * 0.32, oy * 0.42);
+  const ang = noseTilt(dx, dy);
+  const turn = 'translate(-50%, -50%) rotate(' + ang.toFixed(1) + 'deg)';
+  rocket.animate([
+    { left: ox + 'px', top: oy + 'px', transform: turn, opacity: 1 },
+    { left: (ox + dx) + 'px', top: (oy + dy) + 'px', transform: turn, opacity: 0 }
+  ], { duration: 700, easing: 'ease-out', fill: 'forwards' });
+  setTimeout(() => {
+    rocket.remove();
+    calmOn = false;
+  }, 760);
+}
+
+launchBtn.addEventListener('click', () => {
+  const calm = typeof reduceMotion !== 'undefined' && reduceMotion;
+  if (calm) {
+    if (calmOn) return;
+    calmOn = true;
+    const side = nextSide;
+    nextSide = -nextSide;
+    spawnCalm(side);
+    return;
+  }
+  if (airborne >= ROCKET_CAP) return;
+  const side = nextSide;
+  nextSide = -nextSide;
+  airborne += 1;
+  if (landingSide) {
+    runRocket(side, 'flyby', () => { airborne -= 1; });
+    return;
+  }
+  landingSide = side;
+  runRocket(side, 'land', () => {
+    landingSide = 0;
+    airborne -= 1;
+  });
 });
 
-/* ========================= HOLIDAY MODE ========================= */
+/* A tap on the open sky leaves one star. A tap on the name leaves a
+   few sparks. Both are small on purpose, and both stay quiet when
+   the visitor has asked for reduced motion. */
+function spawnWish(x, y) {
+  const star = document.createElement('div');
+  star.className = 'wish';
+  star.textContent = '✦';
+  star.style.left = x + 'px';
+  star.style.top = y + 'px';
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 1600);
+}
+
+function spawnSparkles(x, y) {
+  for (let i = 0; i < 7; i++) {
+    const bit = document.createElement('div');
+    bit.className = 'sparkle';
+    bit.style.left = x + 'px';
+    bit.style.top = y + 'px';
+    bit.style.setProperty('--sx', (Math.random() * 70 - 35) + 'px');
+    bit.style.setProperty('--sy', (Math.random() * -56 - 8) + 'px');
+    document.body.appendChild(bit);
+    setTimeout(() => bit.remove(), 950);
+  }
+}
+
+document.querySelector('.main-content').addEventListener('click', (e) => {
+  if (e.target.closest('a, button, .name')) return;
+  if (typeof reduceMotion !== 'undefined' && reduceMotion) return;
+  spawnWish(e.clientX, e.clientY);
+});
+
+document.querySelector('.name').addEventListener('click', (e) => {
+  if (typeof reduceMotion !== 'undefined' && reduceMotion) return;
+  spawnSparkles(e.clientX, e.clientY);
+});
+
+/* ========================= SEASONAL MODES =========================
+   The visitor's local date picks a scene, and that scene starts on
+   when the page opens. A saved Off does not keep the season off
+   after a reload. The windows are local calendar dates, and they
+   leave quiet gaps so the page is a normal night for most of the year.
+   The page never plays audio. Hearts and butterflies are gone because
+   they made this personal page read like a greeting card. Valentine
+   is warm amber and rose light. Spring is blossom bulbs and a few
+   plain petals, with no flyer in their place.
+
+   Nov 1 through Jan 2      holiday        except the Thanksgiving weekend
+   Fourth Thursday, November thanksgiving  Wednesday before through Sunday after
+   February 13 through 15   valentine      the day before, the day, and the day after
+   March 1 through 18       patrick        ends before the spring equinox
+   March 20 through May 31  spring         after St. Patrick's, before a quiet June
+   July 1 through July 7    july4          the week of the holiday, then night again
+   October                  halloween      the whole month
+
+   March 19, June, July 8 through September 30, January 3 through 31,
+   and February outside the 13th through the 15th stay off until
+   someone picks a scene.
+
+   Thanksgiving is the fourth Thursday in November, widened to the
+   Wednesday before and the Sunday after. That five-day weekend is
+   one scene. Those days are not also holiday mode. Holiday still
+   covers the rest of November 1 through January 2. Valentine is only
+   those three February days. A run from February 1 through 14 was
+   too long, and it was the heart scene.
+
+   The two controls are separate on purpose. The switch sits at the
+   top left, under the bulbs and clear of the name, and it only turns
+   the labeled scene on or off. It used to sit in the middle of the
+   lights, which made the control the first thing on the page. The
+   bottom button only advances to the next scene, so turning a scene
+   off is not the same gesture as choosing a different one.
+*/
 const holidayBtn = document.getElementById('holidayToggle');
 const holidayLabel = holidayBtn.querySelector('.holiday-label');
-const holidayIcon = holidayBtn.querySelector('.holiday-ico');
 const holidayToast = document.getElementById('holidayToast');
+const modeSwitch = document.getElementById('modeSwitch');
+const modeLabel = modeSwitch.querySelector('.mode-switch-label');
+const modeIco = modeSwitch.querySelector('.mode-switch-ico');
 const santaFly = document.getElementById('santaFly');
+const witchFly = document.getElementById('witchFly');
+const batFly = document.getElementById('batFly');
+const lepFly = document.getElementById('lepFly');
 const snowCanvas = document.getElementById('snow');
 const sctx = snowCanvas.getContext('2d', { alpha: true });
 
+/* The bottom button walks this list one step at a time. Off is in
+   the list so the visitor can land on a plain night. The order is
+   the year as this page tells it, from the winter holiday through
+   Halloween, then Thanksgiving. Thanksgiving follows Halloween
+   because the fourth Thursday of November comes after October and
+   before the rest of that winter holiday. */
+const MODE_CYCLE = ['off', 'holiday', 'valentine', 'patrick', 'spring', 'july4', 'halloween', 'thanksgiving'];
+const SCENE_IDS = ['holiday', 'halloween', 'july4', 'patrick', 'valentine', 'spring', 'thanksgiving'];
+const MODE_META = {
+  off: { ico: '✨', label: 'Off' },
+  holiday: {
+    ico: '🎄', label: 'Holiday',
+    toastOn: 'Happy holidays — the sleigh is out'
+  },
+  valentine: {
+    ico: '🕯️', label: 'Valentine',
+    toastOn: "Happy Valentine's Day"
+  },
+  patrick: {
+    ico: '🍀', label: "St. Patrick's",
+    toastOn: "Top o' the mornin'"
+  },
+  spring: {
+    ico: '🌸', label: 'Spring',
+    toastOn: 'Spring is in the air'
+  },
+  july4: {
+    ico: '🎆', label: 'July 4',
+    toastOn: 'Light up the sky'
+  },
+  halloween: {
+    ico: '🎃', label: 'Halloween',
+    toastOn: 'Happy Halloween — the witch is out'
+  },
+  thanksgiving: {
+    ico: '🦃', label: 'Thanksgiving',
+    toastOn: 'Happy Thanksgiving'
+  }
+};
+const GIFT_EMOJI = {
+  holiday: ['🎁', '⭐', '🔔', '🍬', '🧦', '❄️'],
+  halloween: ['🍬', '🎃', '🦇', '👻', '🍫'],
+  july4: ['⭐', '🎇'],
+  patrick: ['☘️', '🪙', '🌟', '🌈'],
+  valentine: ['🕯️', '✨', '🌟'],
+  spring: ['🌸', '🌼', '🍃']
+};
+
+let choice = 'auto';
+let activeMode = 'off';
+let switchScene = null;
 let holidayOn = false;
 let flakes = [];
 let dust = [];
+let rockets = [];
+let sparks = [];
+let nextFirework = 0;
 let wind = 0;
 let windTarget = 0;
 let nextWindAt = 0;
-let santaTimer = 0;
-let hoTimer = 0;
-let hoTimerOff = 0;
 let giftTimer = 0;
 let toastTimer = 0;
 let snowWasOn = false;
 
-const GIFT_EMOJI = ['🎁', '⭐', '🔔', '🍬', '🧦', '❄️'];
+/* Fourth Thursday of November, then the Wednesday before it through
+   the Sunday after it. The weekend is carved out of holiday mode so
+   those five days are one scene, not two. */
+function isThanksgivingSpan(now) {
+  const nov1 = new Date(now.getFullYear(), 10, 1);
+  const firstThursday = 1 + ((4 - nov1.getDay() + 7) % 7);
+  const thursday = firstThursday + 21;
+  const day = now.getDate();
+  return day >= thursday - 1 && day <= thursday + 3;
+}
 
-function setHoliday(on, opts) {
-  const sound = !!(opts && opts.sound);
+function seasonalMode(date) {
+  const now = date || new Date();
+  const month = now.getMonth();
+  const day = now.getDate();
+  if (month === 9) return 'halloween';
+  if (month === 10 && isThanksgivingSpan(now)) return 'thanksgiving';
+  if (month === 10 || month === 11 || (month === 0 && day < 3)) return 'holiday';
+  if (month === 1 && day >= 13 && day <= 15) return 'valentine';
+  if (month === 2 && day <= 18) return 'patrick';
+  if ((month === 2 && day >= 20) || month === 3 || month === 4) return 'spring';
+  if (month === 6 && day <= 7) return 'july4';
+  return 'off';
+}
+
+/* Applies a scene and remembers the choice.
+   dataset.mode is the scene id, or it is removed when the scene is
+   off, because the CSS selectors are html[data-mode="..."].
+   The top switch stays labeled with switchScene after the scene is
+   turned off, so the same scene can be turned back on. It hides
+   only when switchScene is cleared: nothing is in season, or the
+   bottom button landed on Off.
+   The bottom control always reads "Next" and shows the icon of the
+   following scene. The page never plays audio. Turning a scene on
+   by hand still throws the sparkle from the switch. */
+function setMode(mode, opts) {
   const announce = !!(opts && opts.announce);
-  holidayOn = on;
-  document.body.classList.toggle('holiday', on);
-  holidayBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-  holidayLabel.textContent = on ? 'Holiday mode on' : 'Holiday mode';
-  holidayIcon.textContent = on ? '❄️' : '🎄';
-  holidayBtn.setAttribute('aria-label', on ? 'Turn holiday mode off' : 'Turn holiday mode on');
-  try { localStorage.setItem('holiday-mode', on ? '1' : '0'); } catch (e) {}
-  if (on) {
-    startHoliday();
-    if (announce) showToast('Happy holidays — the sleigh is out');
-    if (sound) {
-      burstFromButton();
-      playJingle();
-    }
+  activeMode = mode && mode !== 'off' ? mode : 'off';
+  holidayOn = activeMode === 'holiday';
+  if (activeMode === 'off') delete document.documentElement.dataset.mode;
+  else {
+    document.documentElement.dataset.mode = activeMode;
+    switchScene = activeMode;
+  }
+
+  if (switchScene && MODE_META[switchScene]) {
+    const on = activeMode === switchScene;
+    const name = MODE_META[switchScene].label;
+    holidayBtn.hidden = false;
+    holidayBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    holidayLabel.textContent = name;
+    holidayBtn.setAttribute('aria-label', name + (on ? ', on. Turn off' : ', off. Turn on'));
   } else {
-    stopHolidayEffects();
-    if (announce) showToast('See you next holiday');
+    holidayBtn.hidden = true;
+    holidayBtn.setAttribute('aria-pressed', 'false');
+    holidayBtn.removeAttribute('aria-label');
+  }
+
+  const base = switchScene || 'off';
+  const idx = MODE_CYCLE.indexOf(base);
+  const next = MODE_CYCLE[(idx < 0 ? 0 : idx + 1) % MODE_CYCLE.length];
+  const nextName = next === 'off' ? 'Off' : MODE_META[next].label;
+  modeIco.textContent = MODE_META[next].ico;
+  modeLabel.textContent = 'Next';
+  modeSwitch.setAttribute('aria-label', 'Next scene: ' + nextName);
+  try { localStorage.setItem('site-mode', choice); } catch (e) {}
+
+  if (activeMode === 'off') {
+    stopEffects();
+    if (announce) showToast('Back to a regular night');
+  } else {
+    startEffects();
+    if (announce) {
+      showToast(MODE_META[activeMode].toastOn);
+      burstFromButton();
+    }
   }
 }
 
@@ -851,67 +1808,96 @@ function showToast(text) {
   toastTimer = setTimeout(() => holidayToast.classList.remove('show'), 2600);
 }
 
-function startHoliday() {
-  stopHolidayEffects();
+function flyerAllowed(el) {
+  if (el === santaFly) return activeMode === 'holiday';
+  if (el === witchFly || el === batFly) return activeMode === 'halloween';
+  if (el === lepFly) return activeMode === 'patrick';
+  return false;
+}
+
+function stopFlyer(el) {
+  clearTimeout(el._timer);
+  clearTimeout(el._ho);
+  clearTimeout(el._hoOff);
+  el.hidden = true;
+  el.classList.remove('cheering', 'parked');
+  el.style.animation = 'none';
+}
+
+function queueFlyer(el, delay) {
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => launchFlyer(el), delay);
+}
+
+/* One character crosses the upper sky, then waits. Most passes stay
+   high so they miss the name. Text is z-index 6 and flyers are 5,
+   so a crossing still cannot cover the title. Reduced motion parks
+   the character in view instead of sending it across. */
+function launchFlyer(el) {
+  if (!flyerAllowed(el) || reduceMotion) return;
+  const lowPass = el === batFly ? false : Math.random() < 0.18;
+  const duration = lowPass ? rand(8, 10) : rand(el === batFly ? 9 : 12, el === batFly ? 13 : 17);
+  el.hidden = false;
+  el.classList.remove('cheering');
+  el.style.top = (el === batFly ? rand(8, 20) : (lowPass ? rand(24, 34) : rand(7, 18))) + 'vh';
+  el.style.animation = 'none';
+  void el.offsetWidth;
+  el.style.animation = 'santaCross ' + duration + 's linear forwards';
+  if (el !== batFly) {
+    el._ho = setTimeout(() => el.classList.add('cheering'), duration * 320);
+    el._hoOff = setTimeout(() => el.classList.remove('cheering'), duration * 680);
+  }
+  el._timer = setTimeout(() => {
+    el.hidden = true;
+    el.classList.remove('cheering');
+    if (flyerAllowed(el)) queueFlyer(el, rand(2200, 5200));
+  }, duration * 1000 + 40);
+}
+
+function startEffects() {
+  stopEffects();
+  initSnow();
+  rockets = [];
+  sparks = [];
+  nextFirework = 0;
+  const lead = activeMode === 'holiday' ? santaFly : activeMode === 'halloween' ? witchFly : activeMode === 'patrick' ? lepFly : null;
   if (reduceMotion) {
-    santaFly.hidden = false;
-    santaFly.classList.add('parked');
+    if (lead) {
+      lead.hidden = false;
+      lead.classList.add('parked');
+    }
     return;
   }
-  santaFly.classList.remove('parked');
-  queueSanta(650);
-  queueGift(1100);
+  if (lead) queueFlyer(lead, 650);
+  if (activeMode === 'halloween') queueFlyer(batFly, 1600);
+  queueGift(activeMode === 'july4' ? 1800 : 1100);
 }
 
-function stopHolidayEffects() {
-  clearTimeout(santaTimer);
-  clearTimeout(hoTimer);
-  clearTimeout(hoTimerOff);
+function stopEffects() {
   clearTimeout(giftTimer);
-  santaFly.hidden = true;
-  santaFly.classList.remove('cheering', 'parked');
-  santaFly.style.animation = 'none';
+  [santaFly, witchFly, batFly, lepFly].forEach(stopFlyer);
   document.querySelectorAll('.gift').forEach((g) => g.remove());
   dust = [];
-}
-
-function queueSanta(delay) {
-  clearTimeout(santaTimer);
-  santaTimer = setTimeout(launchSanta, delay);
-}
-
-function launchSanta() {
-  if (!holidayOn || reduceMotion) return;
-  const lowPass = Math.random() < 0.18;
-  const duration = lowPass ? rand(8, 10) : rand(12, 17);
-  santaFly.hidden = false;
-  santaFly.classList.remove('cheering');
-  santaFly.style.top = (lowPass ? rand(24, 34) : rand(7, 18)) + 'vh';
-  santaFly.style.animation = 'none';
-  void santaFly.offsetWidth;
-  santaFly.style.animation = 'santaCross ' + duration + 's linear forwards';
-  hoTimer = setTimeout(() => santaFly.classList.add('cheering'), duration * 320);
-  hoTimerOff = setTimeout(() => santaFly.classList.remove('cheering'), duration * 680);
-  santaTimer = setTimeout(() => {
-    santaFly.hidden = true;
-    santaFly.classList.remove('cheering');
-    if (holidayOn) queueSanta(rand(2200, 5200));
-  }, duration * 1000 + 40);
+  rockets = [];
+  sparks = [];
 }
 
 function queueGift(delay) {
   clearTimeout(giftTimer);
   giftTimer = setTimeout(() => {
-    if (!holidayOn || reduceMotion) return;
-    if (document.querySelectorAll('.gift').length < 5) spawnGift();
-    queueGift(rand(1400, 2800));
+    const pack = GIFT_EMOJI[activeMode];
+    if (!pack || reduceMotion) return;
+    const light = activeMode === 'valentine' || activeMode === 'spring';
+    const cap = light ? 2 : 5;
+    if (document.querySelectorAll('.gift').length < cap) spawnGift(pack);
+    queueGift(light ? rand(3200, 5600) : rand(1400, 2800));
   }, delay);
 }
 
-function spawnGift() {
+function spawnGift(pack) {
   const el = document.createElement('div');
   el.className = 'gift';
-  el.textContent = GIFT_EMOJI[(Math.random() * GIFT_EMOJI.length) | 0];
+  el.textContent = pack[(Math.random() * pack.length) | 0];
   el.style.left = rand(4, 92) + 'vw';
   el.style.fontSize = rand(18, 34) + 'px';
   el.style.animationDuration = rand(7, 12) + 's';
@@ -940,47 +1926,35 @@ function burstFromButton() {
   }
 }
 
-function playJingle() {
-  const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  if (!AudioCtx) return;
-  try {
-    const audio = new AudioCtx();
-    const notes = [659.25, 659.25, 659.25, 783.99, 659.25, 523.25];
-    notes.forEach((freq, i) => {
-      const osc = audio.createOscillator();
-      const gain = audio.createGain();
-      osc.type = 'triangle';
-      osc.frequency.value = freq;
-      osc.connect(gain);
-      gain.connect(audio.destination);
-      const t = audio.currentTime + i * 0.14;
-      gain.gain.setValueAtTime(0.0001, t);
-      gain.gain.exponentialRampToValueAtTime(0.07, t + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
-      osc.start(t);
-      osc.stop(t + 0.24);
-    });
-    setTimeout(() => audio.close(), 1800);
-  } catch (e) {}
-}
-
+/* One canvas draws snow, coins, gold-brown leaves, or petals.
+   Valentine draws nothing here. Hearts read wrong on this personal
+   page, so that scene is the amber and rose bulbs and a candle.
+   Spring is a few plain petals, not a butterfly and not a stand-in
+   creature. Thanksgiving is a few slow gold-brown leaves, not the
+   Halloween orange and purple swarm. A full field would turn those
+   quiet seasons into a blizzard. */
 function makeFlake(anywhere) {
+  const gentle = activeMode === 'spring' || activeMode === 'thanksgiving';
   const roll = Math.random();
   return {
     x: Math.random() * Math.max(snowCanvas.width, 1),
     y: anywhere ? Math.random() * Math.max(snowCanvas.height, 1) : -rand(4, 40),
-    r: rand(0.6, 2.7),
-    vy: rand(0.28, 0.95),
+    r: gentle ? rand(2.4, 4.4) : rand(0.6, 2.7),
+    vy: gentle ? rand(0.08, 0.28) : rand(0.28, 0.95),
     vx: rand(-0.18, 0.18),
     wobble: rand(0, Math.PI * 2),
-    wobbleSpeed: rand(0.01, 0.025),
-    o: rand(0.35, 0.95),
-    kind: roll > 0.86 ? 'star' : 'dot'
+    wobbleSpeed: gentle ? rand(0.003, 0.01) : rand(0.01, 0.025),
+    o: rand(0.4, 0.9),
+    hue: Math.random(),
+    kind: activeMode === 'thanksgiving' ? 'leaf' : activeMode === 'spring' ? 'petal' : (roll > 0.86 ? 'star' : 'dot')
   };
 }
 
 function initSnow() {
-  const count = Math.min(200, Math.floor((innerWidth * innerHeight) / 13000));
+  let count = Math.min(200, Math.floor((innerWidth * innerHeight) / 13000));
+  if (activeMode === 'valentine') count = 0;
+  else if (activeMode === 'thanksgiving') count = Math.min(12, Math.max(5, Math.floor(innerWidth / 140)));
+  else if (activeMode === 'spring') count = Math.min(20, Math.max(10, Math.floor(innerWidth / 70)));
   flakes = [];
   for (let i = 0; i < count; i++) flakes.push(makeFlake(true));
 }
@@ -997,9 +1971,179 @@ function drawSnowflake(x, y, r, alpha) {
   sctx.stroke();
 }
 
+function paintFlake(f) {
+  if (f.kind === 'leaf') {
+    const color = f.hue > 0.66
+      ? 'rgba(196,132,74,' + f.o + ')'
+      : f.hue > 0.33
+        ? 'rgba(224,168,72,' + f.o + ')'
+        : 'rgba(122,74,36,' + f.o + ')';
+    sctx.save();
+    sctx.translate(f.x, f.y);
+    sctx.rotate(f.wobble);
+    sctx.fillStyle = color;
+    sctx.beginPath();
+    sctx.ellipse(0, 0, f.r * dpr * 2.1, f.r * dpr * 0.85, 0, 0, Math.PI * 2);
+    sctx.fill();
+    sctx.restore();
+    return;
+  }
+  if (f.kind === 'petal') {
+    const color = f.hue > 0.66
+      ? 'rgba(255,214,226,' + f.o + ')'
+      : f.hue > 0.33
+        ? 'rgba(255,236,210,' + f.o + ')'
+        : 'rgba(255,176,198,' + f.o + ')';
+    sctx.save();
+    sctx.translate(f.x, f.y);
+    sctx.rotate(f.wobble);
+    sctx.fillStyle = color;
+    sctx.beginPath();
+    sctx.ellipse(0, 0, f.r * dpr * 2.3, f.r * dpr * 0.95, 0, 0, Math.PI * 2);
+    sctx.fill();
+    sctx.restore();
+    return;
+  }
+  if (activeMode === 'patrick') {
+    sctx.fillStyle = 'rgba(242,193,78,' + f.o + ')';
+    sctx.beginPath();
+    sctx.arc(f.x, f.y, (f.r + 0.8) * dpr, 0, Math.PI * 2);
+    sctx.fill();
+    return;
+  }
+  if (activeMode === 'halloween') {
+    sctx.fillStyle = f.kind === 'star' ? 'rgba(255,140,40,' + f.o + ')' : 'rgba(190,140,255,' + f.o + ')';
+    sctx.beginPath();
+    sctx.ellipse(f.x, f.y, f.r * dpr * 1.8, f.r * dpr * 0.7, f.wobble, 0, Math.PI * 2);
+    sctx.fill();
+    return;
+  }
+  if (f.kind === 'star') drawSnowflake(f.x, f.y, f.r * dpr, f.o);
+  else {
+    sctx.fillStyle = 'rgba(255,255,255,' + f.o + ')';
+    sctx.beginPath();
+    sctx.arc(f.x, f.y, f.r * dpr, 0, Math.PI * 2);
+    sctx.fill();
+  }
+}
+
+function starTint(s) {
+  if (activeMode === 'holiday' && s.depth > 0.72) return s.phase > 3 ? '#ffe08a' : '#d7f6ff';
+  if (activeMode === 'halloween' && s.depth > 0.6) return s.phase > 3 ? '#ffb15a' : '#e2c6ff';
+  if (activeMode === 'july4' && s.depth > 0.55) return ['#ff7a7a', '#ffffff', '#8ecbff'][Math.floor(s.phase) % 3];
+  if (activeMode === 'patrick' && s.depth > 0.6) return s.phase > 3 ? '#d6ff9a' : '#ffe08a';
+  if (activeMode === 'valentine' && s.depth > 0.72) return s.phase > 3 ? '#ffd0b0' : '#ffe08a';
+  if (activeMode === 'spring' && s.depth > 0.72) return s.phase > 3 ? '#ffe9b0' : '#ffd6e4';
+  if (activeMode === 'thanksgiving' && s.depth > 0.72) return s.phase > 3 ? '#e8b86a' : '#c4844a';
+  return '#ffffff';
+}
+
+function shootingTint() {
+  if (activeMode === 'halloween') return 'rgba(255,160,60,0.95)';
+  if (activeMode === 'july4') return 'rgba(255,255,255,0.95)';
+  if (activeMode === 'patrick') return 'rgba(190,255,150,0.95)';
+  if (activeMode === 'holiday') return 'rgba(255,224,138,0.95)';
+  if (activeMode === 'valentine') return 'rgba(255,196,150,0.95)';
+  if (activeMode === 'spring') return 'rgba(255,224,170,0.95)';
+  if (activeMode === 'thanksgiving') return 'rgba(224,168,80,0.95)';
+  return 'rgba(255,255,255,0.90)';
+}
+
+function burstFirework(x, y, color) {
+  for (let i = 0; i < 46; i++) {
+    const ang = (i / 46) * Math.PI * 2 + rand(-0.08, 0.08);
+    const spd = rand(0.5, 2.5) * dpr;
+    sparks.push({
+      x: x, y: y,
+      vx: Math.cos(ang) * spd,
+      vy: Math.sin(ang) * spd,
+      life: 1,
+      r: rand(1.8, 3.4),
+      color: Math.random() < 0.22 ? '#ffffff' : color
+    });
+  }
+}
+
+/* July 4 uses the same canvas as the falling particles, but with a
+   few rockets instead. Each one climbs, bursts, and fades. Reduced
+   motion skips this so the sky stays still. */
+function drawFireworks(dt, now, sw, sh) {
+  if (now > nextFirework && rockets.length < 4) {
+    nextFirework = now + rand(160, 520);
+    rockets.push({
+      x: rand(sw * 0.15, sw * 0.85),
+      y: sh * 0.96,
+      vx: rand(-0.4, 0.4) * dpr,
+      vy: -rand(3.4, 5.2) * dpr,
+      color: ['#ff4b4b', '#ffffff', '#79b8ff', '#ffd24d'][(Math.random() * 4) | 0],
+      life: rand(520, 900)
+    });
+  }
+  sctx.clearRect(0, 0, sw, sh);
+  for (let i = rockets.length - 1; i >= 0; i--) {
+    const r = rockets[i];
+    r.x += r.vx * dt * 0.16;
+    r.y += r.vy * dt * 0.16;
+    r.vy += 0.0015 * dt;
+    r.life -= dt;
+    sctx.globalAlpha = 0.95;
+    sctx.strokeStyle = 'rgba(255,246,216,0.85)';
+    sctx.lineWidth = 2 * dpr;
+    sctx.beginPath();
+    sctx.moveTo(r.x, r.y);
+    sctx.lineTo(r.x - r.vx * 8, r.y - r.vy * 6);
+    sctx.stroke();
+    if (r.life <= 0) {
+      burstFirework(r.x, r.y, r.color);
+      rockets.splice(i, 1);
+    }
+  }
+  for (let i = sparks.length - 1; i >= 0; i--) {
+    const p = sparks[i];
+    p.x += p.vx * dt * 0.16;
+    p.y += p.vy * dt * 0.16;
+    p.vy += 0.0035 * dt;
+    p.life -= dt / 980;
+    if (p.life <= 0) {
+      sparks.splice(i, 1);
+      continue;
+    }
+    sctx.globalAlpha = Math.max(0, p.life);
+    sctx.fillStyle = p.color;
+    sctx.beginPath();
+    sctx.arc(p.x, p.y, p.r * dpr, 0, Math.PI * 2);
+    sctx.fill();
+  }
+  sctx.globalAlpha = 1;
+  if (sparks.length > 420) sparks.splice(0, sparks.length - 420);
+}
+
+/* Top switch: toggle the scene it is labeled with. It does not cycle.
+   Off stores "off" for the rest of this visit and leaves the switch
+   visible. On stores that scene's id, not "auto", so a reload keeps
+   the scene they picked. A stored "off" does not keep the calendar
+   scene off after a reload. */
 holidayBtn.addEventListener('click', () => {
-  const next = !holidayOn;
-  setHoliday(next, { sound: next, announce: true });
+  if (!switchScene) return;
+  if (activeMode === switchScene) {
+    choice = 'off';
+    setMode('off', { announce: true });
+  } else {
+    choice = switchScene;
+    setMode(switchScene, { announce: true });
+  }
+});
+
+/* Bottom button: one step forward. The step is taken from the labeled
+   scene, even if that scene is currently switched off. Landing on
+   Off clears the top switch. Any other step turns that scene on. */
+modeSwitch.addEventListener('click', () => {
+  const base = switchScene || 'off';
+  const current = MODE_CYCLE.indexOf(base);
+  const next = MODE_CYCLE[(current < 0 ? 0 : current + 1) % MODE_CYCLE.length];
+  choice = next;
+  switchScene = next === 'off' ? null : next;
+  setMode(next, { announce: true });
 });
 
 /* ========================= STARFIELD ========================= */
@@ -1097,8 +2241,7 @@ function loop(now) {
     const py = (s.y + my * s.depth * 0.06) * h;
 
     ctx.globalAlpha = s.o * twinkle;
-    const festive = holidayOn && s.depth > 0.72;
-    ctx.fillStyle = festive ? (s.phase > 3 ? '#ffe08a' : '#d7f6ff') : '#ffffff';
+    ctx.fillStyle = starTint(s);
     ctx.beginPath();
     ctx.arc(px, py, s.r * dpr, 0, Math.PI * 2);
     ctx.fill();
@@ -1120,7 +2263,7 @@ function loop(now) {
       const tx = c.x - c.vx * c.length;
       const ty = c.y - c.vy * c.length;
       const grad = ctx.createLinearGradient(c.x, c.y, tx, ty);
-      grad.addColorStop(0, holidayOn ? 'rgba(255,224,138,0.95)' : 'rgba(255,255,255,0.90)');
+      grad.addColorStop(0, shootingTint());
       grad.addColorStop(1, 'rgba(255,255,255,0)');
 
       ctx.strokeStyle = grad;
@@ -1139,12 +2282,16 @@ function loop(now) {
 
   const sw = snowCanvas.width;
   const sh = snowCanvas.height;
-  if (!holidayOn) {
+  const fxOn = activeMode === 'holiday' || activeMode === 'halloween' || activeMode === 'patrick' || activeMode === 'july4' || activeMode === 'valentine' || activeMode === 'spring' || activeMode === 'thanksgiving';
+  if (!fxOn) {
     if (snowWasOn) {
       sctx.clearRect(0, 0, sw, sh);
       snowWasOn = false;
       dust = [];
     }
+  } else if (activeMode === 'july4' && !reduceMotion) {
+    snowWasOn = true;
+    drawFireworks(dt, now, sw, sh);
   } else if (!reduceMotion) {
     snowWasOn = true;
     if (now > nextWindAt) {
@@ -1165,18 +2312,12 @@ function loop(now) {
       }
       if (f.x < -12) f.x = sw + 8;
       if (f.x > sw + 12) f.x = -8;
-      if (f.kind === 'star') {
-        drawSnowflake(f.x, f.y, f.r * dpr, f.o);
-      } else {
-        sctx.fillStyle = 'rgba(255,255,255,' + f.o + ')';
-        sctx.beginPath();
-        sctx.arc(f.x, f.y, f.r * dpr, 0, Math.PI * 2);
-        sctx.fill();
-      }
+      paintFlake(f);
     }
 
-    if (!santaFly.hidden) {
-      const box = santaFly.getBoundingClientRect();
+    const trailEl = [santaFly, witchFly, lepFly].find((el) => !el.hidden);
+    if (trailEl) {
+      const box = trailEl.getBoundingClientRect();
       if (Math.random() < 0.85) {
         dust.push({
           x: box.left * dpr,
@@ -1201,7 +2342,9 @@ function loop(now) {
         continue;
       }
       sctx.globalAlpha = Math.max(0, p.life);
-      sctx.fillStyle = p.gold ? '#ffe08a' : '#ffffff';
+      sctx.fillStyle = p.gold
+        ? (activeMode === 'halloween' ? '#ffb15a' : activeMode === 'valentine' ? '#e8b090' : activeMode === 'spring' ? '#ffd0e0' : activeMode === 'thanksgiving' ? '#c4844a' : '#ffe08a')
+        : '#ffffff';
       sctx.beginPath();
       sctx.arc(p.x, p.y, p.r * dpr, 0, Math.PI * 2);
       sctx.fill();
@@ -1211,16 +2354,7 @@ function loop(now) {
   } else if (!snowWasOn) {
     snowWasOn = true;
     sctx.clearRect(0, 0, sw, sh);
-    for (let i = 0; i < flakes.length; i++) {
-      const f = flakes[i];
-      if (f.kind === 'star') drawSnowflake(f.x, f.y, f.r * dpr, f.o);
-      else {
-        sctx.fillStyle = 'rgba(255,255,255,' + f.o + ')';
-        sctx.beginPath();
-        sctx.arc(f.x, f.y, f.r * dpr, 0, Math.PI * 2);
-        sctx.fill();
-      }
-    }
+    for (let i = 0; i < flakes.length; i++) paintFlake(flakes[i]);
   }
 
   requestAnimationFrame(loop);
@@ -1229,9 +2363,25 @@ function loop(now) {
 resize();
 requestAnimationFrame(loop);
 
+/* On each fresh load the calendar scene starts on, including a
+   Thanksgiving weekend. site-mode "off" and the older holiday-mode
+   value "0" are ignored, so a previous Off does not leave the season
+   dark after a reload. A saved scene id still wins, because the
+   visitor picked that scene. "auto", a missing value, and a discarded
+   "off" all follow the date. Outside every season the page stays a
+   normal night until Next picks a scene. The page never plays audio. */
 try {
-  if (localStorage.getItem('holiday-mode') === '1') setHoliday(true);
+  const saved = localStorage.getItem('site-mode');
+  if (SCENE_IDS.indexOf(saved) !== -1) choice = saved;
 } catch (e) {}
+if (choice === 'auto') {
+  const season = seasonalMode();
+  switchScene = season === 'off' ? null : season;
+  setMode(season);
+} else {
+  switchScene = choice;
+  setMode(choice);
+}
   </script>
 
   <script type="application/ld+json">
