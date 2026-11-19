@@ -1296,9 +1296,11 @@ document.querySelector('.name').addEventListener('click', (e) => {
 });
 
 /* ========================= SEASONAL MODES =========================
-   The visitor's local date picks a scene until they choose one.
-   The windows are local calendar dates, and they leave quiet gaps
-   so the page is a normal night for most of the year.
+   The visitor's local date picks a scene, and that scene starts on
+   when the page opens. A saved Off does not keep the season off
+   after a reload. The windows are local calendar dates, and they
+   leave quiet gaps so the page is a normal night for most of the year.
+   The page never plays audio.
 
    Nov 1 through Jan 2     holiday     after Halloween, before January 3
    February 1 through 14   valentine   the holiday itself, not all of February
@@ -1335,38 +1337,32 @@ const sctx = snowCanvas.getContext('2d', { alpha: true });
    the year as this page tells it: the winter holiday, then the
    dated scenes through Halloween. */
 const MODE_CYCLE = ['off', 'holiday', 'valentine', 'patrick', 'spring', 'july4', 'halloween'];
-const MODE_IDS = ['auto', 'off', 'holiday', 'halloween', 'july4', 'patrick', 'valentine', 'spring'];
+const SCENE_IDS = ['holiday', 'halloween', 'july4', 'patrick', 'valentine', 'spring'];
 const MODE_META = {
   off: { ico: '✨', label: 'Off' },
   holiday: {
     ico: '🎄', label: 'Holiday',
-    toastOn: 'Happy holidays — the sleigh is out',
-    notes: [659.25, 659.25, 659.25, 783.99, 659.25, 523.25]
+    toastOn: 'Happy holidays — the sleigh is out'
   },
   valentine: {
     ico: '💗', label: 'Valentine',
-    toastOn: "Happy Valentine's Day",
-    notes: [523.25, 659.25, 587.33, 698.46]
+    toastOn: "Happy Valentine's Day"
   },
   patrick: {
     ico: '🍀', label: "St. Patrick's",
-    toastOn: "Top o' the mornin'",
-    notes: [587.33, 659.25, 739.99, 783.99, 880]
+    toastOn: "Top o' the mornin'"
   },
   spring: {
     ico: '🦋', label: 'Spring',
-    toastOn: 'Spring is in the air',
-    notes: [523.25, 659.25, 783.99, 880]
+    toastOn: 'Spring is in the air'
   },
   july4: {
     ico: '🎆', label: 'July 4',
-    toastOn: 'Light up the sky',
-    notes: [523.25, 659.25, 783.99, 1046.5]
+    toastOn: 'Light up the sky'
   },
   halloween: {
     ico: '🎃', label: 'Halloween',
-    toastOn: 'Happy Halloween — the witch is out',
-    notes: [523.25, 493.88, 440, 392]
+    toastOn: 'Happy Halloween — the witch is out'
   }
 };
 const GIFT_EMOJI = {
@@ -1415,9 +1411,9 @@ function seasonalMode(date) {
    only when switchScene is cleared: nothing is in season, or the
    bottom button landed on Off.
    The bottom control always reads "Next" and shows the icon of the
-   following scene. Sound plays only when a person turns a scene on. */
+   following scene. The page never plays audio. Turning a scene on
+   by hand still throws the sparkle from the switch. */
 function setMode(mode, opts) {
-  const sound = !!(opts && opts.sound);
   const announce = !!(opts && opts.announce);
   activeMode = mode && mode !== 'off' ? mode : 'off';
   holidayOn = activeMode === 'holiday';
@@ -1454,10 +1450,9 @@ function setMode(mode, opts) {
     if (announce) showToast('Back to a regular night');
   } else {
     startEffects();
-    if (announce) showToast(MODE_META[activeMode].toastOn);
-    if (sound) {
+    if (announce) {
+      showToast(MODE_META[activeMode].toastOn);
       burstFromButton();
-      playNotes(MODE_META[activeMode].notes);
     }
   }
 }
@@ -1586,29 +1581,6 @@ function burstFromButton() {
       gold: Math.random() < 0.6
     });
   }
-}
-
-function playNotes(notes) {
-  const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  if (!AudioCtx || !notes) return;
-  try {
-    const audio = new AudioCtx();
-    notes.forEach((freq, i) => {
-      const osc = audio.createOscillator();
-      const gain = audio.createGain();
-      osc.type = 'triangle';
-      osc.frequency.value = freq;
-      osc.connect(gain);
-      gain.connect(audio.destination);
-      const t = audio.currentTime + i * 0.14;
-      gain.gain.setValueAtTime(0.0001, t);
-      gain.gain.exponentialRampToValueAtTime(0.07, t + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
-      osc.start(t);
-      osc.stop(t + 0.24);
-    });
-    setTimeout(() => audio.close(), 1800);
-  } catch (e) {}
 }
 
 /* One canvas draws snow, leaves, coins, hearts, or petals.
@@ -1799,8 +1771,10 @@ function drawFireworks(dt, now, sw, sh) {
 }
 
 /* Top switch: toggle the scene it is labeled with. It does not cycle.
-   Off stores "off". On stores that scene's id, not "auto", so a
-   reload leaves the scene on instead of handing it back to the date. */
+   Off stores "off" for the rest of this visit and leaves the switch
+   visible. On stores that scene's id, not "auto", so a reload keeps
+   the scene they picked. A stored "off" does not keep the calendar
+   scene off after a reload. */
 holidayBtn.addEventListener('click', () => {
   if (!switchScene) return;
   if (activeMode === switchScene) {
@@ -1808,7 +1782,7 @@ holidayBtn.addEventListener('click', () => {
     setMode('off', { announce: true });
   } else {
     choice = switchScene;
-    setMode(switchScene, { sound: true, announce: true });
+    setMode(switchScene, { announce: true });
   }
 });
 
@@ -1821,7 +1795,7 @@ modeSwitch.addEventListener('click', () => {
   const next = MODE_CYCLE[(current < 0 ? 0 : current + 1) % MODE_CYCLE.length];
   choice = next;
   switchScene = next === 'off' ? null : next;
-  setMode(next, { sound: next !== 'off', announce: true });
+  setMode(next, { announce: true });
 });
 
 /* ========================= STARFIELD ========================= */
@@ -2041,22 +2015,18 @@ function loop(now) {
 resize();
 requestAnimationFrame(loop);
 
-/* site-mode is "auto", "off", or a scene id.
-   "auto" means trust the calendar. An explicit id or "off" wins
-   over the date, including after a reload. Turning the top switch
-   off stores "off" and keeps the season label. The older
-   holiday-mode value of "0" still means off, for visitors who
-   saved that before site-mode existed. */
+/* On each fresh load the calendar scene starts on. site-mode "off"
+   and the older holiday-mode value "0" are ignored, so a previous
+   Off does not leave the season dark after a reload. A saved scene
+   id still wins, because the visitor picked that scene. "auto", a
+   missing value, and a discarded "off" all follow the date. Outside
+   every season the page stays a normal night until Next picks a scene.
+   The page never plays audio. */
 try {
   const saved = localStorage.getItem('site-mode');
-  if (MODE_IDS.indexOf(saved) !== -1) choice = saved;
-  else if (localStorage.getItem('holiday-mode') === '0') choice = 'off';
+  if (SCENE_IDS.indexOf(saved) !== -1) choice = saved;
 } catch (e) {}
-if (choice === 'off') {
-  const season = seasonalMode();
-  switchScene = season === 'off' ? null : season;
-  setMode('off');
-} else if (choice === 'auto') {
+if (choice === 'auto') {
   const season = seasonalMode();
   switchScene = season === 'off' ? null : season;
   setMode(season);
