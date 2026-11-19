@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sambrit Adhikari</title>
-  <meta name="description" content="Sambrit Adhikari, a program manager and engineer specializing in AI, machine learning, and software development."/>
-  <meta name="keywords" content="Sambrit Adhikari, program manager, engineer, software development, AI, machine learning, LinkedIn, program management, product manager, technical program manager, artificial intelligence, data science"/>
+  <title>Sambrit Adhikari | Program Manager, Engineer, and Photographer</title>
+  <meta name="description" content="Sambrit Adhikari is a program manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
   <meta name="author" content="Sambrit Adhikari"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://www.sambrit.com/"/>
+  <link rel="canonical" href="https://sambrit.com/"/>
 
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Sambrit Adhikari | Program Manager, Engineer, and Photographer"/>
+  <meta property="og:description" content="Sambrit Adhikari is a program manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
+  <meta property="og:url" content="https://sambrit.com/"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Sambrit Adhikari | Program Manager, Engineer, and Photographer"/>
+  <meta name="twitter:description" content="Sambrit Adhikari is a program manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
+  <meta name="twitter:url" content="https://sambrit.com/"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
 
   <style>
@@ -955,7 +966,7 @@
     <span class="mode-switch-ico" aria-hidden="true">✨</span>
   </button>
 
-  <canvas id="bg"></canvas>
+  <canvas id="bg" aria-hidden="true"></canvas>
   <canvas id="snow" aria-hidden="true"></canvas>
   <div class="glow" aria-hidden="true"></div>
   <svg class="snowbank" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
@@ -1166,12 +1177,12 @@
     <p class="kicker">Program Manager + Engineer + Photographer</p>
     <h1 class="name">Sambrit Adhikari</h1>
 
-    <div class="nav-links">
+    <nav class="nav-links" aria-label="Profiles">
       <button class="nav-link contact-btn" type="button">Contact</button>
       <a href="https://github.com/sambrit" class="nav-link">GitHub</a>
       <a href="https://www.instagram.com/catchavibephotos/" class="nav-link">Photography 📷</a>
       <a href="https://www.linkedin.com/in/sambritadhikari/" class="nav-link">LinkedIn</a>
-    </div>
+    </nav>
   </div>
 
   <button class="launch-button" aria-label="Launch">Launch 🚀</button>
@@ -2387,15 +2398,28 @@ if (choice === 'auto') {
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Sambrit Adhikari",
-    "url": "https://www.sambrit.com/",
-    "sameAs": [
-      "https://www.linkedin.com/in/sambritadhikari",
-      "https://github.com/sambrit"
-    ],
-    "jobTitle": "Program Manager",
-    "description": "Sambrit Adhikari is a program manager and engineer specializing in AI, machine learning, and software development."
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sambrit.com/#person",
+        "name": "Sambrit Adhikari",
+        "url": "https://sambrit.com/",
+        "jobTitle": ["Program Manager", "Engineer", "Photographer"],
+        "sameAs": [
+          "https://github.com/sambrit",
+          "https://www.instagram.com/catchavibephotos/",
+          "https://www.linkedin.com/in/sambritadhikari/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://sambrit.com/#website",
+        "name": "Sambrit Adhikari",
+        "url": "https://sambrit.com/",
+        "description": "Personal site of Sambrit Adhikari, program manager, engineer, and photographer.",
+        "publisher": { "@id": "https://sambrit.com/#person" }
+      }
+    ]
   }
   </script>
 </body>
