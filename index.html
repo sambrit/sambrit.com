@@ -245,10 +245,36 @@
 
   .rocket {
     position: fixed;
+    width: 2rem;
+    height: 2rem;
     font-size: 2rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
     z-index: 9;
     pointer-events: none;
     will-change: transform;
+  }
+
+  /* The flame is its own speck, not part of the emoji, so it can sit
+     on the engines and go out on touchdown. The payload is a small
+     unmarked capsule so the separation reads without a caption. */
+  .exhaust {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 7;
+  }
+
+  .payload {
+    position: fixed;
+    z-index: 9;
+    width: 14px;
+    height: 8px;
+    border-radius: 4px;
+    pointer-events: none;
+    background: linear-gradient(180deg, #f7fafc, #c5d2df 58%, #93a6b8);
+    box-shadow: 0 0 8px rgba(255, 236, 190, .55);
   }
 
   /* Top control. This is a switch, not a status sentence, because
@@ -886,7 +912,7 @@
       bottom: calc(16px + env(safe-area-inset-bottom));
       padding: 12px 20px;
     }
-    .rocket { font-size: 1.6rem; }
+    .rocket { font-size: 1.6rem; width: 1.7rem; height: 1.7rem; }
   }
   </style>
 </head>
@@ -1197,65 +1223,342 @@ copyBtn.addEventListener('click', async () => {
 });
 
 /* ========================= LAUNCH BUTTON =========================
-   One rocket, then a small fan if you tap again quickly, then it rests.
-   The path bends on purpose. A straight climb read as a sticker
-   sliding upward. A midpoint leans the rocket sideways, then it
-   leaves through the top, and the nose rotates to follow that arc.
-   The rocket emoji points up-right, so the tilt adds 45 degrees.
+   A steep, fast climb felt wrong. It read as a sticker shooting
+   straight up, and that is not the flight they wanted. This one is
+   a slower diagonal, up and to the right, then the next one up and
+   to the left, with a little change in steepness from flight to
+   flight. It pitches over early, so by a third of the screen a large
+   share of the motion is already sideways. High up, a small payload
+   keeps going on that same diagonal and fades. The booster flips,
+   arcs back, and lands beside the button. That payload and landing
+   is the extra beat. A second tap during a landing sends one simpler
+   diagonal the other way, so two boosters never share the pad. The
+   emoji points up-right, and its tilt follows the travel. On the
+   landing burn the engines point down, the flame sits underneath,
+   and it cuts out on touchdown.
 */
 const launchBtn = document.querySelector('.launch-button');
-let launchStreak = 0;
-let launchReset = 0;
+const ASCENT_MS = 5200;
+const ARC_MS = 2700;
+const SETTLE_MS = 480;
+const FADE_MS = 260;
+
+let nextSide = 1;
+let landingSide = 0;
+let flybyOn = false;
+let calmOn = false;
 
 function noseTilt(vx, vy) {
   return Math.atan2(vy, vx) * 180 / Math.PI + 45;
 }
 
-function spawnRocket(leanVw) {
+function angDiff(a, b) {
+  let d = b - a;
+  while (d > 180) d -= 360;
+  while (d < -180) d += 360;
+  return d;
+}
+
+function easeBlend(t) {
+  return t * t * (3 - 2 * t);
+}
+
+function flightPlan(side) {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const rect = launchBtn.getBoundingClientRect();
+  const ox = rect.left + rect.width / 2;
+  const oy = rect.top - 2;
+  const narrow = w < 520;
+  const spread = 0.28 + Math.random() * 0.62;
+  const vw = narrow ? (30 + spread * 10) : (42 + spread * 20);
+  const margin = narrow ? 34 : 96;
+  const room = Math.max(72, side > 0 ? (w - margin - ox) : (ox - margin));
+  const sepX = side * Math.min((vw / 100) * w, room);
+  const deg = narrow ? (24 + spread * 6) : (34 + spread * 8);
+  const rise = Math.abs(sepX) / Math.tan(deg * Math.PI / 180);
+  const maxRise = Math.max(160, oy - (narrow ? 80 : 150));
+  const sepY = -Math.min(rise, maxRise);
+  const landX = side * (narrow ? 78 : 96);
+  return { sepX, sepY, ox, oy, side, narrow, landX, landY: 16 };
+}
+
+function ascentPoint(u, sepX, sepY) {
+  const pitchEnd = 0.16;
+  if (u <= pitchEnd) {
+    const s = easeBlend(u / pitchEnd);
+    return { x: sepX * 0.22 * s, y: sepY * 0.14 * s };
+  }
+  const t = (u - pitchEnd) / (1 - pitchEnd);
+  return {
+    x: sepX * (0.22 + 0.78 * t),
+    y: sepY * (0.14 + 0.86 * t)
+  };
+}
+
+function quad(p0, p1, p2, t) {
+  const u = 1 - t;
+  return {
+    x: u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x,
+    y: u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y
+  };
+}
+
+function makeRocket(ox, oy) {
   const rocket = document.createElement('div');
   rocket.className = 'rocket';
   rocket.textContent = '🚀';
-  const rect = launchBtn.getBoundingClientRect();
-  rocket.style.left = (rect.left + rect.width / 2 - 14) + 'px';
-  rocket.style.top = (rect.top - 6) + 'px';
+  rocket.style.left = ox + 'px';
+  rocket.style.top = oy + 'px';
   document.body.appendChild(rocket);
+  return rocket;
+}
 
-  const lean = (leanVw / 100) * window.innerWidth;
-  const rise = -(rect.top + 36);
-  const midX = lean * 0.22;
-  const midY = rise * 0.58;
-  const calm = typeof reduceMotion !== 'undefined' && reduceMotion;
-  const dur = calm ? 700 : 2000 + Math.random() * 450;
-  const a0 = noseTilt(midX || (lean >= 0 ? 8 : -8), midY);
-  const a1 = noseTilt(lean - midX, rise - midY);
-  const frames = calm
-    ? [
-        { transform: 'translate(0px, 0px)', opacity: 1 },
-        { transform: `translate(0px, ${rise}px)`, opacity: 0 }
-      ]
-    : [
-        { transform: `translate(0px, 0px) rotate(${a0.toFixed(1)}deg) scale(.92)`, opacity: 1 },
-        { transform: `translate(${midX.toFixed(1)}px, ${midY.toFixed(1)}px) rotate(${((a0 + a1) / 2).toFixed(1)}deg) scale(1)`, opacity: 1, offset: 0.46 },
-        { transform: `translate(${lean.toFixed(1)}px, ${rise.toFixed(1)}px) rotate(${a1.toFixed(1)}deg) scale(1)`, opacity: 0 }
-      ];
-  rocket.animate(frames, {
-    duration: dur,
-    easing: calm ? 'ease-out' : 'cubic-bezier(.08, .72, .22, 1)',
-    fill: 'forwards'
-  });
-  setTimeout(() => rocket.remove(), dur + 40);
+function placeRocket(rocket, ox, oy, x, y, angle, opacity) {
+  rocket.style.left = (ox + x) + 'px';
+  rocket.style.top = (oy + y) + 'px';
+  rocket.style.transform = 'translate(-50%, -50%) rotate(' + angle.toFixed(1) + 'deg)';
+  rocket.style.opacity = String(opacity);
+}
+
+function spawnBit(x, y, ex, ey, big) {
+  const bit = document.createElement('i');
+  bit.className = 'exhaust';
+  const gold = Math.random() < 0.46;
+  const color = gold ? '#ffd15c' : '#ff7a1a';
+  const size = big ? 8 : 4 + Math.random() * 2.5;
+  bit.style.width = size + 'px';
+  bit.style.height = size + 'px';
+  bit.style.background = color;
+  bit.style.boxShadow = '0 0 7px ' + color;
+  bit.style.left = (x + (Math.random() - 0.5) * 3) + 'px';
+  bit.style.top = (y + (Math.random() - 0.5) * 3) + 'px';
+  document.body.appendChild(bit);
+  const dx = ex * (16 + Math.random() * 12);
+  const dy = ey * (16 + Math.random() * 12);
+  const life = big ? 200 : 280 + Math.random() * 100;
+  bit.animate([
+    { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.92 },
+    { transform: 'translate(calc(-50% + ' + dx.toFixed(1) + 'px), calc(-50% + ' + dy.toFixed(1) + 'px)) scale(.25)', opacity: 0 }
+  ], { duration: life, easing: 'ease-out', fill: 'forwards' });
+  setTimeout(() => bit.remove(), life + 24);
+  return bit;
+}
+
+function releasePayload(cx, cy, angle, sepX, sepY, narrow) {
+  const nose = (angle - 45) * Math.PI / 180;
+  const payload = document.createElement('div');
+  payload.className = 'payload';
+  payload.style.left = (cx + Math.cos(nose) * 24) + 'px';
+  payload.style.top = (cy + Math.sin(nose) * 24) + 'px';
+  document.body.appendChild(payload);
+  const dirx = sepX * 0.78;
+  const diry = sepY * 0.86;
+  const len = Math.hypot(dirx, diry) || 1;
+  const travel = Math.min(len * 0.7, narrow ? 380 : 320);
+  const pdx = dirx / len * travel;
+  const pdy = diry / len * travel;
+  const deg = Math.atan2(pdy, pdx) * 180 / Math.PI;
+  const rot = 'rotate(' + deg.toFixed(1) + 'deg)';
+  payload.animate([
+    { transform: 'translate(-50%, -50%) ' + rot, opacity: 1, offset: 0 },
+    { transform: 'translate(calc(-50% + ' + (pdx * 0.55).toFixed(1) + 'px), calc(-50% + ' + (pdy * 0.55).toFixed(1) + 'px)) ' + rot, opacity: 1, offset: 0.58 },
+    { transform: 'translate(calc(-50% + ' + pdx.toFixed(1) + 'px), calc(-50% + ' + pdy.toFixed(1) + 'px)) ' + rot, opacity: 0 }
+  ], { duration: 1680, easing: 'linear', fill: 'forwards' });
+  setTimeout(() => payload.remove(), 1720);
+}
+
+function runRocket(side, kind, onDone) {
+  const plan = flightPlan(side);
+  const rocket = makeRocket(plan.ox, plan.oy);
+  const bits = [];
+  let angle = -48;
+  let sepAngle = null;
+  let acc = 0;
+  let separated = false;
+  let lastSample = null;
+  let lastNow = 0;
+  let lastBurn = 0;
+  let wasBurning = false;
+  const t0 = performance.now();
+  const fly = kind === 'flyby';
+  const endX = plan.sepX * (plan.narrow ? 1.05 : 1.2);
+  const endY = -(plan.oy + 36);
+
+  function engine(cssDeg) {
+    const nose = (cssDeg - 45) * Math.PI / 180;
+    return { x: -Math.cos(nose), y: -Math.sin(nose) };
+  }
+
+  function puff(cx, cy, cssDeg, n) {
+    const e = engine(cssDeg);
+    for (let i = 0; i < n; i++) bits.push(spawnBit(cx + e.x * 18, cy + e.y * 18, e.x, e.y, i === 0));
+  }
+
+  function killBits() {
+    while (bits.length) {
+      const bit = bits.pop();
+      bit.remove();
+    }
+  }
+
+  function frame(now) {
+    const elapsed = now - t0;
+    let x = 0;
+    let y = 0;
+    let opacity = 1;
+    let burning = false;
+    let done = false;
+
+    if (fly) {
+      const u = Math.min(1, elapsed / 5000);
+      const p = ascentPoint(u, endX, endY);
+      x = p.x;
+      y = p.y;
+      burning = u < 0.92;
+      if (u > 0.8) opacity = 1 - (u - 0.8) / 0.2;
+      done = u >= 1;
+    } else if (elapsed < ASCENT_MS) {
+      const u = elapsed / ASCENT_MS;
+      const p = ascentPoint(u, plan.sepX, plan.sepY);
+      x = p.x;
+      y = p.y;
+      burning = true;
+    } else if (elapsed < ASCENT_MS + ARC_MS) {
+      const u = (elapsed - ASCENT_MS) / ARC_MS;
+      if (sepAngle == null) sepAngle = angle;
+      const room = Math.max(80, plan.side > 0
+        ? (window.innerWidth - 32 - plan.ox)
+        : (plan.ox - 32));
+      let cx = plan.sepX * 0.72;
+      if (Math.abs(cx) > room) cx = plan.side * room;
+      const p = quad(
+        { x: plan.sepX, y: plan.sepY },
+        { x: cx, y: plan.sepY * 0.4 },
+        { x: plan.landX, y: plan.landY },
+        u
+      );
+      x = p.x;
+      y = p.y;
+      if (!separated) {
+        separated = true;
+        releasePayload(plan.ox + x, plan.oy + y, sepAngle, plan.sepX, plan.sepY, plan.narrow);
+        puff(plan.ox + x, plan.oy + y, sepAngle, 4);
+      }
+      if (u < 0.72) {
+        const spun = sepAngle + 180 * easeBlend(Math.min(1, u / 0.42));
+        const f = u < 0.42 ? 0 : easeBlend((u - 0.42) / 0.3);
+        angle = spun + angDiff(spun, -45) * f;
+      } else {
+        angle = -45;
+      }
+      burning = u > 0.78;
+    } else if (elapsed < ASCENT_MS + ARC_MS + SETTLE_MS) {
+      x = plan.landX;
+      y = plan.landY;
+      angle = -45;
+      burning = false;
+    } else if (elapsed < ASCENT_MS + ARC_MS + SETTLE_MS + FADE_MS) {
+      x = plan.landX;
+      y = plan.landY;
+      angle = -45;
+      opacity = 1 - (elapsed - ASCENT_MS - ARC_MS - SETTLE_MS) / FADE_MS;
+      burning = false;
+    } else {
+      done = true;
+    }
+
+    if (!fly && elapsed >= ASCENT_MS + ARC_MS && wasBurning) killBits();
+    wasBurning = burning;
+
+    if (!done && (fly || elapsed < ASCENT_MS)) {
+      const sample = fly
+        ? ascentPoint(Math.min(1, elapsed / 5000), endX, endY)
+        : ascentPoint(Math.min(1, elapsed / ASCENT_MS), plan.sepX, plan.sepY);
+      if (lastSample) {
+        const vx = sample.x - lastSample.x;
+        const vy = sample.y - lastSample.y;
+        if (vx * vx + vy * vy > 0.01) {
+          const target = noseTilt(vx, vy);
+          const k = 1 - Math.exp(-(now - lastNow) / 80);
+          angle = angle + angDiff(angle, target) * k;
+        }
+      }
+      lastSample = sample;
+      lastNow = now;
+    }
+
+    placeRocket(rocket, plan.ox, plan.oy, x, y, angle, Math.max(0, opacity));
+
+    if (burning) {
+      const dt = lastBurn ? Math.min(now - lastBurn, 48) : 16;
+      lastBurn = now;
+      acc += dt;
+      let n = 0;
+      const e = engine(angle);
+      while (acc >= 78 && n < 2) {
+        acc -= 78;
+        n += 1;
+        bits.push(spawnBit(plan.ox + x + e.x * 18, plan.oy + y + e.y * 18, e.x, e.y, n === 1));
+      }
+    } else {
+      acc = 0;
+      lastBurn = 0;
+    }
+
+    if (done) {
+      killBits();
+      rocket.remove();
+      if (onDone) onDone();
+      return;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  placeRocket(rocket, plan.ox, plan.oy, 0, 0, angle, 1);
+  requestAnimationFrame(frame);
+}
+
+function spawnCalm(side) {
+  const rect = launchBtn.getBoundingClientRect();
+  const ox = rect.left + rect.width / 2;
+  const oy = rect.top - 2;
+  const rocket = makeRocket(ox, oy);
+  const narrow = window.innerWidth < 520;
+  const dx = side * Math.min(window.innerWidth * (narrow ? 0.22 : 0.28), narrow ? 110 : 240);
+  const dy = -Math.min(window.innerHeight * 0.32, oy * 0.42);
+  const ang = noseTilt(dx, dy);
+  const turn = 'translate(-50%, -50%) rotate(' + ang.toFixed(1) + 'deg)';
+  rocket.animate([
+    { left: ox + 'px', top: oy + 'px', transform: turn, opacity: 1 },
+    { left: (ox + dx) + 'px', top: (oy + dy) + 'px', transform: turn, opacity: 0 }
+  ], { duration: 700, easing: 'ease-out', fill: 'forwards' });
+  setTimeout(() => {
+    rocket.remove();
+    calmOn = false;
+  }, 760);
 }
 
 launchBtn.addEventListener('click', () => {
-  clearTimeout(launchReset);
-  launchStreak = Math.min(launchStreak + 1, 3);
-  const count = (typeof reduceMotion !== 'undefined' && reduceMotion) ? 1 : launchStreak;
-  for (let i = 0; i < count; i++) {
-    const slot = count === 1 ? (Math.random() < 0.28 ? -1 : 1) : (i - (count - 1) / 2);
-    const lean = slot * (count === 1 ? (9 + Math.random() * 14) : (11 + Math.abs(slot) * 7));
-    setTimeout(() => spawnRocket(lean), i * 90);
+  const calm = typeof reduceMotion !== 'undefined' && reduceMotion;
+  if (calm) {
+    if (calmOn) return;
+    calmOn = true;
+    const side = nextSide;
+    nextSide = -nextSide;
+    spawnCalm(side);
+    return;
   }
-  launchReset = setTimeout(() => { launchStreak = 0; }, 2600);
+  if (landingSide) {
+    if (flybyOn) return;
+    flybyOn = true;
+    runRocket(-landingSide, 'flyby', () => { flybyOn = false; });
+    return;
+  }
+  const side = nextSide;
+  nextSide = -nextSide;
+  landingSide = side;
+  runRocket(side, 'land', () => { landingSide = 0; });
 });
 
 /* A tap on the open sky leaves one star. A tap on the name leaves a
