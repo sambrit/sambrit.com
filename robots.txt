@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /italy/
+Disallow: /kimchi/
 
 Sitemap: https://sambrit.com/sitemap.xml
