@@ -100,6 +100,11 @@
     color: var(--accent);
     letter-spacing: .6px;
     text-shadow: 0 2px 10px rgba(0,0,0,.8);
+    animation: nameGlow 7s ease-in-out infinite;
+  }
+  @keyframes nameGlow {
+    0%, 100% { text-shadow: 0 2px 10px rgba(0,0,0,.8), 0 0 12px rgba(255, 215, 0, .15); }
+    50% { text-shadow: 0 2px 10px rgba(0,0,0,.8), 0 0 28px rgba(255, 215, 0, .45); }
   }
 
   .nav-links {
@@ -232,6 +237,30 @@
     color: #fff;
     animation: wish 1.5s ease-out forwards;
   }
+  .ripple {
+    position: fixed;
+    z-index: 4;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border: 1px solid rgba(255, 224, 160, .8);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple .9s ease-out forwards;
+  }
+  @keyframes ripple {
+    to { transform: scale(7); opacity: 0; }
+  }
+  .feather {
+    position: fixed;
+    z-index: 5;
+    pointer-events: none;
+    font-size: 16px;
+    animation: feather 2.6s ease-in forwards;
+  }
+  @keyframes feather {
+    to { transform: translate(28px, 42vh) rotate(80deg); opacity: 0; }
+  }
 
   .sparkle {
     width: 6px;
@@ -297,6 +326,30 @@
     pointer-events: none;
   }
   .countdown[hidden] { display: none !important; }
+  .countdown.pop { animation: countPop .62s ease-out; }
+  @keyframes countPop {
+    0% { transform: translateX(-50%) scale(.4); opacity: 0; }
+    35% { transform: translateX(-50%) scale(1.12); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  }
+  .astronaut.pop { animation: astroHop 1.6s ease-in-out; }
+  @keyframes astroHop {
+    0% { transform: translate(0, -70%) scale(.6); }
+    18% { transform: translate(0, -118%) scale(1); }
+    32% { transform: translate(0, -100%) scale(1); }
+    48% { transform: translate(0, -112%); }
+    100% { transform: translate(0, -100%); }
+  }
+  .charm {
+    position: absolute;
+    left: 70%;
+    top: 0;
+    font-size: 16px;
+    animation: charmUp 1.6s ease-out forwards;
+  }
+  @keyframes charmUp {
+    to { transform: translateY(-36px); opacity: 0; }
+  }
 
   /* The flame is its own speck, not part of the emoji, so it can sit
      on the engines and go out on touchdown. The payload is a small
@@ -591,6 +644,120 @@
   html[data-mode="ssolstice"] .day-sun,
   html[data-mode="sequinox"] .day-sun { opacity: 1; }
   html[data-mode="ssolstice"] .day-sun { transform: scale(1.45); }
+  html[data-mode="thanksgiving"] .corner-deco.turkey { animation: turkeyBob 2.2s ease-in-out infinite; }
+  @keyframes turkeyBob {
+    50% { transform: translateY(-8px) rotate(-8deg); }
+  }
+  html[data-mode="july4"] .corner-deco.flag { animation: flagWave 1.4s ease-in-out infinite; transform-origin: left bottom; }
+  @keyframes flagWave {
+    50% { transform: translateY(0) rotate(6deg); }
+  }
+  html[data-mode="halloween"] .corner-deco.pumpkin { animation: pumpFlicker 1.8s ease-in-out infinite; }
+  @keyframes pumpFlicker {
+    0%, 100% { filter: drop-shadow(0 8px 8px rgba(0,0,0,.35)) brightness(1); }
+    50% { filter: drop-shadow(0 0 12px rgba(255, 140, 40, .8)) brightness(1.25); }
+  }
+  .wing, .ear {
+    transform-box: fill-box;
+    transform-origin: 80% 80%;
+    animation: flap .55s ease-in-out infinite;
+  }
+  .ear { transform-origin: 50% 100%; animation-duration: .7s; }
+  @keyframes flap {
+    50% { transform: rotate(-14deg); }
+  }
+
+  .aurora {
+    position: fixed;
+    left: -10%;
+    right: -10%;
+    top: 8vh;
+    height: 28vh;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(90deg, transparent, rgba(120, 220, 180, .18), rgba(160, 190, 255, .22), rgba(255, 210, 140, .14), transparent);
+    filter: blur(18px);
+    animation: aurora 14s ease-in-out infinite;
+  }
+  html[data-mode="holiday"] .aurora,
+  html[data-mode="wsolstice"] .aurora { opacity: 1; }
+  @keyframes aurora {
+    0%, 100% { transform: translateX(-4%) skewX(-8deg); }
+    50% { transform: translateX(6%) skewX(8deg); }
+  }
+
+  .drift-cloud {
+    position: fixed;
+    top: 46px;
+    left: -20%;
+    width: 140px;
+    height: 36px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(closest-side, rgba(255,255,255,.55), rgba(255,255,255,0));
+    filter: blur(2px);
+  }
+  html[data-mode="summer"] .drift-cloud,
+  html[data-mode="ssolstice"] .drift-cloud { opacity: .85; animation: cloudPass 28s linear infinite; }
+  @keyframes cloudPass {
+    from { left: -20%; }
+    to { left: 110%; }
+  }
+
+  .gold-pot {
+    position: fixed;
+    right: 7vw;
+    top: 118px;
+    z-index: 2;
+    font-size: 28px;
+    pointer-events: none;
+    opacity: 0;
+    filter: drop-shadow(0 0 8px rgba(255, 210, 80, .8));
+  }
+  html[data-mode="patrick"] .gold-pot { opacity: 1; animation: glint 2.4s ease-in-out infinite; }
+  @keyframes glint {
+    50% { transform: scale(1.12); filter: drop-shadow(0 0 16px rgba(255, 230, 120, 1)); }
+  }
+
+  .meet {
+    position: fixed;
+    top: 22vh;
+    z-index: 4;
+    font-size: 26px;
+    pointer-events: none;
+    opacity: 0;
+  }
+  html[data-mode="valentine"] .meet { opacity: 1; }
+  .meet.a { animation: meetA 9s ease-in-out infinite; }
+  .meet.b { animation: meetB 9s ease-in-out infinite; }
+  @keyframes meetA {
+    0%, 100% { left: 12vw; transform: translateY(0); }
+    50% { left: 42vw; transform: translateY(-12px); }
+  }
+  @keyframes meetB {
+    0%, 100% { left: 78vw; transform: translateY(8px); }
+    50% { left: 48vw; transform: translateY(-6px); }
+  }
+
+  .horizon {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(255, 224, 150, .0), rgba(255, 224, 150, .85), rgba(255, 224, 150, 0), transparent);
+    background-size: 40% 100%;
+    background-repeat: no-repeat;
+    animation: horizon 8s linear infinite;
+  }
+  @keyframes horizon {
+    from { background-position: -40% 0; }
+    to { background-position: 140% 0; }
+  }
 
   html[data-mode="sequinox"] .moon,
   html[data-mode="aequinox"] .moon,
@@ -1130,7 +1297,9 @@
     .launch-button, .wish, .sparkle { transition: none !important; animation: none !important; }
     .bulb, .deer-bob, .leg, .wave, .nose-glow, .scarf, .spark-trail i,
     .corner-deco, .santa-bob, .ghosts span, .switch-knob,
-    .ground-life i, .flower-field span, .hopper, .rocket .flame {
+    .ground-life i, .flower-field span, .hopper, .rocket .flame,
+    .name, .aurora, .drift-cloud, .meet, .horizon, .wing, .ear,
+    .corner-deco.turkey, .corner-deco.flag, .corner-deco.pumpkin {
       animation: none !important;
     }
     .switch-knob { transition: none !important; }
@@ -1209,6 +1378,12 @@
   <canvas id="snow" aria-hidden="true"></canvas>
   <div class="glow" aria-hidden="true"></div>
   <div class="day-sun" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="drift-cloud" aria-hidden="true"></div>
+  <div class="gold-pot" aria-hidden="true">🪙</div>
+  <div class="meet a" aria-hidden="true">🏮</div>
+  <div class="meet b" aria-hidden="true">🏮</div>
+  <div class="horizon" aria-hidden="true"></div>
   <div class="ground-life" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="flower-field" aria-hidden="true"><span>🌸</span><span>🌼</span><span>🌷</span><span>🌸</span><span>🌼</span></div>
   <svg class="snowbank" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
@@ -1408,15 +1583,15 @@
         <circle cx="212" cy="70" r="2.1" fill="#2a140c"/>
         <path d="M186 100 L176 126" stroke="#8a4a28" stroke-width="4" stroke-linecap="round"/>
         <path d="M166 104 L154 128" stroke="#8a4a28" stroke-width="4" stroke-linecap="round"/>
-        <path d="M148 78 Q112 36 86 58" fill="none" stroke="#a85028" stroke-width="7" stroke-linecap="round"/>
+        <path class="wing" d="M148 78 Q112 36 86 58" fill="none" stroke="#a85028" stroke-width="7" stroke-linecap="round"/>
       </svg>
     </div>
   </div>
 
   <div class="hopper" id="bunny" hidden aria-hidden="true">
     <svg viewBox="0 0 72 52" width="72" height="52">
-      <ellipse cx="26" cy="16" rx="5" ry="13" fill="#f7f3ea" transform="rotate(-14 26 16)"/>
-      <ellipse cx="36" cy="15" rx="5" ry="13" fill="#f7f3ea" transform="rotate(12 36 15)"/>
+        <ellipse class="ear" cx="26" cy="16" rx="5" ry="13" fill="#f7f3ea" transform="rotate(-14 26 16)"/>
+        <ellipse class="ear" cx="36" cy="15" rx="5" ry="13" fill="#f7f3ea" transform="rotate(12 36 15)"/>
       <ellipse cx="28" cy="18" rx="2.4" ry="8" fill="#f4b4c4" transform="rotate(-14 28 18)"/>
       <ellipse cx="36" cy="34" rx="18" ry="11" fill="#f7f3ea"/>
       <circle cx="54" cy="28" r="9" fill="#f7f3ea"/>
@@ -1603,9 +1778,18 @@ function placeRocket(rocket, ox, oy, x, y, angle, opacity) {
 
 function showAstronaut(x, y) {
   const el = document.createElement('div');
-  el.className = 'astronaut';
+  el.className = 'astronaut pop';
   el.innerHTML = ASTRO_SVG;
-    el.style.left = (x + 28) + 'px';
+  const charm = document.createElement('div');
+  charm.className = 'charm';
+  const tokens = {
+    thanksgiving: '🍂', holiday: '⭐', valentine: '🌹', patrick: '☘️',
+    spring: '🌸', sequinox: '🌸', summer: '✦', ssolstice: '☀️',
+    july4: '⭐', autumn: '🍁', aequinox: '🍁', halloween: '✨', wsolstice: '✨'
+  };
+  charm.textContent = tokens[activeMode] || '✦';
+  el.appendChild(charm);
+  el.style.left = (x + 28) + 'px';
   el.style.top = y + 'px';
   el.style.transform = 'translate(0, -100%)';
   document.body.appendChild(el);
@@ -1797,6 +1981,9 @@ function runCountdown(done) {
       return;
     }
     countdownEl.textContent = beats[i];
+    countdownEl.classList.remove('pop');
+    void countdownEl.offsetWidth;
+    countdownEl.classList.add('pop');
     i += 1;
     setTimeout(step, 620);
   }
@@ -1832,7 +2019,17 @@ launchBtn.addEventListener('click', () => {
 /* A tap on the open sky leaves one star. A tap on the name leaves a
    few sparks. Both are small on purpose, and both stay quiet when
    the visitor has asked for reduced motion. */
+function spawnRipple(x, y) {
+  const ring = document.createElement('div');
+  ring.className = 'ripple';
+  ring.style.left = x + 'px';
+  ring.style.top = y + 'px';
+  document.body.appendChild(ring);
+  setTimeout(() => ring.remove(), 900);
+}
+
 function spawnWish(x, y) {
+  spawnRipple(x, y);
   const star = document.createElement('div');
   star.className = 'wish';
   star.textContent = '✦';
@@ -1843,7 +2040,8 @@ function spawnWish(x, y) {
 }
 
 function spawnSparkles(x, y) {
-  for (let i = 0; i < 7; i++) {
+  spawnRipple(x, y);
+  for (let i = 0; i < 12; i++) {
     const bit = document.createElement('div');
     bit.className = 'sparkle';
     bit.style.left = x + 'px';
@@ -2491,6 +2689,7 @@ let dpr = 1;
 let stars = [];
 let shootingStars = [];
 let nextShootingStarAt = 0;
+let nextShowerAt = 0;
 
 const pointer = { x: 0.5, y: 0.5 };
 const smooth = { x: 0.5, y: 0.5 };
@@ -2586,10 +2785,33 @@ function loop(now) {
   ctx.globalAlpha = 1;
 
   if (!reduceMotion) {
-    const starCap = activeMode === 'wsolstice' ? 3 : 2;
-    if (shootingStars.length < starCap && now >= nextShootingStarAt) {
-      shootingStars.push(createShootingStar());
-      nextShootingStarAt = now + rand(900, 2400);
+    const starCap = activeMode === 'wsolstice' ? 4 : 3;
+    if (!nextShowerAt) nextShowerAt = now + rand(8000, 14000);
+    if (now >= nextShowerAt && shootingStars.length < 2) {
+      nextShowerAt = now + rand(16000, 28000);
+      const base = createShootingStar();
+      const burst = Math.random() < 0.35 ? 5 : 3;
+      for (let i = 0; i < burst; i++) {
+        shootingStars.push({
+          x: base.x,
+          y: base.y + i * 22 * dpr,
+          vx: base.vx * (0.92 + i * 0.04),
+          vy: base.vy + i * 0.04 * dpr,
+          length: base.length * (i === 0 ? 1.7 : 1),
+          width: base.width * (i === 0 ? 1.6 : 1),
+          life: base.life + i * 90
+        });
+      }
+    } else if (shootingStars.length < starCap && now >= nextShootingStarAt) {
+      const star = createShootingStar();
+      if (Math.random() < 0.2) {
+        star.length *= 2.1;
+        star.width *= 1.7;
+        star.vx *= 0.62;
+        star.life *= 1.5;
+      }
+      shootingStars.push(star);
+      nextShootingStarAt = now + rand(700, 2000);
     }
 
     for (let i = shootingStars.length - 1; i >= 0; i--) {
@@ -2650,7 +2872,19 @@ function loop(now) {
       paintFlake(f);
     }
 
-    const trailEl = [santaFly, witchFly, lepFly].find((el) => !el.hidden);
+    const trailEl = [santaFly, witchFly, lepFly, turkeyFly].find((el) => el && !el.hidden);
+    if (activeMode === 'thanksgiving' && turkeyFly && !turkeyFly.hidden && Math.random() < 0.04) {
+      const box = turkeyFly.getBoundingClientRect();
+      if (box.width) {
+        const feather = document.createElement('div');
+        feather.className = 'feather';
+        feather.textContent = '🪶';
+        feather.style.left = (box.left + box.width * 0.35) + 'px';
+        feather.style.top = (box.top + box.height * 0.55) + 'px';
+        document.body.appendChild(feather);
+        setTimeout(() => feather.remove(), 2700);
+      }
+    }
     if (trailEl) {
       const box = trailEl.getBoundingClientRect();
       if (Math.random() < 0.85) {
