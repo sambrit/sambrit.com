@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sambrit Adhikari | Program Manager, Engineer, and Photographer</title>
-  <meta name="description" content="Sambrit Adhikari is a program manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
+  <title>Sambrit Adhikari | Product Manager, Engineer, and Photographer</title>
+  <meta name="description" content="Sambrit Adhikari is a product manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
   <meta name="author" content="Sambrit Adhikari"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://sambrit.com/"/>
 
   <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Sambrit Adhikari | Program Manager, Engineer, and Photographer"/>
-  <meta property="og:description" content="Sambrit Adhikari is a program manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
+  <meta property="og:title" content="Sambrit Adhikari | Product Manager, Engineer, and Photographer"/>
+  <meta property="og:description" content="Sambrit Adhikari is a product manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
   <meta property="og:url" content="https://sambrit.com/"/>
 
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="Sambrit Adhikari | Program Manager, Engineer, and Photographer"/>
-  <meta name="twitter:description" content="Sambrit Adhikari is a program manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
+  <meta name="twitter:title" content="Sambrit Adhikari | Product Manager, Engineer, and Photographer"/>
+  <meta name="twitter:description" content="Sambrit Adhikari is a product manager, engineer, and photographer. This page links to his GitHub, photography, and LinkedIn."/>
   <meta name="twitter:url" content="https://sambrit.com/"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -100,6 +100,11 @@
     color: var(--accent);
     letter-spacing: .6px;
     text-shadow: 0 2px 10px rgba(0,0,0,.8);
+    animation: nameGlow 7s ease-in-out infinite;
+  }
+  @keyframes nameGlow {
+    0%, 100% { text-shadow: 0 2px 10px rgba(0,0,0,.8), 0 0 12px rgba(255, 215, 0, .15); }
+    50% { text-shadow: 0 2px 10px rgba(0,0,0,.8), 0 0 28px rgba(255, 215, 0, .45); }
   }
 
   .nav-links {
@@ -232,6 +237,30 @@
     color: #fff;
     animation: wish 1.5s ease-out forwards;
   }
+  .ripple {
+    position: fixed;
+    z-index: 4;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border: 1px solid rgba(255, 224, 160, .8);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple .9s ease-out forwards;
+  }
+  @keyframes ripple {
+    to { transform: scale(7); opacity: 0; }
+  }
+  .feather {
+    position: fixed;
+    z-index: 5;
+    pointer-events: none;
+    font-size: 16px;
+    animation: feather 2.6s ease-in forwards;
+  }
+  @keyframes feather {
+    to { transform: translate(28px, 42vh) rotate(80deg); opacity: 0; }
+  }
 
   .sparkle {
     width: 6px;
@@ -256,15 +285,70 @@
 
   .rocket {
     position: fixed;
-    width: 2rem;
-    height: 2rem;
-    font-size: 2rem;
-    line-height: 1;
-    display: grid;
-    place-items: center;
+    width: 56px;
+    height: 98px;
     z-index: 9;
     pointer-events: none;
     will-change: transform;
+  }
+
+  .rocket svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .rocket .flame { transform-origin: 40px 108px; animation: flame 90ms ease-in-out infinite; }
+  @keyframes flame {
+    50% { transform: scaleY(1.18) scaleX(0.92); }
+  }
+
+  .astronaut {
+    position: fixed;
+    z-index: 9;
+    width: 64px;
+    height: 86px;
+    pointer-events: none;
+  }
+  .astronaut .arm {
+    transform-box: fill-box;
+    transform-origin: 8% 30%;
+    animation: wave .45s ease-in-out infinite;
+  }
+
+  .countdown {
+    position: fixed;
+    z-index: 9;
+    left: 50%;
+    bottom: calc(78px + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    margin: 0;
+    font-weight: 800;
+    font-size: 2.4rem;
+    letter-spacing: .04em;
+    color: #ffe08a;
+    text-shadow: 0 0 16px rgba(255, 180, 40, .65);
+    pointer-events: none;
+  }
+  .countdown[hidden] { display: none !important; }
+  .countdown.pop { animation: countPop .62s ease-out; }
+  @keyframes countPop {
+    0% { transform: translateX(-50%) scale(.4); opacity: 0; }
+    35% { transform: translateX(-50%) scale(1.12); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  }
+  .astronaut.pop { animation: astroHop 1.6s ease-in-out; }
+  @keyframes astroHop {
+    0% { transform: translate(0, -70%) scale(.6); }
+    18% { transform: translate(0, -118%) scale(1); }
+    32% { transform: translate(0, -100%) scale(1); }
+    48% { transform: translate(0, -112%); }
+    100% { transform: translate(0, -100%); }
+  }
+  .charm {
+    position: absolute;
+    left: 70%;
+    top: 0;
+    font-size: 16px;
+    animation: charmUp 1.6s ease-out forwards;
+  }
+  @keyframes charmUp {
+    to { transform: translateY(-36px); opacity: 0; }
   }
 
   /* The flame is its own speck, not part of the emoji, so it can sit
@@ -307,7 +391,7 @@
     align-items: center;
     gap: 6px;
     min-height: 28px;
-    max-width: min(46vw, 168px);
+    max-width: min(58vw, 210px);
     padding: 3px 5px 3px 8px;
     border-radius: 999px;
     border: 1px solid rgba(255,255,255,.12);
@@ -329,9 +413,18 @@
 
   .holiday-label {
     display: block;
-    max-width: 6.5rem;
+    max-width: 8.2rem;
     text-align: left;
     line-height: 1.05;
+  }
+
+  .holiday-when {
+    display: block;
+    margin-top: 1px;
+    font-weight: 500;
+    font-size: .62rem;
+    letter-spacing: 0;
+    opacity: .72;
   }
 
   .holiday-toggle:hover {
@@ -428,6 +521,12 @@
   html[data-mode="patrick"] .xmas-lights,
   html[data-mode="valentine"] .xmas-lights,
   html[data-mode="spring"] .xmas-lights,
+  html[data-mode="summer"] .xmas-lights,
+  html[data-mode="autumn"] .xmas-lights,
+  html[data-mode="sequinox"] .xmas-lights,
+  html[data-mode="aequinox"] .xmas-lights,
+  html[data-mode="ssolstice"] .xmas-lights,
+  html[data-mode="wsolstice"] .xmas-lights,
   html[data-mode="thanksgiving"] .xmas-lights {
     opacity: 1;
     transform: none;
@@ -522,8 +621,297 @@
   html[data-mode="valentine"] .corner-deco.candle { transform: translateY(0); }
   html[data-mode="spring"] .corner-deco.blossom { transform: translateY(0); }
   html[data-mode="thanksgiving"] .corner-deco.turkey { transform: translateY(0); }
+  html[data-mode="spring"] .flower-field,
+  html[data-mode="sequinox"] .flower-field { opacity: 1; }
   .corner-deco.candle { font-size: 28px; }
   .corner-deco.turkey { font-size: 30px; }
+
+  .day-sun {
+    position: fixed;
+    top: calc(16px + env(safe-area-inset-top));
+    right: calc(16px + env(safe-area-inset-right));
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 35% 35%, #fff8d4, #ffd35a 52%, #f0a018 78%, rgba(240, 160, 24, 0));
+    box-shadow: 0 0 42px rgba(255, 196, 70, .55);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  html[data-mode="summer"] .day-sun,
+  html[data-mode="ssolstice"] .day-sun,
+  html[data-mode="sequinox"] .day-sun { opacity: 1; }
+  html[data-mode="ssolstice"] .day-sun { transform: scale(1.45); }
+  html[data-mode="thanksgiving"] .corner-deco.turkey { animation: turkeyBob 2.2s ease-in-out infinite; }
+  @keyframes turkeyBob {
+    50% { transform: translateY(-8px) rotate(-8deg); }
+  }
+  html[data-mode="july4"] .corner-deco.flag { animation: flagWave 1.4s ease-in-out infinite; transform-origin: left bottom; }
+  @keyframes flagWave {
+    50% { transform: translateY(0) rotate(6deg); }
+  }
+  html[data-mode="halloween"] .corner-deco.pumpkin { animation: pumpFlicker 1.8s ease-in-out infinite; }
+  @keyframes pumpFlicker {
+    0%, 100% { filter: drop-shadow(0 8px 8px rgba(0,0,0,.35)) brightness(1); }
+    50% { filter: drop-shadow(0 0 12px rgba(255, 140, 40, .8)) brightness(1.25); }
+  }
+  .wing, .ear {
+    transform-box: fill-box;
+    transform-origin: 80% 80%;
+    animation: flap .55s ease-in-out infinite;
+  }
+  .ear { transform-origin: 50% 100%; animation-duration: .7s; }
+  @keyframes flap {
+    50% { transform: rotate(-14deg); }
+  }
+
+  .aurora {
+    position: fixed;
+    left: -10%;
+    right: -10%;
+    top: 8vh;
+    height: 28vh;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(90deg, transparent, rgba(120, 220, 180, .18), rgba(160, 190, 255, .22), rgba(255, 210, 140, .14), transparent);
+    filter: blur(18px);
+    animation: aurora 14s ease-in-out infinite;
+  }
+  html[data-mode="holiday"] .aurora,
+  html[data-mode="wsolstice"] .aurora { opacity: 1; }
+  @keyframes aurora {
+    0%, 100% { transform: translateX(-4%) skewX(-8deg); }
+    50% { transform: translateX(6%) skewX(8deg); }
+  }
+
+  .drift-cloud {
+    position: fixed;
+    top: 46px;
+    left: -20%;
+    width: 140px;
+    height: 36px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(closest-side, rgba(255,255,255,.55), rgba(255,255,255,0));
+    filter: blur(2px);
+  }
+  html[data-mode="summer"] .drift-cloud,
+  html[data-mode="ssolstice"] .drift-cloud { opacity: .85; animation: cloudPass 28s linear infinite; }
+  @keyframes cloudPass {
+    from { left: -20%; }
+    to { left: 110%; }
+  }
+
+  .gold-pot {
+    position: fixed;
+    right: 7vw;
+    top: 118px;
+    z-index: 2;
+    font-size: 28px;
+    pointer-events: none;
+    opacity: 0;
+    filter: drop-shadow(0 0 8px rgba(255, 210, 80, .8));
+  }
+  html[data-mode="patrick"] .gold-pot { opacity: 1; animation: glint 2.4s ease-in-out infinite; }
+  @keyframes glint {
+    50% { transform: scale(1.12); filter: drop-shadow(0 0 16px rgba(255, 230, 120, 1)); }
+  }
+
+  .meet {
+    position: fixed;
+    top: 22vh;
+    z-index: 4;
+    font-size: 26px;
+    pointer-events: none;
+    opacity: 0;
+  }
+  html[data-mode="valentine"] .meet { opacity: 1; }
+  .meet.a { animation: meetA 9s ease-in-out infinite; }
+  .meet.b { animation: meetB 9s ease-in-out infinite; }
+  @keyframes meetA {
+    0%, 100% { left: 12vw; transform: translateY(0); }
+    50% { left: 42vw; transform: translateY(-12px); }
+  }
+  @keyframes meetB {
+    0%, 100% { left: 78vw; transform: translateY(8px); }
+    50% { left: 48vw; transform: translateY(-6px); }
+  }
+
+  .horizon {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(255, 224, 150, .0), rgba(255, 224, 150, .85), rgba(255, 224, 150, 0), transparent);
+    background-size: 40% 100%;
+    background-repeat: no-repeat;
+    animation: horizon 8s linear infinite;
+  }
+  @keyframes horizon {
+    from { background-position: -40% 0; }
+    to { background-position: 140% 0; }
+  }
+
+  html[data-mode="sequinox"] .moon,
+  html[data-mode="aequinox"] .moon,
+  html[data-mode="wsolstice"] .moon { opacity: .85; }
+  html[data-mode="sequinox"] .moon,
+  html[data-mode="aequinox"] .moon { left: 10vw; top: 16vh; }
+
+  .ground-life {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 42px;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .ground-life i {
+    position: absolute;
+    bottom: 10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffe7a0;
+    box-shadow: 0 0 8px #ffd56a;
+    animation: mote 4.8s ease-in-out infinite;
+  }
+  .ground-life i:nth-child(1) { left: 8%; animation-delay: -1s; }
+  .ground-life i:nth-child(2) { left: 22%; animation-delay: -2.4s; }
+  .ground-life i:nth-child(3) { left: 37%; animation-delay: -.6s; }
+  .ground-life i:nth-child(4) { left: 51%; animation-delay: -3.1s; }
+  .ground-life i:nth-child(5) { left: 66%; animation-delay: -1.7s; }
+  .ground-life i:nth-child(6) { left: 78%; animation-delay: -4s; }
+  .ground-life i:nth-child(7) { left: 91%; animation-delay: -.2s; }
+  @keyframes mote {
+    0%, 100% { transform: translateY(0); opacity: .28; }
+    50% { transform: translateY(-16px); opacity: .9; }
+  }
+
+  .flower-field {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    z-index: 4;
+    height: 54px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .45s ease;
+  }
+  .flower-field span {
+    position: absolute;
+    bottom: 0;
+    font-size: 28px;
+    animation: sway 3.2s ease-in-out infinite;
+  }
+  .flower-field span:nth-child(1) { left: 8%; }
+  .flower-field span:nth-child(2) { left: 24%; animation-delay: -.6s; font-size: 22px; }
+  .flower-field span:nth-child(3) { left: 70%; animation-delay: -1.2s; }
+  .flower-field span:nth-child(4) { left: 84%; animation-delay: -.3s; font-size: 24px; }
+  .flower-field span:nth-child(5) { left: 46%; animation-delay: -1.8s; font-size: 20px; }
+  @keyframes sway {
+    50% { transform: rotate(8deg) translateY(-4px); }
+  }
+
+  .hopper {
+    position: fixed;
+    z-index: 4;
+    left: 8%;
+    bottom: 14px;
+    width: 68px;
+    height: 50px;
+    pointer-events: none;
+  }
+  #turkeyFly { width: min(340px, 62vw); }
+  .hopper[hidden] { display: none !important; }
+  html[data-mode="spring"] .hopper,
+  html[data-mode="sequinox"] .hopper { animation: hopAcross 16s linear infinite; }
+  @keyframes hopAcross {
+    0% { left: 8%; transform: translateY(0); }
+    6% { transform: translateY(-22px); }
+    12% { transform: translateY(0); }
+    18% { transform: translateY(-22px); }
+    24% { transform: translateY(0); }
+    30% { transform: translateY(-18px); }
+    36% { transform: translateY(0); }
+    42% { transform: translateY(-22px); }
+    48% { transform: translateY(0); }
+    54% { transform: translateY(-16px); }
+    60% { transform: translateY(0); }
+    66% { transform: translateY(-22px); }
+    72% { transform: translateY(0); }
+    78% { transform: translateY(-18px); }
+    84% { transform: translateY(0); }
+    90% { transform: translateY(-22px); }
+    100% { left: 108%; transform: translateY(0); }
+  }
+
+  html[data-mode="summer"] .bulb:nth-child(5n+1),
+  html[data-mode="ssolstice"] .bulb:nth-child(5n+1) { color: #ffe08a; background: #ffe08a; }
+  html[data-mode="summer"] .bulb:nth-child(5n+2),
+  html[data-mode="ssolstice"] .bulb:nth-child(5n+2) { color: #ffb15a; background: #ffb15a; }
+  html[data-mode="summer"] .bulb:nth-child(5n+3),
+  html[data-mode="ssolstice"] .bulb:nth-child(5n+3) { color: #fff4c4; background: #fff4c4; }
+  html[data-mode="summer"] .bulb:nth-child(5n+4),
+  html[data-mode="ssolstice"] .bulb:nth-child(5n+4) { color: #7fd4ff; background: #7fd4ff; }
+  html[data-mode="summer"] .bulb:nth-child(5n),
+  html[data-mode="ssolstice"] .bulb:nth-child(5n) { color: #ffd24d; background: #ffd24d; }
+
+  html[data-mode="autumn"] .bulb:nth-child(5n+1),
+  html[data-mode="aequinox"] .bulb:nth-child(5n+1) { color: #e09040; background: #e09040; }
+  html[data-mode="autumn"] .bulb:nth-child(5n+2),
+  html[data-mode="aequinox"] .bulb:nth-child(5n+2) { color: #c45a3a; background: #c45a3a; }
+  html[data-mode="autumn"] .bulb:nth-child(5n+3),
+  html[data-mode="aequinox"] .bulb:nth-child(5n+3) { color: #f0c86a; background: #f0c86a; }
+  html[data-mode="autumn"] .bulb:nth-child(5n+4),
+  html[data-mode="aequinox"] .bulb:nth-child(5n+4) { color: #8a5a32; background: #8a5a32; }
+  html[data-mode="autumn"] .bulb:nth-child(5n),
+  html[data-mode="aequinox"] .bulb:nth-child(5n) { color: #ffd27a; background: #ffd27a; }
+
+  html[data-mode="sequinox"] .bulb:nth-child(5n+1) { color: #fff1c9; background: #fff1c9; }
+  html[data-mode="sequinox"] .bulb:nth-child(5n+2) { color: #c8f0c0; background: #c8f0c0; }
+  html[data-mode="sequinox"] .bulb:nth-child(5n+3) { color: #ffd08a; background: #ffd08a; }
+  html[data-mode="sequinox"] .bulb:nth-child(5n+4) { color: #d7f6ff; background: #d7f6ff; }
+  html[data-mode="sequinox"] .bulb:nth-child(5n) { color: #ffe08a; background: #ffe08a; }
+
+  html[data-mode="wsolstice"] .bulb:nth-child(5n+1) { color: #d7f6ff; background: #d7f6ff; }
+  html[data-mode="wsolstice"] .bulb:nth-child(5n+2) { color: #fff; background: #fff; }
+  html[data-mode="wsolstice"] .bulb:nth-child(5n+3) { color: #9ecbff; background: #9ecbff; }
+  html[data-mode="wsolstice"] .bulb:nth-child(5n+4) { color: #ffe08a; background: #ffe08a; }
+  html[data-mode="wsolstice"] .bulb:nth-child(5n) { color: #e8f4ff; background: #e8f4ff; }
+
+  html[data-mode="summer"] .glow,
+  html[data-mode="ssolstice"] .glow {
+    background:
+      radial-gradient(42vmax 42vmax at 88% 8%, rgba(255, 200, 70, .28), transparent 58%),
+      radial-gradient(30vmax 30vmax at 20% 80%, rgba(255, 160, 60, .1), transparent 66%);
+  }
+  html[data-mode="autumn"] .glow,
+  html[data-mode="aequinox"] .glow {
+    background:
+      radial-gradient(36vmax 36vmax at 18% 24%, rgba(200, 110, 40, .16), transparent 62%),
+      radial-gradient(32vmax 32vmax at 80% 70%, rgba(140, 60, 30, .12), transparent 66%);
+  }
+  html[data-mode="sequinox"] .glow {
+    background:
+      radial-gradient(34vmax 34vmax at 12% 22%, rgba(210, 230, 255, .16), transparent 62%),
+      radial-gradient(36vmax 36vmax at 88% 12%, rgba(255, 210, 90, .18), transparent 60%);
+  }
+  html[data-mode="wsolstice"] .glow {
+    background:
+      radial-gradient(40vmax 40vmax at 50% 18%, rgba(180, 210, 255, .16), transparent 62%),
+      radial-gradient(28vmax 28vmax at 80% 80%, rgba(255, 220, 140, .08), transparent 66%);
+  }
 
   @keyframes spin-slow {
     to { transform: rotate(360deg); }
@@ -700,6 +1088,18 @@
   @keyframes giftFall {
     0% { transform: translate3d(0, 0, 0) rotate(0deg); }
     100% { transform: translate3d(var(--drift), 115vh, 0) rotate(260deg); }
+  }
+
+  .gift.rise {
+    top: auto;
+    bottom: 6vh;
+    animation-name: giftRise;
+  }
+
+  @keyframes giftRise {
+    0% { transform: translate3d(0, 20px, 0); opacity: 0; }
+    14% { opacity: 1; }
+    100% { transform: translate3d(var(--drift), -78vh, 0); opacity: 0; }
   }
 
 
@@ -896,7 +1296,10 @@
     .btn { transition: none !important; }
     .launch-button, .wish, .sparkle { transition: none !important; animation: none !important; }
     .bulb, .deer-bob, .leg, .wave, .nose-glow, .scarf, .spark-trail i,
-    .corner-deco, .santa-bob, .ghosts span, .switch-knob {
+    .corner-deco, .santa-bob, .ghosts span, .switch-knob,
+    .ground-life i, .flower-field span, .hopper, .rocket .flame,
+    .name, .aurora, .drift-cloud, .meet, .horizon, .wing, .ear,
+    .corner-deco.turkey, .corner-deco.flag, .corner-deco.pumpkin {
       animation: none !important;
     }
     .switch-knob { transition: none !important; }
@@ -910,7 +1313,8 @@
       transform: none !important;
     }
     html[data-mode="halloween"] #witchFly.parked,
-    html[data-mode="patrick"] #lepFly.parked {
+    html[data-mode="patrick"] #lepFly.parked,
+    html[data-mode="thanksgiving"] #turkeyFly.parked {
       top: 11vh;
       left: 5vw;
       right: auto;
@@ -928,7 +1332,7 @@
       gap: 5px;
       max-width: 42vw;
     }
-    .holiday-label { max-width: 5.4rem; }
+    .holiday-label { max-width: 7.2rem; }
     .corner-deco.turkey { font-size: 24px; }
     .corner-deco.candle { font-size: 22px; }
     .holiday-toast { font-size: .78rem; max-width: 88vw; }
@@ -951,13 +1355,17 @@
       bottom: calc(16px + env(safe-area-inset-bottom));
       padding: 12px 20px;
     }
-    .rocket { font-size: 1.6rem; width: 1.7rem; height: 1.7rem; }
+    .rocket { width: 46px; height: 80px; }
+    .countdown { font-size: 2rem; }
   }
   </style>
 </head>
 <body>
   <button class="holiday-toggle" id="holidayToggle" type="button" aria-pressed="false" hidden>
-    <span class="holiday-label">Holiday</span>
+    <span>
+      <span class="holiday-label">Holiday</span>
+      <span class="holiday-when" id="holidayWhen"></span>
+    </span>
     <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
   </button>
   <p class="holiday-toast" id="holidayToast" role="status"></p>
@@ -969,6 +1377,15 @@
   <canvas id="bg" aria-hidden="true"></canvas>
   <canvas id="snow" aria-hidden="true"></canvas>
   <div class="glow" aria-hidden="true"></div>
+  <div class="day-sun" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="drift-cloud" aria-hidden="true"></div>
+  <div class="gold-pot" aria-hidden="true">🪙</div>
+  <div class="meet a" aria-hidden="true">🏮</div>
+  <div class="meet b" aria-hidden="true">🏮</div>
+  <div class="horizon" aria-hidden="true"></div>
+  <div class="ground-life" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="flower-field" aria-hidden="true"><span>🌸</span><span>🌼</span><span>🌷</span><span>🌸</span><span>🌼</span></div>
   <svg class="snowbank" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
     <path fill="#d7e6f5" d="M0 86 C 140 86 190 34 310 40 C 430 46 480 96 620 88 C 760 80 820 30 960 38 C 1100 46 1160 96 1300 84 C 1360 78 1400 64 1440 70 V 140 H 0 Z"/>
     <path fill="#f7fbff" d="M0 104 C 160 104 210 62 340 68 C 470 74 530 112 680 104 C 820 96 880 58 1020 66 C 1160 74 1220 110 1360 100 C 1400 96 1420 90 1440 92 V 140 H 0 Z"/>
@@ -1000,7 +1417,7 @@
   <div class="corner-deco flag right" aria-hidden="true">🇺🇸</div>
   <div class="corner-deco shamrock" aria-hidden="true">☘️</div>
   <div class="corner-deco shamrock right" aria-hidden="true">☘️</div>
-  <div class="corner-deco candle" aria-hidden="true">🕯️</div>
+  <div class="corner-deco candle" aria-hidden="true">🌹</div>
   <div class="corner-deco blossom" aria-hidden="true">🌸</div>
   <div class="corner-deco blossom right" aria-hidden="true">🌸</div>
   <div class="corner-deco turkey" aria-hidden="true">🦃</div>
@@ -1150,6 +1567,39 @@
 
   <div class="santa-fly bat-flight" id="batFly" hidden aria-hidden="true">🦇&nbsp;&nbsp;🦇&nbsp;&nbsp;🦇</div>
 
+  <div class="santa-fly" id="turkeyFly" hidden>
+    <div class="santa-bob">
+      <div class="hoho">Gobble!</div>
+      <svg class="santa-svg" viewBox="0 0 280 150" aria-hidden="true">
+        <ellipse cx="78" cy="78" rx="16" ry="46" fill="#7a3018" transform="rotate(-26 78 78)"/>
+        <ellipse cx="94" cy="72" rx="15" ry="44" fill="#c45a22" transform="rotate(-10 94 72)"/>
+        <ellipse cx="110" cy="70" rx="14" ry="42" fill="#e8a04a" transform="rotate(6 110 70)"/>
+        <ellipse cx="124" cy="76" rx="12" ry="36" fill="#f3d7a0" transform="rotate(18 124 76)"/>
+        <ellipse cx="158" cy="86" rx="38" ry="22" fill="#c46a32"/>
+        <ellipse cx="176" cy="94" rx="16" ry="10" fill="#f0d2a8"/>
+        <circle cx="206" cy="74" r="16" fill="#e8b080"/>
+        <path d="M218 76 L240 68 L220 86 Z" fill="#f2c14e"/>
+        <path d="M214 80 L232 86" stroke="#c45a22" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="212" cy="70" r="2.1" fill="#2a140c"/>
+        <path d="M186 100 L176 126" stroke="#8a4a28" stroke-width="4" stroke-linecap="round"/>
+        <path d="M166 104 L154 128" stroke="#8a4a28" stroke-width="4" stroke-linecap="round"/>
+        <path class="wing" d="M148 78 Q112 36 86 58" fill="none" stroke="#a85028" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hopper" id="bunny" hidden aria-hidden="true">
+    <svg viewBox="0 0 72 52" width="72" height="52">
+        <ellipse class="ear" cx="26" cy="16" rx="5" ry="13" fill="#f7f3ea" transform="rotate(-14 26 16)"/>
+        <ellipse class="ear" cx="36" cy="15" rx="5" ry="13" fill="#f7f3ea" transform="rotate(12 36 15)"/>
+      <ellipse cx="28" cy="18" rx="2.4" ry="8" fill="#f4b4c4" transform="rotate(-14 28 18)"/>
+      <ellipse cx="36" cy="34" rx="18" ry="11" fill="#f7f3ea"/>
+      <circle cx="54" cy="28" r="9" fill="#f7f3ea"/>
+      <circle cx="57" cy="26" r="1.4" fill="#2a140c"/>
+      <ellipse cx="16" cy="40" rx="7" ry="3.2" fill="#f7f3ea"/>
+    </svg>
+  </div>
+
   <div class="santa-fly" id="lepFly" hidden>
     <div class="santa-bob">
       <div class="hoho">Top o' the mornin'!</div>
@@ -1174,7 +1624,7 @@
   </div>
 
   <div class="main-content">
-    <p class="kicker">Program Manager + Engineer + Photographer</p>
+    <p class="kicker">Product Manager + Engineer + Photographer</p>
     <h1 class="name">Sambrit Adhikari</h1>
 
     <nav class="nav-links" aria-label="Profiles">
@@ -1185,6 +1635,7 @@
     </nav>
   </div>
 
+  <p class="countdown" id="countdown" hidden>3</p>
   <button class="launch-button" aria-label="Launch">Launch 🚀</button>
 
   <div class="modal" id="contactModal" hidden>
@@ -1234,41 +1685,36 @@ copyBtn.addEventListener('click', async () => {
   }
 });
 
-/* ========================= LAUNCH BUTTON =========================
-   A steep, fast climb felt wrong. It read as a sticker shooting
-   straight up, and that is not the flight they wanted. This one is
-   a slower diagonal, up and to the right, then the next one up and
-   to the left, with a little change in steepness from flight to
-   flight. It pitches over early, so by a third of the screen a large
-   share of the motion is already sideways. High up, a small payload
-   keeps going on that same diagonal and fades. The booster flips,
-   arcs back, and lands beside the button. That payload and landing
-   is one flight. Several can be in the air together, capped at six,
-   so a few taps read as a small volley and not a swarm. They
-   alternate up-right and up-left. Every one of them uses this slower
-   diagonal and keeps a flame. Only one booster separates a payload
-   and lands. Further taps while that landing is in progress add
-   diagonal fly-outs. They do not each try to land on the pad. When
-   nothing is landing, the next tap starts a full flight again. The
-   steep straight-up path stays gone. There is no audio. The emoji
-   points up-right, and its tilt follows the travel. On the landing
-   burn the engines point down, the flame sits underneath, and it
-   cuts out on touchdown.
+/* ========================= LAUNCH =========================
+   The launch button is the visitor's own flight. The season owns
+   the sky. Launch owns a moment: a countdown, then a ship. The
+   first tap of a quiet pad counts 3, 2, 1, and every tap during
+   that count joins the same volley. For a few seconds after
+   liftoff the pad stays hot and further taps go immediately.
+   Each ship climbs, then sets down somewhere along the ground,
+   not back on the button. An astronaut steps out and waves.
+   Up to twelve can be in the air. The ship is drawn, so the
+   nose and the flame stay smooth when they turn. There is no
+   audio.
 */
 const launchBtn = document.querySelector('.launch-button');
-const ASCENT_MS = 5200;
-const ARC_MS = 2700;
-const SETTLE_MS = 480;
-const FADE_MS = 260;
-const ROCKET_CAP = 6;
+const countdownEl = document.getElementById('countdown');
+const ASCENT_MS = 4200;
+const ARC_MS = 2600;
+const WAVE_MS = 1800;
+const FADE_MS = 420;
+const ROCKET_CAP = 12;
+const SHIP_SVG = '<svg viewBox="0 0 80 140" aria-hidden="true"><g class="flame"><path d="M30 108 Q40 138 50 108" fill="#ff9a1a"/><path d="M35 108 Q40 124 45 108" fill="#fff1c2"/></g><path d="M40 6 L60 46 L60 104 Q40 116 20 104 L20 46 Z" fill="#f4f7fb" stroke="#c5d0dc" stroke-width="1.5"/><circle cx="40" cy="58" r="9" fill="#7ecbff" stroke="#d7f3ff" stroke-width="1.4"/><path d="M20 72 L4 104 L22 94 Z" fill="#e23b3b"/><path d="M60 72 L76 104 L58 94 Z" fill="#e23b3b"/></svg>';
+const ASTRO_SVG = '<svg viewBox="0 0 48 64" aria-hidden="true"><circle cx="24" cy="16" r="10" fill="#f4f7fb" stroke="#9bb0c4" stroke-width="2"/><circle cx="24" cy="16" r="6" fill="#16324a"/><path d="M14 30 H34 V48 Q24 56 14 48 Z" fill="#f7fafc" stroke="#9bb0c4" stroke-width="1.5"/><g class="arm"><path d="M14 34 L4 20" stroke="#f7fafc" stroke-width="4" stroke-linecap="round"/><circle cx="3" cy="18" r="3.2" fill="#f4d2b4"/></g><path d="M18 48 L16 60" stroke="#d5dee8" stroke-width="3" stroke-linecap="round"/><path d="M30 48 L32 60" stroke="#d5dee8" stroke-width="3" stroke-linecap="round"/></svg>';
 
-let nextSide = 1;
-let landingSide = 0;
 let airborne = 0;
 let calmOn = false;
+let counting = false;
+let queued = 0;
+let padHotUntil = 0;
 
 function noseTilt(vx, vy) {
-  return Math.atan2(vy, vx) * 180 / Math.PI + 45;
+  return Math.atan2(vy, vx) * 180 / Math.PI + 90;
 }
 
 function angDiff(a, b) {
@@ -1282,24 +1728,17 @@ function easeBlend(t) {
   return t * t * (3 - 2 * t);
 }
 
-function flightPlan(side) {
+function flightPlan() {
   const w = window.innerWidth;
   const h = window.innerHeight;
   const rect = launchBtn.getBoundingClientRect();
   const ox = rect.left + rect.width / 2;
-  const oy = rect.top - 2;
-  const narrow = w < 520;
-  const spread = 0.28 + Math.random() * 0.62;
-  const vw = narrow ? (30 + spread * 10) : (42 + spread * 20);
-  const margin = narrow ? 34 : 96;
-  const room = Math.max(72, side > 0 ? (w - margin - ox) : (ox - margin));
-  const sepX = side * Math.min((vw / 100) * w, room);
-  const deg = narrow ? (24 + spread * 6) : (34 + spread * 8);
-  const rise = Math.abs(sepX) / Math.tan(deg * Math.PI / 180);
-  const maxRise = Math.max(160, oy - (narrow ? 80 : 150));
-  const sepY = -Math.min(rise, maxRise);
-  const landX = side * (narrow ? 78 : 96);
-  return { sepX, sepY, ox, oy, side, narrow, landX, landY: 16 };
+  const oy = rect.top - 8;
+  const margin = w < 520 ? 28 : 48;
+  const landAbs = margin + Math.random() * Math.max(40, w - margin * 2);
+  const apexX = (Math.random() - 0.5) * Math.min(w * 0.7, 560);
+  const sepY = -Math.min(Math.max(200, oy * 0.72), h * 0.58);
+  return { sepX: apexX, sepY: sepY, ox: ox, oy: oy, landX: landAbs - ox, landY: 18 };
 }
 
 function ascentPoint(u, sepX, sepY) {
@@ -1309,10 +1748,7 @@ function ascentPoint(u, sepX, sepY) {
     return { x: sepX * 0.22 * s, y: sepY * 0.14 * s };
   }
   const t = (u - pitchEnd) / (1 - pitchEnd);
-  return {
-    x: sepX * (0.22 + 0.78 * t),
-    y: sepY * (0.14 + 0.86 * t)
-  };
+  return { x: sepX * (0.22 + 0.78 * t), y: sepY * (0.14 + 0.86 * t) };
 }
 
 function quad(p0, p1, p2, t) {
@@ -1326,7 +1762,7 @@ function quad(p0, p1, p2, t) {
 function makeRocket(ox, oy) {
   const rocket = document.createElement('div');
   rocket.className = 'rocket';
-  rocket.textContent = '🚀';
+  rocket.innerHTML = SHIP_SVG;
   rocket.style.left = ox + 'px';
   rocket.style.top = oy + 'px';
   document.body.appendChild(rocket);
@@ -1340,167 +1776,135 @@ function placeRocket(rocket, ox, oy, x, y, angle, opacity) {
   rocket.style.opacity = String(opacity);
 }
 
+function showAstronaut(x, y) {
+  const el = document.createElement('div');
+  el.className = 'astronaut pop';
+  el.innerHTML = ASTRO_SVG;
+  const charm = document.createElement('div');
+  charm.className = 'charm';
+  const tokens = {
+    thanksgiving: '🍂', holiday: '⭐', valentine: '🌹', patrick: '☘️',
+    spring: '🌸', sequinox: '🌸', summer: '✦', ssolstice: '☀️',
+    july4: '⭐', autumn: '🍁', aequinox: '🍁', halloween: '✨', wsolstice: '✨'
+  };
+  charm.textContent = tokens[activeMode] || '✦';
+  el.appendChild(charm);
+  el.style.left = (x + 28) + 'px';
+  el.style.top = y + 'px';
+  el.style.transform = 'translate(0, -100%)';
+  document.body.appendChild(el);
+  return el;
+}
+
 function spawnBit(x, y, ex, ey, big) {
   const bit = document.createElement('i');
   bit.className = 'exhaust';
   const gold = Math.random() < 0.46;
   const color = gold ? '#ffd15c' : '#ff7a1a';
-  const size = big ? 8 : 4 + Math.random() * 2.5;
+  const size = big ? 18 : 9 + Math.random() * 6;
   bit.style.width = size + 'px';
   bit.style.height = size + 'px';
   bit.style.background = color;
-  bit.style.boxShadow = '0 0 7px ' + color;
-  bit.style.left = (x + (Math.random() - 0.5) * 3) + 'px';
-  bit.style.top = (y + (Math.random() - 0.5) * 3) + 'px';
+  bit.style.boxShadow = '0 0 12px ' + color;
+  bit.style.left = (x + (Math.random() - 0.5) * 6) + 'px';
+  bit.style.top = (y + (Math.random() - 0.5) * 6) + 'px';
   document.body.appendChild(bit);
-  const dx = ex * (16 + Math.random() * 12);
-  const dy = ey * (16 + Math.random() * 12);
-  const life = big ? 200 : 280 + Math.random() * 100;
+  const dx = ex * (22 + Math.random() * 18);
+  const dy = ey * (22 + Math.random() * 18);
+  const life = big ? 240 : 320 + Math.random() * 120;
   bit.animate([
-    { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.92 },
-    { transform: 'translate(calc(-50% + ' + dx.toFixed(1) + 'px), calc(-50% + ' + dy.toFixed(1) + 'px)) scale(.25)', opacity: 0 }
+    { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.95 },
+    { transform: 'translate(calc(-50% + ' + dx.toFixed(1) + 'px), calc(-50% + ' + dy.toFixed(1) + 'px)) scale(.2)', opacity: 0 }
   ], { duration: life, easing: 'ease-out', fill: 'forwards' });
   setTimeout(() => bit.remove(), life + 24);
   return bit;
 }
 
-function releasePayload(cx, cy, angle, sepX, sepY, narrow) {
-  const nose = (angle - 45) * Math.PI / 180;
-  const payload = document.createElement('div');
-  payload.className = 'payload';
-  payload.style.left = (cx + Math.cos(nose) * 24) + 'px';
-  payload.style.top = (cy + Math.sin(nose) * 24) + 'px';
-  document.body.appendChild(payload);
-  const dirx = sepX * 0.78;
-  const diry = sepY * 0.86;
-  const len = Math.hypot(dirx, diry) || 1;
-  const travel = Math.min(len * 0.7, narrow ? 380 : 320);
-  const pdx = dirx / len * travel;
-  const pdy = diry / len * travel;
-  const deg = Math.atan2(pdy, pdx) * 180 / Math.PI;
-  const rot = 'rotate(' + deg.toFixed(1) + 'deg)';
-  payload.animate([
-    { transform: 'translate(-50%, -50%) ' + rot, opacity: 1, offset: 0 },
-    { transform: 'translate(calc(-50% + ' + (pdx * 0.55).toFixed(1) + 'px), calc(-50% + ' + (pdy * 0.55).toFixed(1) + 'px)) ' + rot, opacity: 1, offset: 0.58 },
-    { transform: 'translate(calc(-50% + ' + pdx.toFixed(1) + 'px), calc(-50% + ' + pdy.toFixed(1) + 'px)) ' + rot, opacity: 0 }
-  ], { duration: 1680, easing: 'linear', fill: 'forwards' });
-  setTimeout(() => payload.remove(), 1720);
-}
-
-function runRocket(side, kind, onDone) {
-  const plan = flightPlan(side);
+function runRocket(onDone) {
+  const plan = flightPlan();
   const rocket = makeRocket(plan.ox, plan.oy);
   const bits = [];
-  let angle = -48;
-  let sepAngle = null;
-  let acc = 0;
-  let separated = false;
+  let angle = 0;
   let lastSample = null;
   let lastNow = 0;
   let lastBurn = 0;
-  let wasBurning = false;
+  let acc = 0;
+  let astro = null;
   const t0 = performance.now();
-  const fly = kind === 'flyby';
-  const endX = plan.sepX * (plan.narrow ? 1.05 : 1.2);
-  const endY = -(plan.oy + 36);
 
   function engine(cssDeg) {
-    const nose = (cssDeg - 45) * Math.PI / 180;
+    const nose = (cssDeg - 90) * Math.PI / 180;
     return { x: -Math.cos(nose), y: -Math.sin(nose) };
   }
 
-  function puff(cx, cy, cssDeg, n) {
-    const e = engine(cssDeg);
-    for (let i = 0; i < n; i++) bits.push(spawnBit(cx + e.x * 18, cy + e.y * 18, e.x, e.y, i === 0));
-  }
-
   function killBits() {
-    while (bits.length) {
-      const bit = bits.pop();
-      bit.remove();
-    }
+    while (bits.length) bits.pop().remove();
   }
 
   function frame(now) {
     const elapsed = now - t0;
+    const climbEnd = ASCENT_MS;
+    const arcEnd = climbEnd + ARC_MS;
+    const waveEnd = arcEnd + WAVE_MS;
+    const fadeEnd = waveEnd + FADE_MS;
     let x = 0;
     let y = 0;
     let opacity = 1;
     let burning = false;
     let done = false;
+    let follow = false;
 
-    if (fly) {
-      const u = Math.min(1, elapsed / 5000);
-      const p = ascentPoint(u, endX, endY);
-      x = p.x;
-      y = p.y;
-      burning = u < 0.92;
-      if (u > 0.8) opacity = 1 - (u - 0.8) / 0.2;
-      done = u >= 1;
-    } else if (elapsed < ASCENT_MS) {
-      const u = elapsed / ASCENT_MS;
+    if (elapsed < climbEnd) {
+      const u = elapsed / climbEnd;
       const p = ascentPoint(u, plan.sepX, plan.sepY);
       x = p.x;
       y = p.y;
       burning = true;
-    } else if (elapsed < ASCENT_MS + ARC_MS) {
-      const u = (elapsed - ASCENT_MS) / ARC_MS;
-      if (sepAngle == null) sepAngle = angle;
-      const room = Math.max(80, plan.side > 0
-        ? (window.innerWidth - 32 - plan.ox)
-        : (plan.ox - 32));
-      let cx = plan.sepX * 0.72;
-      if (Math.abs(cx) > room) cx = plan.side * room;
+      follow = true;
+    } else if (elapsed < arcEnd) {
+      const u = (elapsed - climbEnd) / ARC_MS;
       const p = quad(
         { x: plan.sepX, y: plan.sepY },
-        { x: cx, y: plan.sepY * 0.4 },
+        { x: (plan.sepX + plan.landX) * 0.5, y: Math.min(plan.sepY * 0.2, -40) },
         { x: plan.landX, y: plan.landY },
         u
       );
       x = p.x;
       y = p.y;
-      if (!separated) {
-        separated = true;
-        releasePayload(plan.ox + x, plan.oy + y, sepAngle, plan.sepX, plan.sepY, plan.narrow);
-        puff(plan.ox + x, plan.oy + y, sepAngle, 4);
-      }
-      if (u < 0.72) {
-        const spun = sepAngle + 180 * easeBlend(Math.min(1, u / 0.42));
-        const f = u < 0.42 ? 0 : easeBlend((u - 0.42) / 0.3);
-        angle = spun + angDiff(spun, -45) * f;
-      } else {
-        angle = -45;
-      }
-      burning = u > 0.78;
-    } else if (elapsed < ASCENT_MS + ARC_MS + SETTLE_MS) {
+      burning = u > 0.7;
+      follow = u < 0.78;
+      if (!follow) angle += angDiff(angle, 0) * 0.18;
+    } else if (elapsed < waveEnd) {
       x = plan.landX;
       y = plan.landY;
-      angle = -45;
-      burning = false;
-    } else if (elapsed < ASCENT_MS + ARC_MS + SETTLE_MS + FADE_MS) {
+      angle = 0;
+      if (!astro) astro = showAstronaut(plan.ox + x + 16, plan.oy + y);
+    } else if (elapsed < fadeEnd) {
       x = plan.landX;
       y = plan.landY;
-      angle = -45;
-      opacity = 1 - (elapsed - ASCENT_MS - ARC_MS - SETTLE_MS) / FADE_MS;
-      burning = false;
+      angle = 0;
+      opacity = 1 - (elapsed - waveEnd) / FADE_MS;
+      if (astro) astro.style.opacity = String(Math.max(0, opacity));
     } else {
       done = true;
     }
 
-    if (!fly && elapsed >= ASCENT_MS + ARC_MS && wasBurning) killBits();
-    wasBurning = burning;
-
-    if (!done && (fly || elapsed < ASCENT_MS)) {
-      const sample = fly
-        ? ascentPoint(Math.min(1, elapsed / 5000), endX, endY)
-        : ascentPoint(Math.min(1, elapsed / ASCENT_MS), plan.sepX, plan.sepY);
+    if (follow) {
+      const sample = elapsed < climbEnd
+        ? ascentPoint(Math.min(1, elapsed / climbEnd), plan.sepX, plan.sepY)
+        : quad(
+            { x: plan.sepX, y: plan.sepY },
+            { x: (plan.sepX + plan.landX) * 0.5, y: Math.min(plan.sepY * 0.2, -40) },
+            { x: plan.landX, y: plan.landY },
+            Math.min(1, (elapsed - climbEnd) / ARC_MS)
+          );
       if (lastSample) {
         const vx = sample.x - lastSample.x;
         const vy = sample.y - lastSample.y;
-        if (vx * vx + vy * vy > 0.01) {
+        if (vx * vx + vy * vy > 0.04) {
           const target = noseTilt(vx, vy);
-          const k = 1 - Math.exp(-(now - lastNow) / 80);
-          angle = angle + angDiff(angle, target) * k;
+          const k = 1 - Math.exp(-(now - lastNow) / 90);
+          angle += angDiff(angle, target) * k;
         }
       }
       lastSample = sample;
@@ -1513,12 +1917,12 @@ function runRocket(side, kind, onDone) {
       const dt = lastBurn ? Math.min(now - lastBurn, 48) : 16;
       lastBurn = now;
       acc += dt;
-      let n = 0;
       const e = engine(angle);
-      while (acc >= 78 && n < 2) {
-        acc -= 78;
+      let n = 0;
+      while (acc >= 50 && n < 3) {
+        acc -= 50;
         n += 1;
-        bits.push(spawnBit(plan.ox + x + e.x * 18, plan.oy + y + e.y * 18, e.x, e.y, n === 1));
+        bits.push(spawnBit(plan.ox + x + e.x * 36, plan.oy + y + e.y * 36, e.x, e.y, n === 1));
       }
     } else {
       acc = 0;
@@ -1528,34 +1932,62 @@ function runRocket(side, kind, onDone) {
     if (done) {
       killBits();
       rocket.remove();
+      if (astro) astro.remove();
       if (onDone) onDone();
       return;
     }
     requestAnimationFrame(frame);
   }
 
-  placeRocket(rocket, plan.ox, plan.oy, 0, 0, angle, 1);
+  placeRocket(rocket, plan.ox, plan.oy, 0, 0, 0, 1);
   requestAnimationFrame(frame);
 }
 
-function spawnCalm(side) {
+function spawnCalm() {
   const rect = launchBtn.getBoundingClientRect();
   const ox = rect.left + rect.width / 2;
-  const oy = rect.top - 2;
+  const oy = rect.top - 8;
   const rocket = makeRocket(ox, oy);
   const narrow = window.innerWidth < 520;
-  const dx = side * Math.min(window.innerWidth * (narrow ? 0.22 : 0.28), narrow ? 110 : 240);
-  const dy = -Math.min(window.innerHeight * 0.32, oy * 0.42);
+  const side = Math.random() < 0.5 ? -1 : 1;
+  const dx = side * Math.min(window.innerWidth * 0.22, narrow ? 110 : 200);
+  const dy = -Math.min(window.innerHeight * 0.28, oy * 0.4);
   const ang = noseTilt(dx, dy);
   const turn = 'translate(-50%, -50%) rotate(' + ang.toFixed(1) + 'deg)';
   rocket.animate([
     { left: ox + 'px', top: oy + 'px', transform: turn, opacity: 1 },
     { left: (ox + dx) + 'px', top: (oy + dy) + 'px', transform: turn, opacity: 0 }
-  ], { duration: 700, easing: 'ease-out', fill: 'forwards' });
+  ], { duration: 900, easing: 'ease-out', fill: 'forwards' });
   setTimeout(() => {
     rocket.remove();
     calmOn = false;
-  }, 760);
+  }, 960);
+}
+
+function launchOne() {
+  if (airborne >= ROCKET_CAP) return;
+  airborne += 1;
+  runRocket(() => { airborne -= 1; });
+}
+
+function runCountdown(done) {
+  const beats = ['3', '2', '1'];
+  let i = 0;
+  countdownEl.hidden = false;
+  function step() {
+    if (i >= beats.length) {
+      countdownEl.hidden = true;
+      done();
+      return;
+    }
+    countdownEl.textContent = beats[i];
+    countdownEl.classList.remove('pop');
+    void countdownEl.offsetWidth;
+    countdownEl.classList.add('pop');
+    i += 1;
+    setTimeout(step, 620);
+  }
+  step();
 }
 
 launchBtn.addEventListener('click', () => {
@@ -1563,30 +1995,41 @@ launchBtn.addEventListener('click', () => {
   if (calm) {
     if (calmOn) return;
     calmOn = true;
-    const side = nextSide;
-    nextSide = -nextSide;
-    spawnCalm(side);
+    spawnCalm();
     return;
   }
-  if (airborne >= ROCKET_CAP) return;
-  const side = nextSide;
-  nextSide = -nextSide;
-  airborne += 1;
-  if (landingSide) {
-    runRocket(side, 'flyby', () => { airborne -= 1; });
+  if (airborne >= ROCKET_CAP && !counting) return;
+  if (performance.now() < padHotUntil) {
+    launchOne();
     return;
   }
-  landingSide = side;
-  runRocket(side, 'land', () => {
-    landingSide = 0;
-    airborne -= 1;
+  queued += 1;
+  if (counting) return;
+  counting = true;
+  runCountdown(() => {
+    const room = Math.max(0, ROCKET_CAP - airborne);
+    const n = Math.min(queued, room);
+    queued = 0;
+    counting = false;
+    padHotUntil = performance.now() + 8000;
+    for (let i = 0; i < n; i++) launchOne();
   });
 });
 
 /* A tap on the open sky leaves one star. A tap on the name leaves a
    few sparks. Both are small on purpose, and both stay quiet when
    the visitor has asked for reduced motion. */
+function spawnRipple(x, y) {
+  const ring = document.createElement('div');
+  ring.className = 'ripple';
+  ring.style.left = x + 'px';
+  ring.style.top = y + 'px';
+  document.body.appendChild(ring);
+  setTimeout(() => ring.remove(), 900);
+}
+
 function spawnWish(x, y) {
+  spawnRipple(x, y);
   const star = document.createElement('div');
   star.className = 'wish';
   star.textContent = '✦';
@@ -1597,7 +2040,8 @@ function spawnWish(x, y) {
 }
 
 function spawnSparkles(x, y) {
-  for (let i = 0; i < 7; i++) {
+  spawnRipple(x, y);
+  for (let i = 0; i < 12; i++) {
     const bit = document.createElement('div');
     bit.className = 'sparkle';
     bit.style.left = x + 'px';
@@ -1630,17 +2074,24 @@ document.querySelector('.name').addEventListener('click', (e) => {
    is warm amber and rose light. Spring is blossom bulbs and a few
    plain petals, with no flyer in their place.
 
-   Nov 1 through Jan 2      holiday        except the Thanksgiving weekend
+   Nov 1 through Jan 2      holiday        except Thanksgiving and Dec 21–23
    Fourth Thursday, November thanksgiving  Wednesday before through Sunday after
-   February 13 through 15   valentine      the day before, the day, and the day after
-   March 1 through 18       patrick        ends before the spring equinox
-   March 20 through May 31  spring         after St. Patrick's, before a quiet June
-   July 1 through July 7    july4          the week of the holiday, then night again
-   October                  halloween      the whole month
+   December 21 through 23   wsolstice      the longest night
+   February 13 through 15   valentine      roses and rising lanterns, no falling candles
+   March 1 through 18       patrick
+   March 20 through 22      sequinox       day and night, even
+   March 23 through May 31  spring         flowers and a bunny
+   June 1 through August 31 summer         except the solstice and July 1–7
+   June 20 through 22       ssolstice      the longest day, sun at the top right
+   July 1 through July 7    july4          Happy Independence Day
+   September                autumn         except Sep 22–24
+   September 22 through 24  aequinox
+   October                  halloween
 
-   March 19, June, July 8 through September 30, January 3 through 31,
-   and February outside the 13th through the 15th stay off until
-   someone picks a scene.
+   January 3 through 31, February outside the 13th through the 15th,
+   and March 19 stay a plain night. Shooting stars and the ground
+   lights still run. A fresh visit always follows this calendar.
+   A scene picked with the switch lasts until the tab closes.
 
    Thanksgiving is the fourth Thursday in November, widened to the
    Wednesday before and the Sunday after. That five-day weekend is
@@ -1666,6 +2117,9 @@ const santaFly = document.getElementById('santaFly');
 const witchFly = document.getElementById('witchFly');
 const batFly = document.getElementById('batFly');
 const lepFly = document.getElementById('lepFly');
+const turkeyFly = document.getElementById('turkeyFly');
+const bunny = document.getElementById('bunny');
+const holidayWhen = document.getElementById('holidayWhen');
 const snowCanvas = document.getElementById('snow');
 const sctx = snowCanvas.getContext('2d', { alpha: true });
 
@@ -1675,36 +2129,59 @@ const sctx = snowCanvas.getContext('2d', { alpha: true });
    Halloween, then Thanksgiving. Thanksgiving follows Halloween
    because the fourth Thursday of November comes after October and
    before the rest of that winter holiday. */
-const MODE_CYCLE = ['off', 'holiday', 'valentine', 'patrick', 'spring', 'july4', 'halloween', 'thanksgiving'];
-const SCENE_IDS = ['holiday', 'halloween', 'july4', 'patrick', 'valentine', 'spring', 'thanksgiving'];
+const MODE_CYCLE = ['off', 'wsolstice', 'holiday', 'valentine', 'patrick', 'sequinox', 'spring', 'ssolstice', 'summer', 'july4', 'aequinox', 'autumn', 'halloween', 'thanksgiving'];
 const MODE_META = {
-  off: { ico: '✨', label: 'Off' },
+  off: { ico: '✨', label: 'Off', when: 'A plain night' },
   holiday: {
-    ico: '🎄', label: 'Holiday',
+    ico: '🎄', label: 'Holiday', when: 'Nov 1–Jan 2',
     toastOn: 'Happy holidays — the sleigh is out'
   },
   valentine: {
-    ico: '🕯️', label: 'Valentine',
+    ico: '🌹', label: 'Valentine', when: 'Feb 13–15',
     toastOn: "Happy Valentine's Day"
   },
   patrick: {
-    ico: '🍀', label: "St. Patrick's",
+    ico: '🍀', label: "St. Patrick's", when: 'Mar 1–18',
     toastOn: "Top o' the mornin'"
   },
+  sequinox: {
+    ico: '🌗', label: 'Equinox', when: 'Mar 20–22',
+    toastOn: 'Day and night, even'
+  },
   spring: {
-    ico: '🌸', label: 'Spring',
+    ico: '🌸', label: 'Spring', when: 'Mar 23–May 31',
     toastOn: 'Spring is in the air'
   },
+  ssolstice: {
+    ico: '☀️', label: 'Solstice', when: 'Jun 20–22',
+    toastOn: 'The longest day'
+  },
+  summer: {
+    ico: '☀️', label: 'Summer', when: 'Jun–Aug',
+    toastOn: "Summer's here"
+  },
   july4: {
-    ico: '🎆', label: 'July 4',
-    toastOn: 'Light up the sky'
+    ico: '🎆', label: 'July 4', when: 'Jul 1–7',
+    toastOn: 'Happy Independence Day'
+  },
+  aequinox: {
+    ico: '🌗', label: 'Equinox', when: 'Sep 22–24',
+    toastOn: 'Day and night, even'
+  },
+  autumn: {
+    ico: '🍂', label: 'Autumn', when: 'September',
+    toastOn: 'The leaves are turning'
   },
   halloween: {
-    ico: '🎃', label: 'Halloween',
+    ico: '🎃', label: 'Halloween', when: 'October',
     toastOn: 'Happy Halloween — the witch is out'
   },
+  wsolstice: {
+    ico: '✨', label: 'Solstice', when: 'Dec 21–23',
+    toastOn: 'The longest night'
+  },
   thanksgiving: {
-    ico: '🦃', label: 'Thanksgiving',
+    ico: '🦃', label: 'Thanksgiving', when: 'Thanksgiving',
     toastOn: 'Happy Thanksgiving'
   }
 };
@@ -1713,8 +2190,12 @@ const GIFT_EMOJI = {
   halloween: ['🍬', '🎃', '🦇', '👻', '🍫'],
   july4: ['⭐', '🎇'],
   patrick: ['☘️', '🪙', '🌟', '🌈'],
-  valentine: ['🕯️', '✨', '🌟'],
-  spring: ['🌸', '🌼', '🍃']
+  valentine: ['🏮', '🌹', '✨'],
+  spring: ['🌸', '🌼', '🌷', '🍃'],
+  sequinox: ['🌸', '🌼'],
+  autumn: ['🍂', '🍁'],
+  aequinox: ['🍂', '🍁'],
+  thanksgiving: ['🍂', '🍁']
 };
 
 let choice = 'auto';
@@ -1736,12 +2217,21 @@ let snowWasOn = false;
 /* Fourth Thursday of November, then the Wednesday before it through
    the Sunday after it. The weekend is carved out of holiday mode so
    those five days are one scene, not two. */
-function isThanksgivingSpan(now) {
-  const nov1 = new Date(now.getFullYear(), 10, 1);
+function thanksgivingThursday(year) {
+  const nov1 = new Date(year, 10, 1);
   const firstThursday = 1 + ((4 - nov1.getDay() + 7) % 7);
-  const thursday = firstThursday + 21;
+  return firstThursday + 21;
+}
+
+function isThanksgivingSpan(now) {
+  const thursday = thanksgivingThursday(now.getFullYear());
   const day = now.getDate();
   return day >= thursday - 1 && day <= thursday + 3;
+}
+
+function thanksgivingWhen(year) {
+  const thursday = thanksgivingThursday(year);
+  return 'Nov ' + (thursday - 1) + '–' + (thursday + 3);
 }
 
 function seasonalMode(date) {
@@ -1750,11 +2240,17 @@ function seasonalMode(date) {
   const day = now.getDate();
   if (month === 9) return 'halloween';
   if (month === 10 && isThanksgivingSpan(now)) return 'thanksgiving';
+  if (month === 11 && day >= 21 && day <= 23) return 'wsolstice';
   if (month === 10 || month === 11 || (month === 0 && day < 3)) return 'holiday';
   if (month === 1 && day >= 13 && day <= 15) return 'valentine';
   if (month === 2 && day <= 18) return 'patrick';
-  if ((month === 2 && day >= 20) || month === 3 || month === 4) return 'spring';
+  if (month === 2 && day >= 20 && day <= 22) return 'sequinox';
+  if ((month === 2 && day >= 23) || month === 3 || month === 4) return 'spring';
+  if (month === 5 && day >= 20 && day <= 22) return 'ssolstice';
   if (month === 6 && day <= 7) return 'july4';
+  if (month === 5 || month === 6 || month === 7) return 'summer';
+  if (month === 8 && day >= 22 && day <= 24) return 'aequinox';
+  if (month === 8) return 'autumn';
   return 'off';
 }
 
@@ -1781,10 +2277,14 @@ function setMode(mode, opts) {
   if (switchScene && MODE_META[switchScene]) {
     const on = activeMode === switchScene;
     const name = MODE_META[switchScene].label;
+    const when = switchScene === 'thanksgiving'
+      ? thanksgivingWhen(new Date().getFullYear())
+      : (MODE_META[switchScene].when || '');
     holidayBtn.hidden = false;
     holidayBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
     holidayLabel.textContent = name;
-    holidayBtn.setAttribute('aria-label', name + (on ? ', on. Turn off' : ', off. Turn on'));
+    holidayWhen.textContent = when;
+    holidayBtn.setAttribute('aria-label', name + (when ? ', ' + when : '') + (on ? ', on. Turn off' : ', off. Turn on'));
   } else {
     holidayBtn.hidden = true;
     holidayBtn.setAttribute('aria-pressed', 'false');
@@ -1798,7 +2298,7 @@ function setMode(mode, opts) {
   modeIco.textContent = MODE_META[next].ico;
   modeLabel.textContent = 'Next';
   modeSwitch.setAttribute('aria-label', 'Next scene: ' + nextName);
-  try { localStorage.setItem('site-mode', choice); } catch (e) {}
+  try { sessionStorage.setItem('site-mode', choice); } catch (e) {}
 
   if (activeMode === 'off') {
     stopEffects();
@@ -1823,6 +2323,7 @@ function flyerAllowed(el) {
   if (el === santaFly) return activeMode === 'holiday';
   if (el === witchFly || el === batFly) return activeMode === 'halloween';
   if (el === lepFly) return activeMode === 'patrick';
+  if (el === turkeyFly) return activeMode === 'thanksgiving';
   return false;
 }
 
@@ -1871,7 +2372,9 @@ function startEffects() {
   rockets = [];
   sparks = [];
   nextFirework = 0;
-  const lead = activeMode === 'holiday' ? santaFly : activeMode === 'halloween' ? witchFly : activeMode === 'patrick' ? lepFly : null;
+  const lead = activeMode === 'holiday' ? santaFly : activeMode === 'halloween' ? witchFly : activeMode === 'patrick' ? lepFly : activeMode === 'thanksgiving' ? turkeyFly : null;
+  const hop = activeMode === 'spring' || activeMode === 'sequinox';
+  bunny.hidden = !hop;
   if (reduceMotion) {
     if (lead) {
       lead.hidden = false;
@@ -1886,7 +2389,8 @@ function startEffects() {
 
 function stopEffects() {
   clearTimeout(giftTimer);
-  [santaFly, witchFly, batFly, lepFly].forEach(stopFlyer);
+  [santaFly, witchFly, batFly, lepFly, turkeyFly].forEach(stopFlyer);
+  if (bunny) bunny.hidden = true;
   document.querySelectorAll('.gift').forEach((g) => g.remove());
   dust = [];
   rockets = [];
@@ -1898,7 +2402,7 @@ function queueGift(delay) {
   giftTimer = setTimeout(() => {
     const pack = GIFT_EMOJI[activeMode];
     if (!pack || reduceMotion) return;
-    const light = activeMode === 'valentine' || activeMode === 'spring';
+    const light = activeMode === 'valentine' || activeMode === 'spring' || activeMode === 'sequinox' || activeMode === 'thanksgiving';
     const cap = light ? 2 : 5;
     if (document.querySelectorAll('.gift').length < cap) spawnGift(pack);
     queueGift(light ? rand(3200, 5600) : rand(1400, 2800));
@@ -1907,7 +2411,7 @@ function queueGift(delay) {
 
 function spawnGift(pack) {
   const el = document.createElement('div');
-  el.className = 'gift';
+  el.className = activeMode === 'valentine' ? 'gift rise' : 'gift';
   el.textContent = pack[(Math.random() * pack.length) | 0];
   el.style.left = rand(4, 92) + 'vw';
   el.style.fontSize = rand(18, 34) + 'px';
@@ -1945,8 +2449,11 @@ function burstFromButton() {
    Halloween orange and purple swarm. A full field would turn those
    quiet seasons into a blizzard. */
 function makeFlake(anywhere) {
-  const gentle = activeMode === 'spring' || activeMode === 'thanksgiving';
+  const gentle = activeMode === 'spring' || activeMode === 'sequinox' || activeMode === 'thanksgiving' || activeMode === 'autumn' || activeMode === 'aequinox' || activeMode === 'summer' || activeMode === 'ssolstice';
   const roll = Math.random();
+  const leafy = activeMode === 'thanksgiving' || activeMode === 'autumn' || activeMode === 'aequinox';
+  const petal = activeMode === 'spring' || activeMode === 'sequinox';
+  const glow = activeMode === 'summer' || activeMode === 'ssolstice';
   return {
     x: Math.random() * Math.max(snowCanvas.width, 1),
     y: anywhere ? Math.random() * Math.max(snowCanvas.height, 1) : -rand(4, 40),
@@ -1957,15 +2464,17 @@ function makeFlake(anywhere) {
     wobbleSpeed: gentle ? rand(0.003, 0.01) : rand(0.01, 0.025),
     o: rand(0.4, 0.9),
     hue: Math.random(),
-    kind: activeMode === 'thanksgiving' ? 'leaf' : activeMode === 'spring' ? 'petal' : (roll > 0.86 ? 'star' : 'dot')
+    kind: leafy ? 'leaf' : petal ? 'petal' : glow ? 'glow' : (roll > 0.86 ? 'star' : 'dot')
   };
 }
 
 function initSnow() {
   let count = Math.min(200, Math.floor((innerWidth * innerHeight) / 13000));
   if (activeMode === 'valentine') count = 0;
-  else if (activeMode === 'thanksgiving') count = Math.min(12, Math.max(5, Math.floor(innerWidth / 140)));
-  else if (activeMode === 'spring') count = Math.min(20, Math.max(10, Math.floor(innerWidth / 70)));
+  else if (activeMode === 'thanksgiving') count = Math.min(22, Math.max(8, Math.floor(innerWidth / 90)));
+  else if (activeMode === 'spring' || activeMode === 'sequinox') count = Math.min(70, Math.max(28, Math.floor(innerWidth / 22)));
+  else if (activeMode === 'autumn' || activeMode === 'aequinox') count = Math.min(36, Math.max(16, Math.floor(innerWidth / 40)));
+  else if (activeMode === 'summer' || activeMode === 'ssolstice') count = Math.min(26, Math.max(12, Math.floor(innerWidth / 55)));
   flakes = [];
   for (let i = 0; i < count; i++) flakes.push(makeFlake(true));
 }
@@ -1983,6 +2492,13 @@ function drawSnowflake(x, y, r, alpha) {
 }
 
 function paintFlake(f) {
+  if (f.kind === 'glow') {
+    sctx.fillStyle = 'rgba(255, 214, 120,' + f.o + ')';
+    sctx.beginPath();
+    sctx.arc(f.x, f.y, (f.r + 0.6) * dpr, 0, Math.PI * 2);
+    sctx.fill();
+    return;
+  }
   if (f.kind === 'leaf') {
     const color = f.hue > 0.66
       ? 'rgba(196,132,74,' + f.o + ')'
@@ -2046,6 +2562,10 @@ function starTint(s) {
   if (activeMode === 'valentine' && s.depth > 0.72) return s.phase > 3 ? '#ffd0b0' : '#ffe08a';
   if (activeMode === 'spring' && s.depth > 0.72) return s.phase > 3 ? '#ffe9b0' : '#ffd6e4';
   if (activeMode === 'thanksgiving' && s.depth > 0.72) return s.phase > 3 ? '#e8b86a' : '#c4844a';
+  if ((activeMode === 'summer' || activeMode === 'ssolstice') && s.depth > 0.7) return '#fff1c4';
+  if ((activeMode === 'autumn' || activeMode === 'aequinox') && s.depth > 0.7) return s.phase > 3 ? '#f0c86a' : '#e09040';
+  if (activeMode === 'wsolstice' && s.depth > 0.55) return s.phase > 3 ? '#fff' : '#d7f6ff';
+  if (activeMode === 'sequinox' && s.depth > 0.7) return s.phase > 3 ? '#fff1c9' : '#d7f6ff';
   return '#ffffff';
 }
 
@@ -2057,6 +2577,9 @@ function shootingTint() {
   if (activeMode === 'valentine') return 'rgba(255,196,150,0.95)';
   if (activeMode === 'spring') return 'rgba(255,224,170,0.95)';
   if (activeMode === 'thanksgiving') return 'rgba(224,168,80,0.95)';
+  if (activeMode === 'summer' || activeMode === 'ssolstice') return 'rgba(255,220,140,0.95)';
+  if (activeMode === 'autumn' || activeMode === 'aequinox') return 'rgba(240,170,80,0.95)';
+  if (activeMode === 'wsolstice' || activeMode === 'sequinox') return 'rgba(220,236,255,0.95)';
   return 'rgba(255,255,255,0.90)';
 }
 
@@ -2164,8 +2687,9 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 let dpr = 1;
 let stars = [];
-let shootingStar = null;
+let shootingStars = [];
 let nextShootingStarAt = 0;
+let nextShowerAt = 0;
 
 const pointer = { x: 0.5, y: 0.5 };
 const smooth = { x: 0.5, y: 0.5 };
@@ -2261,12 +2785,37 @@ function loop(now) {
   ctx.globalAlpha = 1;
 
   if (!reduceMotion) {
-    if (!shootingStar && now >= nextShootingStarAt) {
-      shootingStar = createShootingStar();
+    const starCap = activeMode === 'wsolstice' ? 4 : 3;
+    if (!nextShowerAt) nextShowerAt = now + rand(8000, 14000);
+    if (now >= nextShowerAt && shootingStars.length < 2) {
+      nextShowerAt = now + rand(16000, 28000);
+      const base = createShootingStar();
+      const burst = Math.random() < 0.35 ? 5 : 3;
+      for (let i = 0; i < burst; i++) {
+        shootingStars.push({
+          x: base.x,
+          y: base.y + i * 22 * dpr,
+          vx: base.vx * (0.92 + i * 0.04),
+          vy: base.vy + i * 0.04 * dpr,
+          length: base.length * (i === 0 ? 1.7 : 1),
+          width: base.width * (i === 0 ? 1.6 : 1),
+          life: base.life + i * 90
+        });
+      }
+    } else if (shootingStars.length < starCap && now >= nextShootingStarAt) {
+      const star = createShootingStar();
+      if (Math.random() < 0.2) {
+        star.length *= 2.1;
+        star.width *= 1.7;
+        star.vx *= 0.62;
+        star.life *= 1.5;
+      }
+      shootingStars.push(star);
+      nextShootingStarAt = now + rand(700, 2000);
     }
 
-    if (shootingStar) {
-      const c = shootingStar;
+    for (let i = shootingStars.length - 1; i >= 0; i--) {
+      const c = shootingStars[i];
       c.x += c.vx * dt * 0.16;
       c.y += c.vy * dt * 0.16;
       c.life -= dt;
@@ -2284,16 +2833,13 @@ function loop(now) {
       ctx.lineTo(tx, ty);
       ctx.stroke();
 
-      if (c.life <= 0 || c.x < -0.2 * w || c.x > 1.2 * w) {
-        shootingStar = null;
-        nextShootingStarAt = now + rand(2500, 7000);
-      }
+      if (c.life <= 0 || c.x < -0.2 * w || c.x > 1.2 * w) shootingStars.splice(i, 1);
     }
   }
 
   const sw = snowCanvas.width;
   const sh = snowCanvas.height;
-  const fxOn = activeMode === 'holiday' || activeMode === 'halloween' || activeMode === 'patrick' || activeMode === 'july4' || activeMode === 'valentine' || activeMode === 'spring' || activeMode === 'thanksgiving';
+  const fxOn = activeMode !== 'off';
   if (!fxOn) {
     if (snowWasOn) {
       sctx.clearRect(0, 0, sw, sh);
@@ -2326,7 +2872,19 @@ function loop(now) {
       paintFlake(f);
     }
 
-    const trailEl = [santaFly, witchFly, lepFly].find((el) => !el.hidden);
+    const trailEl = [santaFly, witchFly, lepFly, turkeyFly].find((el) => el && !el.hidden);
+    if (activeMode === 'thanksgiving' && turkeyFly && !turkeyFly.hidden && Math.random() < 0.04) {
+      const box = turkeyFly.getBoundingClientRect();
+      if (box.width) {
+        const feather = document.createElement('div');
+        feather.className = 'feather';
+        feather.textContent = '🪶';
+        feather.style.left = (box.left + box.width * 0.35) + 'px';
+        feather.style.top = (box.top + box.height * 0.55) + 'px';
+        document.body.appendChild(feather);
+        setTimeout(() => feather.remove(), 2700);
+      }
+    }
     if (trailEl) {
       const box = trailEl.getBoundingClientRect();
       if (Math.random() < 0.85) {
@@ -2374,16 +2932,16 @@ function loop(now) {
 resize();
 requestAnimationFrame(loop);
 
-/* On each fresh load the calendar scene starts on, including a
-   Thanksgiving weekend. site-mode "off" and the older holiday-mode
-   value "0" are ignored, so a previous Off does not leave the season
-   dark after a reload. A saved scene id still wins, because the
-   visitor picked that scene. "auto", a missing value, and a discarded
-   "off" all follow the date. Outside every season the page stays a
-   normal night until Next picks a scene. The page never plays audio. */
+/* A fresh visit follows the visitor's local calendar. An older
+   localStorage scene was winning over the date, so opening the
+   site could show last week's scene. That key is dropped. A scene
+   picked in this tab is kept in sessionStorage until the tab
+   closes, and a new visit starts from the date again. */
+try { localStorage.removeItem('site-mode'); } catch (e) {}
+try { localStorage.removeItem('holiday-mode'); } catch (e) {}
 try {
-  const saved = localStorage.getItem('site-mode');
-  if (SCENE_IDS.indexOf(saved) !== -1) choice = saved;
+  const saved = sessionStorage.getItem('site-mode');
+  if (saved && MODE_META[saved]) choice = saved;
 } catch (e) {}
 if (choice === 'auto') {
   const season = seasonalMode();
@@ -2404,7 +2962,7 @@ if (choice === 'auto') {
         "@id": "https://sambrit.com/#person",
         "name": "Sambrit Adhikari",
         "url": "https://sambrit.com/",
-        "jobTitle": ["Program Manager", "Engineer", "Photographer"],
+        "jobTitle": ["Product Manager", "Engineer", "Photographer"],
         "sameAs": [
           "https://github.com/sambrit",
           "https://www.instagram.com/catchavibephotos/",
@@ -2416,7 +2974,7 @@ if (choice === 'auto') {
         "@id": "https://sambrit.com/#website",
         "name": "Sambrit Adhikari",
         "url": "https://sambrit.com/",
-        "description": "Personal site of Sambrit Adhikari, program manager, engineer, and photographer.",
+        "description": "Personal site of Sambrit Adhikari, product manager, engineer, and photographer.",
         "publisher": { "@id": "https://sambrit.com/#person" }
       }
     ]
