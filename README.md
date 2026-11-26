@@ -1,6 +1,6 @@
 # Sambrit Adhikari | sambrit.com
 
-Personal landing page and portfolio site for **Sambrit Adhikari**: program manager, engineer, and builder focused on AI, software, and product execution.
+Personal landing page and portfolio site for **Sambrit Adhikari**: product manager, engineer, and builder focused on AI, software, and product execution.
 
 Live site: [https://www.sambrit.com](https://www.sambrit.com)
 
